@@ -1,5 +1,5 @@
 {
-  "name": "ultra-report-app",
+  "name": "ultra-reporter-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -20,7 +20,8 @@
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.5.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "xml2js": "^0.6.2"
   },
   "devDependencies": {
     "@eslint/compat": "^1.1.1",
@@ -30,6 +31,7 @@
     "@types/node": "^22.5.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/xml2js": "^0.4.14",
     "daisyui": "^4.12.10",
     "eslint": "^9.11.0",
     "eslint-config-next": "14.2.13",
