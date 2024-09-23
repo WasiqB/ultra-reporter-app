@@ -14,15 +14,6 @@ body:
     validations:
       required: true
 
-  - type: input
-    id: version
-    attributes:
-      label: Affected Version
-      description: 🔢 What version of the reporter is this bug related to?
-      placeholder: Affected version
-    validations:
-      required: true
-
   - type: textarea
     id: steps-to-reproduce
     attributes:
