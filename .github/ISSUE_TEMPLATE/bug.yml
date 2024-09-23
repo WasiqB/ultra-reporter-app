@@ -18,7 +18,9 @@ body:
     id: steps-to-reproduce
     attributes:
       label: 📃 Steps to reproduce the bug
-      description: We highly suggest including a screenshots and a bug report log (GitHub Gist link).
+      description: |
+        We highly suggest including the Error screenshots 
+        and attach the file having issue.
       placeholder: Tell us the steps required to replicate your bug.
     validations:
       required: true

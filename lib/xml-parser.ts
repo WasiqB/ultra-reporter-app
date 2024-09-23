@@ -79,24 +79,26 @@ const getTestClasses = (classes: any): TestClass[] => {
 
 const getTestCases = (tests: any): TestCase[] => {
   const result: TestCase[] = [];
-  if (tests.length) {
-    for (const test of tests) {
+  if (tests) {
+    if (tests.length) {
+      for (const test of tests) {
+        result.push({
+          name: test['name'],
+          started_at: test['started-at'],
+          finished_at: test['finished-at'],
+          duration_ms: test['duration-ms'],
+          test_classes: getTestClasses(test.class),
+        });
+      }
+    } else {
       result.push({
-        name: test['name'],
-        started_at: test['started-at'],
-        finished_at: test['finished-at'],
-        duration_ms: test['duration-ms'],
-        test_classes: getTestClasses(test.class),
+        name: tests['name'],
+        started_at: tests['started-at'],
+        finished_at: tests['finished-at'],
+        duration_ms: tests['duration-ms'],
+        test_classes: getTestClasses(tests.class),
       });
     }
-  } else {
-    result.push({
-      name: tests['name'],
-      started_at: tests['started-at'],
-      finished_at: tests['finished-at'],
-      duration_ms: tests['duration-ms'],
-      test_classes: getTestClasses(tests.class),
-    });
   }
   return result;
 };
