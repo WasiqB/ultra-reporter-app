@@ -1,5 +1,5 @@
 type TestResult = {
-  test_suites: TestSuite[] | TestSuite;
+  test_suites: TestSuite[];
   total: number;
   passed: number;
   failed: number;
@@ -17,7 +17,7 @@ type TestSuite = {
   failed?: number;
   skipped?: number;
   ignored?: number;
-  test_cases: TestCase[] | TestCase;
+  test_cases: TestCase[];
 };
 
 type TestCase = {
@@ -30,7 +30,7 @@ type TestCase = {
   failed?: number;
   skipped?: number;
   ignored?: number;
-  test_classes: TestClass[] | TestClass;
+  test_classes: TestClass[];
 };
 
 type TestClass = {
@@ -40,7 +40,7 @@ type TestClass = {
   failed?: number;
   skipped?: number;
   ignored?: number;
-  test_methods: TestMethod[] | TestMethod;
+  test_methods: TestMethod[];
 };
 
 type TestMethod = {

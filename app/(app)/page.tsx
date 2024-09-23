@@ -13,19 +13,17 @@ const LandingPage = (): JSX.Element => {
             height={100}
             className='mb-8'
           />
-          <h1 className='mb-4 text-4xl font-bold'>XML Processor</h1>
+          <h1 className='mb-4 text-4xl font-bold'>Ultra Reporter</h1>
           <p className='mb-8 max-w-2xl text-xl'>
-            Upload your XML file and let our advanced processing system analyze
-            and display the data for you.
+            Upload your Test result XML file and let our advanced reporter
+            system analyze and display the data for you.
           </p>
           <FileUpload />
           <div className='mt-8'>
             <h2 className='mb-4 text-2xl font-semibold'>Key Features</h2>
             <ul className='list-inside list-disc text-left'>
-              <li>Fast and efficient XML processing</li>
-              <li>Secure file handling</li>
-              <li>Detailed data visualization</li>
-              <li>Support for large XML files</li>
+              <li>Display TestNG results in beautiful dashboard</li>
+              <li>See the Tests insights charts</li>
             </ul>
           </div>
         </div>

@@ -25,10 +25,10 @@ const getTestLog = (output: any): TestLog => {
 };
 
 const getTestMethods = (methods: any): TestMethod[] => {
-  let result: TestMethod[] = [];
+  const result: TestMethod[] = [];
   let index = 1;
   if (methods.length) {
-    for (let method of methods) {
+    for (const method of methods) {
       result.push({
         id: index++,
         name: method['name'],
@@ -60,20 +60,27 @@ const getTestMethods = (methods: any): TestMethod[] => {
 };
 
 const getTestClasses = (classes: any): TestClass[] => {
-  let result: TestClass[] = [];
-  for (let cls of classes) {
+  const result: TestClass[] = [];
+  if (classes.length) {
+    for (const cls of classes) {
+      result.push({
+        name: cls.name,
+        test_methods: getTestMethods(cls['test-method']),
+      });
+    }
+  } else {
     result.push({
-      name: cls['_name'],
-      test_methods: getTestMethods(cls['test-method']),
+      name: classes.name,
+      test_methods: getTestMethods(classes['test-method']),
     });
   }
   return result;
 };
 
 const getTestCases = (tests: any): TestCase[] => {
-  let result: TestCase[] = [];
+  const result: TestCase[] = [];
   if (tests.length) {
-    for (let test of tests) {
+    for (const test of tests) {
       result.push({
         name: test['name'],
         started_at: test['started-at'],
@@ -95,9 +102,9 @@ const getTestCases = (tests: any): TestCase[] => {
 };
 
 const getTestSuites = (suites: any): TestSuite[] => {
-  let result: TestSuite[] = [];
+  const result: TestSuite[] = [];
   if (suites.length) {
-    for (let suite of suites) {
+    for (const suite of suites) {
       result.push({
         name: suite['name'],
         started_at: suite['started-at'],

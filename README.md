@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📊 Ultra-Reporter App
 
-## Getting Started
+**Ultra-Reporter** is your go-to tool for transforming your TestNG (Maven, Java) test results into stunning reports.
 
-First, run the development server:
+Built on the power of Next.js and Tailwind CSS, this reporter takes your raw test results from TestNG and presents it in a beautiful, easy-to-digest format. Simplify your test reporting with just a one click!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Quick start
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Run your TestNG tests using it's default reporter listeners
+- Upload `testng-results.xml` from the `test-output` folder
+- Wait for the beautiful Test reports to get generated
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🦾 Powered By Modern Tech
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Ultra-Reporter leverages cutting-edge technologies to provide fast, efficient, and sleek reporting:
 
-## Learn More
+- **[Next.js 14](https://nextjs.org/)**: Dynamic, server-rendered React apps.
+- **[TypeScript](https://www.typescriptlang.org/)**: Strongly typed for better reliability and scalability.
+- **[Tailwind CSS](https://tailwindcss.com/)**: Beautiful, responsive design without the hassle.
+- **[Shadcn/UI](https://ui.shadcn.com/)** & **[Daisy UI](https://daisyui.com/)**: Sleek UI components for a polished user experience.
 
-To learn more about Next.js, take a look at the following resources:
+## ⏱️ What's Next?
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+We're constantly evolving! Check out the [Issues tab](https://github.com/WasiqB/ultra-reporter-app/issues) for upcoming features and improvements.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Got a feature request or an idea to make Ultra-Reporter even better? Don’t hesitate to create [Feature or Enhancement request](https://github.com/WasiqB/ultra-reporter-app/discussions) – we’re always looking for ways to improve!
 
-## Deploy on Vercel
+## 📞 Contact Me
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Feel free to reach out for any queries, collaborations, or feedback!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **LinkedIn**: [Wasiq Bhamla](https://dub.sh/lnkd)
+- **X (formerly Twitter)**: [@WasiqBhamla](https://dub.sh/x-wasiq)
+- **Discord**: [Learn Test Automation](https://dub.sh/lta-community)
+- **YouTube**: [Learn Test Automation with Wasiq Bhamla](https://dub.sh/lta-yt)
+- **Medium**: [Wasiq Bhamla](https://dub.sh/wb-medium)

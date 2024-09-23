@@ -1,0 +1,28 @@
+name: ✨ Update existing Feature request
+description: |
+  This template is used to create a new feature request.
+  Please provide as much information as possible.
+labels:
+  - 'enhancement'
+title: '✨ Update feature:'
+body:
+  - type: textarea
+    attributes:
+      label: 📗 Description of the feature improvement request?
+      placeholder: What is the expected behavior of the proposed feature?
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: 💁 Supporting information
+      placeholder: |
+        Having additional evidence, data, tweets, blog posts, research, ... anything is extremely helpful.
+        This information provides context to the scenario that may otherwise be lost.
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ⚠️ Please limit one request per issue.
