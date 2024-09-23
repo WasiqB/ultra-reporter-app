@@ -64,6 +64,6 @@ export default [
     },
   },
   {
-    ignores: ['components/ui/', 'assets/', '.github/'],
+    ignores: ['components/ui/', 'assets/', '.github/', 'hooks/'],
   },
 ];

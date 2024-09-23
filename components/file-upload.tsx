@@ -2,30 +2,37 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { Label } from './ui/label';
 
 export const FileUpload = (): JSX.Element => {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     if (event.target.files && event.target.files[0]) {
       setFile(event.target.files[0]);
     }
   };
 
-  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+  const handleDragOver = (event: React.DragEvent<HTMLDivElement>): void => {
     event.preventDefault();
   };
 
-  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+  const handleDrop = (event: React.DragEvent<HTMLDivElement>): void => {
     event.preventDefault();
     if (event.dataTransfer.files && event.dataTransfer.files[0]) {
       setFile(event.dataTransfer.files[0]);
     }
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (
+    event: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     event.preventDefault();
     if (file) {
       setLoading(true);
@@ -53,24 +60,24 @@ export const FileUpload = (): JSX.Element => {
         onDragOver={handleDragOver}
         onDrop={handleDrop}
       >
-        <input
+        <Input
           type='file'
           accept='.xml'
           onChange={handleFileChange}
           className='hidden'
           id='file-upload'
         />
-        <label htmlFor='file-upload' className='cursor-pointer'>
+        <Label htmlFor='file-upload' className='cursor-pointer'>
           {file ? file.name : 'Click to select or drag and drop an XML file'}
-        </label>
+        </Label>
       </div>
-      <button
+      <Button
         type='submit'
         className='mt-4 w-full rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-600'
         disabled={!file || loading}
       >
         {loading ? 'Processing...' : 'Process XML'}
-      </button>
+      </Button>
     </form>
   );
 };
