@@ -98,9 +98,7 @@ const ResultsPage = (): JSX.Element => {
   return (
     <div className='bg-gray-100 px-4 py-6 sm:px-6 lg:px-8'>
       <div className='md:max-w mx-auto max-w-5xl'>
-        <h1 className='mb-8 text-center text-3xl font-bold'>
-          XML Processing Results
-        </h1>
+        <h1 className='mb-8 text-center text-3xl font-bold'>Ultra Report</h1>
         <div className='rounded-lg bg-white p-6 shadow-md'>
           {result ? (
             <div className='container mx-auto py-10'>
