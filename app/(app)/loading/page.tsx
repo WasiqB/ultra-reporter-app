@@ -1,89 +1,89 @@
+/* eslint-disable @stylistic/js/max-len */
 'use client';
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { convertToJson, getTestResults } from '@/lib/xml-parser';
+import { Progress } from '@/components/ui/progress';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Bug, MoveLeft } from 'lucide-react';
 
 const LoadingPage = (): JSX.Element => {
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState<string | null>(null);
-  const [redirectTimer, setRedirectTimer] = useState(5);
   const router = useRouter();
 
   useEffect(() => {
     const xmlContent = localStorage.getItem('xml-data');
-    if (!xmlContent) {
-      setError('No XML data found');
-      return;
-    }
-    setProgress(10);
     try {
+      setProgress(0);
+      if (!xmlContent) {
+        throw new Error('No XML data found in the file.');
+      }
+      setProgress(25);
       const jsonData = convertToJson(xmlContent);
-      setProgress(30);
-      const testResult = getTestResults(jsonData);
       setProgress(50);
+      const testResult = getTestResults(jsonData);
+      setProgress(75);
       localStorage.setItem('json-data', JSON.stringify(testResult));
       setProgress(100);
       router.push('/results');
     } catch (err) {
       if (err instanceof Error) {
-        setError(`${err.name} : ${err.message}`);
+        setError(`${err.message}`);
       }
     }
   }, [router]);
 
-  useEffect(() => {
-    let timerInterval: NodeJS.Timeout;
+  const handleBack = (): void => {
+    router.push('/');
+  };
 
-    if (error) {
-      timerInterval = setInterval(() => {
-        setRedirectTimer((prevTimer) => {
-          if (prevTimer <= 1) {
-            clearInterval(timerInterval);
-            router.push('/');
-            return 0;
-          }
-          return prevTimer - 1;
-        });
-      }, 1000);
-    }
-
-    return () => {
-      if (timerInterval) {
-        clearInterval(timerInterval);
-      }
-    };
-  }, [error, router]);
-
-  if (error) {
-    return (
-      <div className='flex min-h-screen items-center justify-center bg-gray-100'>
-        <div className='w-96 rounded-lg bg-white p-8 text-center shadow-md'>
-          <h1 className='mb-4 text-2xl font-bold text-red-600'>Error</h1>
-          <p className='mb-4 text-gray-600'>{error}</p>
-          <p className='text-gray-500'>
-            Redirecting to home page in {redirectTimer} second
-            {redirectTimer > 1 ? 's' : ''}...
-          </p>
-        </div>
-      </div>
+  const handleRaiseIssue = (): void => {
+    router.push(
+      'https://github.com/WasiqB/ultra-reporter-app/issues/new?assignees=&labels=bug&projects=&template=bug.yml&title=%F0%9F%90%9B+New+Bug:'
     );
-  }
+  };
 
   return (
     <div className='flex min-h-screen items-center justify-center bg-gray-100'>
-      <div className='w-96 rounded-lg bg-white p-8 text-center shadow-md'>
-        <h1 className='mb-4 text-2xl font-bold'>Processing XML</h1>
-        <div className='mb-4 h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700'>
-          <div
-            className='h-2.5 rounded-full bg-blue-600'
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
-        <p className='text-gray-600'>
-          Please wait while we process your XML file...
-        </p>
-      </div>
+      <Card className='w-[350px]'>
+        <CardHeader>
+          <CardTitle>Processing XML</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Progress value={progress} className='w-full' />
+          {error ? (
+            <div className='mt-4'>
+              <h3 className='mb-2 font-semibold text-red-600'>Error:</h3>
+              <p className='mb-4 text-sm text-gray-600'>{error}</p>
+            </div>
+          ) : (
+            <p className='mt-4 text-gray-600'>
+              Please wait while we process your XML file...
+            </p>
+          )}
+        </CardContent>
+        {error && (
+          <CardFooter className='flex justify-between'>
+            <Button variant='outline' onClick={handleBack}>
+              <MoveLeft className='h-6 w-6 pr-2' />
+              Back
+            </Button>
+            <Button onClick={handleRaiseIssue}>
+              <Bug className='h-6 w-6 pr-2' />
+              Raise Issue
+            </Button>
+          </CardFooter>
+        )}
+      </Card>
     </div>
   );
 };

@@ -79,24 +79,26 @@ const getTestClasses = (classes: any): TestClass[] => {
 
 const getTestCases = (tests: any): TestCase[] => {
   const result: TestCase[] = [];
-  if (tests.length) {
-    for (const test of tests) {
+  if (tests) {
+    if (tests.length) {
+      for (const test of tests) {
+        result.push({
+          name: test['name'],
+          started_at: test['started-at'],
+          finished_at: test['finished-at'],
+          duration_ms: test['duration-ms'],
+          test_classes: getTestClasses(test.class),
+        });
+      }
+    } else {
       result.push({
-        name: test['name'],
-        started_at: test['started-at'],
-        finished_at: test['finished-at'],
-        duration_ms: test['duration-ms'],
-        test_classes: getTestClasses(test.class),
+        name: tests['name'],
+        started_at: tests['started-at'],
+        finished_at: tests['finished-at'],
+        duration_ms: tests['duration-ms'],
+        test_classes: getTestClasses(tests.class),
       });
     }
-  } else {
-    result.push({
-      name: tests['name'],
-      started_at: tests['started-at'],
-      finished_at: tests['finished-at'],
-      duration_ms: tests['duration-ms'],
-      test_classes: getTestClasses(tests.class),
-    });
   }
   return result;
 };
@@ -125,19 +127,25 @@ const getTestSuites = (suites: any): TestSuite[] => {
   return result;
 };
 
+const errorMessage = 'Error while processing the XML file.';
+
 const getTestResults = (jsonData: any): TestResult => {
   const testResult = jsonData['testng-results'];
 
-  const mapToResult: TestResult = {
-    failed: parseInt(testResult.failed),
-    passed: parseInt(testResult.passed),
-    skipped: parseInt(testResult.skipped),
-    ignored: parseInt(testResult.ignored),
-    total: parseInt(testResult.total),
-    test_suites: getTestSuites(testResult.suite),
-  };
-
-  return mapToResult;
+  try {
+    const mapToResult: TestResult = {
+      failed: parseInt(testResult.failed),
+      passed: parseInt(testResult.passed),
+      skipped: parseInt(testResult.skipped),
+      ignored: parseInt(testResult.ignored),
+      total: parseInt(testResult.total),
+      test_suites: getTestSuites(testResult.suite),
+    };
+    return mapToResult;
+    /* eslint-disable @typescript-eslint/no-unused-vars */
+  } catch (error) {
+    throw new Error(errorMessage);
+  }
 };
 
 const convertToJson = (data: string): string | null => {
@@ -150,8 +158,7 @@ const convertToJson = (data: string): string | null => {
     },
     (error, result) => {
       if (error) {
-        alert(`Error parsing XML file: ${error.name} - ${error.message}`);
-        return null;
+        throw new Error(errorMessage);
       }
       jsonData = result;
     }
