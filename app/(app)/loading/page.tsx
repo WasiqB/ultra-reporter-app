@@ -13,6 +13,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Bug, MoveLeft } from 'lucide-react';
 
 const LoadingPage = (): JSX.Element => {
   const [progress, setProgress] = useState(0);
@@ -24,7 +25,7 @@ const LoadingPage = (): JSX.Element => {
     try {
       setProgress(0);
       if (!xmlContent) {
-        throw new Error('No XML data found');
+        throw new Error('No XML data found in the file.');
       }
       setProgress(25);
       const jsonData = convertToJson(xmlContent);
@@ -36,7 +37,7 @@ const LoadingPage = (): JSX.Element => {
       router.push('/results');
     } catch (err) {
       if (err instanceof Error) {
-        setError(`${err.name} : ${err.message}`);
+        setError(`${err.message}`);
       }
     }
   }, [router]);
@@ -61,8 +62,8 @@ const LoadingPage = (): JSX.Element => {
           <Progress value={progress} className='w-full' />
           {error ? (
             <div className='mt-4'>
-              <p className='mb-2 font-semibold text-red-600'>Error:</p>
-              <p className='mb-4 text-gray-600'>{error}</p>
+              <h3 className='mb-2 font-semibold text-red-600'>Error:</h3>
+              <p className='mb-4 text-sm text-gray-600'>{error}</p>
             </div>
           ) : (
             <p className='mt-4 text-gray-600'>
@@ -73,9 +74,13 @@ const LoadingPage = (): JSX.Element => {
         {error && (
           <CardFooter className='flex justify-between'>
             <Button variant='outline' onClick={handleBack}>
+              <MoveLeft className='h-6 w-6 pr-2' />
               Back
             </Button>
-            <Button onClick={handleRaiseIssue}>Raise Issue</Button>
+            <Button onClick={handleRaiseIssue}>
+              <Bug className='h-6 w-6 pr-2' />
+              Raise Issue
+            </Button>
           </CardFooter>
         )}
       </Card>
