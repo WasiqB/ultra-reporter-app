@@ -26,7 +26,7 @@ export function DataTableToolbar<TData>({
         onChange={(event) =>
           table.getColumn(filterColumn)?.setFilterValue(event.target.value)
         }
-        className='max-w-sm'
+        className='mr-1 max-w-sm'
       />
       {table.getColumn('status') && (
         <DataTableFacetedFilter

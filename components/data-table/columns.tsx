@@ -1,7 +1,7 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { statuses, TestResultData } from './data';
 import { Button } from '../ui/button';
-import { CircleAlert, TestTube } from 'lucide-react';
+import { CircleAlert, Link, TestTube } from 'lucide-react';
 import { Badge } from '../ui/badge';
 import { cn } from '@/lib/utils';
 import { TestException, TestLog } from '@/types/types';
@@ -22,7 +22,7 @@ import {
 } from '../ui/card';
 import { CellData, SortableHeader } from './cell-text-data';
 import { formatDuration, formatTime } from '@/lib/formatting';
-import { GearIcon, MagnifyingGlassIcon } from '@radix-ui/react-icons';
+import { GearIcon } from '@radix-ui/react-icons';
 import { TooltipWrapper } from '../utils/tooltip-wrapper';
 import { useState } from 'react';
 
@@ -58,7 +58,7 @@ export const columns: ColumnDef<TestResultData>[] = [
       return (
         <>
           <TooltipWrapper text={value}>
-            <CellData value={value} size={100} />
+            <CellData value={value} />
           </TooltipWrapper>
         </>
       );
@@ -114,7 +114,11 @@ export const columns: ColumnDef<TestResultData>[] = [
   },
   {
     accessorKey: 'exception',
-    header: 'Error',
+    header: () => (
+      <div className='items-center'>
+        <CircleAlert className='h-4 w-4' />
+      </div>
+    ),
     cell: ({ row }) => {
       const [isOpen, setIsOpen] = useState(false);
       const exception = row.getValue('exception') as TestException;
@@ -123,7 +127,11 @@ export const columns: ColumnDef<TestResultData>[] = [
           {exception && (
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
               <DialogTrigger asChild>
-                <Button variant='link' onClick={() => setIsOpen(true)}>
+                <Button
+                  variant='link'
+                  onClick={() => setIsOpen(true)}
+                  className='w-15'
+                >
                   <CircleAlert className='h-4 w-4 text-red-500' />
                 </Button>
               </DialogTrigger>
@@ -170,7 +178,7 @@ export const columns: ColumnDef<TestResultData>[] = [
   },
   {
     accessorKey: 'attachment',
-    header: 'Attachment',
+    header: () => <Link className='h-4 w-4' />,
     cell: ({ row }) => {
       const [isOpen, setIsOpen] = useState(false);
       const attachment = row.getValue('attachment') as TestLog;
@@ -180,15 +188,19 @@ export const columns: ColumnDef<TestResultData>[] = [
             <div className='flex items-center'>
               <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 <DialogTrigger asChild>
-                  <Button variant='outline' onClick={() => setIsOpen(true)}>
-                    <MagnifyingGlassIcon className='h-4 w-4' />
+                  <Button
+                    variant='outline'
+                    onClick={() => setIsOpen(true)}
+                    className='w-15'
+                  >
+                    <Link className='h-4 w-4' />
                   </Button>
                 </DialogTrigger>
                 <DialogContent className='sm:max-w-[75%]'>
                   <DialogHeader>
                     <DialogTitle>Attachment</DialogTitle>
                     <DialogDescription>
-                      This is the Test attachment
+                      Below is the attachment from your Test
                     </DialogDescription>
                   </DialogHeader>
                   <div className='grid gap-4 py-4'>

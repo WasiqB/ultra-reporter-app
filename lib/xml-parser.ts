@@ -155,6 +155,7 @@ const convertToJson = (data: string): string | null => {
     {
       explicitArray: false,
       mergeAttrs: true,
+      emptyTag: () => '',
     },
     (error, result) => {
       if (error) {

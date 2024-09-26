@@ -22,7 +22,7 @@ import DoughNutComponent from '@/components/charts/dough-nut-chart';
 import { getData, TestResultData } from '@/components/data-table/data';
 import { columns } from '@/components/data-table/columns';
 import { PieComponent } from '@/components/charts/pie-chart';
-import { round } from '@/lib/formatting';
+import { formatDate, round } from '@/lib/formatting';
 
 const chartConfig: ChartConfig = {
   total: {
@@ -50,10 +50,11 @@ const ResultsPage = (): JSX.Element => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
-  const [result, setResult] = useState<TestResultData[] | null>(null);
+  const [result, setResult] = useState<TestResultData[]>([]);
   const [passed, setPassed] = useState(0);
   const [failed, setFailed] = useState(0);
   const [skipped, setSkipped] = useState(0);
+  const [date, setDate] = useState('');
 
   useEffect(() => {
     const resultData = localStorage.getItem('json-data') as string;
@@ -62,6 +63,7 @@ const ResultsPage = (): JSX.Element => {
       const testResult = JSON.parse(resultData) as TestResult;
       data = getData(testResult);
       setResult(data);
+      setDate(formatDate(data[0].started_at));
       setPassed(data.filter((d) => d.status === 'pass' && !d.is_config).length);
       setFailed(data.filter((d) => d.status === 'fail' && !d.is_config).length);
       setSkipped(
@@ -98,7 +100,9 @@ const ResultsPage = (): JSX.Element => {
 
   return (
     <section className='container mx-auto space-y-6 p-4'>
-      <h1 className='mb-8 text-center text-3xl font-bold'>Ultra Report</h1>
+      <h1 className='mb-8 text-center text-3xl font-bold'>
+        Ultra Report for {date}
+      </h1>
       <div className='grid grid-cols-1 gap-6'>
         <Card>
           <CardHeader>
@@ -130,7 +134,7 @@ const ResultsPage = (): JSX.Element => {
       <div className='grid grid-cols-2 gap-6'>
         <DoughNutComponent
           title='Test Summary Counts'
-          description='Status based % distribution of Test results'
+          description='Status based distribution of Test results'
           config={chartConfig}
           data={chartCountData}
           totalValue={totalTests}
@@ -138,7 +142,7 @@ const ResultsPage = (): JSX.Element => {
         />
         <PieComponent
           title='Test Summary %'
-          description='Status based distribution of Automated Test cases result'
+          description='Status based % distribution of Test results'
           config={chartConfig}
           data={chartPieData}
         />

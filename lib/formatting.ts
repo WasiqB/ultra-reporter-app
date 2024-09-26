@@ -11,9 +11,18 @@ export const formatTime = (dateTime: string): string => {
     "yyyy-MM-dd'T'HH:mm:ss 'UTC'",
     new Date()
   );
-  const formattedTime = format(parsedDate, 'hh:mm:ss bb');
+  return format(parsedDate, 'hh:mm:ss bb');
+};
 
-  return formattedTime;
+export const formatDate = (dateTime: string): string => {
+  const cleanedDateString = dateTime.replace('AST', 'UTC');
+  const parsedDate = parse(
+    cleanedDateString,
+    /* eslint-disable @stylistic/ts/quotes */
+    "yyyy-MM-dd'T'HH:mm:ss 'UTC'",
+    new Date()
+  );
+  return format(parsedDate, 'dd-MMM-yyyy');
 };
 
 export const round = (value: number): number => {
