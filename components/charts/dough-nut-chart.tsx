@@ -38,7 +38,7 @@ const DoughNutComponent = ({
   return (
     <Card>
       <CardHeader className='items-center pb-0'>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle className='text-xl'>{title}</CardTitle>
         {description && <CardDescription>{description}</CardDescription>}
       </CardHeader>
       <CardContent className='flex-1 pb-0'>
@@ -60,7 +60,7 @@ const DoughNutComponent = ({
               data={data}
               dataKey='total'
               nameKey='status'
-              innerRadius={60}
+              innerRadius={50}
               strokeWidth={5}
             >
               <Label

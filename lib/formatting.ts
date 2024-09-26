@@ -15,3 +15,7 @@ export const formatTime = (dateTime: string): string => {
 
   return formattedTime;
 };
+
+export const round = (value: number): number => {
+  return Math.round((value + Number.EPSILON) * 100) / 100;
+};

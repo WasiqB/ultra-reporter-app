@@ -21,6 +21,8 @@ import { ChartConfig } from '@/components/ui/chart';
 import DoughNutComponent from '@/components/charts/dough-nut-chart';
 import { getData, TestResultData } from '@/components/data-table/data';
 import { columns } from '@/components/data-table/columns';
+import { PieComponent } from '@/components/charts/pie-chart';
+import { round } from '@/lib/formatting';
 
 const chartConfig: ChartConfig = {
   total: {
@@ -68,56 +70,83 @@ const ResultsPage = (): JSX.Element => {
     }
   }, []);
 
-  const chartData = [
+  const totalTests = passed + failed + skipped;
+
+  const chartCountData = [
     { status: 'pass', total: passed, fill: 'var(--color-pass)' },
     { status: 'fail', total: failed, fill: 'var(--color-fail)' },
     { status: 'skip', total: skipped, fill: 'var(--color-skip)' },
-    { status: 'ignored', total: 0, fill: 'var(--color-ignored)' },
+  ];
+
+  const chartPieData = [
+    {
+      status: 'pass',
+      total: round((passed / totalTests) * 100),
+      fill: 'var(--color-pass)',
+    },
+    {
+      status: 'fail',
+      total: round((failed / totalTests) * 100),
+      fill: 'var(--color-fail)',
+    },
+    {
+      status: 'skip',
+      total: round((skipped / totalTests) * 100),
+      fill: 'var(--color-skip)',
+    },
   ];
 
   return (
     <section className='container mx-auto space-y-6 p-4'>
       <h1 className='mb-8 text-center text-3xl font-bold'>Ultra Report</h1>
-      <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
+      <div className='grid grid-cols-1 gap-6'>
         <Card>
           <CardHeader>
-            <CardTitle>Test Statistics</CardTitle>
+            <CardTitle className='text-xl'>Test Statistics</CardTitle>
             <CardDescription>Overall Test execution statistics</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className='grid grid-cols-2 gap-4'>
-              <div className='rounded-lg bg-blue-100 p-4'>
+            <div className='grid grid-cols-4 gap-4'>
+              <div className='rounded-lg bg-blue-200 p-4'>
                 <CardDescription>Total Tests</CardDescription>
                 <CardTitle>{passed + failed + skipped}</CardTitle>
               </div>
-              <div className='rounded-lg bg-green-100 p-4'>
+              <div className='rounded-lg bg-green-200 p-4'>
                 <CardDescription>Passed</CardDescription>
                 <CardTitle>{passed}</CardTitle>
               </div>
-              <div className='rounded-lg bg-red-100 p-4'>
+              <div className='rounded-lg bg-red-200 p-4'>
                 <CardDescription>Failed</CardDescription>
                 <CardTitle>{failed}</CardTitle>
               </div>
-              <div className='rounded-lg bg-yellow-100 p-4'>
+              <div className='rounded-lg bg-yellow-200 p-4'>
                 <CardDescription>Skipped</CardDescription>
                 <CardTitle>{skipped}</CardTitle>
               </div>
             </div>
           </CardContent>
         </Card>
+      </div>
+      <div className='grid grid-cols-2 gap-6'>
         <DoughNutComponent
-          title='Test Summary'
+          title='Test Summary Counts'
+          description='Status based % distribution of Test results'
+          config={chartConfig}
+          data={chartCountData}
+          totalValue={totalTests}
+          valueLabel='Test cases'
+        />
+        <PieComponent
+          title='Test Summary %'
           description='Status based distribution of Automated Test cases result'
           config={chartConfig}
-          data={chartData}
-          totalValue={passed + failed + skipped}
-          valueLabel='Test cases'
+          data={chartPieData}
         />
       </div>
       {result ? (
         <Card>
           <CardHeader>
-            <CardTitle>Test Details</CardTitle>
+            <CardTitle className='text-xl'>Test Details</CardTitle>
             <CardDescription>
               List of all the executed test cases
             </CardDescription>
