@@ -1,8 +1,8 @@
 import { Table } from '@tanstack/react-table';
-import { Input } from '../ui/input';
+import { Input } from '@/components/ui/input';
 import { DataTableFacetedFilter } from './data-table-faceted-filter';
 import { statuses } from './data';
-import { Button } from '../ui/button';
+import { Button } from '@/components/ui/button';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import { DataTableViewOptions } from './data-table-view-options';
 

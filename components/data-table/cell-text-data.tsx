@@ -1,7 +1,7 @@
 import { Column } from '@tanstack/react-table';
-import { Button } from '../ui/button';
+import { Button } from '@/components/ui/button';
 import { ArrowUpDown } from 'lucide-react';
-import { TooltipWrapper } from '../utils/tooltip-wrapper';
+import { TooltipWrapper } from '@/components/utils/tooltip-wrapper';
 
 export function CellData({
   value,

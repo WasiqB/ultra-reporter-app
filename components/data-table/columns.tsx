@@ -1,8 +1,8 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { statuses, TestResultData } from './data';
-import { Button } from '../ui/button';
+import { Button } from '@/components/ui/button';
 import { CircleAlert, Link, TestTube } from 'lucide-react';
-import { Badge } from '../ui/badge';
+import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { TestException, TestLog } from '@/types/types';
 import {
@@ -12,18 +12,18 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '../ui/dialog';
+} from '@/components/ui/dialog';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '../ui/card';
+} from '@/components/ui/card';
 import { CellData, SortableHeader } from './cell-text-data';
 import { formatDuration, formatTime } from '@/lib/formatting';
 import { GearIcon } from '@radix-ui/react-icons';
-import { TooltipWrapper } from '../utils/tooltip-wrapper';
+import { TooltipWrapper } from '@/components/utils/tooltip-wrapper';
 import { useState } from 'react';
 
 export const columns: ColumnDef<TestResultData>[] = [
