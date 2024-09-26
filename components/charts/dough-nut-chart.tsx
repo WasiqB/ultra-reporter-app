@@ -6,7 +6,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from './ui/card';
+} from '@/components/ui/card';
 import {
   ChartConfig,
   ChartContainer,
@@ -14,7 +14,7 @@ import {
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
-} from './ui/chart';
+} from '@/components/ui/chart';
 
 interface DoughNutProps {
   title: string;

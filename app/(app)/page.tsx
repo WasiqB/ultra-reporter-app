@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { FileUpload } from '@/components/file-upload';
+import { FileUpload } from '@/components/utils/file-upload';
 
 const LandingPage = (): JSX.Element => {
   return (
