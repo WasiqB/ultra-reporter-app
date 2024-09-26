@@ -55,13 +55,7 @@ export const columns: ColumnDef<TestResultData>[] = [
     accessorKey: 'method_name',
     cell: ({ row }) => {
       const value = row.getValue('method_name') as string;
-      return (
-        <>
-          <TooltipWrapper text={value}>
-            <CellData value={value} />
-          </TooltipWrapper>
-        </>
-      );
+      return <CellData value={value} />;
     },
     header: ({ column }) => (
       <SortableHeader column={column} header='Method Name' />

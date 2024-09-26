@@ -1,4 +1,3 @@
-import { forwardRef } from 'react';
 import {
   Tooltip,
   TooltipContent,
@@ -6,26 +5,17 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 
-const ForwardedWrapper = forwardRef<
-  HTMLDivElement,
-  { children: React.ReactNode }
->((props, ref) => <div ref={ref}>{props.children}</div>);
-
-ForwardedWrapper.displayName = 'ForwardedWrapper';
-
 export const TooltipWrapper = ({
   children,
   text,
 }: {
-  children: JSX.Element;
+  children: React.ReactNode;
   text: string;
 }): JSX.Element => {
   return (
     <TooltipProvider>
       <Tooltip>
-        <TooltipTrigger asChild>
-          <ForwardedWrapper>{children}</ForwardedWrapper>
-        </TooltipTrigger>
+        <TooltipTrigger asChild>{children}</TooltipTrigger>
         <TooltipContent>
           <p>{text}</p>
         </TooltipContent>
