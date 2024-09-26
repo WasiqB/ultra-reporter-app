@@ -3,121 +3,186 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { TestResult } from '@/types/types';
-import { ColumnDef } from '@tanstack/react-table';
-import { DataTable } from '@/components/ui/data-table';
+import {
+  ColumnFiltersState,
+  SortingState,
+  VisibilityState,
+} from '@tanstack/react-table';
+import { DataTable } from '@/components/data-table/data-table';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { ChartConfig } from '@/components/ui/chart';
+import DoughNutComponent from '@/components/charts/dough-nut-chart';
+import { getData, TestResultData } from '@/components/data-table/data';
+import { columns } from '@/components/data-table/columns';
+import { PieComponent } from '@/components/charts/pie-chart';
+import { formatDate, round } from '@/lib/formatting';
 
-type TestResultData = {
-  suite_name: string;
-  test_name: string;
-  class_name: string;
-  method_name: string;
-  is_config: string;
-  status: string;
-  started_at: string;
-  finished_at: string;
-  duration_ms: number;
-};
-
-const columns: ColumnDef<TestResultData>[] = [
-  {
-    accessorKey: 'suite_name',
-    header: 'Suite Name',
+const chartConfig: ChartConfig = {
+  total: {
+    label: 'Test Cases',
   },
-  {
-    accessorKey: 'test_name',
-    header: 'Test Name',
+  pass: {
+    label: 'Passes',
+    color: 'hsl(var(--passed))',
   },
-  {
-    accessorKey: 'class_name',
-    header: 'Class Name',
+  fail: {
+    label: 'Failed',
+    color: 'hsl(var(--failed))',
   },
-  {
-    accessorKey: 'method_name',
-    header: 'Method Name',
+  skip: {
+    label: 'Skipped',
+    color: 'hsl(var(--skipped))',
   },
-  {
-    accessorKey: 'is_config',
-    header: 'Is Config?',
+  ignored: {
+    label: 'Ignored',
+    color: 'hsl(var(--ignored))',
   },
-  {
-    accessorKey: 'status',
-    header: 'Status',
-  },
-  {
-    accessorKey: 'started_at',
-    header: 'Started At',
-  },
-  {
-    accessorKey: 'finished_at',
-    header: 'Finished At',
-  },
-  {
-    accessorKey: 'duration_ms',
-    header: 'Duration',
-  },
-];
-
-const getData = (data: TestResult): TestResultData[] => {
-  const result: TestResultData[] = [];
-  const suites = data.test_suites;
-  for (const suite of suites) {
-    for (const test of suite.test_cases) {
-      for (const cls of test.test_classes) {
-        for (const method of cls.test_methods) {
-          result.push({
-            suite_name: suite.name,
-            test_name: test.name,
-            class_name: cls.name?.substring(cls.name.lastIndexOf('.')),
-            method_name: method.description || method.name,
-            is_config: method.is_config ? 'Yes' : 'No',
-            status: method.status,
-            started_at: method.started_at,
-            finished_at: method.finished_at,
-            duration_ms: method.duration_ms,
-          });
-        }
-      }
-    }
-  }
-  return result;
 };
 
 const ResultsPage = (): JSX.Element => {
-  const [result, setResult] = useState<TestResultData[] | null>(null);
+  const [sorting, setSorting] = useState<SortingState>([]);
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
+  const [result, setResult] = useState<TestResultData[]>([]);
+  const [passed, setPassed] = useState(0);
+  const [failed, setFailed] = useState(0);
+  const [skipped, setSkipped] = useState(0);
+  const [date, setDate] = useState('');
 
   useEffect(() => {
-    const resultData = localStorage.getItem('json-data');
-    let data: TestResultData[] | null;
+    const resultData = localStorage.getItem('json-data') as string;
+    let data: TestResultData[];
     if (resultData) {
       const testResult = JSON.parse(resultData) as TestResult;
       data = getData(testResult);
       setResult(data);
+      setDate(formatDate(data[0].started_at));
+      setPassed(data.filter((d) => d.status === 'pass' && !d.is_config).length);
+      setFailed(data.filter((d) => d.status === 'fail' && !d.is_config).length);
+      setSkipped(
+        data.filter((d) => d.status === 'skip' && !d.is_config).length
+      );
     }
   }, []);
 
+  const totalTests = passed + failed + skipped;
+
+  const chartCountData = [
+    { status: 'pass', total: passed, fill: 'var(--color-pass)' },
+    { status: 'fail', total: failed, fill: 'var(--color-fail)' },
+    { status: 'skip', total: skipped, fill: 'var(--color-skip)' },
+  ];
+
+  const chartPieData = [
+    {
+      status: 'pass',
+      total: round((passed / totalTests) * 100),
+      fill: 'var(--color-pass)',
+    },
+    {
+      status: 'fail',
+      total: round((failed / totalTests) * 100),
+      fill: 'var(--color-fail)',
+    },
+    {
+      status: 'skip',
+      total: round((skipped / totalTests) * 100),
+      fill: 'var(--color-skip)',
+    },
+  ];
+
   return (
-    <div className='bg-gray-100 px-4 py-6 sm:px-6 lg:px-8'>
-      <div className='md:max-w mx-auto max-w-5xl'>
-        <h1 className='mb-8 text-center text-3xl font-bold'>Ultra Report</h1>
-        <div className='rounded-lg bg-white p-6 shadow-md'>
-          {result ? (
-            <div className='container mx-auto py-10'>
-              <DataTable columns={columns} data={result} />
+    <section className='container mx-auto space-y-6 p-4'>
+      <h1 className='mb-8 text-center text-3xl font-bold'>
+        Ultra Report for {date}
+      </h1>
+      <div className='grid grid-cols-1 gap-6'>
+        <Card>
+          <CardHeader>
+            <CardTitle className='text-xl'>Test Statistics</CardTitle>
+            <CardDescription>Overall Test execution statistics</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className='grid grid-cols-4 gap-4'>
+              <div className='rounded-lg bg-blue-200 p-4'>
+                <CardDescription>Total Tests</CardDescription>
+                <CardTitle>{passed + failed + skipped}</CardTitle>
+              </div>
+              <div className='rounded-lg bg-green-200 p-4'>
+                <CardDescription>Passed</CardDescription>
+                <CardTitle>{passed}</CardTitle>
+              </div>
+              <div className='rounded-lg bg-red-200 p-4'>
+                <CardDescription>Failed</CardDescription>
+                <CardTitle>{failed}</CardTitle>
+              </div>
+              <div className='rounded-lg bg-yellow-200 p-4'>
+                <CardDescription>Skipped</CardDescription>
+                <CardTitle>{skipped}</CardTitle>
+              </div>
             </div>
-          ) : (
-            <p className='text-center'>No data available</p>
-          )}
-        </div>
-        <div className='mt-8 text-center'>
-          <Link
-            href='/'
-            className='rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-600'
-          >
-            Process Another XML File
-          </Link>
-        </div>
+          </CardContent>
+        </Card>
       </div>
-    </div>
+      <div className='grid grid-cols-2 gap-6'>
+        <DoughNutComponent
+          title='Test Summary Counts'
+          description='Status based distribution of Test results'
+          config={chartConfig}
+          data={chartCountData}
+          totalValue={totalTests}
+          valueLabel='Test cases'
+        />
+        <PieComponent
+          title='Test Summary %'
+          description='Status based % distribution of Test results'
+          config={chartConfig}
+          data={chartPieData}
+        />
+      </div>
+      {result ? (
+        <Card>
+          <CardHeader>
+            <CardTitle className='text-xl'>Test Details</CardTitle>
+            <CardDescription>
+              List of all the executed test cases
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <DataTable
+              columns={columns}
+              data={result}
+              filterColumn='method_name'
+              columnFilters={columnFilters}
+              columnVisibility={columnVisibility}
+              sorting={sorting}
+              setColumnFilters={setColumnFilters}
+              setColumnVisibility={setColumnVisibility}
+              setSorting={setSorting}
+            />
+          </CardContent>
+          <CardFooter className='flex justify-end'>
+            <div className='mt-8 items-end text-center'>
+              <Link
+                href='/'
+                className='rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-600'
+              >
+                Process Another XML File
+              </Link>
+            </div>
+          </CardFooter>
+        </Card>
+      ) : (
+        <p className='text-center'>No data available</p>
+      )}
+    </section>
   );
 };
 

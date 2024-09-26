@@ -13,7 +13,7 @@ const getTestException = (exception: any): TestException | undefined => {
   if (exception) {
     const result: TestException = {
       class_name: exception['class'],
-      message: exception.message['__cdata'],
+      message: exception.message,
       stack_trace: exception['full-stacktrace'].split('\n'),
     };
     return result;
@@ -21,7 +21,7 @@ const getTestException = (exception: any): TestException | undefined => {
 };
 
 const getTestLog = (output: any): TestLog => {
-  return output === '' ? output : output.line;
+  return output;
 };
 
 const getTestMethods = (methods: any): TestMethod[] => {
@@ -155,6 +155,7 @@ const convertToJson = (data: string): string | null => {
     {
       explicitArray: false,
       mergeAttrs: true,
+      emptyTag: () => '',
     },
     (error, result) => {
       if (error) {

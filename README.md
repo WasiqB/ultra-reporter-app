@@ -4,6 +4,11 @@
 
 Built on the power of Next.js and Tailwind CSS, this reporter takes your raw test results from TestNG and presents it in a beautiful, easy-to-digest format. Simplify your test reporting with just a one click!
 
+## 📷 Generated Report
+
+![Report page 1](/public/report-1.png)
+![Report page 2](/public/report-2.png)
+
 ## 🚀 Quick start
 
 - Run your TestNG tests using it's default reporter listeners
