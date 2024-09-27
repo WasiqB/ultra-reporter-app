@@ -100,7 +100,7 @@ const ResultsPage = (): JSX.Element => {
 
   return (
     <section className='container mx-auto space-y-6 p-4'>
-      <h1 className='mb-8 text-center text-3xl font-bold'>
+      <h1 className='mb-8 text-balance text-center text-3xl font-bold'>
         Ultra Report for {date}
       </h1>
       <div className='grid grid-cols-1 gap-6'>
@@ -110,28 +110,28 @@ const ResultsPage = (): JSX.Element => {
             <CardDescription>Overall Test execution statistics</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className='grid grid-cols-4 gap-4'>
-              <div className='rounded-lg bg-blue-200 p-4'>
+            <div className='grid grid-cols-2 gap-4 md:grid-cols-4'>
+              <Card className='rounded-lg bg-blue-200 p-4'>
                 <CardDescription>Total Tests</CardDescription>
                 <CardTitle>{passed + failed + skipped}</CardTitle>
-              </div>
-              <div className='rounded-lg bg-green-200 p-4'>
+              </Card>
+              <Card className='rounded-lg bg-green-200 p-4'>
                 <CardDescription>Passed</CardDescription>
                 <CardTitle>{passed}</CardTitle>
-              </div>
-              <div className='rounded-lg bg-red-200 p-4'>
+              </Card>
+              <Card className='rounded-lg bg-red-200 p-4'>
                 <CardDescription>Failed</CardDescription>
                 <CardTitle>{failed}</CardTitle>
-              </div>
-              <div className='rounded-lg bg-yellow-200 p-4'>
+              </Card>
+              <Card className='rounded-lg bg-yellow-200 p-4'>
                 <CardDescription>Skipped</CardDescription>
                 <CardTitle>{skipped}</CardTitle>
-              </div>
+              </Card>
             </div>
           </CardContent>
         </Card>
       </div>
-      <div className='grid grid-cols-2 gap-6'>
+      <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
         <DoughNutComponent
           title='Test Summary Counts'
           description='Status based distribution of Test results'

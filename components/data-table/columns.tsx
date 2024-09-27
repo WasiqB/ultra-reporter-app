@@ -25,6 +25,7 @@ import { formatDuration, formatTime } from '@/lib/formatting';
 import { GearIcon } from '@radix-ui/react-icons';
 import { TooltipWrapper } from '@/components/utils/tooltip-wrapper';
 import { useState } from 'react';
+import { AttachmentDialog } from './attachment';
 
 export const columns: ColumnDef<TestResultData>[] = [
   {
@@ -129,7 +130,7 @@ export const columns: ColumnDef<TestResultData>[] = [
                   <CircleAlert className='h-4 w-4 text-red-500' />
                 </Button>
               </DialogTrigger>
-              <DialogContent className='sm:max-w-[75%]'>
+              <DialogContent className='flex flex-col sm:max-h-[90vh] sm:max-w-[90vw]'>
                 <DialogHeader>
                   <DialogTitle>Exception</DialogTitle>
                   <DialogDescription>
@@ -152,6 +153,7 @@ export const columns: ColumnDef<TestResultData>[] = [
                           <pre className='mockup-code max-h-[300px] overflow-auto'>
                             {exception.stack_trace.map((line, index) => (
                               <code key={index} className='block pl-2'>
+                                {line.startsWith('at') && '\t'}
                                 {line.trim()}
                               </code>
                             ))}
@@ -174,39 +176,16 @@ export const columns: ColumnDef<TestResultData>[] = [
     accessorKey: 'attachment',
     header: () => <Link className='h-4 w-4' />,
     cell: ({ row }) => {
-      const [isOpen, setIsOpen] = useState(false);
       const attachment = row.getValue('attachment') as TestLog;
+      const content = attachment.line?.trim();
       return (
-        <>
-          {attachment && (
-            <div className='flex items-center'>
-              <Dialog open={isOpen} onOpenChange={setIsOpen}>
-                <DialogTrigger asChild>
-                  <Button
-                    variant='outline'
-                    onClick={() => setIsOpen(true)}
-                    className='w-15'
-                  >
-                    <Link className='h-4 w-4' />
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className='sm:max-w-[75%]'>
-                  <DialogHeader>
-                    <DialogTitle>Attachment</DialogTitle>
-                    <DialogDescription>
-                      Below is the attachment from your Test
-                    </DialogDescription>
-                  </DialogHeader>
-                  <div className='grid gap-4 py-4'>
-                    <div className='grid grid-cols-4 items-center gap-4'>
-                      {attachment.line?.trim()}
-                    </div>
-                  </div>
-                </DialogContent>
-              </Dialog>
-            </div>
-          )}
-        </>
+        attachment && (
+          <AttachmentDialog
+            title='Attachment'
+            description='Below is the attachment from your Test'
+            content={content}
+          />
+        )
       );
     },
   },
