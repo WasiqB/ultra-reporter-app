@@ -1,34 +1,36 @@
-import Image from 'next/image';
 import { FileUpload } from '@/components/utils/file-upload';
+import { OpenSource } from '@/components/home/open-source';
+import { NavBar } from '@/components/home/nav-bar';
+import { Features } from '@/components/home/feature';
+import Link from 'next/link';
+import { StarIcon } from 'lucide-react';
+import { RainbowButton } from '@/components/ui/rainbow-button';
 
 const LandingPage = (): JSX.Element => {
   return (
-    <div className='min-h-screen'>
-      <main className='container mx-auto px-4 py-16'>
-        <div className='flex flex-col items-center text-center'>
-          <Image
-            src='/favicon.png'
-            alt='Ultra Reporter Logo'
-            width={100}
-            height={100}
-            className='mb-8'
-          />
-          <h1 className='mb-4 text-4xl font-bold'>Ultra Reporter</h1>
-          <p className='mb-8 max-w-2xl text-xl'>
-            Upload your Test result XML file and let our advanced reporter
-            system analyze and display the data for you.
-          </p>
+    <>
+      <NavBar />
+      <main className='container mx-auto flex-grow px-4 py-16'>
+        <div className='flex flex-col items-center pt-16 text-center'>
+          <Link href='https://github.com/WasiqB/ultra-reporter-app' passHref>
+            <RainbowButton>
+              <StarIcon className='mr-2 h-4 w-4 fill-current' /> Star us on
+              GitHub
+            </RainbowButton>
+          </Link>
+          <h1 className='mb-16 mt-16 text-center text-5xl font-bold leading-tight md:text-7xl'>
+            <span className='text-gray-700'>Convert your Test results to</span>
+            <br />
+            <span className='gradient-text'>Beautiful Report</span>
+            <br />
+            <span className='text-gray-700'>in one click</span>
+          </h1>
           <FileUpload />
-          <div className='mt-8'>
-            <h2 className='mb-4 text-2xl font-semibold'>Key Features</h2>
-            <ul className='list-inside list-disc text-left'>
-              <li>Display TestNG results in beautiful dashboard</li>
-              <li>See the Tests insights charts</li>
-            </ul>
-          </div>
         </div>
+        <Features />
+        <OpenSource />
       </main>
-    </div>
+    </>
   );
 };
 

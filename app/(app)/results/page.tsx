@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { TestResult } from '@/types/types';
 import {
   ColumnFiltersState,
@@ -13,7 +12,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
@@ -23,6 +21,7 @@ import { getData, TestResultData } from '@/components/data-table/data';
 import { columns } from '@/components/data-table/columns';
 import { PieComponent } from '@/components/charts/pie-chart';
 import { formatDate, round } from '@/lib/formatting';
+import { NavBar } from '@/components/home/nav-bar';
 
 const chartConfig: ChartConfig = {
   total: {
@@ -99,90 +98,84 @@ const ResultsPage = (): JSX.Element => {
   ];
 
   return (
-    <section className='container mx-auto space-y-6 p-4'>
-      <h1 className='mb-8 text-balance text-center text-3xl font-bold'>
-        Ultra Report for {date}
-      </h1>
-      <div className='grid grid-cols-1 gap-6'>
-        <Card>
-          <CardHeader>
-            <CardTitle className='text-xl'>Test Statistics</CardTitle>
-            <CardDescription>Overall Test execution statistics</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className='grid grid-cols-2 gap-4 md:grid-cols-4'>
-              <Card className='rounded-lg bg-blue-200 p-4'>
-                <CardDescription>Total Tests</CardDescription>
-                <CardTitle>{passed + failed + skipped}</CardTitle>
-              </Card>
-              <Card className='rounded-lg bg-green-200 p-4'>
-                <CardDescription>Passed</CardDescription>
-                <CardTitle>{passed}</CardTitle>
-              </Card>
-              <Card className='rounded-lg bg-red-200 p-4'>
-                <CardDescription>Failed</CardDescription>
-                <CardTitle>{failed}</CardTitle>
-              </Card>
-              <Card className='rounded-lg bg-yellow-200 p-4'>
-                <CardDescription>Skipped</CardDescription>
-                <CardTitle>{skipped}</CardTitle>
-              </Card>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-      <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
-        <DoughNutComponent
-          title='Test Summary Counts'
-          description='Status based distribution of Test results'
-          config={chartConfig}
-          data={chartCountData}
-          totalValue={totalTests}
-          valueLabel='Test cases'
-        />
-        <PieComponent
-          title='Test Summary %'
-          description='Status based % distribution of Test results'
-          config={chartConfig}
-          data={chartPieData}
-        />
-      </div>
-      {result ? (
-        <Card>
-          <CardHeader>
-            <CardTitle className='text-xl'>Test Details</CardTitle>
-            <CardDescription>
-              List of all the executed test cases
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <DataTable
-              columns={columns}
-              data={result}
-              filterColumn='method_name'
-              columnFilters={columnFilters}
-              columnVisibility={columnVisibility}
-              sorting={sorting}
-              setColumnFilters={setColumnFilters}
-              setColumnVisibility={setColumnVisibility}
-              setSorting={setSorting}
+    <div className='flex min-h-screen flex-col'>
+      <NavBar suffix={`for ${date}`} cta='Generate new Report' />
+      <main className='flex-grow pt-16'>
+        <section className='container mx-auto space-y-6 p-4'>
+          <div className='grid grid-cols-1 gap-6'>
+            <Card>
+              <CardHeader>
+                <CardTitle className='text-xl'>Test Statistics</CardTitle>
+                <CardDescription>
+                  Overall Test execution statistics
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className='grid grid-cols-2 gap-4 md:grid-cols-4'>
+                  <Card className='rounded-lg bg-blue-200 p-4'>
+                    <CardDescription>Total Tests</CardDescription>
+                    <CardTitle>{passed + failed + skipped}</CardTitle>
+                  </Card>
+                  <Card className='rounded-lg bg-green-200 p-4'>
+                    <CardDescription>Passed</CardDescription>
+                    <CardTitle>{passed}</CardTitle>
+                  </Card>
+                  <Card className='rounded-lg bg-red-200 p-4'>
+                    <CardDescription>Failed</CardDescription>
+                    <CardTitle>{failed}</CardTitle>
+                  </Card>
+                  <Card className='rounded-lg bg-yellow-200 p-4'>
+                    <CardDescription>Skipped</CardDescription>
+                    <CardTitle>{skipped}</CardTitle>
+                  </Card>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
+            <DoughNutComponent
+              title='Test Summary Counts'
+              description='Status based distribution of Test results'
+              config={chartConfig}
+              data={chartCountData}
+              totalValue={totalTests}
+              valueLabel='Test cases'
             />
-          </CardContent>
-          <CardFooter className='flex justify-end'>
-            <div className='mt-8 items-end text-center'>
-              <Link
-                href='/'
-                className='rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-600'
-              >
-                Process Another XML File
-              </Link>
-            </div>
-          </CardFooter>
-        </Card>
-      ) : (
-        <p className='text-center'>No data available</p>
-      )}
-    </section>
+            <PieComponent
+              title='Test Summary %'
+              description='Status based % distribution of Test results'
+              config={chartConfig}
+              data={chartPieData}
+            />
+          </div>
+          {result ? (
+            <Card>
+              <CardHeader>
+                <CardTitle className='text-xl'>Test Details</CardTitle>
+                <CardDescription>
+                  List of all the executed test cases
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <DataTable
+                  columns={columns}
+                  data={result}
+                  filterColumn='method_name'
+                  columnFilters={columnFilters}
+                  columnVisibility={columnVisibility}
+                  sorting={sorting}
+                  setColumnFilters={setColumnFilters}
+                  setColumnVisibility={setColumnVisibility}
+                  setSorting={setSorting}
+                />
+              </CardContent>
+            </Card>
+          ) : (
+            <p className='text-center'>No data available</p>
+          )}
+        </section>
+      </main>
+    </div>
   );
 };
 
