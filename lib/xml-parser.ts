@@ -127,7 +127,7 @@ const getTestSuites = (suites: any): TestSuite[] => {
   return result;
 };
 
-const errorMessage = 'Error while processing the XML file.';
+const errorMessage = 'Please select valid "testng-results.xml"';
 
 const getTestResults = (jsonData: any): TestResult => {
   const testResult = jsonData['testng-results'];
@@ -144,7 +144,7 @@ const getTestResults = (jsonData: any): TestResult => {
     return mapToResult;
     /* eslint-disable @typescript-eslint/no-unused-vars */
   } catch (error) {
-    throw new Error(errorMessage);
+    throw new Error(`Error while processing the XML file, ${errorMessage}`);
   }
 };
 
@@ -159,7 +159,7 @@ const convertToJson = (data: string): string | null => {
     },
     (error, result) => {
       if (error) {
-        throw new Error(errorMessage);
+        throw new Error(`Invalid file selected, ${errorMessage}`);
       }
       jsonData = result;
     }

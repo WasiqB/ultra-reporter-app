@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { UploadIcon } from 'lucide-react';
 
 export const FileUpload = (): JSX.Element => {
   const [file, setFile] = useState<File | null>(null);
@@ -56,7 +57,8 @@ export const FileUpload = (): JSX.Element => {
   return (
     <form onSubmit={handleSubmit} className='w-full max-w-md'>
       <div
-        className='cursor-pointer rounded-lg border-2 border-dashed border-gray-300 p-8 text-center'
+        // eslint-disable-next-line @stylistic/js/max-len
+        className='cursor-pointer rounded-lg border-2 border-dashed border-gray-300 p-8 text-center transition-all hover:border-gray-500 hover:text-gray-500'
         onDragOver={handleDragOver}
         onDrop={handleDrop}
       >
@@ -68,12 +70,15 @@ export const FileUpload = (): JSX.Element => {
           id='file-upload'
         />
         <Label htmlFor='file-upload' className='cursor-pointer'>
-          {file ? file.name : 'Click to select or drag and drop an XML file'}
+          <UploadIcon className='mx-auto mb-4 h-12 w-12' />
+          <p className='text-gray-600'>
+            {file ? file.name : 'Click to select or drag and drop an XML file'}
+          </p>
         </Label>
       </div>
       <Button
         type='submit'
-        className='mt-4 w-full rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-600'
+        className='mt-4 w-full rounded px-4 py-2 font-bold'
         disabled={!file || loading}
       >
         {loading ? 'Generating your Report...' : 'Generate Report'}
