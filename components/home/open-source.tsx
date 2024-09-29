@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CodeIcon } from 'lucide-react';
+import { StarIcon } from 'lucide-react';
 import { RainbowButton } from '@/components/ui/rainbow-button';
 
 export const OpenSource = (): JSX.Element => {
@@ -13,7 +13,7 @@ export const OpenSource = (): JSX.Element => {
       </p>
       <Link href='https://github.com/WasiqB/ultra-reporter-app' passHref>
         <RainbowButton>
-          <CodeIcon className='mr-2 h-4 w-4' /> View on GitHub
+          <StarIcon className='mr-2 h-4 w-4 fill-white' /> Mark a star on GitHub
         </RainbowButton>
       </Link>
     </section>
