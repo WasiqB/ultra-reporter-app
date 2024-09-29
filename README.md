@@ -12,6 +12,8 @@ Built on the power of Next.js and Tailwind CSS, this reporter takes your raw tes
 ## 🚀 Quick start
 
 - Run your TestNG tests using it's default reporter listeners
+  - ![Step 1](/public/step-1.png)
+  - ![Step 2](/public/step-2.png)
 - Upload `testng-results.xml` from the `test-output` folder
 - Wait for the beautiful Test reports to get generated
 
