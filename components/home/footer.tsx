@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { UserCard } from './user-card';
 import { GitHub } from '@/components/icons/github';
 import { LinkedIn } from '@/components/icons/linkedin';
 import { X } from '@/components/icons/x';
@@ -9,15 +8,15 @@ import { Sponsor } from '@/components/icons/sponsor';
 
 export const Footer = (): JSX.Element => {
   return (
-    <footer className='primary footer footer-center p-10 pb-10 text-primary-content'>
+    <footer className='primary footer footer-center p-10 pb-10 font-bold'>
       <aside>
         <Image src='/favicon.png' height={24} width={24} alt='Ultra Reporter' />
-        <h3 className='text-xl font-bold'>Ultra Report</h3>
+        <h3 className='text-xl'>Ultra Report</h3>
         <div>
           <div className='grid-flow-col items-center'>
             <p>
               Copyright © {new Date().getFullYear()} - Designed and built by
-              <UserCard />.
+              Wasiq Bhamla.
             </p>
           </div>
           All right reserved.
