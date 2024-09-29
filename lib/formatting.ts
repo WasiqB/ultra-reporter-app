@@ -15,25 +15,33 @@ export const formatDuration = (duration: number): string => {
 };
 
 export const formatTime = (dateTime: string): string => {
-  const cleanedDateString = dateTime.replace('AST', 'UTC');
-  const parsedDate = parse(
-    cleanedDateString,
-    /* eslint-disable @stylistic/ts/quotes */
-    "yyyy-MM-dd'T'HH:mm:ss 'UTC'",
-    new Date()
-  );
-  return format(parsedDate, 'hh:mm:ss bb');
+  const TIME_FORMAT = 'hh:mm:ss bb';
+  if (dateTime.endsWith('AST')) {
+    const cleanedDateString = dateTime.replace('AST', 'UTC');
+    const parsedDate = parse(
+      cleanedDateString,
+      /* eslint-disable @stylistic/ts/quotes */
+      "yyyy-MM-dd'T'HH:mm:ss 'UTC'",
+      new Date()
+    );
+    return format(parsedDate, TIME_FORMAT);
+  }
+  return format(dateTime, TIME_FORMAT);
 };
 
 export const formatDate = (dateTime: string): string => {
-  const cleanedDateString = dateTime.replace('AST', 'UTC');
-  const parsedDate = parse(
-    cleanedDateString,
-    /* eslint-disable @stylistic/ts/quotes */
-    "yyyy-MM-dd'T'HH:mm:ss 'UTC'",
-    new Date()
-  );
-  return format(parsedDate, 'dd-MMM-yyyy');
+  const DATE_FORMAT = 'dd-MMM-yyyy';
+  if (dateTime.endsWith('AST')) {
+    const cleanedDateString = dateTime.replace('AST', 'UTC');
+    const parsedDate = parse(
+      cleanedDateString,
+      /* eslint-disable @stylistic/ts/quotes */
+      "yyyy-MM-dd'T'HH:mm:ss 'UTC'",
+      new Date()
+    );
+    return format(parsedDate, DATE_FORMAT);
+  }
+  return format(dateTime, DATE_FORMAT);
 };
 
 export const round = (value: number): number => {
