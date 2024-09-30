@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ColumnDef } from '@tanstack/react-table';
 import { statuses, TestResultData } from './data';
 import { Button } from '@/components/ui/button';
-import { CircleAlert, Link, Tag, TestTube } from 'lucide-react';
+import { CircleAlert, Link, Tag, Tags, TestTube } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { TestException, TestLog } from '@/types/types';
@@ -90,7 +90,11 @@ export const columns: ColumnDef<TestResultData>[] = [
         <div className='flex max-w-10 justify-center'>
           {value && value.length > 0 && (
             <TooltipWrapper text={value.join(', ')}>
-              <Tag className='h-4 w-4 text-blue-600' />
+              {value.length > 1 ? (
+                <Tags className='h-6 w-6 text-blue-600' />
+              ) : (
+                <Tag className='h-4 w-4 text-blue-600' />
+              )}
             </TooltipWrapper>
           )}
         </div>
