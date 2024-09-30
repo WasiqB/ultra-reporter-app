@@ -2,7 +2,15 @@ import * as React from 'react';
 import { ColumnDef } from '@tanstack/react-table';
 import { statuses, TestResultData } from './data';
 import { Button } from '@/components/ui/button';
-import { CircleAlert, Link, Tag, Tags, TestTube } from 'lucide-react';
+import {
+  CircleAlert,
+  Link,
+  Table2,
+  Tag,
+  Tags,
+  TestTube,
+  TestTubes,
+} from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { TestException, TestLog } from '@/types/types';
@@ -64,44 +72,6 @@ export const columns: ColumnDef<TestResultData>[] = [
     ),
   },
   {
-    accessorKey: 'is_config',
-    header: 'Type',
-    cell: ({ row }) => {
-      const value = row.getValue('is_config');
-      return (
-        <TooltipWrapper text={value ? 'Configuration method' : 'Test method'}>
-          <div className='flex max-w-10 justify-center'>
-            {value ? (
-              <GearIcon className='h-4 w-4 text-orange-600' />
-            ) : (
-              <TestTube className='h-4 w-4 text-blue-600' />
-            )}
-          </div>
-        </TooltipWrapper>
-      );
-    },
-  },
-  {
-    accessorKey: 'tags',
-    header: 'Groups',
-    cell: ({ row }) => {
-      const value: string[] = row.getValue('tags');
-      return (
-        <div className='flex max-w-10 justify-center'>
-          {value && value.length > 0 && (
-            <TooltipWrapper text={value.sort().join(', ')}>
-              {value.length > 1 ? (
-                <Tags className='h-6 w-6 text-blue-600' />
-              ) : (
-                <Tag className='h-4 w-4 text-blue-600' />
-              )}
-            </TooltipWrapper>
-          )}
-        </div>
-      );
-    },
-  },
-  {
     accessorKey: 'status',
     header: ({ column }) => <SortableHeader column={column} header='Status' />,
     cell: ({ row }) => {
@@ -129,10 +99,73 @@ export const columns: ColumnDef<TestResultData>[] = [
     },
   },
   {
+    accessorKey: 'duration_ms',
+    header: ({ column }) => (
+      <SortableHeader column={column} header='Duration' />
+    ),
+    cell: ({ row }) => {
+      const duration = parseInt(row.getValue('duration_ms'));
+      const value = formatDuration(duration);
+      return <CellData value={value} align='right' />;
+    },
+  },
+  {
+    accessorKey: 'is_config',
+    header: () => (
+      <div className='flex max-w-10 justify-center'>
+        <TooltipWrapper text='Test Type'>
+          <TestTubes className='h-5 w-5' />
+        </TooltipWrapper>
+      </div>
+    ),
+    cell: ({ row }) => {
+      const value = row.getValue('is_config');
+      return (
+        <TooltipWrapper text={value ? 'Configuration method' : 'Test method'}>
+          <div className='flex max-w-10 justify-center'>
+            {value ? (
+              <GearIcon className='h-4 w-4 text-orange-600' />
+            ) : (
+              <TestTube className='h-4 w-4 text-blue-600' />
+            )}
+          </div>
+        </TooltipWrapper>
+      );
+    },
+  },
+  {
+    accessorKey: 'tags',
+    header: () => (
+      <div className='flex max-w-10 justify-center'>
+        <TooltipWrapper text='Groups'>
+          <Tags className='h-5 w-5' />
+        </TooltipWrapper>
+      </div>
+    ),
+    cell: ({ row }) => {
+      const value: string[] = row.getValue('tags');
+      return (
+        <div className='flex max-w-10 justify-center'>
+          {value && value.length > 0 && (
+            <TooltipWrapper text={value.sort().join(', ')}>
+              {value.length > 1 ? (
+                <Tags className='h-6 w-6 text-blue-600' />
+              ) : (
+                <Tag className='h-4 w-4 text-blue-600' />
+              )}
+            </TooltipWrapper>
+          )}
+        </div>
+      );
+    },
+  },
+  {
     accessorKey: 'exception',
     header: () => (
-      <div className='items-center'>
-        <CircleAlert className='h-4 w-4' />
+      <div className='flex max-w-10 justify-center'>
+        <TooltipWrapper text='Exception'>
+          <CircleAlert className='h-4 w-4' />
+        </TooltipWrapper>
       </div>
     ),
     cell: ({ row }) => {
@@ -195,7 +228,13 @@ export const columns: ColumnDef<TestResultData>[] = [
   },
   {
     accessorKey: 'attachment',
-    header: () => <Link className='h-4 w-4' />,
+    header: () => (
+      <div className='flex max-w-10 justify-center'>
+        <TooltipWrapper text='Attachments'>
+          <Link className='h-4 w-4' />
+        </TooltipWrapper>
+      </div>
+    ),
     cell: ({ row }) => {
       const attachment = row.getValue('attachment') as TestLog;
       const content = attachment.line?.trim();
@@ -206,6 +245,63 @@ export const columns: ColumnDef<TestResultData>[] = [
             description='Below is the attachment from your Test'
             content={content}
           />
+        )
+      );
+    },
+  },
+  {
+    accessorKey: 'params',
+    header: () => (
+      <div className='flex max-w-10 justify-center'>
+        <TooltipWrapper text='Params'>
+          <Table2 className='h-4 w-4' />
+        </TooltipWrapper>
+      </div>
+    ),
+    cell: ({ row }) => {
+      const params = row.getValue('params') as string[];
+      const [isOpen, setIsOpen] = useState(false);
+      return (
+        params &&
+        params.length > 1 && (
+          <Dialog open={isOpen} onOpenChange={setIsOpen}>
+            <DialogTrigger asChild>
+              <Button
+                variant='link'
+                onClick={() => setIsOpen(true)}
+                className='w-15'
+              >
+                <Table2 className='h-4 w-4' />
+              </Button>
+            </DialogTrigger>
+            <DialogContent className='flex flex-col sm:max-h-[90vh] sm:max-w-[90vw]'>
+              <DialogHeader>
+                <DialogTitle>Parameters</DialogTitle>
+                <DialogDescription>
+                  Here you can see the Test related Parameters
+                </DialogDescription>
+              </DialogHeader>
+              <div className='grid gap-4 py-4'>
+                <div className='grid grid-cols-1 items-center gap-4'>
+                  {params ? (
+                    <Card>
+                      <CardContent>
+                        <div className='mockup-code max-h-[300px] overflow-auto'>
+                          {params.map((line, index) => (
+                            <pre key={index} data-prefix={index + 1}>
+                              <code className='pl-2'>{line.trim()}</code>
+                            </pre>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ) : (
+                    <p>No exception for this test</p>
+                  )}
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
         )
       );
     },
@@ -229,17 +325,6 @@ export const columns: ColumnDef<TestResultData>[] = [
     cell: ({ row }) => {
       const dateTime: string = row.getValue('finished_at');
       const value = formatTime(dateTime);
-      return <CellData value={value} align='right' />;
-    },
-  },
-  {
-    accessorKey: 'duration_ms',
-    header: ({ column }) => (
-      <SortableHeader column={column} header='Duration' />
-    ),
-    cell: ({ row }) => {
-      const duration = parseInt(row.getValue('duration_ms'));
-      const value = formatDuration(duration);
       return <CellData value={value} align='right' />;
     },
   },

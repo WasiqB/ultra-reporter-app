@@ -8,6 +8,7 @@ export type TestResultData = {
   method_name: string;
   is_config: boolean;
   tags: string[];
+  params: string[];
   status: string;
   exception?: TestException;
   attachment?: TestLog;
@@ -30,6 +31,7 @@ export const getData = (data: TestResult): TestResultData[] => {
             method_name: method.description || method.name,
             is_config: method.is_config,
             tags: method.tags || [],
+            params: method.params || [],
             status: method.status.toLowerCase(),
             exception: method.exception,
             attachment: method.log,

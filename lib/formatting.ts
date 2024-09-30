@@ -15,7 +15,7 @@ export const formatDuration = (duration: number): string => {
 };
 
 export const formatTime = (dateTime: string): string => {
-  const TIME_FORMAT = 'hh:mm:ss bb';
+  const TIME_FORMAT = 'hh:mm:ss aa';
   if (dateTime.endsWith('AST')) {
     const cleanedDateString = dateTime.replace('AST', 'UTC');
     const parsedDate = parse(
