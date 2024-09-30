@@ -12,7 +12,7 @@ import { parseString } from 'xml2js';
 const getTestException = (exception: any): TestException | undefined => {
   if (exception) {
     const result: TestException = {
-      class_name: exception['class'],
+      class_name: exception.class,
       message: exception.message,
       stack_trace: exception['full-stacktrace'].split('\n'),
     };
@@ -24,106 +24,131 @@ const getTestLog = (output: any): TestLog => {
   return output;
 };
 
-const getTestMethods = (methods: any): TestMethod[] => {
-  const result: TestMethod[] = [];
-  let index = 1;
-  if (methods.length) {
-    for (const method of methods) {
-      result.push({
-        id: index++,
-        name: method['name'],
-        description: method['description'] || '',
-        is_config: !!method['is-config'],
-        started_at: method['started-at'],
-        finished_at: method['finished-at'],
-        duration_ms: method['duration-ms'],
-        status: method['status'],
-        exception: getTestException(method.exception),
-        log: getTestLog(method['reporter-output']),
-      });
+const getTags = (
+  className: string,
+  methodName: string,
+  groups: any
+): string[] => {
+  const result: string[] = [];
+  if (!groups) return result;
+
+  const processGroup = (group: any): void => {
+    const tag = group.name;
+    const groupMethods = Array.isArray(group.method)
+      ? group.method
+      : [group.method];
+    for (const method of groupMethods) {
+      if (className === method.class && methodName === method.name) {
+        result.push(tag);
+      }
     }
+  };
+
+  if (Array.isArray(groups)) {
+    groups.forEach(processGroup);
   } else {
+    processGroup(groups);
+  }
+
+  return result;
+};
+
+const getTestMethods = (
+  methods: any,
+  className: string,
+  groups: any
+): TestMethod[] => {
+  const result: TestMethod[] = [];
+  if (!methods) return result;
+
+  const processMethod = (method: any, index: number = 1): void => {
     result.push({
       id: index,
-      name: methods['name'],
-      description: methods['description'] || '',
-      is_config: !!methods['is-config'],
-      started_at: methods['started-at'],
-      finished_at: methods['finished-at'],
-      duration_ms: methods['duration-ms'],
-      status: methods['status'],
-      exception: getTestException(methods.exception),
-      log: getTestLog(methods['reporter-output']),
+      name: method.name,
+      description: method.description || '',
+      is_config: !!method['is-config'],
+      started_at: method['started-at'],
+      finished_at: method['finished-at'],
+      duration_ms: method['duration-ms'],
+      tags: getTags(className, method.name, groups),
+      status: method.status,
+      exception: getTestException(method.exception),
+      log: getTestLog(method['reporter-output']),
     });
-  }
-  return result;
-};
+  };
 
-const getTestClasses = (classes: any): TestClass[] => {
-  const result: TestClass[] = [];
-  if (classes.length) {
-    for (const cls of classes) {
-      result.push({
-        name: cls.name,
-        test_methods: getTestMethods(cls['test-method']),
-      });
-    }
+  if (Array.isArray(methods)) {
+    methods.forEach(processMethod);
   } else {
-    result.push({
-      name: classes.name,
-      test_methods: getTestMethods(classes['test-method']),
-    });
+    processMethod(methods);
   }
+
   return result;
 };
 
-const getTestCases = (tests: any): TestCase[] => {
-  const result: TestCase[] = [];
-  if (tests) {
-    if (tests.length) {
-      for (const test of tests) {
-        result.push({
-          name: test['name'],
-          started_at: test['started-at'],
-          finished_at: test['finished-at'],
-          duration_ms: test['duration-ms'],
-          test_classes: getTestClasses(test.class),
-        });
-      }
-    } else {
-      result.push({
-        name: tests['name'],
-        started_at: tests['started-at'],
-        finished_at: tests['finished-at'],
-        duration_ms: tests['duration-ms'],
-        test_classes: getTestClasses(tests.class),
-      });
-    }
+const getTestClasses = (classes: any, groups: any): TestClass[] => {
+  const result: TestClass[] = [];
+  if (!classes) return result;
+
+  const processClass = (cls: any): void => {
+    result.push({
+      name: cls.name,
+      test_methods: getTestMethods(cls['test-method'], cls.name, groups),
+    });
+  };
+
+  if (Array.isArray(classes)) {
+    classes.forEach(processClass);
+  } else {
+    processClass(classes);
   }
+
+  return result;
+};
+
+const getTestCases = (tests: any, groups: any): TestCase[] => {
+  const result: TestCase[] = [];
+  if (!tests) return result;
+
+  const processTest = (test: any): void => {
+    result.push({
+      name: test.name,
+      started_at: test['started-at'],
+      finished_at: test['finished-at'],
+      duration_ms: test['duration-ms'],
+      test_classes: getTestClasses(test.class, groups),
+    });
+  };
+
+  if (Array.isArray(tests)) {
+    tests.forEach(processTest);
+  } else {
+    processTest(tests);
+  }
+
   return result;
 };
 
 const getTestSuites = (suites: any): TestSuite[] => {
   const result: TestSuite[] = [];
-  if (suites.length) {
-    for (const suite of suites) {
-      result.push({
-        name: suite['name'],
-        started_at: suite['started-at'],
-        finished_at: suite['finished-at'],
-        duration_ms: parseInt(suite['duration-ms']),
-        test_cases: getTestCases(suite.test),
-      });
-    }
-  } else {
+  if (!suites) return result;
+
+  const processSuite = (suite: any): void => {
     result.push({
-      name: suites['name'],
-      started_at: suites['started-at'],
-      finished_at: suites['finished-at'],
-      duration_ms: parseInt(suites['duration-ms']),
-      test_cases: getTestCases(suites.test),
+      name: suite.name,
+      started_at: suite['started-at'],
+      finished_at: suite['finished-at'],
+      duration_ms: parseInt(suite['duration-ms']),
+      test_cases: getTestCases(suite.test, suites.groups?.group),
     });
+  };
+
+  if (Array.isArray(suites)) {
+    suites.forEach(processSuite);
+  } else {
+    processSuite(suites);
   }
+
   return result;
 };
 

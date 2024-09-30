@@ -114,19 +114,21 @@ const ResultsPage = (): JSX.Element => {
                 <div className='grid grid-cols-2 gap-4 md:grid-cols-4'>
                   <Card className='rounded-lg bg-blue-200 p-4'>
                     <CardDescription>Total Tests</CardDescription>
-                    <CardTitle>{passed + failed + skipped}</CardTitle>
+                    <CardTitle className='text-blue-700'>
+                      {passed + failed + skipped}
+                    </CardTitle>
                   </Card>
                   <Card className='rounded-lg bg-green-200 p-4'>
                     <CardDescription>Passed</CardDescription>
-                    <CardTitle>{passed}</CardTitle>
+                    <CardTitle className='text-green-700'>{passed}</CardTitle>
                   </Card>
                   <Card className='rounded-lg bg-red-200 p-4'>
                     <CardDescription>Failed</CardDescription>
-                    <CardTitle>{failed}</CardTitle>
+                    <CardTitle className='text-red-700'>{failed}</CardTitle>
                   </Card>
                   <Card className='rounded-lg bg-yellow-200 p-4'>
                     <CardDescription>Skipped</CardDescription>
-                    <CardTitle>{skipped}</CardTitle>
+                    <CardTitle className='text-yellow-700'>{skipped}</CardTitle>
                   </Card>
                 </div>
               </CardContent>
