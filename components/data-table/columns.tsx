@@ -89,7 +89,7 @@ export const columns: ColumnDef<TestResultData>[] = [
       return (
         <div className='flex max-w-10 justify-center'>
           {value && value.length > 0 && (
-            <TooltipWrapper text={value.join(', ')}>
+            <TooltipWrapper text={value.sort().join(', ')}>
               {value.length > 1 ? (
                 <Tags className='h-6 w-6 text-blue-600' />
               ) : (
