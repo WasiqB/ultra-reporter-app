@@ -51,6 +51,7 @@ type TestMethod = {
   started_at: string;
   finished_at: string;
   duration_ms: number;
+  tags?: string[];
   status: TestStatus;
   exception?: TestException;
   log: TestLog;

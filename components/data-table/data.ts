@@ -7,6 +7,7 @@ export type TestResultData = {
   class_name: string;
   method_name: string;
   is_config: boolean;
+  tags: string[];
   status: string;
   exception?: TestException;
   attachment?: TestLog;
@@ -28,6 +29,7 @@ export const getData = (data: TestResult): TestResultData[] => {
             class_name: cls.name?.substring(cls.name.lastIndexOf('.')),
             method_name: method.description || method.name,
             is_config: method.is_config,
+            tags: method.tags || [],
             status: method.status.toLowerCase(),
             exception: method.exception,
             attachment: method.log,

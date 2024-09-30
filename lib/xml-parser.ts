@@ -24,7 +24,39 @@ const getTestLog = (output: any): TestLog => {
   return output;
 };
 
-const getTestMethods = (methods: any): TestMethod[] => {
+const getTags = (
+  className: string,
+  methodName: string,
+  groups: any
+): string[] => {
+  const result: string[] = [];
+  if (groups) {
+    if (groups.length) {
+      for (const group of groups) {
+        const tag = group.name;
+        const groupMethod = group.method?.name;
+        const groupClass = group.method?.class;
+        if (className === groupClass && methodName === groupMethod) {
+          result.push(tag);
+        }
+      }
+    } else {
+      const tag = groups.name;
+      const groupMethod = groups.method?.name;
+      const groupClass = groups.method?.class;
+      if (className === groupClass && methodName === groupMethod) {
+        result.push(tag);
+      }
+    }
+  }
+  return result;
+};
+
+const getTestMethods = (
+  methods: any,
+  className: string,
+  groups: any
+): TestMethod[] => {
   const result: TestMethod[] = [];
   let index = 1;
   if (methods.length) {
@@ -37,6 +69,7 @@ const getTestMethods = (methods: any): TestMethod[] => {
         started_at: method['started-at'],
         finished_at: method['finished-at'],
         duration_ms: method['duration-ms'],
+        tags: getTags(className, method.name, groups),
         status: method['status'],
         exception: getTestException(method.exception),
         log: getTestLog(method['reporter-output']),
@@ -51,6 +84,7 @@ const getTestMethods = (methods: any): TestMethod[] => {
       started_at: methods['started-at'],
       finished_at: methods['finished-at'],
       duration_ms: methods['duration-ms'],
+      tags: getTags(className, methods.name, groups),
       status: methods['status'],
       exception: getTestException(methods.exception),
       log: getTestLog(methods['reporter-output']),
@@ -59,25 +93,29 @@ const getTestMethods = (methods: any): TestMethod[] => {
   return result;
 };
 
-const getTestClasses = (classes: any): TestClass[] => {
+const getTestClasses = (classes: any, groups: any): TestClass[] => {
   const result: TestClass[] = [];
   if (classes.length) {
     for (const cls of classes) {
       result.push({
         name: cls.name,
-        test_methods: getTestMethods(cls['test-method']),
+        test_methods: getTestMethods(cls['test-method'], cls.name, groups),
       });
     }
   } else {
     result.push({
       name: classes.name,
-      test_methods: getTestMethods(classes['test-method']),
+      test_methods: getTestMethods(
+        classes['test-method'],
+        classes.name,
+        groups
+      ),
     });
   }
   return result;
 };
 
-const getTestCases = (tests: any): TestCase[] => {
+const getTestCases = (tests: any, groups: any): TestCase[] => {
   const result: TestCase[] = [];
   if (tests) {
     if (tests.length) {
@@ -87,7 +125,7 @@ const getTestCases = (tests: any): TestCase[] => {
           started_at: test['started-at'],
           finished_at: test['finished-at'],
           duration_ms: test['duration-ms'],
-          test_classes: getTestClasses(test.class),
+          test_classes: getTestClasses(test.class, groups),
         });
       }
     } else {
@@ -96,7 +134,7 @@ const getTestCases = (tests: any): TestCase[] => {
         started_at: tests['started-at'],
         finished_at: tests['finished-at'],
         duration_ms: tests['duration-ms'],
-        test_classes: getTestClasses(tests.class),
+        test_classes: getTestClasses(tests.class, groups),
       });
     }
   }
@@ -112,7 +150,7 @@ const getTestSuites = (suites: any): TestSuite[] => {
         started_at: suite['started-at'],
         finished_at: suite['finished-at'],
         duration_ms: parseInt(suite['duration-ms']),
-        test_cases: getTestCases(suite.test),
+        test_cases: getTestCases(suite.test, suites.groups?.group),
       });
     }
   } else {
@@ -121,7 +159,7 @@ const getTestSuites = (suites: any): TestSuite[] => {
       started_at: suites['started-at'],
       finished_at: suites['finished-at'],
       duration_ms: parseInt(suites['duration-ms']),
-      test_cases: getTestCases(suites.test),
+      test_cases: getTestCases(suites.test, suites.groups?.group),
     });
   }
   return result;

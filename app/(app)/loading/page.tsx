@@ -38,6 +38,10 @@ const LoadingPage = (): JSX.Element => {
     } catch (err) {
       if (err instanceof Error) {
         setError(`${err.message}`);
+        if (process.env.VERCEL_ENV !== 'production') {
+          console.error(`Message: ${err.message}
+Stack: ${err.stack}`);
+        }
       }
     }
   }, [router]);

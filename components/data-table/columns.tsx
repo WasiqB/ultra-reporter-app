@@ -1,7 +1,8 @@
+import * as React from 'react';
 import { ColumnDef } from '@tanstack/react-table';
 import { statuses, TestResultData } from './data';
 import { Button } from '@/components/ui/button';
-import { CircleAlert, Link, TestTube } from 'lucide-react';
+import { CircleAlert, Link, Tag, TestTube } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { TestException, TestLog } from '@/types/types';
@@ -69,7 +70,7 @@ export const columns: ColumnDef<TestResultData>[] = [
       const value = row.getValue('is_config');
       return (
         <TooltipWrapper text={value ? 'Configuration method' : 'Test method'}>
-          <div className='flex max-w-10 items-center'>
+          <div className='flex max-w-10 justify-center'>
             {value ? (
               <GearIcon className='h-4 w-4 text-orange-600' />
             ) : (
@@ -77,6 +78,22 @@ export const columns: ColumnDef<TestResultData>[] = [
             )}
           </div>
         </TooltipWrapper>
+      );
+    },
+  },
+  {
+    accessorKey: 'tags',
+    header: 'Groups',
+    cell: ({ row }) => {
+      const value: string[] = row.getValue('tags');
+      return (
+        <div className='flex max-w-10 justify-center'>
+          {value && value.length > 0 && (
+            <TooltipWrapper text={value.join(', ')}>
+              <Tag className='h-4 w-4 text-blue-600' />
+            </TooltipWrapper>
+          )}
+        </div>
       );
     },
   },
