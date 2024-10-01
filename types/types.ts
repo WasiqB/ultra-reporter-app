@@ -52,7 +52,7 @@ type TestMethod = {
   finished_at: string;
   duration_ms: number;
   tags?: string[];
-  params?: string[];
+  parameters?: string[];
   status: TestStatus;
   exception?: TestException;
   log: TestLog;

@@ -89,7 +89,7 @@ const getTestMethods = (
       finished_at: method['finished-at'],
       duration_ms: method['duration-ms'],
       tags: getTags(className, method.name, groups),
-      params: getParams(method.params),
+      parameters: getParams(method.params),
       status: method.status,
       exception: getTestException(method.exception),
       log: getTestLog(method['reporter-output']),

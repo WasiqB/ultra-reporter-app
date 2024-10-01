@@ -250,16 +250,16 @@ export const columns: ColumnDef<TestResultData>[] = [
     },
   },
   {
-    accessorKey: 'params',
+    accessorKey: 'parameters',
     header: () => (
       <div className='flex max-w-10 justify-center'>
-        <TooltipWrapper text='Params'>
+        <TooltipWrapper text='Parameters'>
           <Table2 className='h-4 w-4' />
         </TooltipWrapper>
       </div>
     ),
     cell: ({ row }) => {
-      const params = row.getValue('params') as string[];
+      const params = row.getValue('parameters') as string[];
       const [isOpen, setIsOpen] = useState(false);
       return (
         params &&
