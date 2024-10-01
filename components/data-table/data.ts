@@ -8,6 +8,7 @@ export type TestResultData = {
   method_name: string;
   is_config: boolean;
   tags: string[];
+  parameters: string[];
   status: string;
   exception?: TestException;
   attachment?: TestLog;
@@ -26,10 +27,11 @@ export const getData = (data: TestResult): TestResultData[] => {
           result.push({
             suite_name: suite.name,
             test_name: test.name,
-            class_name: cls.name?.substring(cls.name.lastIndexOf('.')),
+            class_name: cls.name?.substring(cls.name.lastIndexOf('.') + 1),
             method_name: method.description || method.name,
             is_config: method.is_config,
             tags: method.tags || [],
+            parameters: method.parameters || [],
             status: method.status.toLowerCase(),
             exception: method.exception,
             attachment: method.log,

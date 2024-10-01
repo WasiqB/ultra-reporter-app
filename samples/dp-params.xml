@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="17" passed="17" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-10-01T09:32:12 AST" name="Boyka Framework API Suite" finished-at="2024-10-01T09:32:37 AST" duration-ms="25350">
+    <groups>
+    </groups>
+    <test started-at="2024-10-01T09:32:12 AST" name="Test Rest API" finished-at="2024-10-01T09:32:37 AST" duration-ms="25350">
+      <class name="io.github.boykaframework.testng.api.others.ApiTests">
+        <test-method signature="testEmptyPathParam()[pri:0, instance:io.github.boykaframework.testng.api.others.ApiTests@707e4fe4]" started-at="2024-10-01T09:32:35 AST" name="testEmptyPathParam" description="Test Empty path param" finished-at="2024-10-01T09:32:36 AST" duration-ms="1204" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEmptyPathParam -->
+        <test-method is-config="true" signature="tearDownMethod()[pri:0, instance:io.github.boykaframework.testng.api.others.ApiTests@707e4fe4]" started-at="2024-10-01T09:32:36 AST" name="tearDownMethod" finished-at="2024-10-01T09:32:36 AST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownMethod -->
+        <test-method signature="testInvalidApiConfigKey()[pri:0, instance:io.github.boykaframework.testng.api.others.ApiTests@707e4fe4]" started-at="2024-10-01T09:32:36 AST" name="testInvalidApiConfigKey" description="Test Invalid API config key" finished-at="2024-10-01T09:32:36 AST" duration-ms="5" status="PASS">
+          <exception class="io.github.boykaframework.exception.FrameworkError">
+            <message>
+              <![CDATA[The key (test_req) mentioned is not found in the config file, please provide a valid keys from the following (test_restfulbooker, test_postman, test_bad_ssl_wo_verify, test_bad_host_name_wo_verify_ssl, test_bad_host_name_wo_verify_hn)...]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.github.boykaframework.exception.FrameworkError: The key (test_req) mentioned is not found in the config file, please provide a valid keys from the following (test_restfulbooker, test_postman, test_bad_ssl_wo_verify, test_bad_host_name_wo_verify_ssl, test_bad_host_name_wo_verify_hn)...
+at io.github.boykaframework.utils.ErrorHandler.throwError(ErrorHandler.java:74)
+at io.github.boykaframework.config.FrameworkSetting.getApiSetting(FrameworkSetting.java:60)
+at io.github.boykaframework.manager.DriverSession.getApiSetting(DriverSession.java:114)
+at io.github.boykaframework.actions.api.ApiActions.<init>(ApiActions.java:118)
+at io.github.boykaframework.actions.api.ApiActions.withRequest(ApiActions.java:96)
+at io.github.boykaframework.testng.api.others.ApiTests.testInvalidApiConfigKey(ApiTests.java:66)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.github.boykaframework.exception.FrameworkError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testInvalidApiConfigKey -->
+        <test-method signature="testNullHeader()[pri:0, instance:io.github.boykaframework.testng.api.others.ApiTests@707e4fe4]" started-at="2024-10-01T09:32:36 AST" name="testNullHeader" finished-at="2024-10-01T09:32:37 AST" duration-ms="1103" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testNullHeader -->
+        <test-method is-config="true" signature="tearDownMethod()[pri:0, instance:io.github.boykaframework.testng.api.others.ApiTests@707e4fe4]" started-at="2024-10-01T09:32:36 AST" name="tearDownMethod" finished-at="2024-10-01T09:32:36 AST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownMethod -->
+        <test-method is-config="true" signature="tearDownMethod()[pri:0, instance:io.github.boykaframework.testng.api.others.ApiTests@707e4fe4]" started-at="2024-10-01T09:32:37 AST" name="tearDownMethod" finished-at="2024-10-01T09:32:37 AST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownMethod -->
+      </class> <!-- io.github.boykaframework.testng.api.others.ApiTests -->
+      <class name="io.github.boykaframework.testng.api.ssl.ApiSecurityTest">
+        <test-method signature="testBadHostName()[pri:0, instance:io.github.boykaframework.testng.api.ssl.ApiSecurityTest@4dadd690]" started-at="2024-10-01T09:32:30 AST" name="testBadHostName" finished-at="2024-10-01T09:32:33 AST" duration-ms="2724" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testBadHostName -->
+        <test-method signature="testBadSsl()[pri:0, instance:io.github.boykaframework.testng.api.ssl.ApiSecurityTest@4dadd690]" started-at="2024-10-01T09:32:33 AST" name="testBadSsl" finished-at="2024-10-01T09:32:35 AST" duration-ms="2510" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testBadSsl -->
+      </class> <!-- io.github.boykaframework.testng.api.ssl.ApiSecurityTest -->
+      <class name="io.github.boykaframework.testng.api.postman.ApiPostmanTest">
+        <test-method is-config="true" signature="setupTestClass()[pri:0, instance:io.github.boykaframework.testng.api.postman.ApiPostmanTest@746c411c]" started-at="2024-10-01T09:32:23 AST" name="setupTestClass" description="Setup test class" finished-at="2024-10-01T09:32:23 AST" duration-ms="16" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTestClass -->
+        <test-method signature="testFormBodyRequest()[pri:0, instance:io.github.boykaframework.testng.api.postman.ApiPostmanTest@746c411c]" started-at="2024-10-01T09:32:23 AST" name="testFormBodyRequest" description="Test Form body POST request" finished-at="2024-10-01T09:32:25 AST" duration-ms="1504" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testFormBodyRequest -->
+        <test-method is-config="true" signature="tearDownTestClass()[pri:0, instance:io.github.boykaframework.testng.api.postman.ApiPostmanTest@746c411c]" started-at="2024-10-01T09:32:25 AST" name="tearDownTestClass" description="Tear down test class" finished-at="2024-10-01T09:32:25 AST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownTestClass -->
+      </class> <!-- io.github.boykaframework.testng.api.postman.ApiPostmanTest -->
+      <class name="io.github.boykaframework.testng.api.restful.RestfulBookerEndToEndTests">
+        <test-method is-config="true" signature="setupTestClass()[pri:0, instance:io.github.boykaframework.testng.api.restful.RestfulBookerEndToEndTests@4eaf7902]" started-at="2024-10-01T09:32:12 AST" name="setupTestClass" description="Setup test class" finished-at="2024-10-01T09:32:12 AST" duration-ms="385" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupTestClass -->
+        <test-method signature="testCreateBooking()[pri:0, instance:io.github.boykaframework.testng.api.restful.RestfulBookerEndToEndTests@4eaf7902]" started-at="2024-10-01T09:32:12 AST" name="testCreateBooking" description="Test for creating new booking with POST request" finished-at="2024-10-01T09:32:14 AST" duration-ms="1720" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCreateBooking -->
+        <test-method signature="testGetBooking()[pri:0, instance:io.github.boykaframework.testng.api.restful.RestfulBookerEndToEndTests@4eaf7902]" started-at="2024-10-01T09:32:14 AST" name="testGetBooking" description="Test for retrieving booking using GET request" finished-at="2024-10-01T09:32:15 AST" duration-ms="1087" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetBooking -->
+        <test-method signature="testUpdateBooking()[pri:0, instance:io.github.boykaframework.testng.api.restful.RestfulBookerEndToEndTests@4eaf7902]" started-at="2024-10-01T09:32:15 AST" name="testUpdateBooking" description="Test for Updating booking using PUT request" finished-at="2024-10-01T09:32:17 AST" duration-ms="1956" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUpdateBooking -->
+        <test-method signature="testUpdatePartialBooking()[pri:0, instance:io.github.boykaframework.testng.api.restful.RestfulBookerEndToEndTests@4eaf7902]" started-at="2024-10-01T09:32:17 AST" name="testUpdatePartialBooking" description="Test for partial updating booking using PATCH request" finished-at="2024-10-01T09:32:19 AST" duration-ms="1915" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUpdatePartialBooking -->
+        <test-method signature="testDeleteBooking()[pri:0, instance:io.github.boykaframework.testng.api.restful.RestfulBookerEndToEndTests@4eaf7902]" started-at="2024-10-01T09:32:19 AST" name="testDeleteBooking" description="Test for Deleting a booking using DELETE request" finished-at="2024-10-01T09:32:21 AST" duration-ms="1968" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDeleteBooking -->
+        <test-method signature="testDeletedBooking()[pri:0, instance:io.github.boykaframework.testng.api.restful.RestfulBookerEndToEndTests@4eaf7902]" started-at="2024-10-01T09:32:21 AST" name="testDeletedBooking" description="Test for checking deleted booking using GET request" finished-at="2024-10-01T09:32:22 AST" duration-ms="969" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDeletedBooking -->
+        <test-method signature="testJsonSchemaFileException()[pri:0, instance:io.github.boykaframework.testng.api.restful.RestfulBookerEndToEndTests@4eaf7902]" started-at="2024-10-01T09:32:22 AST" name="testJsonSchemaFileException" description="Tests for file not found exception" finished-at="2024-10-01T09:32:23 AST" duration-ms="1051" status="PASS">
+          <exception class="io.github.boykaframework.exception.FrameworkError">
+            <message>
+              <![CDATA[Error occurred reading file (create-booking-scheme.json)...]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.github.boykaframework.exception.FrameworkError: Error occurred reading file (create-booking-scheme.json)...
+at io.github.boykaframework.utils.ErrorHandler.handleAndThrow(ErrorHandler.java:62)
+at io.github.boykaframework.builders.ApiResponse.verifySchema(ApiResponse.java:169)
+at io.github.boykaframework.testng.api.restful.RestfulBookerEndToEndTests.testJsonSchemaFileException(RestfulBookerEndToEndTests.java:139)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+Caused by: java.io.FileNotFoundException: /Users/wasiqbhamla/Documents/github/BoykaFramework/boyka-framework/core-java/src/test/resources/schema/create-booking-scheme.json (No such file or directory)
+at java.base/java.io.FileInputStream.open0(Native Method)
+at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+at io.github.boykaframework.builders.ApiResponse.verifySchema(ApiResponse.java:158)
+... 28 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.github.boykaframework.exception.FrameworkError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testJsonSchemaFileException -->
+        <test-method is-config="true" signature="tearDownTestClass()[pri:0, instance:io.github.boykaframework.testng.api.restful.RestfulBookerEndToEndTests@4eaf7902]" started-at="2024-10-01T09:32:23 AST" name="tearDownTestClass" description="Tear down test class" finished-at="2024-10-01T09:32:23 AST" duration-ms="6" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownTestClass -->
+      </class> <!-- io.github.boykaframework.testng.api.restful.RestfulBookerEndToEndTests -->
+      <class name="io.github.boykaframework.testng.api.restful.DataDrivenBookingTest">
+        <test-method is-config="true" signature="setupClass()[pri:0, instance:io.github.boykaframework.testng.api.restful.DataDrivenBookingTest@3e377967]" started-at="2024-10-01T09:32:25 AST" name="setupClass" finished-at="2024-10-01T09:32:25 AST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupClass -->
+        <test-method signature="testBooking(io.github.boykaframework.actions.interfaces.data.IDataRow)[pri:0, instance:io.github.boykaframework.testng.api.restful.DataDrivenBookingTest@3e377967]" started-at="2024-10-01T09:32:25 AST" name="testBooking" data-provider="getBookingData" finished-at="2024-10-01T09:32:26 AST" duration-ms="1147" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[DataRow(headers=[SrNo, FirstName, LastName, TotalPrice, DepositPaid, CheckInDate, CheckOutDate, AdditionalNeeds], rowData=[1.0, Wasiq, Bhamla, 1000.0, Yes, 2023-12-01, 2023-12-03, No needs])]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testBooking -->
+        <test-method signature="testBooking(io.github.boykaframework.actions.interfaces.data.IDataRow)[pri:0, instance:io.github.boykaframework.testng.api.restful.DataDrivenBookingTest@3e377967]" started-at="2024-10-01T09:32:26 AST" name="testBooking" data-provider="getBookingData" finished-at="2024-10-01T09:32:28 AST" duration-ms="1023" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[DataRow(headers=[SrNo, FirstName, LastName, TotalPrice, DepositPaid, CheckInDate, CheckOutDate, AdditionalNeeds], rowData=[2.0, Faisal, Khatri, 2000.0, No, 2023-12-03, 2023-12-05, Breakfast])]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testBooking -->
+        <test-method signature="testBookingObject(io.github.boykaframework.testng.api.restful.pojo.BookingTestData)[pri:0, instance:io.github.boykaframework.testng.api.restful.DataDrivenBookingTest@3e377967]" started-at="2024-10-01T09:32:28 AST" name="testBookingObject" data-provider="getBookingDataObject" finished-at="2024-10-01T09:32:29 AST" duration-ms="1229" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[BookingTestData(additionalNeeds=No needs, checkInDate=2023-12-01, checkOutDate=2023-12-03, depositPaid=Yes, firstName=Wasiq, lastName=Bhamla, srNo=1.0, totalPrice=1000.0)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testBookingObject -->
+        <test-method signature="testBookingObject(io.github.boykaframework.testng.api.restful.pojo.BookingTestData)[pri:0, instance:io.github.boykaframework.testng.api.restful.DataDrivenBookingTest@3e377967]" started-at="2024-10-01T09:32:29 AST" name="testBookingObject" data-provider="getBookingDataObject" finished-at="2024-10-01T09:32:30 AST" duration-ms="1011" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[BookingTestData(additionalNeeds=Breakfast, checkInDate=2023-12-03, checkOutDate=2023-12-05, depositPaid=No, firstName=Faisal, lastName=Khatri, srNo=2.0, totalPrice=2000.0)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testBookingObject -->
+        <test-method is-config="true" signature="tearDownTestClass()[pri:0, instance:io.github.boykaframework.testng.api.restful.DataDrivenBookingTest@3e377967]" started-at="2024-10-01T09:32:30 AST" name="tearDownTestClass" finished-at="2024-10-01T09:32:30 AST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownTestClass -->
+      </class> <!-- io.github.boykaframework.testng.api.restful.DataDrivenBookingTest -->
+    </test> <!-- Test Rest API -->
+  </suite> <!-- Boyka Framework API Suite -->
+</testng-results>

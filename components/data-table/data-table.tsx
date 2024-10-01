@@ -1,6 +1,7 @@
 /* eslint-disable @stylistic/ts/indent */
 'use client';
 
+import * as React from 'react';
 import {
   ColumnDef,
   ColumnFiltersState,

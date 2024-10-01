@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="7" passed="2" failed="3" skipped="2">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-09-30T14:24:30 AST" name="Twine E-Com API Sanity Suite" finished-at="2024-09-30T14:25:55 AST" duration-ms="84723">
+    <groups>
+      <group name="sanity-api">
+        <method signature="PaymentTest.testPaymentHappyPath()[pri:0, instance:com.twineecom.qa.test.PaymentTest@5bcde458]" name="testPaymentHappyPath" class="com.twineecom.qa.test.PaymentTest"/>
+        <method signature="TokenTest.testTokenHappyPathPendingStatus()[pri:0, instance:com.twineecom.qa.test.TokenTest@7c455e96]" name="testTokenHappyPathPendingStatus" class="com.twineecom.qa.test.TokenTest"/>
+        <method signature="TokenTest.testTokenHappyPathInitiatedStatus()[pri:0, instance:com.twineecom.qa.test.TokenTest@7c455e96]" name="testTokenHappyPathInitiatedStatus" class="com.twineecom.qa.test.TokenTest"/>
+        <method signature="TokenTest.testTokenHappyPathSuccessStatus()[pri:0, instance:com.twineecom.qa.test.TokenTest@7c455e96]" name="testTokenHappyPathSuccessStatus" class="com.twineecom.qa.test.TokenTest"/>
+        <method signature="UserTest.testGetUserHappyPath()[pri:0, instance:com.twineecom.qa.test.UserTest@985696]" name="testGetUserHappyPath" class="com.twineecom.qa.test.UserTest"/>
+        <method signature="AuthorizationTest.testAuthorizationSuccess()[pri:0, instance:com.twineecom.qa.test.AuthorizationTest@5e9456ae]" name="testAuthorizationSuccess" class="com.twineecom.qa.test.AuthorizationTest"/>
+        <method signature="TwineHealthTest.testApiHealth()[pri:0, instance:com.twineecom.qa.test.TwineHealthTest@c27d163]" name="testApiHealth" class="com.twineecom.qa.test.TwineHealthTest"/>
+      </group> <!-- sanity-api -->
+      <group name="smoke">
+        <method signature="TwineHealthTest.testApiHealth()[pri:0, instance:com.twineecom.qa.test.TwineHealthTest@c27d163]" name="testApiHealth" class="com.twineecom.qa.test.TwineHealthTest"/>
+      </group> <!-- smoke -->
+    </groups>
+    <test started-at="2024-09-30T14:24:30 AST" name="Test Twine Rest API" finished-at="2024-09-30T14:25:55 AST" duration-ms="84723">
+      <class name="com.twineecom.qa.test.PaymentTest">
+        <test-method is-config="true" signature="setupClass()[pri:0, instance:com.twineecom.qa.test.PaymentTest@5bcde458]" started-at="2024-09-30T14:25:55 AST" name="setupClass" finished-at="2024-09-30T14:25:55 AST" duration-ms="1" status="FAIL">
+          <exception class="io.github.boykaframework.exception.FrameworkError">
+            <message>
+              <![CDATA[Session is already created for (test_twine_web) persona...]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.github.boykaframework.exception.FrameworkError: Session is already created for (test_twine_web) persona...
+at io.github.boykaframework.utils.ErrorHandler.throwError(ErrorHandler.java:74)
+at io.github.boykaframework.manager.ParallelSession.checkSession(ParallelSession.java:188)
+at io.github.boykaframework.manager.ParallelSession.createSession(ParallelSession.java:100)
+at io.github.boykaframework.manager.ParallelSession.createSession(ParallelSession.java:118)
+at com.twineecom.qa.test.BaseTest.setupClass(BaseTest.java:28)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:393)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:326)
+at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:180)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:122)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:819)
+at org.testng.TestRunner.run(TestRunner.java:619)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+at org.testng.TestNG.runSuites(TestNG.java:1134)
+at org.testng.TestNG.run(TestNG.java:1101)
+at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.github.boykaframework.exception.FrameworkError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupClass -->
+        <test-method signature="testPaymentHappyPath()[pri:0, instance:com.twineecom.qa.test.PaymentTest@5bcde458]" started-at="2024-09-30T14:25:55 AST" name="testPaymentHappyPath" description="Testing payment API happy path" finished-at="2024-09-30T14:25:55 AST" duration-ms="0" status="SKIP">
+          <exception class="io.github.boykaframework.exception.FrameworkError">
+            <message>
+              <![CDATA[Session is already created for (test_twine_web) persona...]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.github.boykaframework.exception.FrameworkError: Session is already created for (test_twine_web) persona...
+at io.github.boykaframework.utils.ErrorHandler.throwError(ErrorHandler.java:74)
+at io.github.boykaframework.manager.ParallelSession.checkSession(ParallelSession.java:188)
+at io.github.boykaframework.manager.ParallelSession.createSession(ParallelSession.java:100)
+at io.github.boykaframework.manager.ParallelSession.createSession(ParallelSession.java:118)
+at com.twineecom.qa.test.BaseTest.setupClass(BaseTest.java:28)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:393)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:326)
+at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:180)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:122)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:819)
+at org.testng.TestRunner.run(TestRunner.java:619)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+at org.testng.TestNG.runSuites(TestNG.java:1134)
+at org.testng.TestNG.run(TestNG.java:1101)
+at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.github.boykaframework.exception.FrameworkError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPaymentHappyPath -->
+        <test-method is-config="true" signature="tearDownMethod(org.testng.ITestResult)[pri:0, instance:com.twineecom.qa.test.PaymentTest@5bcde458]" started-at="2024-09-30T14:25:55 AST" name="tearDownMethod" finished-at="2024-09-30T14:25:55 AST" duration-ms="0" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownMethod -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.twineecom.qa.test.PaymentTest@5bcde458]" started-at="2024-09-30T14:25:55 AST" name="tearDownClass" finished-at="2024-09-30T14:25:55 AST" duration-ms="0" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- com.twineecom.qa.test.PaymentTest -->
+      <class name="com.twineecom.qa.test.UserTest">
+        <test-method is-config="true" signature="setupClass()[pri:0, instance:com.twineecom.qa.test.UserTest@985696]" started-at="2024-09-30T14:25:45 AST" name="setupClass" finished-at="2024-09-30T14:25:48 AST" duration-ms="3541" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupClass -->
+        <test-method signature="testGetUserHappyPath()[pri:0, instance:com.twineecom.qa.test.UserTest@985696]" started-at="2024-09-30T14:25:48 AST" name="testGetUserHappyPath" description="Testing get user API happy path" finished-at="2024-09-30T14:25:55 AST" duration-ms="6403" status="FAIL">
+          <exception class="com.google.common.truth.ComparisonFailureWithFacts">
+            <message>
+              <![CDATA[Status Code
+expected: 200
+but was : 401]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[Status Code
+expected: 200
+but was : 401
+at com.twineecom.qa.test.UserTest.testGetUserHappyPath(UserTest.java:39)
+at [[Reflective call: 4 frames collapsed (https://goo.gl/aH3UyP)]].(:0)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:819)
+at org.testng.TestRunner.run(TestRunner.java:619)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+at org.testng.TestNG.runSuites(TestNG.java:1134)
+at org.testng.TestNG.run(TestNG.java:1101)
+at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+]]>
+            </full-stacktrace>
+          </exception> <!-- com.google.common.truth.ComparisonFailureWithFacts -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetUserHappyPath -->
+        <test-method is-config="true" signature="tearDownMethod(org.testng.ITestResult)[pri:0, instance:com.twineecom.qa.test.UserTest@985696]" started-at="2024-09-30T14:25:55 AST" name="tearDownMethod" finished-at="2024-09-30T14:25:55 AST" duration-ms="2" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testGetUserHappyPath status=FAILURE method=UserTest.testGetUserHappyPath()[pri:0, instance:com.twineecom.qa.test.UserTest@985696] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <exception class="io.github.boykaframework.exception.FrameworkError">
+            <message>
+              <![CDATA[Driver cannot be null, make sure you started the session correctly..]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.github.boykaframework.exception.FrameworkError: Driver cannot be null, make sure you started the session correctly..
+at io.github.boykaframework.utils.ErrorHandler.throwError(ErrorHandler.java:74)
+at io.github.boykaframework.utils.Validator.requireNonNull(Validator.java:77)
+at io.github.boykaframework.actions.drivers.WindowActions.lambda$takeScreenshot$8(WindowActions.java:205)
+at io.github.boykaframework.actions.CommonActions.performDriverAction(CommonActions.java:121)
+at io.github.boykaframework.actions.drivers.WindowActions.takeScreenshot(WindowActions.java:204)
+at io.github.boykaframework.actions.drivers.WindowActions.takeScreenshot(WindowActions.java:191)
+at com.twineecom.qa.test.BaseTest.tearDownMethod(BaseTest.java:40)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:393)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:326)
+at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:810)
+at org.testng.internal.invokers.TestInvoker.runAfterConfigurations(TestInvoker.java:779)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:755)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:819)
+at org.testng.TestRunner.run(TestRunner.java:619)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+at org.testng.TestNG.runSuites(TestNG.java:1134)
+at org.testng.TestNG.run(TestNG.java:1101)
+at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.github.boykaframework.exception.FrameworkError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownMethod -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.twineecom.qa.test.UserTest@985696]" started-at="2024-09-30T14:25:55 AST" name="tearDownClass" finished-at="2024-09-30T14:25:55 AST" duration-ms="0" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- com.twineecom.qa.test.UserTest -->
+      <class name="com.twineecom.qa.test.TwineHealthTest">
+        <test-method signature="testApiHealth()[pri:0, instance:com.twineecom.qa.test.TwineHealthTest@c27d163]" started-at="2024-09-30T14:24:30 AST" name="testApiHealth" description="Test API Health" finished-at="2024-09-30T14:24:31 AST" duration-ms="1107" status="FAIL">
+          <exception class="io.github.boykaframework.exception.FrameworkError">
+            <message>
+              <![CDATA[The key (null) mentioned is not found in the config file, please provide a valid keys from the following (test_twine, test_twine_health)...]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.github.boykaframework.exception.FrameworkError: The key (null) mentioned is not found in the config file, please provide a valid keys from the following (test_twine, test_twine_health)...
+at io.github.boykaframework.utils.ErrorHandler.throwError(ErrorHandler.java:74)
+at io.github.boykaframework.config.FrameworkSetting.getApiSetting(FrameworkSetting.java:60)
+at io.github.boykaframework.manager.DriverSession.getApiSetting(DriverSession.java:114)
+at io.github.boykaframework.actions.api.ApiActions.<init>(ApiActions.java:118)
+at io.github.boykaframework.actions.api.ApiActions.withRequest(ApiActions.java:96)
+at com.twineecom.qa.test.TwineHealthTest.testApiHealth(TwineHealthTest.java:42)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:819)
+at org.testng.TestRunner.run(TestRunner.java:619)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+at org.testng.TestNG.runSuites(TestNG.java:1134)
+at org.testng.TestNG.run(TestNG.java:1101)
+at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.github.boykaframework.exception.FrameworkError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testApiHealth -->
+      </class> <!-- com.twineecom.qa.test.TwineHealthTest -->
+      <class name="com.twineecom.qa.test.TokenTest">
+        <test-method is-config="true" signature="setupClass()[pri:0, instance:com.twineecom.qa.test.TokenTest@7c455e96]" started-at="2024-09-30T14:24:37 AST" name="setupClass" finished-at="2024-09-30T14:24:38 AST" duration-ms="1269" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupClass -->
+        <test-method signature="testTokenHappyPathPendingStatus()[pri:0, instance:com.twineecom.qa.test.TokenTest@7c455e96]" started-at="2024-09-30T14:24:38 AST" name="testTokenHappyPathPendingStatus" description="Testing `code` path var with valid value which returns Pending status" finished-at="2024-09-30T14:24:39 AST" duration-ms="1064" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testTokenHappyPathPendingStatus -->
+        <test-method is-config="true" signature="tearDownMethod(org.testng.ITestResult)[pri:0, instance:com.twineecom.qa.test.TokenTest@7c455e96]" started-at="2024-09-30T14:24:39 AST" name="tearDownMethod" finished-at="2024-09-30T14:24:39 AST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testTokenHappyPathPendingStatus status=SUCCESS method=TokenTest.testTokenHappyPathPendingStatus()[pri:0, instance:com.twineecom.qa.test.TokenTest@7c455e96] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownMethod -->
+        <test-method signature="testTokenHappyPathInitiatedStatus()[pri:0, instance:com.twineecom.qa.test.TokenTest@7c455e96]" started-at="2024-09-30T14:24:39 AST" name="testTokenHappyPathInitiatedStatus" description="Testing `code` path var with valid value which returns Initiated status" finished-at="2024-09-30T14:25:44 AST" depends-on-methods="com.twineecom.qa.test.TokenTest.testTokenHappyPathPendingStatus" duration-ms="64850" status="FAIL">
+          <exception class="io.github.boykaframework.exception.FrameworkError">
+            <message>
+              <![CDATA[Element (Continue Button) not found for platform (WEB)...]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.github.boykaframework.exception.FrameworkError: Element (Continue Button) not found for platform (WEB)...
+at io.github.boykaframework.utils.ErrorHandler.handleAndThrow(ErrorHandler.java:62)
+at io.github.boykaframework.actions.elements.ElementFinder.waitForElement(ElementFinder.java:121)
+at io.github.boykaframework.actions.elements.ElementFinder.finds(ElementFinder.java:89)
+at io.github.boykaframework.actions.elements.ElementFinder.find(ElementFinder.java:59)
+at io.github.boykaframework.actions.CommonActions.performElementAction(CommonActions.java:156)
+at io.github.boykaframework.actions.elements.ElementActions.scrollIntoView(ElementActions.java:141)
+at io.github.boykaframework.actions.elements.ClickableActions.click(ClickableActions.java:77)
+at com.twineecom.qa.actions.TwineSdkActions.initiateClearVerification(TwineSdkActions.java:84)
+at com.twineecom.qa.test.TokenTest.testTokenHappyPathInitiatedStatus(TokenTest.java:33)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:819)
+at org.testng.TestRunner.run(TestRunner.java:619)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+at org.testng.TestNG.runSuites(TestNG.java:1134)
+at org.testng.TestNG.run(TestNG.java:1101)
+at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.cssSelector: button[data-testid="WelcomeSheet-continue"] (tried for 60 second(s) with 500 milliseconds interval)
+Build info: version: '4.24.0', revision: '748ffc9bc3'
+System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '15.0', java.version: '17.0.12'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 129.0.6668.70, chrome: {chromedriverVersion: 129.0.6668.70 (df87d5cf12b1..., userDataDir: /var/folders/kk/83jlrjkx3wz...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51429}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:51429/devtoo..., se:cdpVersion: 129.0.6668.70, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 4ec23a3ade888d9620d2af71bf573634
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+at io.github.boykaframework.actions.elements.ElementFinder.waitForElement(ElementFinder.java:116)
+... 34 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.github.boykaframework.exception.FrameworkError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testTokenHappyPathInitiatedStatus -->
+        <test-method is-config="true" signature="tearDownMethod(org.testng.ITestResult)[pri:0, instance:com.twineecom.qa.test.TokenTest@7c455e96]" started-at="2024-09-30T14:25:44 AST" name="tearDownMethod" finished-at="2024-09-30T14:25:45 AST" duration-ms="418" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testTokenHappyPathInitiatedStatus status=FAILURE method=TokenTest.testTokenHappyPathInitiatedStatus()[pri:0, instance:com.twineecom.qa.test.TokenTest@7c455e96] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownMethod -->
+        <test-method signature="testTokenHappyPathSuccessStatus()[pri:0, instance:com.twineecom.qa.test.TokenTest@7c455e96]" started-at="2024-09-30T14:25:45 AST" name="testTokenHappyPathSuccessStatus" description="Testing `code` path var with valid value which returns Success status" finished-at="2024-09-30T14:25:45 AST" depends-on-methods="com.twineecom.qa.test.TokenTest.testTokenHappyPathInitiatedStatus" duration-ms="0" status="SKIP">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method com.twineecom.qa.test.TokenTest.testTokenHappyPathSuccessStatus() on instance com.twineecom.qa.test.TokenTest@7c455e96 depends on not successfully finished methods 
+[com.twineecom.qa.test.TokenTest.testTokenHappyPathInitiatedStatus() on instance com.twineecom.qa.test.TokenTest@7c455e96]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method com.twineecom.qa.test.TokenTest.testTokenHappyPathSuccessStatus() on instance com.twineecom.qa.test.TokenTest@7c455e96 depends on not successfully finished methods 
+[com.twineecom.qa.test.TokenTest.testTokenHappyPathInitiatedStatus() on instance com.twineecom.qa.test.TokenTest@7c455e96]
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:157)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:819)
+at org.testng.TestRunner.run(TestRunner.java:619)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+at org.testng.TestNG.runSuites(TestNG.java:1134)
+at org.testng.TestNG.run(TestNG.java:1101)
+at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testTokenHappyPathSuccessStatus -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.twineecom.qa.test.TokenTest@7c455e96]" started-at="2024-09-30T14:25:45 AST" name="tearDownClass" finished-at="2024-09-30T14:25:45 AST" duration-ms="261" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- com.twineecom.qa.test.TokenTest -->
+      <class name="com.twineecom.qa.test.AuthorizationTest">
+        <test-method is-config="true" signature="setupClass()[pri:0, instance:com.twineecom.qa.test.AuthorizationTest@5e9456ae]" started-at="2024-09-30T14:24:31 AST" name="setupClass" finished-at="2024-09-30T14:24:35 AST" duration-ms="3779" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupClass -->
+        <test-method signature="testAuthorizationSuccess()[pri:0, instance:com.twineecom.qa.test.AuthorizationTest@5e9456ae]" started-at="2024-09-30T14:24:35 AST" name="testAuthorizationSuccess" description="Test Auth Happy Path scenario" finished-at="2024-09-30T14:24:37 AST" duration-ms="1690" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAuthorizationSuccess -->
+        <test-method is-config="true" signature="tearDownMethod(org.testng.ITestResult)[pri:0, instance:com.twineecom.qa.test.AuthorizationTest@5e9456ae]" started-at="2024-09-30T14:24:37 AST" name="tearDownMethod" finished-at="2024-09-30T14:24:37 AST" duration-ms="5" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testAuthorizationSuccess status=SUCCESS method=AuthorizationTest.testAuthorizationSuccess()[pri:0, instance:com.twineecom.qa.test.AuthorizationTest@5e9456ae] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownMethod -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.twineecom.qa.test.AuthorizationTest@5e9456ae]" started-at="2024-09-30T14:24:37 AST" name="tearDownClass" finished-at="2024-09-30T14:24:37 AST" duration-ms="115" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- com.twineecom.qa.test.AuthorizationTest -->
+    </test> <!-- Test Twine Rest API -->
+  </suite> <!-- Twine E-Com API Sanity Suite -->
+</testng-results>

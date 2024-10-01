@@ -53,6 +53,24 @@ const getTags = (
   return result;
 };
 
+const getParams = (params: any): string[] => {
+  const result: string[] = [];
+  if (!params) return result;
+
+  const processParam = (param: any): void => {
+    result.push(param.value.trim());
+  };
+
+  const param = params.param;
+  if (Array.isArray(param)) {
+    param.forEach(processParam);
+  } else {
+    processParam(param);
+  }
+
+  return result;
+};
+
 const getTestMethods = (
   methods: any,
   className: string,
@@ -71,6 +89,7 @@ const getTestMethods = (
       finished_at: method['finished-at'],
       duration_ms: method['duration-ms'],
       tags: getTags(className, method.name, groups),
+      parameters: getParams(method.params),
       status: method.status,
       exception: getTestException(method.exception),
       log: getTestLog(method['reporter-output']),
