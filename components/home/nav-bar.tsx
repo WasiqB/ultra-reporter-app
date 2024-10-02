@@ -6,13 +6,26 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { GitHub } from '@/components/icons/github';
 import { Sponsor } from '@/components/icons/sponsor';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '../ui/dropdown-menu';
+import { DownloadIcon } from 'lucide-react';
+import { exportHTML } from '@/lib/utils';
 
 interface NavBarProps {
   suffix?: string;
   cta?: string;
+  exportReport?: 'html' | undefined;
 }
 
-export const NavBar = ({ suffix, cta }: NavBarProps): JSX.Element => {
+export const NavBar = ({
+  suffix,
+  cta,
+  exportReport,
+}: NavBarProps): JSX.Element => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -63,6 +76,21 @@ export const NavBar = ({ suffix, cta }: NavBarProps): JSX.Element => {
               <Sponsor />
             </Button>
           </Link>
+          {exportReport && (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant='outline' size='sm'>
+                  <DownloadIcon className='mr-2 h-4 w-4' />
+                  Export
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem onClick={exportHTML}>
+                  Export HTML
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
           {cta && (
             <Link href='/' passHref>
               <Button size='sm'>{cta}</Button>
