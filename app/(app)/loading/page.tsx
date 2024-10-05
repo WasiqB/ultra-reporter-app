@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Bug, MoveLeft } from 'lucide-react';
+import { getData } from '@/components/data-table/data';
 
 const LoadingPage = (): JSX.Element => {
   const [progress, setProgress] = useState(0);
@@ -32,7 +33,7 @@ const LoadingPage = (): JSX.Element => {
       setProgress(50);
       const testResult = getTestResults(jsonData);
       setProgress(75);
-      localStorage.setItem('json-data', JSON.stringify(testResult));
+      localStorage.setItem('json-data', JSON.stringify(getData(testResult)));
       setProgress(100);
       router.push('/results');
     } catch (err) {

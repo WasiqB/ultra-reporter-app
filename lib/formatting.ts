@@ -1,4 +1,5 @@
 import { parse, format } from 'date-fns';
+import { DateTime } from 'luxon';
 
 export const formatDuration = (duration: number): string => {
   const SECOND = 1000;
@@ -12,6 +13,49 @@ export const formatDuration = (duration: number): string => {
       : duration >= SECOND
         ? `${(duration / SECOND).toFixed(2)} s`
         : `${duration} ms`;
+};
+
+export const formatDateTime = (
+  dateTimeString: string
+): {
+  date: string;
+  time: string;
+} => {
+  try {
+    const systemZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+    const timezoneSplit = dateTimeString.split(' ');
+    let timezone = systemZone;
+    let adjustedDateTimeString = dateTimeString;
+
+    if (timezoneSplit.length > 1) {
+      timezone = timezoneSplit.pop() || systemZone;
+      adjustedDateTimeString = timezoneSplit.join(' ');
+    }
+
+    let dateTime = DateTime.fromISO(adjustedDateTimeString, { zone: timezone });
+
+    if (!dateTime.isValid) {
+      dateTime = DateTime.fromRFC2822(adjustedDateTimeString, {
+        zone: timezone,
+      });
+    }
+
+    if (!dateTime.isValid) {
+      dateTime = DateTime.fromHTTP(adjustedDateTimeString, { zone: timezone });
+    }
+
+    if (!dateTime.isValid) {
+      throw new Error('Invalid date-time format');
+    }
+
+    const formattedDate = dateTime.toUTC().toFormat('yyyy-MM-dd');
+    const formattedTime = dateTime.toUTC().toFormat('hh:mm:ss a');
+
+    return { date: formattedDate, time: formattedTime };
+  } catch (error) {
+    throw new Error(`Error parsing date: ${error}`);
+  }
 };
 
 export const formatTime = (dateTime: string): string => {

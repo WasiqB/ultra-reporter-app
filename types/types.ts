@@ -75,6 +75,23 @@ enum TestStatus {
   ignore = 'IGNORE',
 }
 
+type ChartData = {
+  status: 'pass' | 'fail' | 'skip';
+  total: number;
+  fill: string;
+};
+
+type FormattedData = {
+  passed: number;
+  failed: number;
+  skipped: number;
+  ignored: number;
+  date: string;
+  totalTests: number;
+  chartCountData: ChartData[];
+  chartPieData: ChartData[];
+};
+
 export type {
   TestResult,
   TestSuite,
@@ -84,4 +101,6 @@ export type {
   TestException,
   TestLog,
   TestStatus,
+  ChartData,
+  FormattedData,
 };

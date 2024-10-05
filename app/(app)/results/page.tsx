@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { TestResult } from '@/types/types';
+import { FormattedData } from '@/types/types';
 import {
   ColumnFiltersState,
   SortingState,
@@ -17,10 +17,9 @@ import {
 } from '@/components/ui/card';
 import { ChartConfig } from '@/components/ui/chart';
 import DoughNutComponent from '@/components/charts/dough-nut-chart';
-import { getData, TestResultData } from '@/components/data-table/data';
+import { TestResultData, getFormattedData } from '@/components/data-table/data';
 import { columns } from '@/components/data-table/columns';
 import { PieComponent } from '@/components/charts/pie-chart';
-import { formatDate, round } from '@/lib/formatting';
 import { NavBar } from '@/components/home/nav-bar';
 
 const chartConfig: ChartConfig = {
@@ -50,52 +49,26 @@ const ResultsPage = (): JSX.Element => {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [result, setResult] = useState<TestResultData[]>([]);
-  const [passed, setPassed] = useState(0);
-  const [failed, setFailed] = useState(0);
-  const [skipped, setSkipped] = useState(0);
-  const [date, setDate] = useState('');
+  const [formattedData, setFormattedData] = useState<FormattedData>();
 
   useEffect(() => {
     const resultData = localStorage.getItem('json-data') as string;
-    let data: TestResultData[];
     if (resultData) {
-      const testResult = JSON.parse(resultData) as TestResult;
-      data = getData(testResult);
-      setResult(data);
-      setDate(formatDate(data[0].started_at));
-      setPassed(data.filter((d) => d.status === 'pass' && !d.is_config).length);
-      setFailed(data.filter((d) => d.status === 'fail' && !d.is_config).length);
-      setSkipped(
-        data.filter((d) => d.status === 'skip' && !d.is_config).length
-      );
+      const testResult: TestResultData[] = JSON.parse(resultData);
+      setResult(testResult);
+      setFormattedData(getFormattedData(testResult));
     }
   }, []);
 
-  const totalTests = passed + failed + skipped;
-
-  const chartCountData = [
-    { status: 'pass', total: passed, fill: 'var(--color-pass)' },
-    { status: 'fail', total: failed, fill: 'var(--color-fail)' },
-    { status: 'skip', total: skipped, fill: 'var(--color-skip)' },
-  ];
-
-  const chartPieData = [
-    {
-      status: 'pass',
-      total: round((passed / totalTests) * 100),
-      fill: 'var(--color-pass)',
-    },
-    {
-      status: 'fail',
-      total: round((failed / totalTests) * 100),
-      fill: 'var(--color-fail)',
-    },
-    {
-      status: 'skip',
-      total: round((skipped / totalTests) * 100),
-      fill: 'var(--color-skip)',
-    },
-  ];
+  const {
+    passed,
+    failed,
+    skipped,
+    date,
+    totalTests,
+    chartCountData,
+    chartPieData,
+  } = formattedData || {};
 
   return (
     <div className='flex min-h-screen flex-col'>
@@ -115,7 +88,7 @@ const ResultsPage = (): JSX.Element => {
                   <Card className='rounded-lg bg-blue-200 p-4'>
                     <CardDescription>Total Tests</CardDescription>
                     <CardTitle className='text-blue-700'>
-                      {passed + failed + skipped}
+                      {totalTests}
                     </CardTitle>
                   </Card>
                   <Card className='rounded-lg bg-green-200 p-4'>
@@ -139,15 +112,15 @@ const ResultsPage = (): JSX.Element => {
               title='Test Summary Counts'
               description='Status based distribution of Test results'
               config={chartConfig}
-              data={chartCountData}
-              totalValue={totalTests}
+              data={chartCountData || []}
+              totalValue={totalTests || 0}
               valueLabel='Test cases'
             />
             <PieComponent
               title='Test Summary %'
               description='Status based % distribution of Test results'
               config={chartConfig}
-              data={chartPieData}
+              data={chartPieData || []}
             />
           </div>
           {result ? (
