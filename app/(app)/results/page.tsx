@@ -72,7 +72,7 @@ const ResultsPage = (): JSX.Element => {
 
   return (
     <div className='flex min-h-screen flex-col'>
-      <NavBar suffix={`for ${date}`} cta='Generate new Report' />
+      <NavBar suffix={`for ${date}`} cta='Generate new Report' showFeedback />
       <main className='flex-grow pt-16'>
         <section className='container mx-auto space-y-6 p-4'>
           <div className='grid grid-cols-1 gap-6'>

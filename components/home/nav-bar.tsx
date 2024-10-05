@@ -10,9 +10,14 @@ import { Sponsor } from '@/components/icons/sponsor';
 interface NavBarProps {
   suffix?: string;
   cta?: string;
+  showFeedback?: boolean;
 }
 
-export const NavBar = ({ suffix, cta }: NavBarProps): JSX.Element => {
+export const NavBar = ({
+  suffix,
+  cta,
+  showFeedback,
+}: NavBarProps): JSX.Element => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -63,6 +68,17 @@ export const NavBar = ({ suffix, cta }: NavBarProps): JSX.Element => {
               <Sponsor />
             </Button>
           </Link>
+          {showFeedback && (
+            <Link
+              href='https://github.com/WasiqB/ultra-reporter-app/discussions/new/choose'
+              passHref
+              target='_blank'
+            >
+              <Button variant='outline' size='sm'>
+                Give Feedback
+              </Button>
+            </Link>
+          )}
           {cta && (
             <Link href='/' passHref>
               <Button size='sm'>{cta}</Button>
