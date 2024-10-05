@@ -30,7 +30,6 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { CellData, SortableHeader } from './cell-text-data';
-import { formatDuration, formatTime } from '@/lib/formatting';
 import { GearIcon } from '@radix-ui/react-icons';
 import { TooltipWrapper } from '@/components/utils/tooltip-wrapper';
 import { useState } from 'react';
@@ -104,9 +103,8 @@ export const columns: ColumnDef<TestResultData>[] = [
       <SortableHeader column={column} header='Duration' />
     ),
     cell: ({ row }) => {
-      const duration = parseInt(row.getValue('duration_ms'));
-      const value = formatDuration(duration);
-      return <CellData value={value} align='right' />;
+      const duration: string = row.getValue('duration_ms');
+      return <CellData value={duration} align='right' />;
     },
   },
   {
@@ -313,8 +311,7 @@ export const columns: ColumnDef<TestResultData>[] = [
     ),
     cell: ({ row }) => {
       const dateTime: string = row.getValue('started_at');
-      const value = formatTime(dateTime);
-      return <CellData value={value} align='right' />;
+      return <CellData value={dateTime} align='right' />;
     },
   },
   {
@@ -324,8 +321,7 @@ export const columns: ColumnDef<TestResultData>[] = [
     ),
     cell: ({ row }) => {
       const dateTime: string = row.getValue('finished_at');
-      const value = formatTime(dateTime);
-      return <CellData value={value} align='right' />;
+      return <CellData value={dateTime} align='right' />;
     },
   },
 ];

@@ -18,12 +18,13 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart';
+import { ChartData } from '@/types/types';
 
 interface PieProps {
   title: string;
   description?: string;
   config: ChartConfig;
-  data: any[];
+  data: ChartData[];
   footer?: string;
 }
 
