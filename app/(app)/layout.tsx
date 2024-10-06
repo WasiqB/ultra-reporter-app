@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { DetailedHTMLProps, HtmlHTMLAttributes } from 'react';
 import { Footer } from '@/components/home/footer';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 export const metadata: Metadata = {
   title: 'Ultra Reporter',
@@ -25,6 +26,9 @@ const RootLayout = ({
         {children}
         <Footer />
       </body>
+      {process.env.VERCEL_ENV === 'production' && (
+        <GoogleAnalytics gaId='G-CNW9F6PH7P' />
+      )}
     </html>
   );
 };
