@@ -41,3 +41,15 @@ Feel free to reach out for any queries, collaborations, or feedback!
 - **Discord**: [Learn Test Automation](https://dub.sh/lta-community)
 - **YouTube**: [Learn Test Automation with Wasiq Bhamla](https://dub.sh/lta-yt)
 - **Medium**: [Wasiq Bhamla](https://dub.sh/wb-medium)
+
+## 💗 Repo Activity
+
+<a href="https://github.com/WasiqB/ultra-reporter-app/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=wasiqb/ultra-reporter-app" />
+</a>
+
+![Ultra Reporter App Repo activity](https://repobeats.axiom.co/api/embed/40bf4829da597315850c30a8909fcf40a8b5a00c.svg "Repobeats analytics image")
+
+## 📜 License
+
+We are open-source under the GNU Affero General Public License Version 3 (AGPLv3) or any later version. You can [find it here](https://github.com/WasiqB/ultra-reporter-app/blob/main/LICENSE.md).

@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Bug, MoveLeft } from 'lucide-react';
+import { getData } from '@/components/data-table/data';
 
 const LoadingPage = (): JSX.Element => {
   const [progress, setProgress] = useState(0);
@@ -32,7 +33,7 @@ const LoadingPage = (): JSX.Element => {
       setProgress(50);
       const testResult = getTestResults(jsonData);
       setProgress(75);
-      localStorage.setItem('json-data', JSON.stringify(testResult));
+      localStorage.setItem('json-data', JSON.stringify(getData(testResult)));
       setProgress(100);
       router.push('/results');
     } catch (err) {
@@ -57,7 +58,7 @@ Stack: ${err.stack}`);
   };
 
   return (
-    <div className='flex min-h-screen items-center justify-center bg-gray-100'>
+    <div className='flex min-h-screen items-center justify-center bg-background'>
       <Card className='w-[350px]'>
         <CardHeader>
           <CardTitle>Processing XML</CardTitle>
@@ -66,11 +67,11 @@ Stack: ${err.stack}`);
           <Progress value={progress} className='w-full' />
           {error ? (
             <div className='mt-4'>
-              <h3 className='mb-2 font-semibold text-red-600'>Error:</h3>
-              <p className='mb-4 text-sm text-gray-600'>{error}</p>
+              <h3 className='mb-2 font-semibold text-destructive'>Error:</h3>
+              <p className='mb-4 text-sm text-muted-foreground'>{error}</p>
             </div>
           ) : (
-            <p className='mt-4 text-gray-600'>
+            <p className='mt-4 text-muted-foreground'>
               Please wait while we process your XML file...
             </p>
           )}

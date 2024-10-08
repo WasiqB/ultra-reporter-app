@@ -30,7 +30,6 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { CellData, SortableHeader } from './cell-text-data';
-import { formatDuration, formatTime } from '@/lib/formatting';
 import { GearIcon } from '@radix-ui/react-icons';
 import { TooltipWrapper } from '@/components/utils/tooltip-wrapper';
 import { useState } from 'react';
@@ -75,22 +74,29 @@ export const columns: ColumnDef<TestResultData>[] = [
     accessorKey: 'status',
     header: ({ column }) => <SortableHeader column={column} header='Status' />,
     cell: ({ row }) => {
-      const foundStatus = statuses.find(
-        (status) => status.value === row.getValue('status')
-      );
+      const status = row.getValue('status') as string;
+      const foundStatus = statuses.find((s) => s.value === status);
       if (!foundStatus) {
         return null;
       }
       return (
         <div className='flex items-center'>
-          {foundStatus && (
-            <Badge className={foundStatus.badge_style}>
-              <foundStatus.icon
-                className={cn('mr-2 h-4 w-4', foundStatus.label_style)}
-              />
-              {foundStatus.label}
-            </Badge>
-          )}
+          <Badge
+            variant='outline'
+            className={cn('px-2 py-1', {
+              'bg-green-500/20 text-green-700 dark:bg-green-500/30 dark:text-green-300':
+                status === 'pass',
+              'bg-red-500/20 text-red-700 dark:bg-red-500/30 dark:text-red-300':
+                status === 'fail',
+              'bg-yellow-500/20 text-yellow-700 dark:bg-yellow-500/30 dark:text-yellow-300':
+                status === 'skip',
+              'bg-gray-500/20 text-gray-700 dark:bg-gray-500/30 dark:text-gray-300':
+                status === 'ignored',
+            })}
+          >
+            <foundStatus.icon className={cn('mr-2 h-4 w-4')} />
+            {foundStatus.label}
+          </Badge>
         </div>
       );
     },
@@ -104,9 +110,8 @@ export const columns: ColumnDef<TestResultData>[] = [
       <SortableHeader column={column} header='Duration' />
     ),
     cell: ({ row }) => {
-      const duration = parseInt(row.getValue('duration_ms'));
-      const value = formatDuration(duration);
-      return <CellData value={value} align='right' />;
+      const duration: string = row.getValue('duration_ms');
+      return <CellData value={duration} align='right' />;
     },
   },
   {
@@ -124,9 +129,9 @@ export const columns: ColumnDef<TestResultData>[] = [
         <TooltipWrapper text={value ? 'Configuration method' : 'Test method'}>
           <div className='flex max-w-10 justify-center'>
             {value ? (
-              <GearIcon className='h-4 w-4 text-orange-600' />
+              <GearIcon className='h-4 w-4 text-orange-600 dark:fill-orange-600' />
             ) : (
-              <TestTube className='h-4 w-4 text-blue-600' />
+              <TestTube className='h-4 w-4 text-blue-600 dark:fill-blue-600' />
             )}
           </div>
         </TooltipWrapper>
@@ -149,9 +154,9 @@ export const columns: ColumnDef<TestResultData>[] = [
           {value && value.length > 0 && (
             <TooltipWrapper text={value.sort().join(', ')}>
               {value.length > 1 ? (
-                <Tags className='h-6 w-6 text-blue-600' />
+                <Tags className='h-6 w-6 text-blue-600 dark:fill-blue-600' />
               ) : (
-                <Tag className='h-4 w-4 text-blue-600' />
+                <Tag className='h-4 w-4 text-blue-600 dark:fill-blue-600' />
               )}
             </TooltipWrapper>
           )}
@@ -181,7 +186,7 @@ export const columns: ColumnDef<TestResultData>[] = [
                   onClick={() => setIsOpen(true)}
                   className='w-15'
                 >
-                  <CircleAlert className='h-4 w-4 text-red-500' />
+                  <CircleAlert className='h-4 w-4 text-red-500 dark:fill-red-500' />
                 </Button>
               </DialogTrigger>
               <DialogContent className='flex flex-col sm:max-h-[90vh] sm:max-w-[90vw]'>
@@ -313,8 +318,7 @@ export const columns: ColumnDef<TestResultData>[] = [
     ),
     cell: ({ row }) => {
       const dateTime: string = row.getValue('started_at');
-      const value = formatTime(dateTime);
-      return <CellData value={value} align='right' />;
+      return <CellData value={dateTime} align='right' />;
     },
   },
   {
@@ -324,8 +328,7 @@ export const columns: ColumnDef<TestResultData>[] = [
     ),
     cell: ({ row }) => {
       const dateTime: string = row.getValue('finished_at');
-      const value = formatTime(dateTime);
-      return <CellData value={value} align='right' />;
+      return <CellData value={dateTime} align='right' />;
     },
   },
 ];

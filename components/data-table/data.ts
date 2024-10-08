@@ -1,7 +1,17 @@
-import { TestException, TestLog, TestResult } from '@/types/types';
+import {
+  ChartData,
+  FormattedData,
+  TestException,
+  TestLog,
+  TestResult,
+} from '@/types/types';
 import { AlertTriangle, Check, X } from 'lucide-react';
+import { format } from 'date-fns';
+import { formatDateTime, round } from '@/lib/formatting';
+import { formatDuration } from '../../lib/formatting';
 
 export type TestResultData = {
+  run_date: string;
   suite_name: string;
   test_name: string;
   class_name: string;
@@ -14,7 +24,7 @@ export type TestResultData = {
   attachment?: TestLog;
   started_at: string;
   finished_at: string;
-  duration_ms: number;
+  duration_ms: string;
 };
 
 export const getData = (data: TestResult): TestResultData[] => {
@@ -25,6 +35,7 @@ export const getData = (data: TestResult): TestResultData[] => {
       for (const cls of test.test_classes) {
         for (const method of cls.test_methods) {
           result.push({
+            run_date: formatDateTime(method.started_at).date,
             suite_name: suite.name,
             test_name: test.name,
             class_name: cls.name?.substring(cls.name.lastIndexOf('.') + 1),
@@ -35,9 +46,9 @@ export const getData = (data: TestResult): TestResultData[] => {
             status: method.status.toLowerCase(),
             exception: method.exception,
             attachment: method.log,
-            started_at: method.started_at,
-            finished_at: method.finished_at,
-            duration_ms: method.duration_ms,
+            started_at: formatDateTime(method.started_at).time,
+            finished_at: formatDateTime(method.finished_at).time,
+            duration_ms: formatDuration(method.duration_ms),
           });
         }
       }
@@ -69,3 +80,62 @@ export const statuses = [
     label_style: 'text-yellow-500',
   },
 ];
+
+export const getFormattedData = (data: TestResultData[]): FormattedData => {
+  const statusCounts = {
+    pass: 0,
+    fail: 0,
+    skip: 0,
+    ignored: 0,
+  };
+
+  data.forEach((item) => {
+    if (item.status in statusCounts) {
+      statusCounts[item.status as keyof typeof statusCounts]++;
+    }
+  });
+
+  const totalTests = data.length;
+  const { pass: passed, fail: failed, skip: skipped, ignored } = statusCounts;
+
+  const calculatePercentage = (count: number): number =>
+    round((count / totalTests) * 100);
+
+  const chartCountData: ChartData[] = [
+    { status: 'pass', fill: 'var(--color-pass)', total: passed },
+    { status: 'fail', fill: 'var(--color-fail)', total: failed },
+    { status: 'skip', fill: 'var(--color-skip)', total: skipped },
+  ];
+
+  const chartPieData: ChartData[] = [
+    {
+      status: 'pass',
+      total: calculatePercentage(passed),
+      fill: 'var(--color-pass)',
+    },
+    {
+      status: 'fail',
+      total: calculatePercentage(failed),
+      fill: 'var(--color-fail)',
+    },
+    {
+      status: 'skip',
+      total: calculatePercentage(skipped),
+      fill: 'var(--color-skip)',
+    },
+  ];
+
+  const date =
+    data.length > 0 ? format(data[0].run_date, 'MMMM d, yyyy') : 'N/A';
+
+  return {
+    passed,
+    failed,
+    skipped,
+    ignored,
+    date,
+    totalTests,
+    chartCountData,
+    chartPieData,
+  };
+};

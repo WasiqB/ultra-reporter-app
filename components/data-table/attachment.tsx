@@ -58,7 +58,7 @@ export function AttachmentDialog({
             </div>
           ) : (
             <div className='max-h-[60vh] overflow-y-auto'>
-              <p className='whitespace-pre-wrap text-lg text-gray-800'>
+              <p className='whitespace-pre-wrap text-lg text-foreground'>
                 {content}
               </p>
             </div>

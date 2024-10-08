@@ -58,7 +58,7 @@ export const FileUpload = (): JSX.Element => {
     <form onSubmit={handleSubmit} className='w-full max-w-md'>
       <div
         // eslint-disable-next-line @stylistic/js/max-len
-        className='cursor-pointer rounded-lg border-2 border-dashed border-gray-300 p-8 text-center transition-all hover:border-gray-500 hover:text-gray-500'
+        className='cursor-pointer rounded-lg border-2 border-dashed border-input p-8 text-center transition-all hover:border-primary hover:text-primary'
         onDragOver={handleDragOver}
         onDrop={handleDrop}
       >
@@ -71,16 +71,12 @@ export const FileUpload = (): JSX.Element => {
         />
         <Label htmlFor='file-upload' className='cursor-pointer'>
           <UploadIcon className='mx-auto mb-4 h-12 w-12' />
-          <p className='text-gray-600'>
+          <p className='text-muted-foreground'>
             {file ? file.name : 'Click to select or drag and drop an XML file'}
           </p>
         </Label>
       </div>
-      <Button
-        type='submit'
-        className='mt-4 w-full rounded px-4 py-2 font-bold'
-        disabled={!file || loading}
-      >
+      <Button type='submit' className='mt-4 w-full' disabled={!file || loading}>
         {loading ? 'Generating your Report...' : 'Generate Report'}
       </Button>
     </form>

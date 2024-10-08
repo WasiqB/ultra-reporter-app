@@ -1,7 +1,8 @@
 'use client';
 
+import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { TestResult } from '@/types/types';
+import { FormattedData } from '@/types/types';
 import {
   ColumnFiltersState,
   SortingState,
@@ -15,13 +16,14 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { Skeleton } from '@/components/ui/skeleton';
 import { ChartConfig } from '@/components/ui/chart';
 import DoughNutComponent from '@/components/charts/dough-nut-chart';
-import { getData, TestResultData } from '@/components/data-table/data';
+import { TestResultData, getFormattedData } from '@/components/data-table/data';
 import { columns } from '@/components/data-table/columns';
 import { PieComponent } from '@/components/charts/pie-chart';
-import { formatDate, round } from '@/lib/formatting';
 import { NavBar } from '@/components/home/nav-bar';
+import { cn } from '@/lib/utils';
 
 const chartConfig: ChartConfig = {
   total: {
@@ -50,140 +52,157 @@ const ResultsPage = (): JSX.Element => {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [result, setResult] = useState<TestResultData[]>([]);
-  const [passed, setPassed] = useState(0);
-  const [failed, setFailed] = useState(0);
-  const [skipped, setSkipped] = useState(0);
-  const [date, setDate] = useState('');
+  const [formattedData, setFormattedData] = useState<FormattedData>();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const resultData = localStorage.getItem('json-data') as string;
-    let data: TestResultData[];
     if (resultData) {
-      const testResult = JSON.parse(resultData) as TestResult;
-      data = getData(testResult);
-      setResult(data);
-      setDate(formatDate(data[0].started_at));
-      setPassed(data.filter((d) => d.status === 'pass' && !d.is_config).length);
-      setFailed(data.filter((d) => d.status === 'fail' && !d.is_config).length);
-      setSkipped(
-        data.filter((d) => d.status === 'skip' && !d.is_config).length
-      );
+      const testResult: TestResultData[] = JSON.parse(resultData);
+      setResult(testResult);
+      setFormattedData(getFormattedData(testResult));
     }
+    setIsLoading(false);
   }, []);
 
-  const totalTests = passed + failed + skipped;
-
-  const chartCountData = [
-    { status: 'pass', total: passed, fill: 'var(--color-pass)' },
-    { status: 'fail', total: failed, fill: 'var(--color-fail)' },
-    { status: 'skip', total: skipped, fill: 'var(--color-skip)' },
-  ];
-
-  const chartPieData = [
-    {
-      status: 'pass',
-      total: round((passed / totalTests) * 100),
-      fill: 'var(--color-pass)',
-    },
-    {
-      status: 'fail',
-      total: round((failed / totalTests) * 100),
-      fill: 'var(--color-fail)',
-    },
-    {
-      status: 'skip',
-      total: round((skipped / totalTests) * 100),
-      fill: 'var(--color-skip)',
-    },
-  ];
+  const {
+    passed,
+    failed,
+    skipped,
+    date,
+    totalTests,
+    chartCountData,
+    chartPieData,
+  } = formattedData || {};
 
   return (
-    <div className='flex min-h-screen flex-col'>
+    <div className='flex min-h-screen flex-col bg-background text-foreground'>
       <NavBar
-        suffix={`for ${date}`}
+        suffix={`for ${isLoading ? '...' : date}`}
         cta='Generate new Report'
-        exportReport='html'
+        showFeedback
       />
       <main className='flex-grow pt-16'>
-        <div id='content'>
-          <section className='container mx-auto space-y-6 p-4'>
-            <div className='grid grid-cols-1 gap-6'>
-              <Card>
-                <CardHeader>
-                  <CardTitle className='text-xl'>Test Statistics</CardTitle>
-                  <CardDescription>
-                    Overall Test execution statistics
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className='grid grid-cols-2 gap-4 md:grid-cols-4'>
-                    <Card className='rounded-lg bg-blue-200 p-4'>
-                      <CardDescription>Total Tests</CardDescription>
-                      <CardTitle className='text-blue-700'>
-                        {passed + failed + skipped}
-                      </CardTitle>
-                    </Card>
-                    <Card className='rounded-lg bg-green-200 p-4'>
-                      <CardDescription>Passed</CardDescription>
-                      <CardTitle className='text-green-700'>{passed}</CardTitle>
-                    </Card>
-                    <Card className='rounded-lg bg-red-200 p-4'>
-                      <CardDescription>Failed</CardDescription>
-                      <CardTitle className='text-red-700'>{failed}</CardTitle>
-                    </Card>
-                    <Card className='rounded-lg bg-yellow-200 p-4'>
-                      <CardDescription>Skipped</CardDescription>
-                      <CardTitle className='text-yellow-700'>
-                        {skipped}
-                      </CardTitle>
-                    </Card>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-            <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
-              <DoughNutComponent
-                title='Test Summary Counts'
-                description='Status based distribution of Test results'
-                config={chartConfig}
-                data={chartCountData}
-                totalValue={totalTests}
-                valueLabel='Test cases'
-              />
-              <PieComponent
-                title='Test Summary %'
-                description='Status based % distribution of Test results'
-                config={chartConfig}
-                data={chartPieData}
-              />
-            </div>
-            {result ? (
-              <Card>
-                <CardHeader>
-                  <CardTitle className='text-xl'>Test Details</CardTitle>
-                  <CardDescription>
-                    List of all the executed test cases
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <DataTable
-                    columns={columns}
-                    data={result}
-                    filterColumn='method_name'
-                    columnFilters={columnFilters}
-                    columnVisibility={columnVisibility}
-                    sorting={sorting}
-                    setColumnFilters={setColumnFilters}
-                    setColumnVisibility={setColumnVisibility}
-                    setSorting={setSorting}
-                  />
-                </CardContent>
-              </Card>
+        <section className='container mx-auto space-y-6 p-4'>
+          <Card className='bg-card text-card-foreground'>
+            <CardHeader>
+              <CardTitle className='text-xl'>Test Statistics</CardTitle>
+              <CardDescription>
+                Overall Test execution statistics
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4'>
+                {[
+                  { label: 'Total Tests', color: 'blue' },
+                  { label: 'Passed', color: 'green' },
+                  { label: 'Failed', color: 'red' },
+                  { label: 'Skipped', color: 'yellow' },
+                ].map((item, index) => (
+                  <Card
+                    key={item.label}
+                    className={cn('rounded-lg p-4', {
+                      'bg-blue-100 dark:bg-blue-900/20': item.color === 'blue',
+                      'bg-green-100 dark:bg-green-900/20':
+                        item.color === 'green',
+                      'bg-red-100 dark:bg-red-900/20': item.color === 'red',
+                      'bg-yellow-100 dark:bg-yellow-900/20':
+                        item.color === 'yellow',
+                    })}
+                  >
+                    {isLoading ? (
+                      <Skeleton className='h-16 w-full' />
+                    ) : (
+                      <>
+                        <CardTitle
+                          className={cn('mb-2 text-3xl font-bold', {
+                            'text-blue-600 dark:text-blue-300':
+                              item.color === 'blue',
+                            'text-green-600 dark:text-green-300':
+                              item.color === 'green',
+                            'text-red-600 dark:text-red-300':
+                              item.color === 'red',
+                            'text-yellow-600 dark:text-yellow-300':
+                              item.color === 'yellow',
+                          })}
+                        >
+                          {[totalTests, passed, failed, skipped][index]}
+                        </CardTitle>
+                        <CardDescription
+                          className={cn('font-medium', {
+                            'text-blue-800 dark:text-blue-200':
+                              item.color === 'blue',
+                            'text-green-800 dark:text-green-200':
+                              item.color === 'green',
+                            'text-red-800 dark:text-red-200':
+                              item.color === 'red',
+                            'text-yellow-800 dark:text-yellow-200':
+                              item.color === 'yellow',
+                          })}
+                        >
+                          {item.label}
+                        </CardDescription>
+                      </>
+                    )}
+                  </Card>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
+            {isLoading ? (
+              <>
+                <Skeleton className='h-[300px] w-full' />
+                <Skeleton className='h-[300px] w-full' />
+              </>
             ) : (
-              <p className='text-center'>No data available</p>
+              <>
+                <DoughNutComponent
+                  title='Test Summary Counts'
+                  description='Status based distribution of Test results'
+                  config={chartConfig}
+                  data={chartCountData || []}
+                  totalValue={totalTests || 0}
+                  valueLabel='Test cases'
+                />
+                <PieComponent
+                  title='Test Summary %'
+                  description='Status based % distribution of Test results'
+                  config={chartConfig}
+                  data={chartPieData || []}
+                />
+              </>
             )}
-          </section>
-        </div>
+          </div>
+          <Card>
+            <CardHeader>
+              <CardTitle className='text-xl'>Test Details</CardTitle>
+              <CardDescription>
+                List of all the executed test cases
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {isLoading ? (
+                <Skeleton className='h-[400px] w-full' />
+              ) : result ? (
+                <DataTable
+                  columns={columns}
+                  data={result}
+                  filterColumn='method_name'
+                  columnFilters={columnFilters}
+                  columnVisibility={columnVisibility}
+                  sorting={sorting}
+                  setColumnFilters={setColumnFilters}
+                  setColumnVisibility={setColumnVisibility}
+                  setSorting={setSorting}
+                />
+              ) : (
+                <p className='text-center'>No data available</p>
+              )}
+            </CardContent>
+          </Card>
+        </section>
       </main>
     </div>
   );
