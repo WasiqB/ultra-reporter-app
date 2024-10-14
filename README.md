@@ -1,6 +1,6 @@
 # 📊 Ultra-Reporter App
 
-**Ultra-Reporter** is your go-to tool for transforming your TestNG (Maven, Java) test results into stunning reports.
+[Ultra-Reporter](https://ultra-reporter-app.vercel.app/) is your go-to tool for transforming your TestNG (Maven, Java) test results into stunning reports.
 
 Built on the power of Next.js and Tailwind CSS, this reporter takes your raw test results from TestNG and presents it in a beautiful, easy-to-digest format. Simplify your test reporting with just a one click!
 
@@ -44,9 +44,7 @@ Feel free to reach out for any queries, collaborations, or feedback!
 
 ## 💗 Repo Activity
 
-<a href="https://github.com/WasiqB/ultra-reporter-app/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=wasiqb/ultra-reporter-app" />
-</a>
+[![Repo activity](https://contrib.rocks/image?repo=wasiqb/ultra-reporter-app)](https://github.com/WasiqB/ultra-reporter-app/graphs/contributors)
 
 ![Ultra Reporter App Repo activity](https://repobeats.axiom.co/api/embed/40bf4829da597315850c30a8909fcf40a8b5a00c.svg "Repobeats analytics image")
 

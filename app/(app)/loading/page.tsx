@@ -1,10 +1,8 @@
 /* eslint-disable @stylistic/js/max-len */
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { convertToJson, getTestResults } from '@/lib/xml-parser';
-import { Progress } from '@/components/ui/progress';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import {
   Card,
   CardContent,
@@ -13,48 +11,65 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
 import { Bug, MoveLeft } from 'lucide-react';
-import { getData } from '@/components/data-table/data';
+import { useUser } from '@/lib/use-user';
 
 const LoadingPage = (): JSX.Element => {
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const { user } = useUser();
 
   useEffect(() => {
-    const xmlContent = localStorage.getItem('xml-data');
-    try {
-      setProgress(0);
-      if (!xmlContent) {
-        throw new Error('No XML data found in the file.');
-      }
-      setProgress(25);
-      const jsonData = convertToJson(xmlContent);
-      setProgress(50);
-      const testResult = getTestResults(jsonData);
-      setProgress(75);
-      localStorage.setItem('json-data', JSON.stringify(getData(testResult)));
-      setProgress(100);
-      router.push('/results');
-    } catch (err) {
-      if (err instanceof Error) {
-        setError(`${err.message}`);
-        if (process.env.VERCEL_ENV !== 'production') {
-          console.error(`Message: ${err.message}
-Stack: ${err.stack}`);
+    const processData = async (): Promise<void> => {
+      try {
+        if (!user) {
+          throw new Error('No active session');
+        }
+
+        const sessionId = sessionStorage.getItem('reportSessionId');
+        if (!sessionId) {
+          throw new Error('No session ID found');
+        }
+
+        const response = await fetch(
+          `/api/get-processed-data?sessionId=${sessionId}`
+        );
+        if (!response.ok) {
+          throw new Error('Failed to fetch processed data');
+        }
+
+        const processedData = await response.json();
+
+        // Update progress as data is processed
+        setProgress(25);
+        setProgress(100);
+
+        // Store the final processed data in sessionStorage
+        sessionStorage.setItem('reportData', JSON.stringify(processedData));
+
+        router.push('/results');
+      } catch (err) {
+        if (err instanceof Error) {
+          setError(`${err.message}`);
+          if (process.env.VERCEL_ENV !== 'production') {
+            console.error(`Message: ${err.message}\nStack: ${err.stack}`);
+          }
         }
       }
-    }
+    };
+
+    processData();
   }, [router]);
 
   const handleBack = (): void => {
-    router.push('/');
+    window.location.href = '/';
   };
 
   const handleRaiseIssue = (): void => {
-    router.push(
-      'https://github.com/WasiqB/ultra-reporter-app/issues/new?assignees=&labels=bug&projects=&template=bug.yml&title=%F0%9F%90%9B+New+Bug:'
-    );
+    window.location.href =
+      'https://github.com/WasiqB/ultra-reporter-app/issues/new?assignees=&labels=bug&projects=&template=bug.yml&title=%F0%9F%90%9B+New+Bug:';
   };
 
   return (

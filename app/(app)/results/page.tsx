@@ -24,6 +24,7 @@ import { columns } from '@/components/data-table/columns';
 import { PieComponent } from '@/components/charts/pie-chart';
 import { NavBar } from '@/components/home/nav-bar';
 import { cn } from '@/lib/utils';
+import { useRouter } from 'next/navigation';
 
 const chartConfig: ChartConfig = {
   total: {
@@ -54,16 +55,19 @@ const ResultsPage = (): JSX.Element => {
   const [result, setResult] = useState<TestResultData[]>([]);
   const [formattedData, setFormattedData] = useState<FormattedData>();
   const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
-    const resultData = localStorage.getItem('json-data') as string;
-    if (resultData) {
-      const testResult: TestResultData[] = JSON.parse(resultData);
-      setResult(testResult);
-      setFormattedData(getFormattedData(testResult));
+    const reportData = sessionStorage.getItem('reportData');
+    if (reportData) {
+      const parsedData = JSON.parse(reportData);
+      setResult(parsedData);
+      setFormattedData(getFormattedData(parsedData));
+    } else {
+      router.push('/');
     }
     setIsLoading(false);
-  }, []);
+  }, [router]);
 
   const {
     passed,

@@ -2,15 +2,17 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Input } from '../ui/input';
+import { Label } from '../ui/label';
 import { UploadIcon } from 'lucide-react';
+import { Button } from '../ui/button';
+import { useAnonymousSession } from '@/hooks/use-anonymous-session';
 
-export const FileUpload = (): JSX.Element => {
+export function FileUpload(): JSX.Element {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const session = useAnonymousSession();
 
   const handleFileChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -35,22 +37,45 @@ export const FileUpload = (): JSX.Element => {
     event: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     event.preventDefault();
-    if (file) {
-      setLoading(true);
-      try {
-        const reader = new FileReader();
-        reader.onload = async (e) => {
-          const xmlContent = e.target?.result as string;
-          localStorage.setItem('xml-data', xmlContent);
-          router.push('/loading');
-        };
-        reader.readAsText(file);
-      } catch (error) {
-        console.error('Error reading file:', error);
-        alert('Error reading file');
-      } finally {
-        setLoading(false);
+    if (!file || !session) return;
+
+    setLoading(true);
+    try {
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        const xmlContent = e.target?.result as string;
+
+        console.log({ session, xmlContent });
+
+        const response = await fetch('/api/process-file', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${session.access_token}`,
+          },
+          body: JSON.stringify({ content: xmlContent }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to process XML');
+        }
+
+        const { sessionId } = await response.json();
+
+        sessionStorage.setItem('reportSessionId', sessionId);
+
+        router.push('/loading');
+      };
+      reader.readAsText(file);
+    } catch (error) {
+      console.error('Error processing file:', error);
+      if (error instanceof Error) {
+        alert(error.message);
+      } else {
+        alert('An unknown error occurred');
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -76,9 +101,9 @@ export const FileUpload = (): JSX.Element => {
           </p>
         </Label>
       </div>
-      <Button type='submit' className='mt-4 w-full' disabled={!file || loading}>
+      <Button type='submit' className='mt-4 w-full' disabled={loading || !file}>
         {loading ? 'Generating your Report...' : 'Generate Report'}
       </Button>
     </form>
   );
-};
+}
