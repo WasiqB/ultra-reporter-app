@@ -1,6 +1,33 @@
 import { parse, format } from 'date-fns';
 import { DateTime } from 'luxon';
 
+export const toDuration = (duration: string): number => {
+  const splitTime = duration.split(' ');
+  const time = parseFloat(splitTime[0]);
+  const type = splitTime[1];
+  const SECOND = 1000;
+  const MINUTE = 60 * SECOND;
+  const HOUR = 60 * MINUTE;
+  let result = time;
+
+  switch (type) {
+    case 'm':
+      result = (result * MINUTE) / SECOND;
+      break;
+    case 'h':
+      result = (result * HOUR) / SECOND;
+      break;
+    case 'ms':
+      result /= SECOND;
+      break;
+    case 's':
+    default:
+      break;
+  }
+
+  return result;
+};
+
 export const formatDuration = (duration: number): string => {
   const SECOND = 1000;
   const MINUTE = 60 * SECOND;

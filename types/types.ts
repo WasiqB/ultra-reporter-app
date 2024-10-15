@@ -81,6 +81,11 @@ type ChartData = {
   fill: string;
 };
 
+type AreaChartData = {
+  property: string;
+  value: number;
+};
+
 type FormattedData = {
   passed: number;
   failed: number;
@@ -90,6 +95,7 @@ type FormattedData = {
   totalTests: number;
   chartCountData: ChartData[];
   chartPieData: ChartData[];
+  areaChartData: AreaChartData[];
 };
 
 export type {
@@ -102,5 +108,6 @@ export type {
   TestLog,
   TestStatus,
   ChartData,
+  AreaChartData,
   FormattedData,
 };
