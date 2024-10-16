@@ -4,7 +4,7 @@ import { RainbowButton } from '@/components/ui/rainbow-button';
 
 export const OpenSource = (): JSX.Element => {
   return (
-    <section className='mb-10 mt-10 text-center'>
+    <section className='mb-10 mt-16 text-center'>
       <h2 className='mb-4 text-3xl font-bold text-foreground'>
         We are proudly Open Source ❤️
       </h2>
