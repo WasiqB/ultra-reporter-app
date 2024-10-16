@@ -1,4 +1,13 @@
 
+
+## 0.3.0 (2024-10-15)
+
+#### :rocket: New Feature
+* [#49](https://github.com/WasiqB/ultra-reporter-app/pull/49) feat: :sparkles: added theme toggle for light and dark mode ([@WasiqB](https://github.com/WasiqB))
+
+#### Committers: 1
+- Wasiq Bhamla ([@WasiqB](https://github.com/WasiqB))
+
 ## 0.2.0 (2024-10-06)
 
 #### :rocket: New Feature
