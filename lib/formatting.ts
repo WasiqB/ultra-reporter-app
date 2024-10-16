@@ -52,32 +52,35 @@ export const formatDateTime = (
     const systemZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
     const timezoneSplit = dateTimeString.split(' ');
-    let timezone = systemZone;
     let adjustedDateTimeString = dateTimeString;
 
     if (timezoneSplit.length > 1) {
-      timezone = timezoneSplit.pop() || systemZone;
+      timezoneSplit.pop();
       adjustedDateTimeString = timezoneSplit.join(' ');
     }
 
-    let dateTime = DateTime.fromISO(adjustedDateTimeString, { zone: timezone });
+    let dateTime = DateTime.fromISO(adjustedDateTimeString, {
+      zone: systemZone,
+    });
 
     if (!dateTime.isValid) {
       dateTime = DateTime.fromRFC2822(adjustedDateTimeString, {
-        zone: timezone,
+        zone: systemZone,
       });
     }
 
     if (!dateTime.isValid) {
-      dateTime = DateTime.fromHTTP(adjustedDateTimeString, { zone: timezone });
+      dateTime = DateTime.fromHTTP(adjustedDateTimeString, {
+        zone: systemZone,
+      });
     }
 
     if (!dateTime.isValid) {
       throw new Error('Invalid date-time format');
     }
 
-    const formattedDate = dateTime.toUTC().toFormat('yyyy-MM-dd');
-    const formattedTime = dateTime.toUTC().toFormat('hh:mm:ss a');
+    const formattedDate = dateTime.toFormat('yyyy-MM-dd');
+    const formattedTime = dateTime.toFormat('hh:mm:ss a');
 
     return { date: formattedDate, time: formattedTime };
   } catch (error) {

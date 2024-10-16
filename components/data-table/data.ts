@@ -128,7 +128,7 @@ export const getFormattedData = (data: TestResultData[]): FormattedData => {
 
   const areaChartData: AreaChartData[] = data.map((r) => {
     return {
-      property: r.method_name,
+      property: `${r.class_name} / ${r.method_name}`,
       value: toDuration(r.duration_ms),
     };
   });

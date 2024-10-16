@@ -41,23 +41,24 @@ export function AreaChartComponent({
         <CardTitle className='text-xl'>{title}</CardTitle>
         {description && <CardDescription>{description}</CardDescription>}
       </CardHeader>
-      <CardContent className='flex-1 pb-0'>
+      <CardContent className='flex-1 pb-5'>
         <ChartContainer config={config}>
           <AreaChart
             accessibilityLayer
             data={data}
             margin={{
-              left: 20,
-              right: 12,
+              left: 10,
+              right: 10,
             }}
           >
-            <CartesianGrid vertical={false} />
+            <CartesianGrid vertical={true} />
             <XAxis
               dataKey='property'
               tickLine={false}
               axisLine={false}
               tickMargin={5}
               tickFormatter={(value) => value.slice(0, 5)}
+              hide
             />
             <ChartTooltip
               cursor={false}
@@ -65,7 +66,7 @@ export function AreaChartComponent({
             />
             <Area
               dataKey='value'
-              type='natural'
+              type='linear'
               fill='var(--color-property)'
               fillOpacity={0.4}
               stroke='var(--color-property)'
