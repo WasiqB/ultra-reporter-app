@@ -1,6 +1,6 @@
 # 📊 Ultra-Reporter App
 
-**Ultra-Reporter** is your go-to tool for transforming your TestNG (Maven, Java) test results into stunning reports.
+[Ultra-Reporter](https://ultra-reporter-app.vercel.app/) is your go-to tool for transforming your TestNG (Maven, Java) test results into stunning reports.
 
 Built on the power of Next.js and Tailwind CSS, this reporter takes your raw test results from TestNG and presents it in a beautiful, easy-to-digest format. Simplify your test reporting with just a one click!
 
@@ -8,8 +8,15 @@ Built on the power of Next.js and Tailwind CSS, this reporter takes your raw tes
 
 ![Report page 1](/public/report-1.png)
 ![Report page 2](/public/report-2.png)
+![Report page 3](/public/report-3.png)
 
 ## 🚀 Quick start
+
+Checkout this demo video to see how to use Ultra-Reporter:
+
+[![Ultra Reporter App Demo Video](https://img.youtube.com/vi/l2pk7LAq50I/0.jpg)](https://www.youtube.com/watch?v=l2pk7LAq50I)
+
+Following are the steps to get started with Ultra-Reporter:
 
 - Run your TestNG tests using it's default reporter listeners
   - ![Step 1](/public/step-1.png)
@@ -24,7 +31,8 @@ Ultra-Reporter leverages cutting-edge technologies to provide fast, efficient, a
 - **[Next.js 14](https://nextjs.org/)**: Dynamic, server-rendered React apps.
 - **[TypeScript](https://www.typescriptlang.org/)**: Strongly typed for better reliability and scalability.
 - **[Tailwind CSS](https://tailwindcss.com/)**: Beautiful, responsive design without the hassle.
-- **[Shadcn/UI](https://ui.shadcn.com/)** & **[Daisy UI](https://daisyui.com/)**: Sleek UI components for a polished user experience.
+- **[Shadcn/UI](https://ui.shadcn.com/)**, [Magic UI](https://magicui.design/) & **[Daisy UI](https://daisyui.com/)**: Sleek UI components for a polished user experience.
+- **[Vercel](https://vercel.com/)**: Next.js is deployed on Vercel, a platform for static websites and serverless functions.
 
 ## ⏱️ What's Next?
 
@@ -44,9 +52,7 @@ Feel free to reach out for any queries, collaborations, or feedback!
 
 ## 💗 Repo Activity
 
-<a href="https://github.com/WasiqB/ultra-reporter-app/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=wasiqb/ultra-reporter-app" />
-</a>
+[![Repo contributors](https://contrib.rocks/image?repo=wasiqb/ultra-reporter-app)](https://github.com/WasiqB/ultra-reporter-app/graphs/contributors)
 
 ![Ultra Reporter App Repo activity](https://repobeats.axiom.co/api/embed/40bf4829da597315850c30a8909fcf40a8b5a00c.svg "Repobeats analytics image")
 

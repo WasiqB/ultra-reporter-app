@@ -1,4 +1,5 @@
 import {
+  AreaChartData,
   ChartData,
   FormattedData,
   TestException,
@@ -7,7 +8,7 @@ import {
 } from '@/types/types';
 import { AlertTriangle, Check, X } from 'lucide-react';
 import { format } from 'date-fns';
-import { formatDateTime, round } from '@/lib/formatting';
+import { formatDateTime, round, toDuration } from '@/lib/formatting';
 import { formatDuration } from '../../lib/formatting';
 
 export type TestResultData = {
@@ -125,6 +126,13 @@ export const getFormattedData = (data: TestResultData[]): FormattedData => {
     },
   ];
 
+  const areaChartData: AreaChartData[] = data.map((r) => {
+    return {
+      property: `${r.class_name} / ${r.method_name}`,
+      value: toDuration(r.duration_ms),
+    };
+  });
+
   const date =
     data.length > 0 ? format(data[0].run_date, 'MMMM d, yyyy') : 'N/A';
 
@@ -137,5 +145,6 @@ export const getFormattedData = (data: TestResultData[]): FormattedData => {
     totalTests,
     chartCountData,
     chartPieData,
+    areaChartData,
   };
 };

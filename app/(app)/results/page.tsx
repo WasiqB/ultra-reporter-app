@@ -24,6 +24,7 @@ import { columns } from '@/components/data-table/columns';
 import { PieComponent } from '@/components/charts/pie-chart';
 import { NavBar } from '@/components/home/nav-bar';
 import { cn } from '@/lib/utils';
+import { AreaChartComponent } from '@/components/charts/area-chart';
 
 const chartConfig: ChartConfig = {
   total: {
@@ -44,6 +45,13 @@ const chartConfig: ChartConfig = {
   ignored: {
     label: 'Ignored',
     color: 'hsl(var(--ignored))',
+  },
+};
+
+const barConfig: ChartConfig = {
+  property: {
+    label: 'Method',
+    color: 'hsl(var(--failed))',
   },
 };
 
@@ -73,6 +81,7 @@ const ResultsPage = (): JSX.Element => {
     totalTests,
     chartCountData,
     chartPieData,
+    areaChartData,
   } = formattedData || {};
 
   return (
@@ -171,6 +180,22 @@ const ResultsPage = (): JSX.Element => {
                   description='Status based % distribution of Test results'
                   config={chartConfig}
                   data={chartPieData || []}
+                />
+              </>
+            )}
+          </div>
+          <div className='grid grid-cols-1 gap-6'>
+            {isLoading ? (
+              <>
+                <Skeleton className='h-[300px] w-full' />
+              </>
+            ) : (
+              <>
+                <AreaChartComponent
+                  title='Test Execution Trends (in seconds)'
+                  description='Displays the test execution time trends'
+                  config={barConfig}
+                  data={areaChartData || []}
                 />
               </>
             )}

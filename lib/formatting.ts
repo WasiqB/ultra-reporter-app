@@ -1,6 +1,33 @@
 import { parse, format } from 'date-fns';
 import { DateTime } from 'luxon';
 
+export const toDuration = (duration: string): number => {
+  const splitTime = duration.split(' ');
+  const time = parseFloat(splitTime[0]);
+  const type = splitTime[1];
+  const SECOND = 1000;
+  const MINUTE = 60 * SECOND;
+  const HOUR = 60 * MINUTE;
+  let result = time;
+
+  switch (type) {
+    case 'm':
+      result = (result * MINUTE) / SECOND;
+      break;
+    case 'h':
+      result = (result * HOUR) / SECOND;
+      break;
+    case 'ms':
+      result /= SECOND;
+      break;
+    case 's':
+    default:
+      break;
+  }
+
+  return result;
+};
+
 export const formatDuration = (duration: number): string => {
   const SECOND = 1000;
   const MINUTE = 60 * SECOND;
@@ -25,32 +52,35 @@ export const formatDateTime = (
     const systemZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
     const timezoneSplit = dateTimeString.split(' ');
-    let timezone = systemZone;
     let adjustedDateTimeString = dateTimeString;
 
     if (timezoneSplit.length > 1) {
-      timezone = timezoneSplit.pop() || systemZone;
+      timezoneSplit.pop();
       adjustedDateTimeString = timezoneSplit.join(' ');
     }
 
-    let dateTime = DateTime.fromISO(adjustedDateTimeString, { zone: timezone });
+    let dateTime = DateTime.fromISO(adjustedDateTimeString, {
+      zone: systemZone,
+    });
 
     if (!dateTime.isValid) {
       dateTime = DateTime.fromRFC2822(adjustedDateTimeString, {
-        zone: timezone,
+        zone: systemZone,
       });
     }
 
     if (!dateTime.isValid) {
-      dateTime = DateTime.fromHTTP(adjustedDateTimeString, { zone: timezone });
+      dateTime = DateTime.fromHTTP(adjustedDateTimeString, {
+        zone: systemZone,
+      });
     }
 
     if (!dateTime.isValid) {
       throw new Error('Invalid date-time format');
     }
 
-    const formattedDate = dateTime.toUTC().toFormat('yyyy-MM-dd');
-    const formattedTime = dateTime.toUTC().toFormat('hh:mm:ss a');
+    const formattedDate = dateTime.toFormat('yyyy-MM-dd');
+    const formattedTime = dateTime.toFormat('hh:mm:ss a');
 
     return { date: formattedDate, time: formattedTime };
   } catch (error) {

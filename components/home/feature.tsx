@@ -4,7 +4,9 @@ import {
   CircleAlert,
   Group,
   MousePointerClick,
+  ParkingCircle,
   Table,
+  Timer,
 } from 'lucide-react';
 
 const features = [
@@ -17,6 +19,11 @@ const features = [
     title: 'Test Visualization',
     description: 'Generate insightful charts and graphs from your data',
     icon: BarChartIcon,
+  },
+  {
+    title: 'Test Execution Trends',
+    description: 'Analyze your test execution trends over time',
+    icon: Timer,
   },
   {
     title: 'Detailed Results',
@@ -38,6 +45,11 @@ const features = [
     title: 'View Groups',
     description: 'View your tests groups in which they are categorized',
     icon: Group,
+  },
+  {
+    title: 'View Test Parameters',
+    description: 'View your tests parameters and their values',
+    icon: ParkingCircle,
   },
 ];
 
