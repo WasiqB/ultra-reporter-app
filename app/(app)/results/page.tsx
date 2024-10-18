@@ -94,7 +94,7 @@ const ResultsPage = (): JSX.Element => {
       <main className='flex-grow pt-16'>
         <section className='container mx-auto space-y-6 p-4'>
           <Card className='bg-card text-card-foreground'>
-            <CardHeader>
+            <CardHeader className='items-center pb-5'>
               <CardTitle className='text-xl'>Test Statistics</CardTitle>
               <CardDescription>
                 Overall Test execution statistics
@@ -201,7 +201,7 @@ const ResultsPage = (): JSX.Element => {
             )}
           </div>
           <Card>
-            <CardHeader>
+            <CardHeader className='items-center pb-5'>
               <CardTitle className='text-xl'>Test Details</CardTitle>
               <CardDescription>
                 List of all the executed test cases
