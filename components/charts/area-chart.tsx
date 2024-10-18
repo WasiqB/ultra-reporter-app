@@ -37,7 +37,7 @@ export function AreaChartComponent({
 }: AreaChartProps): JSX.Element {
   return (
     <Card>
-      <CardHeader className='items-center pb-0'>
+      <CardHeader className='items-center pb-5'>
         <CardTitle className='text-xl'>{title}</CardTitle>
         {description && <CardDescription>{description}</CardDescription>}
       </CardHeader>

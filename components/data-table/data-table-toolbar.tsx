@@ -5,6 +5,8 @@ import { statuses } from './data';
 import { Button } from '@/components/ui/button';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import { DataTableViewOptions } from './data-table-view-options';
+import { Switch } from '../ui/switch';
+import { useState } from 'react';
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -16,6 +18,22 @@ export function DataTableToolbar<TData>({
   filterColumn,
 }: DataTableToolbarProps<TData>): JSX.Element {
   const isFiltered = table.getState().columnFilters.length > 0;
+  const [showConfigMethods, setShowConfigMethods] = useState(true);
+
+  const handleShowConfig = (): void => {
+    setShowConfigMethods(!showConfigMethods);
+    if (showConfigMethods) {
+      table.getColumn('is_config')?.setFilterValue(false);
+    } else {
+      table.getColumn('is_config')?.setFilterValue(null);
+    }
+  };
+
+  const handleResetFilters = (): void => {
+    table.resetColumnFilters();
+    setShowConfigMethods(true);
+  };
+
   return (
     <div className='flex items-center py-4'>
       <Input
@@ -35,10 +53,18 @@ export function DataTableToolbar<TData>({
           options={statuses}
         />
       )}
+      <div className='ml-5 flex items-center space-x-2'>
+        <Switch
+          id='show-config-methods'
+          checked={showConfigMethods}
+          onCheckedChange={handleShowConfig}
+        />
+        <label htmlFor='show-config-methods'>Show Config Methods</label>
+      </div>
       {isFiltered && (
         <Button
           variant='ghost'
-          onClick={() => table.resetColumnFilters()}
+          onClick={handleResetFilters}
           className='h-8 px-2 lg:px-3'
         >
           Reset
