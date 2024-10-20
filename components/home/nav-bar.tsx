@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
@@ -19,24 +18,8 @@ export const NavBar = ({
   cta,
   showFeedback,
 }: NavBarProps): JSX.Element => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = (): void => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <nav
-      className={`left-0 right-0 top-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-background/80 shadow-md backdrop-blur-md'
-          : 'bg-transparent'
-      }`}
-    >
+    <nav className={'left-0 right-0 top-0 z-50 transition-all duration-300'}>
       <div className='container mx-auto flex items-center justify-between px-4 py-4'>
         <div className='flex items-center'>
           <Image

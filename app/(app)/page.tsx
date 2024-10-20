@@ -4,6 +4,8 @@ import { FileUpload } from '@/components/utils/file-upload';
 import { OpenSource } from '@/components/home/open-source';
 import { NavBar } from '@/components/home/nav-bar';
 import { Features } from '@/components/home/feature';
+import { Sponsor } from '@/components/home/sponsor';
+import { Feedback } from '@/components/home/feedback';
 
 const LandingPage = (): JSX.Element => {
   return (
@@ -26,6 +28,8 @@ const LandingPage = (): JSX.Element => {
           <FileUpload />
         </div>
         <Features />
+        <Feedback />
+        <Sponsor />
         <OpenSource />
       </main>
     </>
