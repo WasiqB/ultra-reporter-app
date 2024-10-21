@@ -242,13 +242,12 @@ export const columns: ColumnDef<TestResultData>[] = [
     ),
     cell: ({ row }) => {
       const attachment = row.getValue('attachment') as TestLog;
-      const content = attachment.line?.trim();
       return (
         attachment && (
           <AttachmentDialog
             title='Attachment'
             description='Below is the attachment from your Test'
-            content={content}
+            attachment={attachment.line}
           />
         )
       );
