@@ -67,45 +67,48 @@ export function AttachmentDialog({
         <div className='mt-4 flex w-full flex-grow flex-col items-center justify-center'>
           <Carousel setApi={setApi} className='relative w-full'>
             <CarouselContent className='w-full'>
-              {content.map((item, index) => (
-                <CarouselItem key={index} className='w-full'>
-                  <Card className='w-full'>
-                    <CardContent className='p-6'>
-                      {isBase64Image(item) ? (
-                        <div className='relative h-[300px] w-full border border-gray-500'>
-                          <img
-                            src={`data:image/png;base64,${item}`}
-                            alt='Attachment'
-                            className='h-full w-full object-contain'
-                          />
-                        </div>
-                      ) : (
-                        <div className='w-full overflow-hidden'>
-                          <CopyBlock
-                            text={
-                              isJson(item) ? prettifyJson(item) : item.trim()
-                            }
-                            theme={dracula}
-                            language={
-                              isJson(item)
-                                ? 'json'
-                                : isXml(item)
-                                  ? 'xml'
-                                  : 'text'
-                            }
-                            customStyle={{
-                              height: '300px',
-                              overflow: 'auto',
-                            }}
-                            showLineNumbers
-                            wrapLongLines
-                          />
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-              ))}
+              {content
+                .map((item) => item.trim())
+                .map((item, index) => (
+                  <CarouselItem key={index} className='w-full'>
+                    <Card className='w-full'>
+                      <CardContent className='p-6'>
+                        {isBase64Image(item) ? (
+                          // eslint-disable-next-line @stylistic/js/max-len
+                          <div className='relative h-full min-h-[300px] w-full border border-gray-500'>
+                            <img
+                              src={`data:image/png;base64,${item}`}
+                              alt='Attachment'
+                              className='h-full w-full object-contain'
+                            />
+                          </div>
+                        ) : (
+                          <div className='w-full overflow-hidden'>
+                            <CopyBlock
+                              text={
+                                isJson(item) ? prettifyJson(item) : item.trim()
+                              }
+                              theme={dracula}
+                              language={
+                                isJson(item)
+                                  ? 'json'
+                                  : isXml(item)
+                                    ? 'xml'
+                                    : 'text'
+                              }
+                              customStyle={{
+                                height: '300px',
+                                overflow: 'auto',
+                              }}
+                              showLineNumbers
+                              wrapLongLines
+                            />
+                          </div>
+                        )}
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                ))}
             </CarouselContent>
           </Carousel>
           <div className='py-2 text-center text-sm text-muted-foreground'>
