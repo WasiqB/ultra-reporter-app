@@ -1,0 +1,33 @@
+{
+  "name": "ultra-reporter-app",
+  "description": "Ultra Reporter App",
+  "version": "0.3.0",
+  "private": true,
+  "license": "AGPL-3.0-or-later",
+  "scripts": {
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint src/"
+  },
+  "dependencies": {
+    "next": "14.2.15",
+    "react": "^18",
+    "react-dom": "^18",
+    "lucide-react": "^0.453.0",
+    "@tanstack/react-table": "^8.20.5",
+    "@next/third-parties": "^14.2.15",
+    "@ultra-reporter/utils": "workspace:*",
+    "@ultra-reporter/ui": "workspace:*",
+    "@ultra-reporter/eslint-config": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18",
+    "@ultra-reporter/tailwind-config": "workspace:*",
+    "@ultra-reporter/typescript-config": "workspace:*",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.14",
+    "tsup": "^8.3.0"
+  }
+}

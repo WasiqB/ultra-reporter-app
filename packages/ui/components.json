@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.ts",
+    "css": "src/global.css",
+    "baseColor": "slate",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@ultra-reporter/ui/components",
+    "utils": "@ultra-reporter/ui/utils",
+    "ui": "@ultra-reporter/ui/components",
+    "lib": "@ultra-reporter/ui/lib",
+    "hooks": "@ultra-reporter/ui/hooks"
+  }
+}
