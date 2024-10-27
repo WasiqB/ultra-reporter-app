@@ -24,14 +24,14 @@
     "@release-it-plugins/lerna-changelog": "^7.0.0",
     "@stylistic/eslint-plugin-js": "^2.9.0",
     "@stylistic/eslint-plugin-ts": "^2.9.0",
-    "@types/node": "^22.7.7",
-    "@typescript-eslint/eslint-plugin": "^7.13.1",
-    "@typescript-eslint/parser": "^7.13.1",
+    "@types/node": "^22.8.1",
+    "@typescript-eslint/eslint-plugin": "^8.11.0",
+    "@typescript-eslint/parser": "^8.11.0",
     "@vercel/style-guide": "^6.0.0",
     "eslint": "^9.13.0",
     "eslint-config-next": "14.2.15",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-config-turbo": "2.1.1",
+    "eslint-config-turbo": "2.2.3",
     "eslint-plugin-only-warn": "^1.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "globals": "^15.11.0",
@@ -45,7 +45,7 @@
     "release-it-pnpm": "^4.6.3",
     "turbo": "^2.2.3",
     "typescript": "^5",
-    "typescript-eslint": "^8.10.0"
+    "typescript-eslint": "^8.11.0"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [

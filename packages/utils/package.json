@@ -1,7 +1,7 @@
 {
   "name": "@ultra-reporter/utils",
   "description": "Ultra Reporter Utils",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "exports": {
     "./types": "./src/types/types.ts",
@@ -14,17 +14,16 @@
     "lint": "eslint . --max-warnings 0"
   },
   "devDependencies": {
-    "@types/xml2js": "^0.4.14",
     "@types/luxon": "^3.4.2",
-    "@ultra-reporter/typescript-config": "workspace:*",
-    "tsup": "^8.3.0"
+    "@types/xml2js": "^0.4.14",
+    "@ultra-reporter/typescript-config": "workspace:*"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "luxon": "^3.5.0",
     "next": "14.2.15",
     "react": "^18",
-    "date-fns": "^4.1.0",
-    "clsx": "^2.1.1",
-    "luxon": "^3.5.0",
     "tailwind-merge": "^2.5.4",
     "xml2js": "^0.6.2"
   }
