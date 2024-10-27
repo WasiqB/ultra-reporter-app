@@ -63,7 +63,7 @@
     "@stylistic/eslint-plugin-js": "^2.9.0",
     "@stylistic/eslint-plugin-ts": "^2.9.0",
     "@types/luxon": "^3.4.2",
-    "@types/node": "^22.7.7",
+    "@types/node": "^22.8.1",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18",
     "@types/xml2js": "^0.4.14",
@@ -83,7 +83,7 @@
     "release-it-pnpm": "^4.6.3",
     "tailwindcss": "^3.4.14",
     "typescript": "^5",
-    "typescript-eslint": "^8.10.0"
+    "typescript-eslint": "^8.11.0"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
