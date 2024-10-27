@@ -7,8 +7,7 @@
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint src/"
+    "start": "next start"
   },
   "dependencies": {
     "next": "14.2.15",
@@ -18,8 +17,7 @@
     "@tanstack/react-table": "^8.20.5",
     "@next/third-parties": "^14.2.15",
     "@ultra-reporter/utils": "workspace:*",
-    "@ultra-reporter/ui": "workspace:*",
-    "@ultra-reporter/eslint-config": "workspace:*"
+    "@ultra-reporter/ui": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^18.3.11",

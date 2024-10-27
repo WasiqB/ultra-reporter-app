@@ -1,24 +1,29 @@
 'use client';
 
-import * as React from 'react';
-import { useState, useEffect } from 'react';
 import {
   ColumnFiltersState,
   SortingState,
   VisibilityState,
 } from '@tanstack/react-table';
-import { ChartConfig } from '@ultra-reporter/ui/components/chart';
-import { getFormattedData, TestResultData } from '@ultra-reporter/ui/data';
-import { FormattedData } from '@ultra-reporter/utils/types';
-import { NavBar } from '@ultra-reporter/ui/home/nav-bar';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@ultra-reporter/ui/components/card';
-import { cn } from '@ultra-reporter/utils/cn';
-import { Skeleton } from '@ultra-reporter/ui/components/skeleton';
+import { AreaChartComponent } from '@ultra-reporter/ui/charts/area-chart';
 import { DoughNutComponent } from '@ultra-reporter/ui/charts/dough-nut-chart';
 import { PieComponent } from '@ultra-reporter/ui/charts/pie-chart';
-import { AreaChartComponent } from '@ultra-reporter/ui/charts/area-chart';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@ultra-reporter/ui/components/card';
+import { ChartConfig } from '@ultra-reporter/ui/components/chart';
+import { Skeleton } from '@ultra-reporter/ui/components/skeleton';
+import { getFormattedData, TestResultData } from '@ultra-reporter/ui/data';
 import { DataTable } from '@ultra-reporter/ui/data-table/data-table';
 import { columns } from '@ultra-reporter/ui/data-table/table/columns';
+import { NavBar } from '@ultra-reporter/ui/home/nav-bar';
+import { cn } from '@ultra-reporter/utils/cn';
+import { FormattedData } from '@ultra-reporter/utils/types';
+import { useEffect, useState } from 'react';
 
 const chartConfig: ChartConfig = {
   total: {
@@ -79,7 +84,7 @@ const ResultsPage = (): JSX.Element => {
   } = formattedData || {};
 
   return (
-    <div className='flex min-h-screen flex-col bg-background text-foreground'>
+    <div className='bg-background text-foreground flex min-h-screen flex-col'>
       <NavBar
         suffix={`for ${isLoading ? '...' : date}`}
         cta='Generate new Report'

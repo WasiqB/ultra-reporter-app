@@ -1,6 +1,19 @@
+import {
+  formatDateTime,
+  formatDateWithFormat,
+  formatDuration,
+  round,
+  toDuration,
+} from '@ultra-reporter/utils/formatting';
+import {
+  AreaChartData,
+  ChartData,
+  FormattedData,
+  TestException,
+  TestLog,
+  TestResult,
+} from '@ultra-reporter/utils/types';
 import { AlertTriangle, Check, X } from 'lucide-react';
-import { AreaChartData, ChartData, FormattedData, TestException, TestLog, TestResult } from '@ultra-reporter/utils/types';
-import { formatDateTime, formatDateWithFormat, formatDuration, round, toDuration } from '@ultra-reporter/utils/formatting';
 
 export type TestResultData = {
   run_date: string;
@@ -124,9 +137,10 @@ export const getFormattedData = (data: TestResultData[]): FormattedData => {
     };
   });
 
-  const date = data && data.length > 0 
-  ? formatDateWithFormat(data[0]?.run_date || '', 'MMMM d, yyyy') 
-  : 'N/A';
+  const date =
+    data && data.length > 0
+      ? formatDateWithFormat(data[0]?.run_date || '', 'MMMM d, yyyy')
+      : 'N/A';
 
   return {
     passed,

@@ -1,18 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import packageInfo from '../../package.json';
 import { GitHub } from '../icons/github';
 import { LinkedIn } from '../icons/linkedin';
+import { Sponsor } from '../icons/sponsor';
 import { X } from '../icons/x';
 import { YouTube } from '../icons/youtube';
-import { Sponsor } from '../icons/sponsor';
-import packageInfo from '../../package.json';
 
 export const Footer = (): JSX.Element => {
   return (
-    <footer className='footer footer-center bg-muted p-10 pb-10 font-bold text-muted-foreground'>
+    <footer className='footer footer-center bg-muted text-muted-foreground p-10 pb-10 font-bold'>
       <aside>
         <Image src='/favicon.png' height={24} width={24} alt='Ultra Reporter' />
-        <h3 className='text-xl text-foreground'>
+        <h3 className='text-foreground text-xl'>
           Ultra Report <span className='text-sm'>- v{packageInfo.version}</span>
         </h3>
         <div>
@@ -28,28 +28,28 @@ export const Footer = (): JSX.Element => {
       <nav>
         <div className='grid grid-flow-col gap-5'>
           <Link
-            className='text-muted-foreground transition-colors hover:text-foreground'
+            className='text-muted-foreground hover:text-foreground transition-colors'
             href='https://git.new/personal'
             target='_blank'
           >
             <GitHub />
           </Link>
           <Link
-            className='text-muted-foreground transition-colors hover:text-foreground'
+            className='text-muted-foreground hover:text-foreground transition-colors'
             href='https://dub.sh/lnkd'
             target='_blank'
           >
             <LinkedIn />
           </Link>
           <Link
-            className='text-muted-foreground transition-colors hover:text-foreground'
+            className='text-muted-foreground hover:text-foreground transition-colors'
             href='https://dub.sh/x-wasiq'
             target='_blank'
           >
             <X />
           </Link>
           <Link
-            className='text-muted-foreground transition-colors hover:text-foreground'
+            className='text-muted-foreground hover:text-foreground transition-colors'
             href='https://dub.sh/lta-yt'
             target='_blank'
           >

@@ -54,7 +54,7 @@ Feel free to reach out for any queries, collaborations, or feedback!
 
 [![Repo contributors](https://contrib.rocks/image?repo=wasiqb/ultra-reporter-app)](https://github.com/WasiqB/ultra-reporter-app/graphs/contributors)
 
-![Ultra Reporter App Repo activity](https://repobeats.axiom.co/api/embed/40bf4829da597315850c30a8909fcf40a8b5a00c.svg "Repobeats analytics image")
+![Ultra Reporter App Repo activity](https://repobeats.axiom.co/api/embed/40bf4829da597315850c30a8909fcf40a8b5a00c.svg 'Repobeats analytics image')
 
 ## 📜 License
 

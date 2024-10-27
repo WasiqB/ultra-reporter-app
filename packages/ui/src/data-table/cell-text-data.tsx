@@ -1,6 +1,6 @@
 import { Column } from '@tanstack/react-table';
-import { Button } from '../components/button';
 import { ArrowUpDown } from 'lucide-react';
+import { Button } from '../components/button';
 import { TooltipWrapper } from '../utils/tooltip-wrapper';
 
 export function CellData({

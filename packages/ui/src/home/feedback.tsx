@@ -1,6 +1,6 @@
+import { MessageSquareIcon } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '../components/button';
-import { MessageSquareIcon } from 'lucide-react';
 
 export const Feedback = (): JSX.Element => {
   return (

@@ -1,5 +1,7 @@
+import { GearIcon } from '@radix-ui/react-icons';
 import { ColumnDef } from '@tanstack/react-table';
-import { statuses, TestResultData } from './data';
+import { cn } from '@ultra-reporter/utils/cn';
+import { TestException, TestLog } from '@ultra-reporter/utils/types';
 import {
   CircleAlert,
   Link,
@@ -9,17 +11,28 @@ import {
   TestTube,
   TestTubes,
 } from 'lucide-react';
-import { GearIcon } from '@radix-ui/react-icons';
 import { useState } from 'react';
-import { AttachmentDialog } from './attachment';
-import { CellData, SortableHeader } from '../cell-text-data';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/card';
 import { Badge } from '../../components/badge';
-import { TooltipWrapper } from '../../utils/tooltip-wrapper';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../../components/dialog';
 import { Button } from '../../components/button';
-import { cn } from '@ultra-reporter/utils/cn';
-import { TestException, TestLog } from '@ultra-reporter/utils/types';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '../../components/card';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '../../components/dialog';
+import { TooltipWrapper } from '../../utils/tooltip-wrapper';
+import { CellData, SortableHeader } from '../cell-text-data';
+import { AttachmentDialog } from './attachment';
+import { statuses, TestResultData } from './data';
 
 export const columns: ColumnDef<TestResultData>[] = [
   {

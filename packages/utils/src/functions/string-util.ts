@@ -36,4 +36,4 @@ const prettifyJson = (json: string): string => {
   }
 };
 
-export { isJson, isBase64Image, isXml, prettifyJson };
+export { isBase64Image, isJson, isXml, prettifyJson };

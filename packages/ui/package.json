@@ -10,8 +10,7 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
   "scripts": {
-    "ui": "pnpm dlx shadcn@latest",
-    "lint": "eslint src/"
+    "ui": "pnpm dlx shadcn@latest"
   },
   "exports": {
     "./global.css": "./src/global.css",

@@ -1,5 +1,5 @@
-import type { Config } from 'tailwindcss';
 import daisyui from 'daisyui';
+import type { Config } from 'tailwindcss';
 import animate from 'tailwindcss-animate';
 
 const config: Config = {
@@ -7,7 +7,7 @@ const config: Config = {
   content: [
     './src/**/*.{html,js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
-    "../../packages/ui/src/**/*.{ts,tsx}",
+    '../../packages/ui/src/**/*.{ts,tsx}',
     './app/**/*.{html,js,ts,jsx,tsx}',
   ],
   theme: {

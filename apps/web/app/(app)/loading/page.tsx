@@ -1,14 +1,23 @@
 /* eslint-disable @stylistic/js/max-len */
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { convertToJson, getTestResults } from '@ultra-reporter/utils/xml-parser';
-import { getData } from '@ultra-reporter/ui/data';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@ultra-reporter/ui/components/card';
-import { Progress } from '@ultra-reporter/ui/components/progress';
 import { Button } from '@ultra-reporter/ui/components/button';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@ultra-reporter/ui/components/card';
+import { Progress } from '@ultra-reporter/ui/components/progress';
+import { getData } from '@ultra-reporter/ui/data';
+import {
+  convertToJson,
+  getTestResults,
+} from '@ultra-reporter/utils/xml-parser';
 import { Bug, MoveLeft } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 const LoadingPage = (): JSX.Element => {
   const [progress, setProgress] = useState(0);
@@ -52,7 +61,7 @@ Stack: ${err.stack}`);
   };
 
   return (
-    <div className='flex min-h-screen items-center justify-center bg-background'>
+    <div className='bg-background flex min-h-screen items-center justify-center'>
       <Card className='w-[350px]'>
         <CardHeader>
           <CardTitle>Processing XML</CardTitle>
@@ -61,11 +70,11 @@ Stack: ${err.stack}`);
           <Progress value={progress} className='w-full' />
           {error ? (
             <div className='mt-4'>
-              <h3 className='mb-2 font-semibold text-destructive'>Error:</h3>
-              <p className='mb-4 text-sm text-muted-foreground'>{error}</p>
+              <h3 className='text-destructive mb-2 font-semibold'>Error:</h3>
+              <p className='text-muted-foreground mb-4 text-sm'>{error}</p>
             </div>
           ) : (
-            <p className='mt-4 text-muted-foreground'>
+            <p className='text-muted-foreground mt-4'>
               Please wait while we process your XML file...
             </p>
           )}

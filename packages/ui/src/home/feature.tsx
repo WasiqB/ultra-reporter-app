@@ -56,14 +56,14 @@ const features = [
 export const Features = (): JSX.Element => {
   return (
     <section className='mb-16 mt-16'>
-      <h2 className='mb-8 text-center text-3xl font-bold text-foreground'>
+      <h2 className='text-foreground mb-8 text-center text-3xl font-bold'>
         Features
       </h2>
       <div className='grid grid-cols-1 gap-8 md:grid-cols-3'>
         {features.map((feature, index) => (
-          <div key={index} className='rounded-lg bg-card p-6 shadow-lg'>
-            <feature.icon className='mb-4 h-12 w-12 text-foreground' />
-            <h3 className='mb-2 text-xl font-semibold text-foreground'>
+          <div key={index} className='bg-card rounded-lg p-6 shadow-lg'>
+            <feature.icon className='text-foreground mb-4 h-12 w-12' />
+            <h3 className='text-foreground mb-2 text-xl font-semibold'>
               {feature.title}
             </h3>
             <p className='text-muted-foreground'>{feature.description}</p>

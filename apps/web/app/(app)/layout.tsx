@@ -1,9 +1,9 @@
-import type { Metadata } from 'next';
-import '@ultra-reporter/ui/global.css';
-import { DetailedHTMLProps, HtmlHTMLAttributes } from 'react';
 import { GoogleTagManager } from '@next/third-parties/google';
-import { ThemeProvider } from '@ultra-reporter/ui/utils/theme-provider';
+import '@ultra-reporter/ui/global.css';
 import { Footer } from '@ultra-reporter/ui/home/footer';
+import { ThemeProvider } from '@ultra-reporter/ui/utils/theme-provider';
+import type { Metadata } from 'next';
+import { DetailedHTMLProps, HtmlHTMLAttributes } from 'react';
 
 export const metadata: Metadata = {
   title: 'Ultra Reporter',

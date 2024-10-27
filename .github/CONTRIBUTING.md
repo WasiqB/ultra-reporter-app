@@ -1,4 +1,5 @@
 <!-- omit in toc -->
+
 # 🤝 Contributing to ultra-reporter-app
 
 First off, thanks for taking the time to contribute! ❤️
@@ -14,6 +15,7 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 > - Mention the project at local meetups and tell your friends/colleagues
 
 <!-- omit in toc -->
+
 ## Table of Contents
 
 - [I Have a Question](#i-have-a-question)

@@ -9,7 +9,6 @@
     "format:fix": "prettier --write --ignore-path .gitignore .",
     "eslint": "eslint --report-unused-disable-directives",
     "format": "prettier --check .",
-    "format-fix": "prettier --write .",
     "prepare": "husky",
     "release": "release-it --ci",
     "release:major": "pnpm release major",
@@ -20,12 +19,27 @@
     "release:prepatch": "pnpm beta prepatch"
   },
   "devDependencies": {
+    "@eslint/compat": "^1.2.1",
+    "@next/eslint-plugin-next": "^14.2.15",
     "@release-it-plugins/lerna-changelog": "^7.0.0",
+    "@stylistic/eslint-plugin-js": "^2.9.0",
+    "@stylistic/eslint-plugin-ts": "^2.9.0",
     "@types/node": "^22.7.7",
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
+    "@vercel/style-guide": "^6.0.0",
+    "eslint": "^9.13.0",
+    "eslint-config-next": "14.2.15",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-turbo": "2.1.1",
+    "eslint-plugin-only-warn": "^1.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.11.0",
     "husky": "^9.1.6",
     "lerna-changelog": "^2.2.0",
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
+    "prettier-plugin-organize-imports": "^4.1.0",
     "prettier-plugin-tailwindcss": "^0.6.8",
     "release-it": "^17.10.0",
     "release-it-pnpm": "^4.6.3",
@@ -35,13 +49,11 @@
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
-      "pnpm lint",
-      "pnpm format-fix",
+      "pnpm format:fix",
       "pnpm format"
     ],
     "**/*.mjs": [
-      "pnpm lint",
-      "pnpm format-fix",
+      "pnpm format:fix",
       "pnpm format"
     ]
   },

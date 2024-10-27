@@ -99,15 +99,15 @@ type FormattedData = {
 };
 
 export type {
-  TestResult,
-  TestSuite,
+  AreaChartData,
+  ChartData,
+  FormattedData,
   TestCase,
   TestClass,
-  TestMethod,
   TestException,
   TestLog,
+  TestMethod,
+  TestResult,
   TestStatus,
-  ChartData,
-  AreaChartData,
-  FormattedData,
+  TestSuite,
 };

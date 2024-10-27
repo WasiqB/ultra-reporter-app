@@ -1,1 +1,1 @@
-export * from "@ultra-reporter/tailwind-config/tailwind.config";
+export * from '@ultra-reporter/tailwind-config/tailwind.config';

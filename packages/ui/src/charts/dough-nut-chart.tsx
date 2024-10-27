@@ -1,3 +1,4 @@
+import { ChartData } from '@ultra-reporter/utils/types';
 import { Label, Pie, PieChart } from 'recharts';
 import {
   Card,
@@ -15,7 +16,6 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from '../components/chart';
-import { ChartData } from '@ultra-reporter/utils/types';
 
 interface DoughNutProps {
   title: string;
@@ -99,7 +99,7 @@ export const DoughNutComponent = ({
       </CardContent>
       {footer && (
         <CardFooter className='flex-col gap-2 text-sm'>
-          <div className='leading-none text-muted-foreground'>{footer}</div>
+          <div className='text-muted-foreground leading-none'>{footer}</div>
         </CardFooter>
       )}
     </Card>

@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { UploadIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { Button } from '../components/button';
 import { Input } from '../components/input';
 import { Label } from '../components/label';
-import { UploadIcon } from 'lucide-react';
 
 export const FileUpload = (): JSX.Element => {
   const [file, setFile] = useState<File | null>(null);
@@ -58,7 +58,7 @@ export const FileUpload = (): JSX.Element => {
     <form onSubmit={handleSubmit} className='w-full max-w-md'>
       <div
         // eslint-disable-next-line @stylistic/js/max-len
-        className='cursor-pointer rounded-lg border-2 border-dashed border-input p-8 text-center transition-all hover:border-primary hover:text-primary'
+        className='border-input hover:border-primary hover:text-primary cursor-pointer rounded-lg border-2 border-dashed p-8 text-center transition-all'
         onDragOver={handleDragOver}
         onDrop={handleDrop}
       >

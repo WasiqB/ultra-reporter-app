@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { parseString } from 'xml2js';
 import {
   TestCase,
   TestClass,
@@ -7,7 +9,6 @@ import {
   TestResult,
   TestSuite,
 } from '../types/types';
-import { parseString } from 'xml2js';
 
 const getTestException = (exception: any): TestException | undefined => {
   if (exception) {
@@ -211,4 +212,4 @@ const convertToJson = (data: string): string | null => {
   return jsonData;
 };
 
-export { getTestResults, convertToJson };
+export { convertToJson, getTestResults };

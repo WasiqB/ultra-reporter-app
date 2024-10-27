@@ -1,13 +1,30 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import {
+  isBase64Image,
+  isJson,
+  isXml,
+  prettifyJson,
+} from '@ultra-reporter/utils/string-util';
 import { Link } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { CopyBlock, dracula } from 'react-code-blocks';
-import { Carousel, CarouselApi, CarouselContent, CarouselItem } from '../../components/carousel';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../../components/dialog';
 import { Button } from '../../components/button';
 import { Card, CardContent } from '../../components/card';
-import { isBase64Image, isJson, prettifyJson, isXml } from '@ultra-reporter/utils/string-util';
+import {
+  Carousel,
+  CarouselApi,
+  CarouselContent,
+  CarouselItem,
+} from '../../components/carousel';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '../../components/dialog';
 
 interface AttachmentDialogProps {
   attachment: string | string[];
@@ -99,7 +116,7 @@ export function AttachmentDialog({
                 ))}
             </CarouselContent>
           </Carousel>
-          <div className='py-2 text-center text-sm text-muted-foreground'>
+          <div className='text-muted-foreground py-2 text-center text-sm'>
             Slide {current} of {count}. (Use arrow keys to navigate)
           </div>
         </div>

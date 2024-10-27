@@ -4,13 +4,12 @@ import { NavBar } from '@ultra-reporter/ui/home/nav-bar';
 import { OpenSource } from '@ultra-reporter/ui/home/open-source';
 import { Sponsor } from '@ultra-reporter/ui/home/sponsor';
 import { FileUpload } from '@ultra-reporter/ui/utils/file-upload';
-import * as React from 'react';
 
 const LandingPage = (): JSX.Element => {
   return (
     <>
       <NavBar />
-      <main className='container mx-auto flex-grow bg-background px-4 py-16 text-foreground'>
+      <main className='bg-background text-foreground container mx-auto flex-grow px-4 py-16'>
         <div className='flex flex-col items-center pt-16 text-center'>
           <h2 className='gradient-text text-3xl font-bold md:text-5xl'>
             Ultra Reporter

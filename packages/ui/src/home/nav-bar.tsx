@@ -1,8 +1,8 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '../components/button';
-import Image from 'next/image';
 import { ThemeToggle } from '../components/theme-toggle';
 import { GitHub } from '../icons/github';
 import { Sponsor } from '../icons/sponsor';
@@ -31,7 +31,7 @@ export const NavBar = ({
           />
           <Link
             href='/'
-            className='mr-4 flex items-start text-2xl font-bold text-foreground'
+            className='text-foreground mr-4 flex items-start text-2xl font-bold'
           >
             Ultra Report
           </Link>

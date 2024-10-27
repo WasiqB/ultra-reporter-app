@@ -1,12 +1,12 @@
-import { Table } from '@tanstack/react-table';
-import { Input } from '../components/input';
-import { DataTableFacetedFilter } from './data-table-faceted-filter';
-import { statuses } from './table/data';
-import { Button } from '../components/button';
 import { Cross2Icon } from '@radix-ui/react-icons';
-import { DataTableViewOptions } from './data-table-view-options';
-import { Switch } from '../components/switch';
+import { Table } from '@tanstack/react-table';
 import { useState } from 'react';
+import { Button } from '../components/button';
+import { Input } from '../components/input';
+import { Switch } from '../components/switch';
+import { DataTableFacetedFilter } from './data-table-faceted-filter';
+import { DataTableViewOptions } from './data-table-view-options';
+import { statuses } from './table/data';
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;

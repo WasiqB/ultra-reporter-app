@@ -2,6 +2,7 @@
 
 import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts';
 
+import { AreaChartData } from '@ultra-reporter/utils/types';
 import {
   Card,
   CardContent,
@@ -16,7 +17,6 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from '../components/chart';
-import { AreaChartData } from '@ultra-reporter/utils/types';
 
 interface AreaChartProps {
   title: string;
@@ -82,7 +82,7 @@ export const AreaChartComponent = ({
                 {footer}
               </div>
               {subFooter && (
-                <div className='flex items-center gap-2 leading-none text-muted-foreground'>
+                <div className='text-muted-foreground flex items-center gap-2 leading-none'>
                   {subFooter}
                 </div>
               )}
@@ -92,4 +92,4 @@ export const AreaChartComponent = ({
       )}
     </Card>
   );
-}
+};

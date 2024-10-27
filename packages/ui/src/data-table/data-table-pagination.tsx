@@ -1,4 +1,5 @@
 import { Table } from '@tanstack/react-table';
+import { Button } from '../components/button';
 import {
   Select,
   SelectContent,
@@ -6,7 +7,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '../components/select';
-import { Button } from '../components/button';
 
 interface DataTablePaginationProps<TData> {
   table: Table<TData>;
@@ -17,7 +17,7 @@ export function DataTablePagination<TData>({
 }: DataTablePaginationProps<TData>): JSX.Element {
   return (
     <div className='flex items-center justify-end space-x-2 py-4'>
-      <div className='flex-1 text-sm text-muted-foreground'>
+      <div className='text-muted-foreground flex-1 text-sm'>
         Total row(s): {table.getFilteredRowModel().rows.length}.
       </div>
       <div className='flex items-center space-x-2'>

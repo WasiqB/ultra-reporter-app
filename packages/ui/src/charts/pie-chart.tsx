@@ -2,6 +2,7 @@
 
 import { Pie, PieChart } from 'recharts';
 
+import { ChartData } from '@ultra-reporter/utils/types';
 import {
   Card,
   CardContent,
@@ -18,7 +19,6 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from '../components/chart';
-import { ChartData } from '@ultra-reporter/utils/types';
 
 interface PieProps {
   title: string;
@@ -67,9 +67,9 @@ export const PieComponent = ({
       </CardContent>
       {footer && (
         <CardFooter className='flex-col gap-2 text-sm'>
-          <div className='leading-none text-muted-foreground'>{footer}</div>
+          <div className='text-muted-foreground leading-none'>{footer}</div>
         </CardFooter>
       )}
     </Card>
   );
-}
+};
