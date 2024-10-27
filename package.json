@@ -64,7 +64,7 @@
     "@stylistic/eslint-plugin-ts": "^2.9.0",
     "@types/luxon": "^3.4.2",
     "@types/node": "^22.7.7",
-    "@types/react": "^18.3.11",
+    "@types/react": "^18.3.12",
     "@types/react-dom": "^18",
     "@types/xml2js": "^0.4.14",
     "daisyui": "^4.12.13",
