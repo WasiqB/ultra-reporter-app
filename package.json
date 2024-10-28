@@ -2,10 +2,15 @@
   "name": "ultra-reporter-app",
   "version": "0.4.0",
   "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
+    "deploy": "turbo run build --scope=app --includeDependencies --no-deps",
     "format:fix": "prettier --write --ignore-path .gitignore .",
     "eslint": "eslint --report-unused-disable-directives",
     "format": "prettier --check .",
