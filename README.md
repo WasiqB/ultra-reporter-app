@@ -6,9 +6,9 @@ Built on the power of Next.js and Tailwind CSS, this reporter takes your raw tes
 
 ## 📷 Generated Report
 
-![Report page 1](/public/report-1.png)
-![Report page 2](/public/report-2.png)
-![Report page 3](/public/report-3.png)
+![Report page 1](/apps/web/public/report-1.png)
+![Report page 2](/apps/web/public/report-2.png)
+![Report page 3](/apps/web/public/report-3.png)
 
 ## 🚀 Quick start
 
@@ -19,8 +19,8 @@ Checkout this demo video to see how to use Ultra-Reporter:
 Following are the steps to get started with Ultra-Reporter:
 
 - Run your TestNG tests using it's default reporter listeners
-  - ![Step 1](/public/step-1.png)
-  - ![Step 2](/public/step-2.png)
+  - ![Step 1](/apps/web/public/step-1.png)
+  - ![Step 2](/apps/web/public/step-2.png)
 - Upload `testng-results.xml` from the `test-output` folder
 - Wait for the beautiful Test reports to get generated
 
@@ -40,6 +40,15 @@ We're constantly evolving! Check out the [Issues tab](https://github.com/WasiqB/
 
 Got a feature request or an idea to make Ultra-Reporter even better? Don’t hesitate to create [Feature or Enhancement request](https://github.com/WasiqB/ultra-reporter-app/discussions) – we’re always looking for ways to improve!
 
+## 🗂 Previous Versions
+
+Check out the previous versions of Ultra-Reporter to see what features were added in each release:
+
+- [Version 0.4.0](https://github.com/WasiqB/ultra-reporter-app/releases/tag/v0.4.0)
+- [Version 0.3.0](https://github.com/WasiqB/ultra-reporter-app/releases/tag/v0.3.0)
+- [Version 0.2.0](https://github.com/WasiqB/ultra-reporter-app/releases/tag/v0.2.0)
+- [Version 0.1.0](https://github.com/WasiqB/ultra-reporter-app/releases/tag/v0.1.0)
+
 ## 📞 Contact Me
 
 Feel free to reach out for any queries, collaborations, or feedback!
@@ -54,7 +63,7 @@ Feel free to reach out for any queries, collaborations, or feedback!
 
 [![Repo contributors](https://contrib.rocks/image?repo=wasiqb/ultra-reporter-app)](https://github.com/WasiqB/ultra-reporter-app/graphs/contributors)
 
-![Ultra Reporter App Repo activity](https://repobeats.axiom.co/api/embed/40bf4829da597315850c30a8909fcf40a8b5a00c.svg "Repobeats analytics image")
+![Ultra Reporter App Repo activity](https://repobeats.axiom.co/api/embed/40bf4829da597315850c30a8909fcf40a8b5a00c.svg 'Repobeats analytics image')
 
 ## 📜 License
 

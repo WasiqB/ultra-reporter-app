@@ -1,14 +1,14 @@
-import stylisticTs from '@stylistic/eslint-plugin-ts';
-import stylisticJs from '@stylistic/eslint-plugin-js';
-import tsParser from '@typescript-eslint/parser';
+import { includeIgnoreFile } from '@eslint/compat';
 import js from '@eslint/js';
+import stylisticJs from '@stylistic/eslint-plugin-js';
+import stylisticTs from '@stylistic/eslint-plugin-ts';
+import tsParser from '@typescript-eslint/parser';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
-import tseslint from 'typescript-eslint';
 import react from 'eslint-plugin-react';
 import globals from 'globals';
-import { includeIgnoreFile } from '@eslint/compat';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import tseslint from 'typescript-eslint';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -33,7 +33,7 @@ export default [
         },
       },
     },
-    files: ['**/*.{js,mjs,ts,tsx}'],
+    files: ['./apps/**/*.{js,mjs,ts,tsx}', './packages/**/*.{js,mjs,ts,tsx}'],
     plugins: {
       '@stylistic/ts': stylisticTs,
       '@stylistic/js': stylisticJs,
@@ -65,7 +65,7 @@ export default [
   },
   {
     ignores: [
-      'components/ui/',
+      'packages/ui/src/components/',
       'components/icons',
       'assets/',
       '.github/',

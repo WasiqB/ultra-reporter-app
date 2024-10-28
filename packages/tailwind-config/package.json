@@ -1,0 +1,22 @@
+{
+  "name": "@ultra-reporter/tailwind-config",
+  "description": "Tailwind CSS configuration for Ultra Reporter",
+  "version": "0.4.0",
+  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    "./postcss.config": "./postcss.config.mjs",
+    "./tailwind.config": "./tailwind.config.ts"
+  },
+  "dependencies": {
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "postcss": "^8",
+    "autoprefixer": "^10.4.20",
+    "daisyui": "^4.12.13",
+    "tailwindcss": "^3.4.14"
+  }
+}
