@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.2",
-    "@next/eslint-plugin-next": "^14.2.15",
+    "@next/eslint-plugin-next": "^15.0.3",
     "@release-it-plugins/lerna-changelog": "^7.0.0",
     "@stylistic/eslint-plugin-js": "^2.9.0",
     "@stylistic/eslint-plugin-ts": "^2.9.0",
@@ -34,7 +34,7 @@
     "@typescript-eslint/parser": "^8.11.0",
     "@vercel/style-guide": "^6.0.0",
     "eslint": "^9.13.0",
-    "eslint-config-next": "14.2.15",
+    "eslint-config-next": "15.0.3",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-turbo": "2.2.3",
     "eslint-plugin-only-warn": "^1.1.0",
