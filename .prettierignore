@@ -1,5 +1,5 @@
 *.md
-pnpm-lock.yaml
+*-lock.yaml
 node_modules
 .next
 .turbo

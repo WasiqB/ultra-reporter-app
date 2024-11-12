@@ -1,0 +1,16 @@
+{
+  "name": "@ultra-reporter/logger",
+  "description": "Ultra Reporter Analytics",
+  "version": "0.4.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "scripts": {
+    "lint": "eslint . --max-warnings 0"
+  },
+  "dependencies": {
+    "pino": "^9.5.0"
+  },
+  "devDependencies": {
+    "@ultra-reporter/typescript-config": "workspace:*"
+  }
+}

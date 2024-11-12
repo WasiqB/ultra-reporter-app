@@ -1,7 +1,9 @@
 import { GoogleTagManager } from '@next/third-parties/google';
+import { Provider as AnalyticsProvider } from '@ultra-reporter/analytics/client';
 import '@ultra-reporter/ui/global.css';
 import { Footer } from '@ultra-reporter/ui/home/footer';
 import { ThemeProvider } from '@ultra-reporter/ui/utils/theme-provider';
+import { isProd } from '@ultra-reporter/utils/constants';
 import type { Metadata } from 'next';
 import { DetailedHTMLProps, HtmlHTMLAttributes } from 'react';
 
@@ -32,11 +34,10 @@ const RootLayout = ({
         >
           {children}
           <Footer />
+          <AnalyticsProvider />
         </ThemeProvider>
       </body>
-      {process.env.VERCEL_ENV === 'production' && (
-        <GoogleTagManager gtmId='G-CNW9F6PH7P' />
-      )}
+      {isProd && <GoogleTagManager gtmId='G-CNW9F6PH7P' />}
     </html>
   );
 };
