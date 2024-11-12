@@ -5,6 +5,7 @@
   "private": true,
   "exports": {
     "./types": "./src/types/types.ts",
+    "./constants": "./src/types/constants.ts",
     "./cn": "./src/functions/cn.ts",
     "./formatting": "./src/functions/formatting.ts",
     "./string-util": "./src/functions/string-util.ts",
