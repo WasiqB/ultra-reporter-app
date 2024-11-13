@@ -3,7 +3,7 @@ import { DateTime } from 'luxon';
 
 export const toDuration = (duration: string): number => {
   const splitTime = duration.split(' ');
-  const time = parseFloat(splitTime[0] || '0');
+  const time = Number.parseFloat(splitTime[0] || '0');
   const type = splitTime[1];
   const SECOND = 1000;
   const MINUTE = 60 * SECOND;
@@ -20,7 +20,6 @@ export const toDuration = (duration: string): number => {
     case 'ms':
       result /= SECOND;
       break;
-    case 's':
     default:
       break;
   }
@@ -43,7 +42,7 @@ export const formatDuration = (duration: number): string => {
 };
 
 export const formatDateTime = (
-  dateTimeString: string
+  dateTimeString: string,
 ): {
   date: string;
   time: string;
@@ -95,7 +94,7 @@ export const formatTime = (dateTime: string): string => {
     const parsedDate = parse(
       cleanedDateString,
       "yyyy-MM-dd'T'HH:mm:ss 'UTC'",
-      new Date()
+      new Date(),
     );
     return format(parsedDate, TIME_FORMAT);
   }
@@ -109,7 +108,7 @@ export const formatDate = (dateTime: string): string => {
     const parsedDate = parse(
       cleanedDateString,
       "yyyy-MM-dd'T'HH:mm:ss 'UTC'",
-      new Date()
+      new Date(),
     );
     return format(parsedDate, DATE_FORMAT);
   }
@@ -118,7 +117,7 @@ export const formatDate = (dateTime: string): string => {
 
 export const formatDateWithFormat = (
   dateTime: string,
-  pattern: string
+  pattern: string,
 ): string => {
   return format(dateTime, pattern);
 };

@@ -1,5 +1,5 @@
 {
-  "extends": "@ultra-reporter/typescript-config/react-library.json",
-  "include": ["."],
-  "exclude": ["dist", "build", "node_modules"]
+	"extends": "@ultra-reporter/typescript-config/react-library.json",
+	"include": ["."],
+	"exclude": ["dist", "build", "node_modules"]
 }

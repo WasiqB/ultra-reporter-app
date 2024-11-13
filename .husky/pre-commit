@@ -1,1 +1,4 @@
-pnpm lint-staged
+pnpm lint
+pnpm format:fix
+pnpm format
+git add .

@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { parseString } from 'xml2js';
-import {
+import type {
   TestCase,
   TestClass,
   TestException,
@@ -28,7 +27,7 @@ const getTestLog = (output: any): TestLog => {
 const getTags = (
   className: string,
   methodName: string,
-  groups: any
+  groups: any,
 ): string[] => {
   const result: string[] = [];
   if (!groups) return result;
@@ -75,12 +74,12 @@ const getParams = (params: any): string[] => {
 const getTestMethods = (
   methods: any,
   className: string,
-  groups: any
+  groups: any,
 ): TestMethod[] => {
   const result: TestMethod[] = [];
   if (!methods) return result;
 
-  const processMethod = (method: any, index: number = 1): void => {
+  const processMethod = (method: any, index = 1): void => {
     result.push({
       id: index,
       name: method.name,
@@ -158,7 +157,7 @@ const getTestSuites = (suites: any): TestSuite[] => {
       name: suite.name,
       started_at: suite['started-at'],
       finished_at: suite['finished-at'],
-      duration_ms: parseInt(suite['duration-ms']),
+      duration_ms: Number.parseInt(suite['duration-ms']),
       test_cases: getTestCases(suite.test, suites.groups?.group),
     });
   };
@@ -179,16 +178,15 @@ const getTestResults = (jsonData: any): TestResult => {
 
   try {
     const mapToResult: TestResult = {
-      failed: parseInt(testResult.failed),
-      passed: parseInt(testResult.passed),
-      skipped: parseInt(testResult.skipped),
-      ignored: parseInt(testResult.ignored),
-      total: parseInt(testResult.total),
+      failed: Number.parseInt(testResult.failed),
+      passed: Number.parseInt(testResult.passed),
+      skipped: Number.parseInt(testResult.skipped),
+      ignored: Number.parseInt(testResult.ignored),
+      total: Number.parseInt(testResult.total),
       test_suites: getTestSuites(testResult.suite),
     };
     return mapToResult;
-    /* eslint-disable @typescript-eslint/no-unused-vars */
-  } catch (error) {
+  } catch (_error) {
     throw new Error(`Error while processing the XML file, ${errorMessage}`);
   }
 };
@@ -207,7 +205,7 @@ const convertToJson = (data: string): string | null => {
         throw new Error(`Invalid file selected, ${errorMessage}`);
       }
       jsonData = result;
-    }
+    },
   );
   return jsonData;
 };

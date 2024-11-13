@@ -1,31 +1,33 @@
 {
-  "name": "@ultra-reporter/utils",
-  "description": "Ultra Reporter Utils",
-  "version": "0.4.0",
-  "private": true,
-  "exports": {
-    "./types": "./src/types/types.ts",
-    "./constants": "./src/types/constants.ts",
-    "./cn": "./src/functions/cn.ts",
-    "./formatting": "./src/functions/formatting.ts",
-    "./string-util": "./src/functions/string-util.ts",
-    "./xml-parser": "./src/parsers/xml-parser.ts"
-  },
-  "scripts": {
-    "lint": "eslint . --max-warnings 0"
-  },
-  "devDependencies": {
-    "@types/luxon": "^3.4.2",
-    "@types/xml2js": "^0.4.14",
-    "@ultra-reporter/typescript-config": "workspace:*"
-  },
-  "dependencies": {
-    "clsx": "^2.1.1",
-    "date-fns": "^4.1.0",
-    "luxon": "^3.5.0",
-    "next": "14.2.15",
-    "react": "^18",
-    "tailwind-merge": "^2.5.4",
-    "xml2js": "^0.6.2"
-  }
+	"name": "@ultra-reporter/utils",
+	"description": "Ultra Reporter Utils",
+	"version": "0.4.0",
+	"private": true,
+	"exports": {
+		"./types": "./src/types/types.ts",
+		"./constants": "./src/types/constants.ts",
+		"./cn": "./src/functions/cn.ts",
+		"./formatting": "./src/functions/formatting.ts",
+		"./string-util": "./src/functions/string-util.ts",
+		"./xml-parser": "./src/parsers/xml-parser.ts"
+	},
+	"scripts": {
+		"lint": "biome lint .",
+		"format": "biome format .",
+		"format:fix": "biome format --write ."
+	},
+	"devDependencies": {
+		"@types/luxon": "^3.4.2",
+		"@types/xml2js": "^0.4.14",
+		"@ultra-reporter/typescript-config": "workspace:*"
+	},
+	"dependencies": {
+		"clsx": "^2.1.1",
+		"date-fns": "^4.1.0",
+		"luxon": "^3.5.0",
+		"next": "14.2.15",
+		"react": "^18",
+		"tailwind-merge": "^2.5.4",
+		"xml2js": "^0.6.2"
+	}
 }

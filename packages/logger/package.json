@@ -5,7 +5,9 @@
   "private": true,
   "main": "./src/index.ts",
   "scripts": {
-    "lint": "eslint . --max-warnings 0"
+    "lint": "biome lint .",
+    "format": "biome format .",
+    "format:fix": "biome format --write ."
   },
   "dependencies": {
     "pino": "^9.5.0"

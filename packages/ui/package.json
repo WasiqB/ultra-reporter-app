@@ -10,7 +10,10 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
   "scripts": {
-    "ui": "pnpm dlx shadcn@latest"
+    "ui": "pnpm dlx shadcn@latest",
+    "lint": "biome lint .",
+    "format": "biome format .",
+    "format:fix": "biome format --write ."
   },
   "exports": {
     "./global.css": "./src/global.css",
@@ -38,7 +41,7 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-switch": "^1.1.1",
     "@radix-ui/react-toast": "^1.2.2",
-    "@radix-ui/react-tooltip": "^1.1.3",
+    "@radix-ui/react-tooltip": "^1.1.4",
     "@tanstack/react-table": "^8.20.5",
     "class-variance-authority": "^0.7.0",
     "cmdk": "1.0.4",

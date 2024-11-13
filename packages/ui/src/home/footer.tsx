@@ -18,8 +18,8 @@ export const Footer = (): JSX.Element => {
         <div>
           <div className='grid-flow-col items-center'>
             <p>
-              Copyright © {new Date().getFullYear()} - Designed and built with
-              ❤️ by Wasiq Bhamla.
+              Copyright © {new Date().getFullYear()} - Designed and built with ❤️
+              by Wasiq Bhamla.
             </p>
           </div>
           All rights reserved.
