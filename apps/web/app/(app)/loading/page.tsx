@@ -1,6 +1,7 @@
 /* eslint-disable @stylistic/js/max-len */
 'use client';
 
+import { logger } from '@ultra-reporter/logger';
 import { Button } from '@ultra-reporter/ui/components/button';
 import {
   Card,
@@ -38,14 +39,12 @@ const LoadingPage = (): JSX.Element => {
       setProgress(75);
       localStorage.setItem('json-data', JSON.stringify(getData(testResult)));
       setProgress(100);
+      logger.info('Report generated successfully.');
       router.push('/results');
     } catch (err) {
       if (err instanceof Error) {
         setError(`${err.message}`);
-        if (process.env.VERCEL_ENV !== 'production') {
-          console.error(`Message: ${err.message}
-Stack: ${err.stack}`);
-        }
+        logger.error(err.message);
       }
     }
   }, [router]);

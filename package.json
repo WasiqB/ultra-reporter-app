@@ -24,7 +24,7 @@
     "release:prepatch": "pnpm beta prepatch"
   },
   "devDependencies": {
-    "@eslint/compat": "^1.2.2",
+    "@eslint/compat": "^1.2.3",
     "@next/eslint-plugin-next": "^14.2.15",
     "@release-it-plugins/lerna-changelog": "^7.0.0",
     "@stylistic/eslint-plugin-js": "^2.10.1",
@@ -36,7 +36,7 @@
     "eslint": "^9.14.0",
     "eslint-config-next": "14.2.15",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-config-turbo": "2.2.3",
+    "eslint-config-turbo": "2.3.0",
     "eslint-plugin-only-warn": "^1.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "globals": "^15.12.0",
@@ -48,7 +48,7 @@
     "prettier-plugin-tailwindcss": "^0.6.8",
     "release-it": "^17.10.0",
     "release-it-pnpm": "^4.6.3",
-    "turbo": "^2.2.3",
+    "turbo": "^2.3.0",
     "typescript": "^5",
     "typescript-eslint": "^8.14.0"
   },
