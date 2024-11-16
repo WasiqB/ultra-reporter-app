@@ -1,6 +1,18 @@
 
 
 
+
+## 0.5.0 (2024-11-16)
+
+#### :rocket: New Feature
+* `analytics`, `logger`, `tailwind-config`, `ui`, `utils`
+  * [#81](https://github.com/WasiqB/ultra-reporter-app/pull/81) feat: :sparkles: added openpanel analytics along with ga ([@WasiqB](https://github.com/WasiqB))
+* `tailwind-config`, `typescript-config`, `ui`, `utils`
+  * [#64](https://github.com/WasiqB/ultra-reporter-app/pull/64) feat: :sparkles: restructured the project ([@WasiqB](https://github.com/WasiqB))
+
+#### Committers: 1
+- Wasiq Bhamla ([@WasiqB](https://github.com/WasiqB))
+
 ## 0.4.0 (2024-10-27)
 
 #### :rocket: New Feature

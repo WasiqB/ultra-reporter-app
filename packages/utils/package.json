@@ -1,7 +1,7 @@
 {
   "name": "@ultra-reporter/utils",
   "description": "Ultra Reporter Utils",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "exports": {
     "./types": "./src/types/types.ts",

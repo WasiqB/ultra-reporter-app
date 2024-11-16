@@ -1,7 +1,7 @@
 {
   "name": "@ultra-reporter/analytics",
   "description": "Ultra Reporter Analytics",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "scripts": {
     "lint": "eslint . --max-warnings 0"
