@@ -25,8 +25,8 @@
     "./utils/*": "./src/utils/*.tsx"
   },
   "peerDependencies": {
-    "react": "^18 || ^19.0",
-    "react-dom": "^18.0 || ^19.0"
+    "react": "^18.0",
+    "react-dom": "^18.0"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.1",
