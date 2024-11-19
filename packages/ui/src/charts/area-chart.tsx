@@ -47,8 +47,10 @@ export const AreaChartComponent = ({
             accessibilityLayer
             data={data}
             margin={{
-              left: 10,
-              right: 10,
+              top: 5,
+              left: -20,
+              right: 12,
+              bottom: 5,
             }}
           >
             <CartesianGrid vertical={true} />

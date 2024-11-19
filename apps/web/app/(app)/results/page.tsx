@@ -90,7 +90,7 @@ const ResultsPage = (): JSX.Element => {
         cta='Generate new Report'
         showFeedback
       />
-      <main className='flex-grow pt-16'>
+      <main className='flex-grow'>
         <section className='container mx-auto space-y-6 p-4'>
           <Card className='bg-card text-card-foreground'>
             <CardHeader className='items-center pb-5'>
