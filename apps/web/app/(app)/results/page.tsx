@@ -90,7 +90,7 @@ const ResultsPage = (): JSX.Element => {
         cta='Generate new Report'
         showFeedback
       />
-      <main className='flex-grow pt-16'>
+      <main className='flex-grow'>
         <section className='container mx-auto space-y-6 p-4'>
           <Card className='bg-card text-card-foreground'>
             <CardHeader className='items-center pb-5'>
@@ -100,7 +100,7 @@ const ResultsPage = (): JSX.Element => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4'>
+              <div className='grid grid-cols-2 gap-4 lg:grid-cols-4'>
                 {[
                   { label: 'Total Tests', color: 'blue' },
                   { label: 'Passed', color: 'green' },
