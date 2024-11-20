@@ -1,6 +1,7 @@
 import { GearIcon } from '@radix-ui/react-icons';
 import { ColumnDef } from '@tanstack/react-table';
 import { cn } from '@ultra-reporter/utils/cn';
+import { toDuration } from '@ultra-reporter/utils/formatting';
 import { TestException, TestLog } from '@ultra-reporter/utils/types';
 import {
   CircleAlert,
@@ -111,6 +112,11 @@ export const columns: ColumnDef<TestResultData>[] = [
     cell: ({ row }) => {
       const duration: string = row.getValue('duration_ms');
       return <CellData value={duration} align='right' />;
+    },
+    sortingFn: (rowA, rowB, columnId) => {
+      const a = toDuration(rowA.getValue(columnId) as string);
+      const b = toDuration(rowB.getValue(columnId) as string);
+      return a < b ? -1 : a > b ? 1 : 0;
     },
   },
   {
