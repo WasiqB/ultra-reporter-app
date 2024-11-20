@@ -67,7 +67,7 @@ export const AreaChartComponent = ({
               content={<ChartTooltipContent indicator='dot' />}
             />
             <Area
-              dataKey='value'
+              dataKey='duration'
               type='linear'
               fill='var(--color-property)'
               fillOpacity={0.4}

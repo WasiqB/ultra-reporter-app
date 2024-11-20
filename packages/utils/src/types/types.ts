@@ -83,7 +83,7 @@ type ChartData = {
 
 type AreaChartData = {
   property: string;
-  value: number;
+  duration: number;
 };
 
 type FormattedData = {
