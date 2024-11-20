@@ -5,23 +5,24 @@ export const toDuration = (duration: string): number => {
   const splitTime = duration.split(' ');
   const time = parseFloat(splitTime[0] || '0');
   const type = splitTime[1];
-  const SECOND = 1000;
+  const SECOND = 1;
   const MINUTE = 60 * SECOND;
   const HOUR = 60 * MINUTE;
   let result = time;
 
   switch (type) {
     case 'm':
-      result = (result * MINUTE) / SECOND;
+      result *= MINUTE;
       break;
     case 'h':
-      result = (result * HOUR) / SECOND;
+      result *= HOUR;
       break;
     case 'ms':
-      result /= SECOND;
+      result = result / 1000;
       break;
     case 's':
     default:
+      result *= SECOND;
       break;
   }
 
