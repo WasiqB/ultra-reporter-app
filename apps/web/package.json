@@ -25,7 +25,6 @@
   "devDependencies": {
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18",
-    "@ultra-reporter/tailwind-config": "workspace:*",
     "@ultra-reporter/typescript-config": "workspace:*",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.15"

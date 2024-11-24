@@ -1,11 +1,11 @@
-import { Description } from '@/common/description';
-import { Title } from '@/common/title';
+import { Description } from '../common/description';
+import { Title } from '../common/title';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/accordion';
+} from '../components/accordion';
 
 const faqItems = [
   {

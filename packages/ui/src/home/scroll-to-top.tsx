@@ -1,9 +1,9 @@
 'use client';
 
-import { Button } from '@/components/button';
-import { TooltipWrapper } from '@/utils/tooltip-wrapper';
 import { ArrowUp } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { Button } from '../components/button';
+import { TooltipWrapper } from '../utils/tooltip-wrapper';
 
 export const ScrollToTop = (): JSX.Element => {
   const [isVisible, setIsVisible] = useState(false);

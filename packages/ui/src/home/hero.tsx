@@ -1,5 +1,5 @@
-import { FileUpload } from '@/utils/file-upload';
 import Image from 'next/image';
+import { FileUpload } from '../utils/file-upload';
 
 export const Hero = (): JSX.Element => {
   return (

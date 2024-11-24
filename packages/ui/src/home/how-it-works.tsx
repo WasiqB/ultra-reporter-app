@@ -1,6 +1,6 @@
-import { Description } from '@/common/description';
-import { Title } from '@/common/title';
-import { Card, CardContent } from '@/components/card';
+import { Description } from '../common/description';
+import { Title } from '../common/title';
+import { Card, CardContent } from '../components/card';
 
 const steps = [
   {

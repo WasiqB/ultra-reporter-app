@@ -6,9 +6,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.mts",
   "scripts": {
     "ui": "pnpm dlx shadcn@latest"
   },
@@ -62,12 +59,12 @@
   "devDependencies": {
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18",
-    "@ultra-reporter/tailwind-config": "workspace:*",
     "@ultra-reporter/typescript-config": "workspace:*",
     "@ultra-reporter/utils": "workspace:*",
     "daisyui": "^4.12.14",
     "postcss": "^8.4.49",
     "postcss-load-config": "^6.0.1",
+    "autoprefixer": "^10.4.20",
     "tailwindcss": "^3.4.15"
   }
 }
