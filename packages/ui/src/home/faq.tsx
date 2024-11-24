@@ -18,6 +18,11 @@ const faqItems = [
     answer:
       'Report generation is nearly instantaneous. Most reports are generated within seconds, depending on the size and complexity of your test results.',
   },
+  {
+    question: 'Do you save the results which gets uploaded?',
+    answer:
+      'Not yet. Currently we do not save your results file which you upload to the app. It gets parsed and generates the report on runtime. We are working on adding support to save your records to a secure database in near future.',
+  },
 ];
 
 export const FAQ = (): JSX.Element => {
