@@ -1,1 +1,1 @@
-export { default } from '@ultra-reporter/tailwind-config/postcss.config';
+export { default } from '@ultra-reporter/ui/postcss.config';

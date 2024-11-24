@@ -1,6 +1,6 @@
 'use client';
 
-import { UploadIcon } from 'lucide-react';
+import { Upload } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Button } from '../components/button';
@@ -58,7 +58,7 @@ export const FileUpload = (): JSX.Element => {
     <form onSubmit={handleSubmit} className='w-full max-w-md'>
       <div
         // eslint-disable-next-line @stylistic/js/max-len
-        className='border-input hover:border-primary hover:text-primary cursor-pointer rounded-lg border-2 border-dashed p-8 text-center transition-all'
+        className='border-muted-foreground hover:border-primary hover:text-primary cursor-pointer rounded-lg border-4 border-dashed p-8 text-center transition-all'
         onDragOver={handleDragOver}
         onDrop={handleDrop}
       >
@@ -70,9 +70,11 @@ export const FileUpload = (): JSX.Element => {
           id='file-upload'
         />
         <Label htmlFor='file-upload' className='cursor-pointer'>
-          <UploadIcon className='mx-auto mb-4 h-12 w-12' />
+          <Upload className='text-muted-foreground mx-auto mb-4 h-12 w-12' />
           <p className='text-muted-foreground'>
-            {file ? file.name : 'Click to select or drag and drop an XML file'}
+            {file
+              ? file.name
+              : 'Click to select or drag and drop testng-results.xml file'}
           </p>
         </Label>
       </div>

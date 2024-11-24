@@ -55,7 +55,7 @@ const features = [
 
 export const Features = (): JSX.Element => {
   return (
-    <section className='mb-16 mt-16'>
+    <section className='mb-16 mt-16' id='features'>
       <h2 className='text-foreground mb-8 text-center text-3xl font-bold'>
         Features
       </h2>
