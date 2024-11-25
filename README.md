@@ -1,6 +1,6 @@
 # 📊 Ultra-Reporter App
 
-[Ultra-Reporter](https://ultra-reporter-app.vercel.app/) is your go-to tool for transforming your TestNG (Maven, Java) test results into stunning reports.
+[Ultra-Reporter](https://www.ultra-reporter.com/) is your go-to tool for transforming your TestNG (Maven, Java) test results into stunning reports.
 
 Built on the power of Next.js and Tailwind CSS, this reporter takes your raw test results from TestNG and presents it in a beautiful, easy-to-digest format. Simplify your test reporting with just a one click!
 
@@ -28,10 +28,13 @@ Following are the steps to get started with Ultra-Reporter:
 
 Ultra-Reporter leverages cutting-edge technologies to provide fast, efficient, and sleek reporting:
 
-- **[Next.js 14](https://nextjs.org/)**: Dynamic, server-rendered React apps.
+- **[Next.js 15](https://nextjs.org/)**: Dynamic, server-rendered React apps.
 - **[TypeScript](https://www.typescriptlang.org/)**: Strongly typed for better reliability and scalability.
 - **[Tailwind CSS](https://tailwindcss.com/)**: Beautiful, responsive design without the hassle.
 - **[Shadcn/UI](https://ui.shadcn.com/)**, [Magic UI](https://magicui.design/) & **[Daisy UI](https://daisyui.com/)**: Sleek UI components for a polished user experience.
+- **[Turborepo](https://turborepo.org/)**: Fast, efficient monorepo management.
+- **[ESLint](https://eslint.org/) & [Prettier](https://prettier.io/)**: Enforce consistent code style and automate code formatting.
+- **[Prettier](https://prettier.io/)**: Code formatter.
 - **[Vercel](https://vercel.com/)**: Next.js is deployed on Vercel, a platform for static websites and serverless functions.
 
 ## ⏱️ What's Next?
@@ -44,6 +47,7 @@ Got a feature request or an idea to make Ultra-Reporter even better? Don’t hes
 
 Check out the previous versions of Ultra-Reporter to see what features were added in each release:
 
+- [Version 0.5.0](https://github.com/WasiqB/ultra-reporter-app/releases/tag/v0.5.0)
 - [Version 0.4.0](https://github.com/WasiqB/ultra-reporter-app/releases/tag/v0.4.0)
 - [Version 0.3.0](https://github.com/WasiqB/ultra-reporter-app/releases/tag/v0.3.0)
 - [Version 0.2.0](https://github.com/WasiqB/ultra-reporter-app/releases/tag/v0.2.0)

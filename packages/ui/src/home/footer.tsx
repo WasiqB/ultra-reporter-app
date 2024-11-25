@@ -11,10 +11,18 @@ export const Footer = (): JSX.Element => {
   return (
     <footer className='footer footer-center bg-muted text-muted-foreground p-10 pb-10 font-bold'>
       <aside>
-        <Image src='/favicon.png' height={24} width={24} alt='Ultra Reporter' />
-        <h3 className='text-foreground text-xl'>
-          Ultra Report <span className='text-sm'>- v{packageInfo.version}</span>
-        </h3>
+        <Link href='/' className='flex flex-col items-center'>
+          <Image
+            src='/favicon.png'
+            height={24}
+            width={24}
+            alt='Ultra Reporter'
+          />
+          <h3 className='text-foreground text-xl'>
+            Ultra Report{' '}
+            <span className='text-sm'>- v{packageInfo.version}</span>
+          </h3>
+        </Link>
         <div>
           <div className='grid-flow-col items-center'>
             <p>

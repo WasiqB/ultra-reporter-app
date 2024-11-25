@@ -11,10 +11,10 @@
     "prefix": ""
   },
   "aliases": {
-    "components": "@ultra-reporter/ui/components",
-    "utils": "@ultra-reporter/ui/utils",
-    "ui": "@ultra-reporter/ui/components",
-    "lib": "@ultra-reporter/ui/lib",
-    "hooks": "@ultra-reporter/ui/hooks"
+    "components": "@/components",
+    "utils": "@/utils",
+    "ui": "@/components",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
   }
 }
