@@ -19,7 +19,7 @@
     "@ultra-reporter/analytics": "workspace:*",
     "@ultra-reporter/ui": "workspace:*",
     "@ultra-reporter/utils": "workspace:*",
-    "lucide-react": "^0.460.0",
+    "lucide-react": "^0.461.0",
     "next": "15.0.3"
   },
   "devDependencies": {

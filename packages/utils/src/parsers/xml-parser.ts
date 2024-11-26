@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { parseString } from 'xml2js';
+import { isProd } from '../types/constants';
 import {
   TestCase,
   TestClass,
@@ -59,7 +60,7 @@ const getParams = (params: any): string[] => {
   if (!params) return result;
 
   const processParam = (param: any): void => {
-    result.push(param.value.trim());
+    result.push(param?.value.toString().trim());
   };
 
   const param = params.param;
@@ -189,6 +190,9 @@ const getTestResults = (jsonData: any): TestResult => {
     return mapToResult;
     /* eslint-disable @typescript-eslint/no-unused-vars */
   } catch (error) {
+    if (!isProd) {
+      console.log(error);
+    }
     throw new Error(`Error while processing the XML file, ${errorMessage}`);
   }
 };
