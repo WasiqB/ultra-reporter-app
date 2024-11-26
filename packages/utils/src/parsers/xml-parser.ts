@@ -188,7 +188,6 @@ const getTestResults = (jsonData: any): TestResult => {
       test_suites: getTestSuites(testResult.suite),
     };
     return mapToResult;
-    /* eslint-disable @typescript-eslint/no-unused-vars */
   } catch (error) {
     if (!isProd) {
       console.log(error);
