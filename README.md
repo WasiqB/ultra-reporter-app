@@ -35,6 +35,7 @@ Ultra-Reporter leverages cutting-edge technologies to provide fast, efficient, a
 - **[Turborepo](https://turborepo.org/)**: Fast, efficient monorepo management.
 - **[ESLint](https://eslint.org/) & [Prettier](https://prettier.io/)**: Enforce consistent code style and automate code formatting.
 - **[Prettier](https://prettier.io/)**: Code formatter.
+- **[Flagsmith](https://www.flagsmith.com/)**: Feature flag management.
 - **[Vercel](https://vercel.com/)**: Next.js is deployed on Vercel, a platform for static websites and serverless functions.
 
 ## ⏱️ What's Next?
