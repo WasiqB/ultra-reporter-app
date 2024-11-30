@@ -2,6 +2,27 @@
 
 
 
+
+## 0.6.0 (2024-11-30)
+
+#### :rocket: New Feature
+* `analytics`, `feature-toggle`, `ui`, `utils`
+  * [#99](https://github.com/WasiqB/ultra-reporter-app/pull/99) feat: :sparkles: added feature toggle support ([@WasiqB](https://github.com/WasiqB))
+* `tailwind-config`, `ui`
+  * [#92](https://github.com/WasiqB/ultra-reporter-app/pull/92) feat: :sparkles: updated landing page ([@WasiqB](https://github.com/WasiqB))
+* `analytics`, `tailwind-config`, `ui`, `utils`
+  * [#85](https://github.com/WasiqB/ultra-reporter-app/pull/85) feat: :sparkles: upgraded next js to v15 ([@WasiqB](https://github.com/WasiqB))
+
+#### :bug: Bug Fix
+* `ui`, `utils`
+  * [#97](https://github.com/WasiqB/ultra-reporter-app/pull/97) fix: :bug: fixed issue while parsing results ([@WasiqB](https://github.com/WasiqB))
+  * [#89](https://github.com/WasiqB/ultra-reporter-app/pull/89) fix: :bug: fixed the sorting issue on duration column ([@WasiqB](https://github.com/WasiqB))
+* `ui`
+  * [#87](https://github.com/WasiqB/ultra-reporter-app/pull/87) fix: :bug: fixed misc ui issues ([@WasiqB](https://github.com/WasiqB))
+
+#### Committers: 1
+- Wasiq Bhamla ([@WasiqB](https://github.com/WasiqB))
+
 ## 0.5.0 (2024-11-16)
 
 #### :rocket: New Feature
