@@ -1,3 +1,5 @@
+'use client';
+
 import { getFlag } from '@ultra-reporter/feature-toggle/provider';
 import Image from 'next/image';
 import { FileUpload } from '../utils/file-upload';
@@ -15,7 +17,7 @@ export const Hero = (): JSX.Element => {
             <br />
             in one click
           </h1>
-          {!signInSupport && (
+          {!signInSupport?.enabled && (
             <div className='w-full max-w-sm pt-8'>
               <FileUpload />
             </div>
