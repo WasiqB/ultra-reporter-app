@@ -1,3 +1,6 @@
+'use client';
+
+import { getFlag } from '@ultra-reporter/feature-toggle/provider';
 import { Description } from '../common/description';
 import { Title } from '../common/title';
 import {
@@ -7,25 +10,11 @@ import {
   AccordionTrigger,
 } from '../components/accordion';
 
-const faqItems = [
-  {
-    question: 'What file formats does Ultra Reporter support?',
-    answer:
-      "Ultra Reporter currently supports only TestNG XML file formats for test results. We're working on expanding support for other formats in the future.",
-  },
-  {
-    question: 'How long does it take to generate a report?',
-    answer:
-      'Report generation is nearly instantaneous. Most reports are generated within seconds, depending on the size and complexity of your test results.',
-  },
-  {
-    question: 'Do you save the results which gets uploaded?',
-    answer:
-      'Not yet. Currently we do not save your results file which you upload to the app. It gets parsed and generates the report on runtime. We are working on adding support to save your records to a secure database in near future.',
-  },
-];
-
-export const FAQ = (): JSX.Element => {
+export const FAQ = (): JSX.Element | null => {
+  const faq = getFlag('faq');
+  if (faq && !faq.enabled) {
+    return null;
+  }
   return (
     <section
       id='faq'
@@ -37,12 +26,14 @@ export const FAQ = (): JSX.Element => {
       </div>
       <div className='mx-auto w-full max-w-[700px]'>
         <Accordion type='single' collapsible className='w-full'>
-          {faqItems.map((item, index) => (
-            <AccordionItem key={index} value={`item-${index}`}>
-              <AccordionTrigger>{item.question}</AccordionTrigger>
-              <AccordionContent>{item.answer}</AccordionContent>
-            </AccordionItem>
-          ))}
+          {JSON.parse(faq?.value).map(
+            (item: { question: string; answer: string }, index: number) => (
+              <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionTrigger>{item.question}</AccordionTrigger>
+                <AccordionContent>{item.answer}</AccordionContent>
+              </AccordionItem>
+            )
+          )}
         </Accordion>
       </div>
     </section>

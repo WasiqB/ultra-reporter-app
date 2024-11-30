@@ -37,6 +37,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     needs: lint
+    environment: Preview
+    env:
+      NEXT_PUBLIC_FLAGSMITH_ENVIRONMENT_ID: ${{ secrets.NEXT_PUBLIC_FLAGSMITH_ENVIRONMENT_ID }}
 
     steps:
       - name: Check out Git repository
