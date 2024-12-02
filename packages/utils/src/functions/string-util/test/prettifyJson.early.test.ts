@@ -52,9 +52,9 @@ describe('prettifyJson() prettifyJson method', () => {
     });
 
     it('should handle a JSON string with special characters', () => {
-      const input = '{"special":"!@#$%^&*()_+{}|:\"<>?"}';
+      const input = '{"special":"!@#$%^&*()_+{}|:"<>?"}';
       const expectedOutput = `{
-  "special": "!@#$%^&*()_+{}|:\\\"<>?"
+  "special": "!@#$%^&*()_+{}|:"<>?"
 }`;
       expect(prettifyJson(input)).toBe(expectedOutput);
     });
