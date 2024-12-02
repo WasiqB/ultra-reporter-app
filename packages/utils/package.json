@@ -8,11 +8,12 @@
     "./constants": "./src/types/constants.ts",
     "./cn": "./src/functions/cn.ts",
     "./formatting": "./src/functions/formatting.ts",
-    "./string-util": "./src/functions/string-util.ts",
+    "./string-util": "./src/functions/string-util/index.ts",
     "./xml-parser": "./src/parsers/xml-parser.ts"
   },
   "scripts": {
-    "lint": "eslint . --max-warnings 0"
+    "lint": "eslint . --max-warnings 0",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/luxon": "^3.4.2",
@@ -20,6 +21,7 @@
     "@ultra-reporter/typescript-config": "workspace:*"
   },
   "dependencies": {
+    "@xmldom/xmldom": "^0.9.5",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "luxon": "^3.5.0",
@@ -27,5 +29,34 @@
     "react": "^18",
     "tailwind-merge": "^2.5.5",
     "xml2js": "^0.6.2"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "verbose": true,
+    "clearMocks": true,
+    "testEnvironment": "node",
+    "moduleFileExtensions": [
+      "js",
+      "ts"
+    ],
+    "testMatch": [
+      "**/*.test.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/dist/"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "coverageReporters": [
+      "json-summary",
+      "text",
+      "lcov"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**"
+    ]
   }
 }
