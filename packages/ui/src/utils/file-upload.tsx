@@ -51,6 +51,8 @@ export const FileUpload = (): JSX.Element => {
           throw new Error(error.error || 'Failed to process file');
         }
 
+        localStorage.setItem('xml-data', JSON.stringify(await response.json()));
+
         router.push('/loading');
       } catch (error) {
         console.error('Error processing file:', error);

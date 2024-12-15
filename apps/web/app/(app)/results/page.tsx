@@ -65,7 +65,6 @@ const ResultsPage = (): JSX.Element => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        // First try to get data from localStorage
         const resultData = localStorage.getItem('json-data');
         if (resultData) {
           const testResult: TestResultData[] = JSON.parse(resultData);

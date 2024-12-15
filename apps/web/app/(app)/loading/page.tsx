@@ -24,8 +24,15 @@ const LoadingPage = (): JSX.Element => {
       try {
         setProgress(25);
 
-        const response = await fetch('/api/get-formatted-data');
-        const contentType = response.headers.get('content-type');
+        const response = await fetch('/api/format-data', {
+          body: JSON.stringify({
+            value: localStorage.getItem('xml-data'),
+          }),
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
 
         if (!response.ok) {
           const errorData = await response.json();
@@ -39,7 +46,6 @@ const LoadingPage = (): JSX.Element => {
           throw new Error('No data received from server');
         }
 
-        // Store the data
         localStorage.setItem('json-data', JSON.stringify(data));
 
         setProgress(100);

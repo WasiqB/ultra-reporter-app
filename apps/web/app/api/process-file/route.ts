@@ -1,8 +1,5 @@
-import { getData } from '@ultra-reporter/ui/data';
-import {
-  convertToJson,
-  getTestResults,
-} from '@ultra-reporter/utils/xml-parser';
+import { convertToJson } from '@ultra-reporter/utils/xml-parser';
+import { FileReader } from 'fs/promises';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
@@ -21,7 +18,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const xmlContent = await file.text();
+    let xmlContent: string | null = null;
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      xmlContent = e.target?.result as string;
+    };
+    reader.readAsText(file);
+
     if (!xmlContent) {
       return NextResponse.json(
         { error: 'Empty file content' },
@@ -30,22 +33,7 @@ export async function POST(request: NextRequest) {
     }
 
     const jsonData = convertToJson(xmlContent);
-    const testResult = getTestResults(jsonData);
-    const processedData = getData(testResult);
-
-    // Create the response first
-    const response = NextResponse.json({ success: true });
-
-    // Set cookie in the response
-    response.cookies.set('test-results', JSON.stringify(processedData), {
-      path: '/',
-      maxAge: 3600,
-      httpOnly: false, // Set to false so client-side can access it
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-    });
-
-    return response;
+    return NextResponse.json(jsonData);
   } catch (error) {
     console.error('Error processing file:', error);
     return NextResponse.json(
