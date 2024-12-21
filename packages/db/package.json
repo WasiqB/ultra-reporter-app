@@ -1,0 +1,22 @@
+{
+  "name": "@ultra-reporter/db",
+  "description": "Ultra Reporter database schema handling",
+  "version": "0.6.0",
+  "private": true,
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "db:generate": "prisma generate --schema=./src/schema",
+    "db:push": "prisma db push --schema=./src/schema --skip-generate",
+    "db:studio": "prisma studio --schema=./src/schema --browser none"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.1.0"
+  },
+  "devDependencies": {
+    "@ultra-reporter/typescript-config": "workspace:*",
+    "prisma": "^6.1.0"
+  }
+}
