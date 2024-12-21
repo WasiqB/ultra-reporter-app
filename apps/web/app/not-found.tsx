@@ -1,14 +1,15 @@
 import { Button } from '@ultra-reporter/ui/components/button';
 import { FileQuestion } from 'lucide-react';
 import Link from 'next/link';
+import { JSX } from 'react';
 
-export default function NotFound() {
+const NotFound = (): JSX.Element => {
   return (
     <div className='bg-background text-foreground flex min-h-screen flex-col items-center justify-center'>
       <FileQuestion className='text-primary mb-8 h-24 w-24' />
       <h1 className='mb-4 text-4xl font-bold'>404 - Page Not Found</h1>
       <p className='mb-8 max-w-md text-center text-xl'>
-        Oops! It seems what you're looking for has gone missing in our data
+        Oops! It seems what you&apos;re looking for has gone missing in our data
         center.
       </p>
       <Button asChild>
@@ -16,4 +17,6 @@ export default function NotFound() {
       </Button>
     </div>
   );
-}
+};
+
+export default NotFound;

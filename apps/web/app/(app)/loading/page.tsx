@@ -17,7 +17,7 @@ import {
 } from '@ultra-reporter/utils/xml-parser';
 import { Bug, MoveLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { JSX, useEffect, useState } from 'react';
 
 const LoadingPage = (): JSX.Element => {
   const [progress, setProgress] = useState(0);
