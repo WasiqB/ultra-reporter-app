@@ -11,15 +11,15 @@
     "./provider": "./src/provider.tsx"
   },
   "devDependencies": {
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
     "@ultra-reporter/typescript-config": "workspace:*"
   },
   "peerDependencies": {
-    "react": "^18.0",
-    "react-dom": "^18.0"
+    "react": "^19.0",
+    "react-dom": "^19.0"
   },
   "dependencies": {
-    "flagsmith": "^7.0.2"
+    "flagsmith": "^8.0.1"
   }
 }

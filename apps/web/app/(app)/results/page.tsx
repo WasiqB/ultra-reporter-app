@@ -23,7 +23,7 @@ import { columns } from '@ultra-reporter/ui/data-table/table/columns';
 import { NavBar } from '@ultra-reporter/ui/home/nav-bar';
 import { cn } from '@ultra-reporter/utils/cn';
 import { FormattedData } from '@ultra-reporter/utils/types';
-import { useEffect, useState } from 'react';
+import { JSX, useEffect, useState } from 'react';
 
 const chartConfig: ChartConfig = {
   total: {

@@ -1,0 +1,33 @@
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["prismaSchemaFolder"]
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id        String @id @default(cuid())
+    user_name String
+    email     String
+    provider  String
+
+    created_at DateTime @default(now())
+    updated_at DateTime @updatedAt
+
+    LoginSession LoginSession[]
+}
+
+model LoginSession {
+    id            String   @id @default(cuid())
+    user_id       String
+    last_login_at DateTime @default(now())
+    created_at    DateTime @default(now())
+    updated_at    DateTime @updatedAt
+
+    user User @relation(fields: [user_id], references: [id])
+
+    @@index([user_id])
+}
