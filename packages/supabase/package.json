@@ -1,0 +1,28 @@
+{
+  "name": "@ultra-reporter/supabase",
+  "description": "Ultra Reporter Supabase integration",
+  "version": "0.6.0",
+  "private": true,
+  "scripts": {
+    "lint": "eslint . --max-warnings 0"
+  },
+  "exports": {
+    "./client": "./src/client.ts",
+    "./server": "./src/server.ts",
+    "./middleware": "./src/middleware.ts"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "@ultra-reporter/typescript-config": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^19.0",
+    "react-dom": "^19.0"
+  },
+  "dependencies": {
+    "@supabase/ssr": "latest",
+    "@supabase/supabase-js": "latest",
+    "next": "15.1.3"
+  }
+}
