@@ -43,6 +43,7 @@ export const updateSession = async (request: NextRequest) => {
     }
 
     return response;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (e) {
     return NextResponse.next({
       request: {
