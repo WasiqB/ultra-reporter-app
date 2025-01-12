@@ -20,7 +20,7 @@
     "@ultra-reporter/feature-toggle": "workspace:*",
     "@ultra-reporter/ui": "workspace:*",
     "@ultra-reporter/utils": "workspace:*",
-    "lucide-react": "^0.469.0",
+    "lucide-react": "^0.471.0",
     "next": "15.1.2"
   },
   "devDependencies": {
