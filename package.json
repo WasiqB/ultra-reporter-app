@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.6",
+    "@eslint/js": "^9.20.0",
     "@next/eslint-plugin-next": "^15.1.7",
     "@release-it-plugins/lerna-changelog": "^7.0.0",
     "@stylistic/eslint-plugin-js": "^3.1.0",
@@ -40,6 +41,7 @@
     "eslint-config-turbo": "2.4.2",
     "eslint-plugin-only-warn": "^1.1.0",
     "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-react": "^7.37.4",
     "globals": "^15.15.0",
     "husky": "^9.1.7",
     "lerna-changelog": "^2.2.0",
