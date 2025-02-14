@@ -1,39 +1,11 @@
 'use client';
 
+import { signinWithGoogle } from '@/app/utils/actions';
 import { Button } from '@ultra-reporter/ui/components/button';
 import { DemoCarousel } from '@ultra-reporter/ui/components/demo-carousel';
 import { Icons } from '@ultra-reporter/ui/components/icons';
-import { useState } from 'react';
 
 export default function AuthPage() {
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleAuth = async () => {
-    setIsLoading(true);
-    try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-      });
-
-      if (!response.ok) {
-        throw new Error('Authentication failed');
-      }
-
-      const data = await response.json();
-
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        throw new Error('No OAuth URL received');
-      }
-    } catch (error) {
-      console.error('Authentication error:', error);
-      // You might want to show an error message to the user here
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   return (
     <div className='container mx-auto flex min-h-screen items-center justify-center'>
       <div className='grid w-full items-center gap-8 lg:grid-cols-2'>
@@ -58,12 +30,8 @@ export default function AuthPage() {
               variant='default'
               size='lg'
               className='w-full py-6 text-lg'
-              onClick={handleAuth}
-              disabled={isLoading}
+              onClick={signinWithGoogle}
             >
-              {isLoading && (
-                <Icons.spinner className='mr-2 h-5 w-5 animate-spin' />
-              )}
               <Icons.google className='mr-2 h-5 w-5' />
               Continue with Google
             </Button>
