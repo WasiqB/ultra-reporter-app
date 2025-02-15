@@ -12,7 +12,10 @@ const signInWith = (provider: Provider) => async () => {
   const requestHeaders = await headers();
   const origin = requestHeaders.get('origin');
 
+  logger.info(`Is Production: ${isProd}`);
   if (!isProd) {
+    logger.info(`Received provider: ${provider}`);
+    logger.info(`Received origin: ${origin}`);
     requestHeaders.forEach((key, value) => {
       logger.info(`${key}: ${value}`);
     });
