@@ -24,6 +24,7 @@
   "dependencies": {
     "@supabase/ssr": "latest",
     "@supabase/supabase-js": "^2.48.1",
-    "next": "15.1.7"
+    "next": "15.1.7",
+    "@ultra-reporter/feature-toggle": "workspace:*"
   }
 }
