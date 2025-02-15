@@ -1,6 +1,6 @@
 import { logger } from '@ultra-reporter/logger';
 import { createClient } from '@ultra-reporter/supabase/server';
-import { isProd } from '@ultra-reporter/utils/constants';
+import { isPreview } from '@ultra-reporter/utils/constants';
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
@@ -9,7 +9,7 @@ export async function GET(request: Request) {
   // if "next" is in param, use it as the redirect URL
   const next = searchParams.get('next') ?? '/dashboard';
 
-  if (!isProd) {
+  if (isPreview) {
     logger.info(`Received URL: ${request.url}`);
     logger.info(`Received searchParams: ${searchParams}`);
     logger.info(`Received code: ${code}`);

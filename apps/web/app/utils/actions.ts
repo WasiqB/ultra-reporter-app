@@ -3,7 +3,7 @@
 import { logger } from '@ultra-reporter/logger';
 import { Provider } from '@ultra-reporter/supabase/client';
 import { createClient } from '@ultra-reporter/supabase/server';
-import { isProd } from '@ultra-reporter/utils/constants';
+import { isPreview } from '@ultra-reporter/utils/constants';
 import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 
@@ -12,8 +12,8 @@ const signInWith = (provider: Provider) => async () => {
   const requestHeaders = await headers();
   const origin = requestHeaders.get('origin');
 
-  logger.info(`Is Production: ${isProd}`);
-  if (!isProd) {
+  logger.info(`Is Preview: ${isPreview}`);
+  if (isPreview) {
     logger.info(`Received provider: ${provider}`);
     logger.info(`Received origin: ${origin}`);
     requestHeaders.forEach((key, value) => {
