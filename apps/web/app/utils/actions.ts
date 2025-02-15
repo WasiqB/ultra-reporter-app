@@ -44,13 +44,12 @@ const signInWith = (provider: Provider) => async () => {
 
   if (error) {
     logger.error(`Error while signing in with ${provider}: ${error.message}`);
-  } else {
+  }
+  if (data?.url) {
     if (isPreview) {
-      logger.debug('====================');
-      logger.debug(`Success Login data: ${JSON.stringify(data)}`);
-      logger.debug('====================');
+      logger.debug(`Actions Redirecting to: ${data.url}`);
     }
-    redirect('/dashboard');
+    redirect(data.url);
   }
 };
 
