@@ -12,13 +12,14 @@ const signInWith = (provider: Provider) => async () => {
   const requestHeaders = await headers();
   const origin = requestHeaders.get('origin');
 
-  logger.info(`Is Preview: ${isPreview}`);
   if (isPreview) {
-    logger.info(`Received provider: ${provider}`);
-    logger.info(`Received origin: ${origin}`);
+    logger.debug('====================');
+    logger.debug(`Actions Received provider: ${provider}`);
+    logger.debug(`Actions Received origin: ${origin}`);
     requestHeaders.forEach((key, value) => {
-      logger.info(`${key}: ${value}`);
+      logger.debug(`Actions Header [${key}]: [${value}]`);
     });
+    logger.debug('====================');
   }
 
   const { data, error } = await supabase.auth.signInWithOAuth({
@@ -30,10 +31,13 @@ const signInWith = (provider: Provider) => async () => {
 
   if (error) {
     logger.error(`Error while signing in with ${provider}: ${error.message}`);
-  }
-
-  if (data?.url) {
-    redirect(data.url);
+  } else {
+    if (isPreview) {
+      logger.debug('====================');
+      logger.debug(`Success Login data: ${JSON.stringify(data)}`);
+      logger.debug('====================');
+    }
+    redirect('/dashboard');
   }
 };
 

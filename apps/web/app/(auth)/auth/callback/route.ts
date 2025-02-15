@@ -6,23 +6,30 @@ import { NextResponse } from 'next/server';
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get('code');
-  // if "next" is in param, use it as the redirect URL
-  const next = searchParams.get('next') ?? '/dashboard';
+  const next = searchParams.get('next') ?? '/';
 
   if (isPreview) {
-    logger.info(`Received URL: ${request.url}`);
-    logger.info(`Received searchParams: ${searchParams}`);
-    logger.info(`Received code: ${code}`);
-    logger.info(`Received next: ${next}`);
-    logger.info(`Received origin: ${origin}`);
+    logger.debug('====================');
+    logger.debug(`Route Received URL: ${request.url}`);
+    logger.debug(`Route Received searchParams: ${searchParams}`);
+    logger.debug(`Route Received code: ${code}`);
+    logger.debug(`Route Received next: ${next}`);
+    logger.debug(`Route Received origin: ${origin}`);
+    logger.debug('====================');
   }
 
   if (code) {
     const supabase = await createClient();
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
-      const forwardedHost = request.headers.get('x-forwarded-host'); // original origin before load balancer
+      const forwardedHost = request.headers.get('x-forwarded-host');
       const isLocalEnv = process.env.NODE_ENV === 'development';
+      if (isPreview) {
+        logger.debug('====================');
+        logger.debug(`Route Received forwardedHost: ${forwardedHost}`);
+        logger.debug(`Route Received isLocalEnv: ${isLocalEnv}`);
+        logger.debug('====================');
+      }
       if (isLocalEnv) {
         // we can be sure that there is no load balancer in between, so no need to watch for X-Forwarded-Host
         return NextResponse.redirect(`${origin}${next}`);
