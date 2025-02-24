@@ -5,7 +5,7 @@ import { RainbowButton } from '../components/rainbow-button';
 
 export const Sponsor = (): JSX.Element => {
   return (
-    <section className='bg-gradient-to-r from-purple-500 to-indigo-600 py-16 text-white'>
+    <section className='bg-linear-to-r from-purple-500 to-indigo-600 py-16 text-white'>
       <div className='container mx-auto px-4 text-center'>
         <h2 className='mb-4 text-3xl font-bold'>Support Ultra Reporter</h2>
         <p className='mb-8 text-xl'>

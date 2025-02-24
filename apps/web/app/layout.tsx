@@ -2,13 +2,13 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import { Provider as AnalyticsProvider } from '@ultra-reporter/analytics/client';
 import { getFeatureState } from '@ultra-reporter/feature-toggle/client';
 import { FeatureProvider } from '@ultra-reporter/feature-toggle/provider';
-import '@ultra-reporter/ui/global.css';
 import { Footer } from '@ultra-reporter/ui/home/footer';
 import { ScrollToTop } from '@ultra-reporter/ui/home/scroll-to-top';
 import { ThemeProvider } from '@ultra-reporter/ui/utils/theme-provider';
 import { isProd } from '@ultra-reporter/utils/constants';
 import type { Metadata } from 'next';
 import { DetailedHTMLProps, HtmlHTMLAttributes } from 'react';
+import './styles/global.css';
 
 export const metadata: Metadata = {
   title: {
