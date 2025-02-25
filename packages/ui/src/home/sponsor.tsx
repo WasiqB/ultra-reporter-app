@@ -1,7 +1,7 @@
 import { HeartIcon } from 'lucide-react';
 import Link from 'next/link';
 import { JSX } from 'react';
-import { RainbowButton } from '../components/rainbow-button';
+import { Button } from '../components/button';
 
 export const Sponsor = (): JSX.Element => {
   return (
@@ -13,10 +13,10 @@ export const Sponsor = (): JSX.Element => {
           sponsor!
         </p>
         <Link href='https://github.com/sponsors/WasiqB'>
-          <RainbowButton>
-            <HeartIcon className='mr-2 h-5 w-5 text-red-500' />
+          <Button>
+            <HeartIcon className='mr-2 h-5 w-5 text-white' />
             Become a Sponsor
-          </RainbowButton>
+          </Button>
         </Link>
       </div>
     </section>
