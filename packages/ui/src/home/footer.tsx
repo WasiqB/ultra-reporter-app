@@ -10,7 +10,7 @@ import { YouTube } from '../icons/youtube';
 
 export const Footer = (): JSX.Element => {
   return (
-    <footer className='footer footer-center bg-muted text-muted-foreground p-10 pb-10 font-bold'>
+    <footer className='footer footer-horizontal footer-center bg-muted text-muted-foreground p-10 pb-10 font-bold'>
       <aside>
         <Link href='/' className='flex flex-col items-center'>
           <Image

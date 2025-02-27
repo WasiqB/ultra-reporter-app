@@ -63,8 +63,8 @@ export const NavBar = ({
             </Button>
           </SheetTrigger>
           <SheetContent side='right' className='w-[300px] sm:w-[400px]'>
-            <SheetTitle>Menu</SheetTitle>
-            <div className='flex flex-col space-y-4 py-4'>
+            <SheetTitle className='m-4 text-center'>Menu</SheetTitle>
+            <div className='m-4 flex flex-col space-y-4 py-4'>
               <ThemeToggle />
               <Link
                 href='https://github.com/WasiqB/ultra-reporter-app'
