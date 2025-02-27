@@ -1,6 +1,6 @@
 import { logger } from '@ultra-reporter/logger';
 import { createClient } from '@ultra-reporter/supabase/server';
-import { isPreview } from '@ultra-reporter/utils/constants';
+import { isProd } from '@ultra-reporter/utils/constants';
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
@@ -8,7 +8,7 @@ export async function GET(request: Request) {
   const code = searchParams.get('code');
   const next = searchParams.get('next') ?? '/dashboard';
 
-  if (isPreview) {
+  if (!isProd) {
     logger.debug('====================');
     logger.debug(`Route Received URL: ${request.url}`);
     logger.debug(`Route Received searchParams: ${searchParams}`);
@@ -23,14 +23,13 @@ export async function GET(request: Request) {
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
       const forwardedHost = request.headers.get('x-forwarded-host');
-      const isLocalEnv = process.env.NODE_ENV === 'development';
-      if (isPreview) {
+      if (!isProd) {
         logger.debug('====================');
         logger.debug(`Route Received forwardedHost: ${forwardedHost}`);
-        logger.debug(`Route Received isLocalEnv: ${isLocalEnv}`);
+        logger.debug(`Route Received isLocalEnv: ${!isProd}`);
         logger.debug('====================');
       }
-      if (isLocalEnv) {
+      if (!isProd) {
         // we can be sure that there is no load balancer in between, so no need to watch for X-Forwarded-Host
         return NextResponse.redirect(`${origin}${next}`);
       } else if (forwardedHost) {

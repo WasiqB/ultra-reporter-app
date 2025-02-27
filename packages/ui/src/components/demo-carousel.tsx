@@ -50,7 +50,7 @@ export function DemoCarousel() {
             className='rounded-lg object-cover shadow-xl'
             priority={index === 0}
           />
-          <div className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6'>
+          <div className='bg-linear-to-t absolute bottom-0 left-0 right-0 from-black/60 to-transparent p-6'>
             <p className='text-xl font-medium text-white'>{slide.caption}</p>
           </div>
         </div>

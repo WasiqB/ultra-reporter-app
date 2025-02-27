@@ -41,7 +41,7 @@ export const Hero = (): JSX.Element => {
             width={600}
             height={600}
             alt='Ultra Reporter Sample Report'
-            className='dark:shadow-muted-foreground rounded-lg border align-middle shadow-lg'
+            className='dark:shadow-muted-foreground rounded-lg border shadow-lg'
             priority
           />
         </div>

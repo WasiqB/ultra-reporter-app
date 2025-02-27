@@ -69,7 +69,7 @@ export function AttachmentDialog({
           <DialogTitle>{title}</DialogTitle>
           {description && <DialogDescription>{description}</DialogDescription>}
         </DialogHeader>
-        <div className='mt-4 flex w-full flex-grow flex-col items-center justify-center'>
+        <div className='mt-4 flex w-full grow flex-col items-center justify-center'>
           <Carousel setApi={setApi} className='relative w-full'>
             <CarouselContent className='w-full'>
               {content

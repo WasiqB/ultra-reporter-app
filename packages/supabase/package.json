@@ -13,8 +13,8 @@
   },
   "devDependencies": {
     "@supabase/auth-js": "^2.68.0",
-    "@types/react": "^19.0.8",
-    "@types/react-dom": "^19.0.3",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
     "@ultra-reporter/typescript-config": "workspace:*"
   },
   "peerDependencies": {
@@ -23,8 +23,8 @@
   },
   "dependencies": {
     "@supabase/ssr": "latest",
-    "@supabase/supabase-js": "^2.48.1",
-    "next": "15.1.7",
-    "@ultra-reporter/feature-toggle": "workspace:*"
+    "@supabase/supabase-js": "^2.49.1",
+    "@ultra-reporter/feature-toggle": "workspace:*",
+    "next": "15.2.0"
   }
 }

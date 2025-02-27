@@ -1,7 +1,7 @@
 import { StarIcon } from 'lucide-react';
 import Link from 'next/link';
 import { JSX } from 'react';
-import { RainbowButton } from '../components/rainbow-button';
+import { Button } from '../components/button';
 
 export const OpenSource = (): JSX.Element => {
   return (
@@ -13,10 +13,10 @@ export const OpenSource = (): JSX.Element => {
         Our code is open source and available on GitHub
       </p>
       <Link href='https://github.com/WasiqB/ultra-reporter-app' passHref>
-        <RainbowButton>
+        <Button>
           <StarIcon className='mr-2 h-4 w-4 fill-current' /> Mark a star on
           GitHub
-        </RainbowButton>
+        </Button>
       </Link>
     </section>
   );

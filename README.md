@@ -30,12 +30,13 @@ Ultra-Reporter leverages cutting-edge technologies to provide fast, efficient, a
 
 - **[Next.js 15](https://nextjs.org/)**: Dynamic, server-rendered React apps.
 - **[TypeScript](https://www.typescriptlang.org/)**: Strongly typed for better reliability and scalability.
-- **[Tailwind CSS](https://tailwindcss.com/)**: Beautiful, responsive design without the hassle.
+- **[Tailwind CSS v4](https://tailwindcss.com/)**: Beautiful, responsive design without the hassle.
 - **[Shadcn/UI](https://ui.shadcn.com/)**, [Magic UI](https://magicui.design/) & **[Daisy UI](https://daisyui.com/)**: Sleek UI components for a polished user experience.
 - **[Turborepo](https://turborepo.org/)**: Fast, efficient monorepo management.
 - **[ESLint](https://eslint.org/) & [Prettier](https://prettier.io/)**: Enforce consistent code style and automate code formatting.
 - **[Prettier](https://prettier.io/)**: Code formatter.
 - **[Flagsmith](https://www.flagsmith.com/)**: Feature flag management.
+- **[Supabase](https://supabase.io/)**: Auth, database, and storage for modern applications.
 - **[Vercel](https://vercel.com/)**: Next.js is deployed on Vercel, a platform for static websites and serverless functions.
 
 ## ⏱️ What's Next?
@@ -48,6 +49,7 @@ Got a feature request or an idea to make Ultra-Reporter even better? Don’t hes
 
 Check out the previous versions of Ultra-Reporter to see what features were added in each release:
 
+- [Version 0.6.0](https://github.com/WasiqB/ultra-reporter-app/releases/tag/v0.6.0)
 - [Version 0.5.0](https://github.com/WasiqB/ultra-reporter-app/releases/tag/v0.5.0)
 - [Version 0.4.0](https://github.com/WasiqB/ultra-reporter-app/releases/tag/v0.4.0)
 - [Version 0.3.0](https://github.com/WasiqB/ultra-reporter-app/releases/tag/v0.3.0)

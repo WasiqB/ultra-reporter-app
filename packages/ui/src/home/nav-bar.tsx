@@ -6,7 +6,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { JSX } from 'react';
 import { Button } from '../components/button';
-import { Sheet, SheetContent, SheetTrigger } from '../components/sheet';
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from '../components/sheet';
 import { ThemeToggle } from '../components/theme-toggle';
 import { GitHub } from '../icons/github';
 import { Sponsor } from '../icons/sponsor';
@@ -51,14 +56,15 @@ export const NavBar = ({
             <Button
               variant='ghost'
               size='sm'
-              className='md:hidden'
+              className='cursor-pointer md:hidden'
               type='button'
             >
-              <Menu className='h-6 w-6' />
+              <Menu className='size-6' />
             </Button>
           </SheetTrigger>
           <SheetContent side='right' className='w-[300px] sm:w-[400px]'>
-            <div className='flex flex-col space-y-4 py-4'>
+            <SheetTitle className='m-4 text-center'>Menu</SheetTitle>
+            <div className='m-4 flex flex-col space-y-4 py-4'>
               <ThemeToggle />
               <Link
                 href='https://github.com/WasiqB/ultra-reporter-app'
