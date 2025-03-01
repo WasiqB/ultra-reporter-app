@@ -3,6 +3,16 @@
 
 
 
+
+## 0.7.0 (2025-03-01)
+
+#### :rocket: New Feature
+* `analytics`, `db`, `feature-toggle`, `ui`, `utils`
+  * [#109](https://github.com/WasiqB/ultra-reporter-app/pull/109) feat: :sparkles: added prisma schema for db creation ([@WasiqB](https://github.com/WasiqB))
+
+#### Committers: 1
+- Wasiq Bhamla ([@WasiqB](https://github.com/WasiqB))
+
 ## 0.6.0 (2024-11-30)
 
 #### :rocket: New Feature
