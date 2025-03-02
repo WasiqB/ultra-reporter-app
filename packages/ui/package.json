@@ -68,7 +68,7 @@
     "@ultra-reporter/typescript-config": "workspace:*",
     "@ultra-reporter/utils": "workspace:*",
     "autoprefixer": "^10.4.20",
-    "daisyui": "5.0.0-beta.8",
+    "daisyui": "5.0.0",
     "postcss": "^8.5.3",
     "postcss-load-config": "^6.0.1",
     "tailwindcss": "^4.0.9"
