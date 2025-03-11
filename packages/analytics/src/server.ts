@@ -1,5 +1,6 @@
 import { OpenPanel, type PostEventPayload } from '@openpanel/nextjs';
 import { logger } from '@ultra-reporter/logger';
+import { isProd } from '@ultra-reporter/utils/constants';
 import { waitUntil } from '@vercel/functions';
 
 type Props = {
@@ -29,7 +30,7 @@ export const setupAnalytics = async (options?: Props) => {
 
   return {
     track: (options: { event: string } & PostEventPayload['properties']) => {
-      if (process.env.NODE_ENV !== 'production') {
+      if (!isProd) {
         logger.info('Track', options);
         return;
       }
