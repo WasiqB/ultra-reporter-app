@@ -5,6 +5,8 @@
   "private": true,
   "scripts": {
     "lint": "eslint . --max-warnings 0",
+    "db:migrate": "prisma migrate dev --schema=./src/schema --skip-generate",
+    "db:deploy": "prisma migrate deploy",
     "db:generate": "prisma generate --schema=./src/schema",
     "db:push": "prisma db push --schema=./src/schema --skip-generate",
     "db:studio": "prisma studio --schema=./src/schema --browser none"
