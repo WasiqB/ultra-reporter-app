@@ -1,10 +1,11 @@
 import { PrismaClient } from '@prisma/client';
-import { isProd } from '@ultra-reporter/utils/constants';
+import { isDev } from '@ultra-reporter/utils/constants';
 
-const globalForPrisma = global as unknown as { prisma: PrismaClient };
-
-export const db = globalForPrisma.prisma || new PrismaClient();
-
-if (!isProd) {
-  globalForPrisma.prisma = db;
+declare global {
+  // eslint-disable-next-line no-var
+  var prisma: PrismaClient | undefined;
 }
+
+export const db = globalThis.prisma || new PrismaClient();
+
+if (isDev) global.prisma = db;
