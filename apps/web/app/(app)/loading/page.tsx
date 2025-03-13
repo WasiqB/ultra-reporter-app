@@ -11,6 +11,7 @@ import {
 } from '@ultra-reporter/ui/components/card';
 import { Progress } from '@ultra-reporter/ui/components/progress';
 import { getData } from '@ultra-reporter/ui/data';
+import { isProd } from '@ultra-reporter/utils/constants';
 import {
   convertToJson,
   getTestResults,
@@ -42,7 +43,7 @@ const LoadingPage = (): JSX.Element => {
     } catch (err) {
       if (err instanceof Error) {
         setError(`${err.message}`);
-        if (process.env.VERCEL_ENV !== 'production') {
+        if (!isProd) {
           console.error(`Message: ${err.message}
 Stack: ${err.stack}`);
         }

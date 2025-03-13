@@ -25,6 +25,6 @@
     "@supabase/ssr": "latest",
     "@supabase/supabase-js": "^2.49.1",
     "@ultra-reporter/feature-toggle": "workspace:*",
-    "next": "15.2.0"
+    "next": "15.2.2"
   }
 }

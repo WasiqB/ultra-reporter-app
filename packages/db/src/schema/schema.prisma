@@ -9,40 +9,27 @@ datasource db {
     relationMode = "prisma"
 }
 
-model TestResultData {
-    id            String   @id @default(cuid())
-    suite_name    String
-    test_name     String
-    class_name    String
-    method_name   String
-    is_config     Boolean
-    tags          String[]
-    parameters    String[]
-    status        String
-    exception_id  String
-    attachment_id String
-    started_at    DateTime
-    finished_at   DateTime
-    duration      Float
+model User {
+    id    String  @id @default(cuid())
+    email String  @unique
+    name  String?
 
-    exception TestException? @relation(fields: [exception_id], references: [id])
-
-    attachment TestLog? @relation(fields: [attachment_id], references: [id])
-
-    @@index([exception_id])
-    @@index([attachment_id])
+    createdAt    DateTime       @default(now())
+    updatedAt    DateTime       @updatedAt
+    LoginDetails LoginDetails[]
 }
 
-model TestLog {
-    id             String           @id @default(cuid())
-    line           String
-    TestResultData TestResultData[]
-}
+model LoginDetails {
+    id         String    @id @default(cuid())
+    userId     String
+    lastLogin  DateTime  @default(now())
+    lastIp     String
+    lastLogout DateTime?
 
-model TestException {
-    id             String           @id @default(cuid())
-    class_name     String
-    message        String
-    stack_trace    String[]
-    TestResultData TestResultData[]
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@index([userId])
 }

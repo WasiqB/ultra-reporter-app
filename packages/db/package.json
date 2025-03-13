@@ -7,16 +7,21 @@
     "lint": "eslint . --max-warnings 0",
     "db:generate": "prisma generate --schema=./src/schema",
     "db:push": "prisma db push --schema=./src/schema --skip-generate",
-    "db:studio": "prisma studio --schema=./src/schema --browser none"
+    "db:studio": "prisma studio --schema=./src/schema --browser none",
+    "prebuild": "pnpm db:generate",
+    "predev": "pnpm run db:generate",
+    "format": "prisma format --schema=./schema"
   },
   "exports": {
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "@prisma/client": "^6.4.1"
+    "@prisma/client": "^6.5.0"
   },
   "devDependencies": {
+    "@ultra-reporter/logger": "workspace:*",
     "@ultra-reporter/typescript-config": "workspace:*",
-    "prisma": "^6.4.1"
+    "@ultra-reporter/utils": "workspace:*",
+    "prisma": "^6.5.0"
   }
 }

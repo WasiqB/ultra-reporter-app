@@ -1,3 +1,4 @@
+import { handleAuthCallback } from '@/app/utils/actions';
 import { logger } from '@ultra-reporter/logger';
 import { createClient } from '@ultra-reporter/supabase/server';
 import { isProd } from '@ultra-reporter/utils/constants';
@@ -22,6 +23,7 @@ export async function GET(request: Request) {
     const supabase = await createClient();
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
+      await handleAuthCallback();
       const forwardedHost = request.headers.get('x-forwarded-host');
       if (!isProd) {
         logger.debug('====================');
