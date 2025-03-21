@@ -25,7 +25,7 @@
     "@ultra-reporter/ui": "workspace:*",
     "@ultra-reporter/utils": "workspace:*",
     "lucide-react": "^0.479.0",
-    "next": "15.2.2"
+    "next": "15.2.3"
   },
   "devDependencies": {
     "@types/react": "^19.0.10",
