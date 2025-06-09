@@ -16,7 +16,7 @@
     "@vercel/functions": "^2.0.0"
   },
   "devDependencies": {
-    "@types/react": "^19.0.10",
+    "@types/react": "^19.1.6",
     "@ultra-reporter/logger": "workspace:*",
     "@ultra-reporter/typescript-config": "workspace:*"
   }

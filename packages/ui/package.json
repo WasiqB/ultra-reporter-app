@@ -60,17 +60,17 @@
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.0.13",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
+    "@tailwindcss/postcss": "^4.1.8",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.6",
     "@types/zxcvbn": "^4.4.5",
     "@ultra-reporter/feature-toggle": "workspace:*",
     "@ultra-reporter/typescript-config": "workspace:*",
     "@ultra-reporter/utils": "workspace:*",
     "autoprefixer": "^10.4.21",
-    "daisyui": "5.0.3",
-    "postcss": "^8.5.3",
+    "daisyui": "5.0.43",
+    "postcss": "^8.5.4",
     "postcss-load-config": "^6.0.1",
-    "tailwindcss": "^4.0.13"
+    "tailwindcss": "^4.1.8"
   }
 }
