@@ -15,8 +15,6 @@ import {
 import {
   ChartConfig,
   ChartContainer,
-  ChartLegend,
-  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from '../components/chart';
@@ -51,11 +49,6 @@ export const PieComponent = ({
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
-            />
-            <ChartLegend
-              className='pb-2'
-              align='left'
-              content={<ChartLegendContent />}
             />
             <Pie
               data={data}

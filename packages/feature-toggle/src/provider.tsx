@@ -1,32 +1,14 @@
-/* eslint-disable react/react-in-jsx-scope */
-'use client';
-
-import { createFlagsmithInstance } from 'flagsmith/isomorphic';
-import { FlagsmithProvider, useFlags } from 'flagsmith/react';
-import { IFlagsmithFeature, IFlagsmithTrait, IState } from 'flagsmith/types';
-import { JSX, useRef } from 'react';
-import { Flags } from './flag-list';
-
-interface FeatureProviderProps {
-  serverState: IState<string>;
-  children: JSX.Element;
-}
+import { DevCycleClientsideProvider } from '@devcycle/nextjs-sdk';
+import { getClientContext } from './devcycle';
 
 export const FeatureProvider = ({
-  serverState,
   children,
-}: FeatureProviderProps): JSX.Element => {
-  const flagsmith = useRef(createFlagsmithInstance());
+}: {
+  children: React.ReactNode;
+}) => {
   return (
-    <FlagsmithProvider flagsmith={flagsmith.current} serverState={serverState}>
+    <DevCycleClientsideProvider context={getClientContext()}>
       {children}
-    </FlagsmithProvider>
+    </DevCycleClientsideProvider>
   );
 };
-
-export function getFlag(
-  flagId: string
-): (IFlagsmithFeature & IFlagsmithTrait) | undefined {
-  const flags = useFlags(Flags);
-  return flags[flagId];
-}

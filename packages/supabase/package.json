@@ -12,9 +12,9 @@
     "./middleware": "./src/middleware.ts"
   },
   "devDependencies": {
-    "@supabase/auth-js": "^2.70.0",
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.6",
+    "@supabase/auth-js": "^2.71.1",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
     "@ultra-reporter/typescript-config": "workspace:*"
   },
   "peerDependencies": {
@@ -23,8 +23,8 @@
   },
   "dependencies": {
     "@supabase/ssr": "latest",
-    "@supabase/supabase-js": "^2.49.1",
+    "@supabase/supabase-js": "^2.55.0",
     "@ultra-reporter/feature-toggle": "workspace:*",
-    "next": "15.2.2"
+    "next": "15.5.0"
   }
 }

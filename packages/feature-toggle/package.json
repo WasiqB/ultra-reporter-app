@@ -7,13 +7,13 @@
     "lint": "eslint . --max-warnings 0"
   },
   "exports": {
-    "./client": "./src/client.ts",
+    "./devcycle": "./src/devcycle.ts",
     "./provider": "./src/provider.tsx",
-    "./middleware": "./src/middleware.ts"
+    "./client": "./src/client.ts"
   },
   "devDependencies": {
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.6",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
     "@ultra-reporter/typescript-config": "workspace:*"
   },
   "peerDependencies": {
@@ -21,6 +21,6 @@
     "react-dom": "^19.0"
   },
   "dependencies": {
-    "flagsmith": "^9.0.4"
+    "@devcycle/nextjs-sdk": "^2.23.1"
   }
 }
