@@ -5,7 +5,7 @@ import { ScrollToTop } from '@ultra-reporter/ui/home/scroll-to-top';
 import { ThemeProvider } from '@ultra-reporter/ui/utils/theme-provider';
 import { isProd } from '@ultra-reporter/utils/constants';
 import type { Metadata } from 'next';
-import { DetailedHTMLProps, HtmlHTMLAttributes } from 'react';
+
 import './styles/global.css';
 
 export const metadata: Metadata = {
@@ -67,9 +67,7 @@ const RootLayout = async ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>): Promise<
-  DetailedHTMLProps<HtmlHTMLAttributes<HTMLHtmlElement>, HTMLHtmlElement>
-> => {
+}>) => {
   return (
     <html lang='en' suppressHydrationWarning>
       <head>
