@@ -1,9 +1,10 @@
 import { createServerClient } from '@supabase/ssr';
-import { getFlag } from '@ultra-reporter/feature-toggle/middleware';
 import { type NextRequest, NextResponse } from 'next/server';
 const protectedRoutes = ['/dashboard'];
 
-export const updateSession = async (request: NextRequest) => {
+export const updateSession = async (
+  request: NextRequest
+): Promise<NextResponse<unknown>> => {
   let response = NextResponse.next({
     request,
   });
@@ -34,9 +35,8 @@ export const updateSession = async (request: NextRequest) => {
   const pathname = request.nextUrl.pathname;
   const isProtectedRoute = protectedRoutes.includes(pathname);
   const session = await supabase.auth.getUser();
-  const signInSupport = await getFlag('sign_in_support');
 
-  if (!signInSupport && (isProtectedRoute || pathname === '/login')) {
+  if (isProtectedRoute || pathname === '/login') {
     return NextResponse.redirect(new URL('/', request.url));
   }
 

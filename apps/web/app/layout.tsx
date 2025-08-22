@@ -1,13 +1,11 @@
 import { GoogleAnalytics } from '@next/third-parties/google';
-import { Provider as AnalyticsProvider } from '@ultra-reporter/analytics/client';
-import { getFeatureState } from '@ultra-reporter/feature-toggle/client';
 import { FeatureProvider } from '@ultra-reporter/feature-toggle/provider';
 import { Footer } from '@ultra-reporter/ui/home/footer';
 import { ScrollToTop } from '@ultra-reporter/ui/home/scroll-to-top';
 import { ThemeProvider } from '@ultra-reporter/ui/utils/theme-provider';
 import { isProd } from '@ultra-reporter/utils/constants';
 import type { Metadata } from 'next';
-import { DetailedHTMLProps, HtmlHTMLAttributes } from 'react';
+
 import './styles/global.css';
 
 export const metadata: Metadata = {
@@ -69,16 +67,13 @@ const RootLayout = async ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>): Promise<
-  DetailedHTMLProps<HtmlHTMLAttributes<HTMLHtmlElement>, HTMLHtmlElement>
-> => {
-  const featureState = await getFeatureState();
+}>) => {
   return (
     <html lang='en' suppressHydrationWarning>
       <head>
         <link rel='icon' href='/favicon.png' sizes='any' type='image/png' />
       </head>
-      <FeatureProvider serverState={featureState}>
+      <FeatureProvider>
         <>
           <body className={'antialiased'}>
             <ThemeProvider
@@ -90,7 +85,6 @@ const RootLayout = async ({
               {children}
               <ScrollToTop />
               <Footer />
-              <AnalyticsProvider />
             </ThemeProvider>
           </body>
           {isProd && <GoogleAnalytics gaId='G-CNW9F6PH7P' />}

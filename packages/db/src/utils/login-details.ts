@@ -6,7 +6,10 @@ interface LoginDetail {
   ip?: string;
 }
 
-const createLoginDetail = async ({ userId, ip }: LoginDetail) => {
+const createLoginDetail = async ({
+  userId,
+  ip,
+}: LoginDetail): Promise<void> => {
   await db.loginDetails.create({
     data: {
       userId,
@@ -15,7 +18,7 @@ const createLoginDetail = async ({ userId, ip }: LoginDetail) => {
   });
 };
 
-const updateLogoutDate = async ({ userId }: LoginDetail) => {
+const updateLogoutDate = async ({ userId }: LoginDetail): Promise<void> => {
   const latestLogin = await db.loginDetails.findFirst({
     where: { userId },
     orderBy: { lastLogin: 'desc' },

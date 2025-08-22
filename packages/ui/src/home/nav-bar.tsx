@@ -1,6 +1,6 @@
 'use client';
 
-import { getFlag } from '@ultra-reporter/feature-toggle/provider';
+import { useVariableValue } from '@ultra-reporter/feature-toggle/client';
 import { Menu } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -28,7 +28,7 @@ export const NavBar = ({
   cta,
   showFeedback,
 }: NavBarProps): JSX.Element => {
-  const signInSupport = getFlag('sign_in_support');
+  const signInSupport = useVariableValue('sign-in-support', false);
 
   return (
     <nav className={'left-0 right-0 top-0 z-50 transition-all duration-300'}>
@@ -100,7 +100,7 @@ export const NavBar = ({
                   </Button>
                 </Link>
               )}
-              {signInSupport?.enabled && (
+              {signInSupport && (
                 <Link href='/login' passHref>
                   <Button size='sm' className='w-full'>
                     Try for Free
@@ -146,7 +146,7 @@ export const NavBar = ({
               </Button>
             </Link>
           )}
-          {signInSupport?.enabled && (
+          {signInSupport && (
             <Link href='/login' passHref>
               <Button size='sm' variant='default'>
                 Try for Free

@@ -1,3 +1,5 @@
+/* eslint-disable @stylistic/ts/quotes */
+
 import { format, parse } from 'date-fns';
 import { DateTime } from 'luxon';
 
@@ -95,7 +97,7 @@ export const formatTime = (dateTime: string): string => {
     const cleanedDateString = dateTime.replace('AST', 'UTC');
     const parsedDate = parse(
       cleanedDateString,
-      "yyyy-MM-dd'T'HH:mm:ss 'UTC'",
+      `yyyy-MM-dd'T'HH:mm:ss 'UTC'`,
       new Date()
     );
     return format(parsedDate, TIME_FORMAT);
