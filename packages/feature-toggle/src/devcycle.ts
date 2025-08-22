@@ -1,6 +1,6 @@
 import { setupDevCycle } from '@devcycle/nextjs-sdk/server';
 
-const getUserIdentity = async () => {
+const getUserIdentity = async (): Promise<{ user_id: string }> => {
   return {
     user_id: '123',
   };

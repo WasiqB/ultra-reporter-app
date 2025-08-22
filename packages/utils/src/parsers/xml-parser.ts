@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { parseString } from 'xml2js';
 import { isProd } from '../types/constants';
 import {
