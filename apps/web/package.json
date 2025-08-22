@@ -10,8 +10,8 @@
     "start": "next start"
   },
   "peerDependencies": {
-    "react": "^19.0",
-    "react-dom": "^19.0"
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   },
   "dependencies": {
     "@next/third-parties": "^15.5.0",
@@ -27,7 +27,7 @@
     "next": "15.5.0"
   },
   "devDependencies": {
-    "@types/react": "^19.1.10",
+    "@types/react": "^19.1.11",
     "@types/react-dom": "^19.1.7",
     "@ultra-reporter/typescript-config": "workspace:*",
     "postcss": "^8.5.6",
