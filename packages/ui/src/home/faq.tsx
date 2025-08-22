@@ -11,11 +11,17 @@ import {
   AccordionTrigger,
 } from '../components/accordion';
 
+interface FAQProps {
+  faq: { question: string; answer: string }[];
+}
+
 export const FAQ = (): JSX.Element | null => {
-  const faq = useVariableValue('faq', {
-    status: 'off',
-  }).faq;
-  if (!faq) {
+  const faq = JSON.parse(
+    useVariableValue('faq', {
+      faq: [],
+    }).toString()
+  ) as FAQProps;
+  if (faq.faq.length === 0) {
     return null;
   }
   return (
@@ -29,7 +35,7 @@ export const FAQ = (): JSX.Element | null => {
       </div>
       <div className='mx-auto w-full max-w-[700px]'>
         <Accordion type='single' collapsible className='w-full'>
-          {faq.map(
+          {faq.faq.map(
             (item: { question: string; answer: string }, index: number) => (
               <AccordionItem key={index} value={`item-${index}`}>
                 <AccordionTrigger>{item.question}</AccordionTrigger>
