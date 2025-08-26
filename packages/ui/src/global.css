@@ -65,6 +65,10 @@
   --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
+
+  --passed: oklch(0.8715 0.137 154.41);
+  --failed: oklch(0.6368 0.2078 25.3313);
+  --skipped: oklch(0.8852 0.115 83.52);
 }
 
 .dark {
@@ -121,6 +125,10 @@
   --shadow-xl:
     0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
   --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+
+  --passed: oklch(0.8715 0.137 154.41);
+  --failed: oklch(0.6368 0.2078 25.3313);
+  --skipped: oklch(0.8852 0.115 83.52);
 }
 
 @theme inline {
