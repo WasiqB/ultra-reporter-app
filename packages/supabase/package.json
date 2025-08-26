@@ -8,13 +8,12 @@
   },
   "exports": {
     "./client": "./src/client.ts",
-    "./server": "./src/server.ts",
-    "./middleware": "./src/middleware.ts"
+    "./server": "./src/server.ts"
   },
   "devDependencies": {
     "@supabase/auth-js": "^2.71.1",
     "@types/react": "^19.1.11",
-    "@types/react-dom": "^19.1.7",
+    "@types/react-dom": "^19.1.8",
     "@ultra-reporter/typescript-config": "workspace:*"
   },
   "dependencies": {

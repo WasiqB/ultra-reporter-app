@@ -1,11 +1,41 @@
 'use client';
 
-import { signinWithGoogle } from '@/app/utils/actions';
+import { authClient } from '@ultra-reporter/auth/auth-client';
 import { Button } from '@ultra-reporter/ui/components/button';
 import { DemoCarousel } from '@ultra-reporter/ui/components/demo-carousel';
 import { Icons } from '@ultra-reporter/ui/components/icons';
+import { toast } from '@ultra-reporter/ui/components/sonner';
+import { Loader2Icon } from 'lucide-react';
+import { useState } from 'react';
 
 export default function AuthPage() {
+  const [isLoading, setIsLoading] = useState(false);
+  const signInWithGoogle = async () => {
+    await authClient.signIn.social(
+      {
+        provider: 'google',
+        callbackURL: '/dashboard',
+      },
+      {
+        onRequest: (ctx) => {
+          setIsLoading(true);
+        },
+        onSuccess: () => {
+          setIsLoading(false);
+          toast.success('Login successful!', {
+            description: 'You are now logged in.',
+          });
+        },
+        onError: (ctx) => {
+          setIsLoading(false);
+          toast.error(ctx.error.message, {
+            description: 'Please try again.',
+          });
+        },
+      }
+    );
+  };
+
   return (
     <div className='container mx-auto flex min-h-screen items-center justify-center'>
       <div className='grid w-full items-center gap-8 lg:grid-cols-2'>
@@ -29,10 +59,16 @@ export default function AuthPage() {
             <Button
               variant='default'
               size='lg'
+              type='button'
               className='w-full py-6 text-lg'
-              onClick={signinWithGoogle}
+              onClick={signInWithGoogle}
+              disabled={isLoading}
             >
-              <Icons.google className='mr-2 h-5 w-5' />
+              {isLoading ? (
+                <Loader2Icon className='mr-2 h-5 w-5 animate-spin' />
+              ) : (
+                <Icons.google className='mr-2 h-5 w-5' />
+              )}
               Continue with Google
             </Button>
 
