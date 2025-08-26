@@ -1,0 +1,22 @@
+{
+  "name": "@ultra-reporter/auth",
+  "description": "Ultra Reporter Auth integration",
+  "version": "0.7.0",
+  "private": true,
+  "exports": {
+    "./auth": "./src/lib/auth.ts",
+    "./auth-client": "./src/lib/auth-client.ts",
+    "./auth-middleware": "./src/lib/auth-middleware.ts"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "auth:generate": "npx @better-auth/cli@latest generate",
+    "auth:migrate": "npx @better-auth/cli migrate"
+  },
+  "dependencies": {
+    "better-auth": "^1.3.7",
+    "next": "15.5.0",
+    "@ultra-reporter/db": "workspace:*",
+    "@ultra-reporter/typescript-config": "workspace:*"
+  }
+}

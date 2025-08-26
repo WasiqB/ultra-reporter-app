@@ -6,6 +6,15 @@ import { ThemeProvider } from '@ultra-reporter/ui/utils/theme-provider';
 import { isProd } from '@ultra-reporter/utils/constants';
 import type { Metadata } from 'next';
 
+import { Toaster } from '@ultra-reporter/ui/components/sonner';
+import {
+  AlertTriangleIcon,
+  CheckCircleIcon,
+  InfoIcon,
+  Loader2Icon,
+  XCircleIcon,
+  XIcon,
+} from 'lucide-react';
 import './styles/global.css';
 
 export const metadata: Metadata = {
@@ -85,6 +94,20 @@ const RootLayout = async ({
               {children}
               <ScrollToTop />
               <Footer />
+              <Toaster
+                richColors
+                position='top-center'
+                duration={5000}
+                closeButton
+                icons={{
+                  success: <CheckCircleIcon className='h-4 w-4' />,
+                  error: <XCircleIcon className='h-4 w-4' />,
+                  warning: <AlertTriangleIcon className='h-4 w-4' />,
+                  info: <InfoIcon className='h-4 w-4' />,
+                  loading: <Loader2Icon className='h-4 w-4 animate-spin' />,
+                  close: <XIcon className='h-4 w-4' />,
+                }}
+              />
             </ThemeProvider>
           </body>
           {isProd && <GoogleAnalytics gaId='G-CNW9F6PH7P' />}

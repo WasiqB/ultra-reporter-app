@@ -16,11 +16,10 @@ interface FAQProps {
 }
 
 export const FAQ = (): JSX.Element | null => {
-  const faq = JSON.parse(
-    useVariableValue('faq', {
-      faq: [],
-    }).toString()
-  ) as FAQProps;
+  const faqObject = useVariableValue('faq', {
+    faq: [],
+  });
+  const faq = JSON.parse(JSON.stringify(faqObject)) as FAQProps;
   if (faq.faq.length === 0) {
     return null;
   }

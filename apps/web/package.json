@@ -17,18 +17,19 @@
     "@next/third-parties": "^15.5.0",
     "@prisma/nextjs-monorepo-workaround-plugin": "^6.14.0",
     "@tanstack/react-table": "^8.21.3",
+    "@ultra-reporter/auth": "workspace:*",
     "@ultra-reporter/db": "workspace:*",
     "@ultra-reporter/feature-toggle": "workspace:*",
     "@ultra-reporter/logger": "workspace:*",
     "@ultra-reporter/supabase": "workspace:*",
     "@ultra-reporter/ui": "workspace:*",
     "@ultra-reporter/utils": "workspace:*",
-    "lucide-react": "^0.541.0",
+    "lucide-react": "^0.542.0",
     "next": "15.5.0"
   },
   "devDependencies": {
     "@types/react": "^19.1.11",
-    "@types/react-dom": "^19.1.7",
+    "@types/react-dom": "^19.1.8",
     "@ultra-reporter/typescript-config": "workspace:*",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.12"
