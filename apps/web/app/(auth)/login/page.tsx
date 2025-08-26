@@ -28,8 +28,8 @@ export default function AuthPage() {
         },
         onError: (ctx) => {
           setIsLoading(false);
-          toast.error(ctx.error.message, {
-            description: 'Please try again.',
+          toast.error(ctx.error.name, {
+            description: ctx.error.message,
           });
         },
       }
