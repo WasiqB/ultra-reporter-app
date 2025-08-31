@@ -3,7 +3,9 @@ import { getFlag } from '@ultra-reporter/feature-toggle/middleware';
 import { type NextRequest, NextResponse } from 'next/server';
 const protectedRoutes = ['/dashboard'];
 
-export const updateSession = async (request: NextRequest) => {
+export const updateSession = async (
+  request: NextRequest
+): Promise<NextResponse<unknown>> => {
   let response = NextResponse.next({
     request,
   });

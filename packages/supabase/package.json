@@ -12,9 +12,9 @@
     "./middleware": "./src/middleware.ts"
   },
   "devDependencies": {
-    "@supabase/auth-js": "^2.70.0",
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.6",
+    "@supabase/auth-js": "^2.71.1",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
     "@ultra-reporter/typescript-config": "workspace:*"
   },
   "peerDependencies": {
