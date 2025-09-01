@@ -1,6 +1,6 @@
 'use client';
 
-import { getFlag } from '@ultra-reporter/feature-toggle/provider';
+import { useVariableValue } from '@ultra-reporter/feature-toggle/client';
 import { JSX } from 'react';
 import { Description } from '../common/description';
 import { Title } from '../common/title';
@@ -11,9 +11,16 @@ import {
   AccordionTrigger,
 } from '../components/accordion';
 
+interface FAQProps {
+  faq: { question: string; answer: string }[];
+}
+
 export const FAQ = (): JSX.Element | null => {
-  const faq = getFlag('faq');
-  if (faq && !faq.enabled) {
+  const faqObject = useVariableValue('faq', {
+    faq: [],
+  });
+  const faq = JSON.parse(JSON.stringify(faqObject)) as FAQProps;
+  if (faq.faq.length === 0) {
     return null;
   }
   return (
@@ -27,7 +34,7 @@ export const FAQ = (): JSX.Element | null => {
       </div>
       <div className='mx-auto w-full max-w-[700px]'>
         <Accordion type='single' collapsible className='w-full'>
-          {JSON.parse(faq?.value).map(
+          {faq.faq.map(
             (item: { question: string; answer: string }, index: number) => (
               <AccordionItem key={index} value={`item-${index}`}>
                 <AccordionTrigger>{item.question}</AccordionTrigger>

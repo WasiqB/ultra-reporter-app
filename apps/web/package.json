@@ -10,25 +10,26 @@
     "start": "next start"
   },
   "peerDependencies": {
-    "react": "^19.0",
-    "react-dom": "^19.0"
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   },
   "dependencies": {
-    "@next/third-parties": "^15.2.2",
-    "@prisma/nextjs-monorepo-workaround-plugin": "^6.5.0",
+    "@next/third-parties": "^15.5.0",
+    "@prisma/nextjs-monorepo-workaround-plugin": "^6.14.0",
     "@tanstack/react-table": "^8.21.3",
+    "@ultra-reporter/auth": "workspace:*",
     "@ultra-reporter/db": "workspace:*",
     "@ultra-reporter/feature-toggle": "workspace:*",
     "@ultra-reporter/logger": "workspace:*",
     "@ultra-reporter/supabase": "workspace:*",
     "@ultra-reporter/ui": "workspace:*",
     "@ultra-reporter/utils": "workspace:*",
-    "lucide-react": "^0.479.0",
-    "next": "15.4.7"
+    "lucide-react": "^0.542.0",
+    "next": "15.5.0"
   },
   "devDependencies": {
-    "@types/react": "^19.1.12",
-    "@types/react-dom": "^19.1.9",
+    "@types/react": "^19.1.11",
+    "@types/react-dom": "^19.1.8",
     "@ultra-reporter/typescript-config": "workspace:*",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.12"

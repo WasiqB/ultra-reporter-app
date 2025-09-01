@@ -3,7 +3,7 @@ import { SupabaseClient } from '@supabase/supabase-js';
 import { cookies } from 'next/headers';
 
 export const createClient = async (): Promise<
-  SupabaseClient<any, 'public', any>
+  SupabaseClient<any, 'public', 'public', any, any>
 > => {
   const cookieStore = await cookies();
 

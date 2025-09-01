@@ -96,7 +96,7 @@ export const formatTime = (dateTime: string): string => {
     const cleanedDateString = dateTime.replace('AST', 'UTC');
     const parsedDate = parse(
       cleanedDateString,
-      "yyyy-MM-dd'T'HH:mm:ss 'UTC'",
+      `yyyy-MM-dd'T'HH:mm:ss 'UTC'`,
       new Date()
     );
     return format(parsedDate, TIME_FORMAT);
