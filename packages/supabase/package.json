@@ -23,8 +23,8 @@
   },
   "dependencies": {
     "@supabase/ssr": "latest",
-    "@supabase/supabase-js": "^2.49.1",
+    "@supabase/supabase-js": "^2.56.1",
     "@ultra-reporter/feature-toggle": "workspace:*",
-    "next": "15.4.7"
+    "next": "15.5.2"
   }
 }
