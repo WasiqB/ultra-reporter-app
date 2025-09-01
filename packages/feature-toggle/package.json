@@ -21,6 +21,6 @@
     "react-dom": "^19.0"
   },
   "dependencies": {
-    "flagsmith": "^9.0.4"
+    "flagsmith": "^9.3.1"
   }
 }
