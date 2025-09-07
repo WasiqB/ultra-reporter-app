@@ -60,7 +60,7 @@
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.12",
+    "@tailwindcss/postcss": "^4.1.13",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
     "@types/zxcvbn": "^4.4.5",
@@ -71,6 +71,6 @@
     "daisyui": "5.0.54",
     "postcss": "^8.5.6",
     "postcss-load-config": "^6.0.1",
-    "tailwindcss": "^4.1.12"
+    "tailwindcss": "^4.1.13"
   }
 }
