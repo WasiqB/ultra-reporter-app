@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@supabase/auth-js": "^2.71.1",
-    "@types/react": "^19.1.12",
+    "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
     "@ultra-reporter/typescript-config": "workspace:*"
   },
@@ -23,8 +23,8 @@
   },
   "dependencies": {
     "@supabase/ssr": "latest",
-    "@supabase/supabase-js": "^2.49.1",
+    "@supabase/supabase-js": "^2.57.4",
     "@ultra-reporter/feature-toggle": "workspace:*",
-    "next": "15.4.7"
+    "next": "15.5.3"
   }
 }
