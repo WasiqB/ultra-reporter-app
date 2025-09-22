@@ -1,14 +1,10 @@
 'use client';
 
-import { useVariableValue } from '@ultra-reporter/feature-toggle/client';
 import Image from 'next/image';
-import Link from 'next/link';
 import { JSX } from 'react';
-import { Button } from '../components/button';
 import { FileUpload } from '../utils/file-upload';
 
 export const Hero = (): JSX.Element => {
-  const signInSupport = useVariableValue('sign-in-support', false);
   return (
     <section className='flex flex-col items-center gap-4 p-16'>
       <div className='flex flex-col-reverse items-center justify-between gap-8 md:flex-row md:gap-12'>
@@ -20,20 +16,9 @@ export const Hero = (): JSX.Element => {
             <br />
             in one click
           </h1>
-          {!signInSupport && (
-            <div className='w-full max-w-sm pt-8'>
-              <FileUpload />
-            </div>
-          )}
-          {signInSupport && (
-            <div className='w-full max-w-sm pt-8'>
-              <Link href='/login' passHref>
-                <Button size='sm' className='w-full'>
-                  Try for Free
-                </Button>
-              </Link>
-            </div>
-          )}
+          <div className='w-full max-w-sm pt-8'>
+            <FileUpload />
+          </div>
         </div>
         <div className='w-full max-w-lg items-end'>
           <Image

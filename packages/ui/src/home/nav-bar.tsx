@@ -1,7 +1,6 @@
 'use client';
 
-import { useVariableValue } from '@ultra-reporter/feature-toggle/client';
-import { Menu } from 'lucide-react';
+import { LogInIcon, Menu } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { JSX } from 'react';
@@ -20,7 +19,6 @@ interface NavBarProps {
   suffix?: string;
   cta?: string;
   showFeedback?: boolean;
-  hideAuth?: boolean;
 }
 
 export const NavBar = ({
@@ -28,8 +26,6 @@ export const NavBar = ({
   cta,
   showFeedback,
 }: NavBarProps): JSX.Element => {
-  const signInSupport = useVariableValue('sign-in-support', false);
-
   return (
     <nav className={'left-0 right-0 top-0 z-50 transition-all duration-300'}>
       <div className='container mx-auto flex items-center justify-between px-4 py-4'>
@@ -100,13 +96,12 @@ export const NavBar = ({
                   </Button>
                 </Link>
               )}
-              {signInSupport && (
-                <Link href='/login' passHref>
-                  <Button size='sm' className='w-full'>
-                    Try for Free
-                  </Button>
-                </Link>
-              )}
+              <Link href='/login' passHref>
+                <Button size='sm' className='w-full'>
+                  <LogInIcon />
+                  Sign In
+                </Button>
+              </Link>
               {cta && (
                 <Link href='/' passHref>
                   <Button size='sm' className='w-full'>
@@ -146,13 +141,12 @@ export const NavBar = ({
               </Button>
             </Link>
           )}
-          {signInSupport && (
-            <Link href='/login' passHref>
-              <Button size='sm' variant='default'>
-                Try for Free
-              </Button>
-            </Link>
-          )}
+          <Link href='/login' passHref>
+            <Button size='sm' variant='default'>
+              <LogInIcon />
+              Sign In
+            </Button>
+          </Link>
           {cta && (
             <Link href='/' passHref>
               <Button size='sm'>{cta}</Button>

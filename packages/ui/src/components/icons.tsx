@@ -1,16 +1,10 @@
-import {
-  Loader2,
-  Lock,
-  LucideProps,
-  Moon,
-  SunMedium,
-  Twitter,
-} from 'lucide-react';
+import { Loader2, Lock, LucideProps, Moon, SunMedium } from 'lucide-react';
+import { FaX } from 'react-icons/fa6';
 
 export const Icons = {
   sun: SunMedium,
   moon: Moon,
-  twitter: Twitter,
+  twitter: FaX,
   lock: Lock,
   spinner: Loader2,
   google: (props: LucideProps) => (
