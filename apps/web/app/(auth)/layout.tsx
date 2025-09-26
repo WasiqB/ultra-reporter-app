@@ -7,7 +7,7 @@ export default function AuthLayout({
 }) {
   return (
     <>
-      <NavBar hideAuth={true} />
+      <NavBar />
       {children}
     </>
   );

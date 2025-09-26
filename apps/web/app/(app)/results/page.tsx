@@ -59,7 +59,7 @@ const ResultsPage = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const resultData = localStorage.getItem('json-data') as string;
+    const resultData = sessionStorage.getItem('report-data') as string;
     if (resultData) {
       const testResult: TestResultData[] = JSON.parse(resultData);
       setResult(testResult);

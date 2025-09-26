@@ -10,46 +10,64 @@ import {
   CardTitle,
 } from '@ultra-reporter/ui/components/card';
 import { Progress } from '@ultra-reporter/ui/components/progress';
-import { getData } from '@ultra-reporter/ui/data';
 import { isProd } from '@ultra-reporter/utils/constants';
-import {
-  convertToJson,
-  getTestResults,
-} from '@ultra-reporter/utils/xml-parser';
 import { Bug, MoveLeft } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { JSX, useEffect, useState } from 'react';
 
 const LoadingPage = (): JSX.Element => {
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const reportId = searchParams.get('reportId');
 
   useEffect(() => {
-    const xmlContent = localStorage.getItem('xml-data');
-    try {
-      setProgress(0);
-      if (!xmlContent) {
-        throw new Error('No XML data found in the file.');
-      }
-      setProgress(25);
-      const jsonData = convertToJson(xmlContent);
-      setProgress(50);
-      const testResult = getTestResults(jsonData);
-      setProgress(75);
-      localStorage.setItem('json-data', JSON.stringify(getData(testResult)));
-      setProgress(100);
-      router.push('/results');
-    } catch (err) {
-      if (err instanceof Error) {
-        setError(`${err.message}`);
-        if (!isProd) {
-          console.error(`Message: ${err.message}
+    if (!reportId) {
+      setError('No report ID provided');
+      return;
+    }
+
+    const pollReport = async (): Promise<void> => {
+      try {
+        setProgress(25);
+        const response = await fetch(`/api/report/${reportId}`);
+        const report = await response.json();
+
+        if (!response.ok) {
+          throw new Error(report.error || 'Failed to fetch report');
+        }
+
+        setProgress(50);
+
+        if (report.status === 'completed') {
+          setProgress(100);
+          // Store the processed data for the results page
+          sessionStorage.setItem(
+            'report-data',
+            JSON.stringify(report.jsonData)
+          );
+          router.push('/results');
+        } else if (report.status === 'failed') {
+          throw new Error(report.errorMessage || 'Processing failed');
+        } else {
+          // Still processing, poll again
+          setProgress(75);
+          setTimeout(pollReport, 2000);
+        }
+      } catch (err) {
+        if (err instanceof Error) {
+          setError(`${err.message}`);
+          if (!isProd) {
+            console.error(`Message: ${err.message}
 Stack: ${err.stack}`);
+          }
         }
       }
-    }
-  }, [router]);
+    };
+
+    pollReport();
+  }, [reportId, router]);
 
   const handleBack = (): void => {
     router.push('/');

@@ -22,3 +22,27 @@ model LoginDetails {
 
   @@index([userId])
 }
+
+enum TestUploadStatus {
+  processing
+  completed
+  failed
+}
+
+model TestReport {
+  id          String   @id @default(cuid())
+  userId      String
+  fileName    String
+  xmlContent  String   @db.Text
+  jsonData    String   @db.Text
+  status      TestUploadStatus   @default(processing)
+  errorMessage String?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+}

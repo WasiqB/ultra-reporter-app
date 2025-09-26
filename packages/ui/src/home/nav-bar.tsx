@@ -1,3 +1,4 @@
+/* eslint-disable @stylistic/js/max-len */
 'use client';
 
 import { LogInIcon, Menu } from 'lucide-react';

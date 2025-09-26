@@ -10,6 +10,7 @@ import { Label } from '../components/label';
 export const FileUpload = (): JSX.Element => {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
   const handleFileChange = (
@@ -17,6 +18,7 @@ export const FileUpload = (): JSX.Element => {
   ): void => {
     if (event.target.files && event.target.files[0]) {
       setFile(event.target.files[0]);
+      setError(null);
     }
   };
 
@@ -28,6 +30,7 @@ export const FileUpload = (): JSX.Element => {
     event.preventDefault();
     if (event.dataTransfer.files && event.dataTransfer.files[0]) {
       setFile(event.dataTransfer.files[0]);
+      setError(null);
     }
   };
 
@@ -35,22 +38,32 @@ export const FileUpload = (): JSX.Element => {
     event: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     event.preventDefault();
-    if (file) {
-      setLoading(true);
-      try {
-        const reader = new FileReader();
-        reader.onload = async (e) => {
-          const xmlContent = e.target?.result as string;
-          localStorage.setItem('xml-data', xmlContent);
-          router.push('/loading');
-        };
-        reader.readAsText(file);
-      } catch (error) {
-        console.error('Error reading file:', error);
-        alert('Error reading file');
-      } finally {
-        setLoading(false);
+    if (!file) return;
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Upload failed');
       }
+
+      // Navigate to loading page with report ID
+      router.push(`/loading?reportId=${result.reportId}`);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Upload failed');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -78,6 +91,7 @@ export const FileUpload = (): JSX.Element => {
           </p>
         </Label>
       </div>
+      {error && <p className='text-destructive mt-2 text-sm'>{error}</p>}
       <Button type='submit' className='mt-4 w-full' disabled={!file || loading}>
         {loading ? 'Generating your Report...' : 'Generate Report'}
       </Button>
