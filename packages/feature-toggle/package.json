@@ -12,7 +12,7 @@
     "./middleware": "./src/middleware.ts"
   },
   "devDependencies": {
-    "@types/react": "^19.1.12",
+    "@types/react": "^19.1.15",
     "@types/react-dom": "^19.1.9",
     "@ultra-reporter/typescript-config": "workspace:*"
   },
@@ -21,6 +21,6 @@
     "react-dom": "^19.0"
   },
   "dependencies": {
-    "flagsmith": "^9.0.4"
+    "flagsmith": "^9.3.2"
   }
 }

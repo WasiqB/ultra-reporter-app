@@ -16,12 +16,12 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "@prisma/client": "^6.5.0"
+    "@prisma/client": "^6.16.2"
   },
   "devDependencies": {
     "@ultra-reporter/logger": "workspace:*",
     "@ultra-reporter/typescript-config": "workspace:*",
     "@ultra-reporter/utils": "workspace:*",
-    "prisma": "^6.15.0"
+    "prisma": "^6.16.2"
   }
 }
