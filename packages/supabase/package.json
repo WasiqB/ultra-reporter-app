@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@supabase/auth-js": "^2.72.0",
-    "@types/react": "^19.1.13",
+    "@types/react": "^19.1.14",
     "@types/react-dom": "^19.1.9",
     "@ultra-reporter/typescript-config": "workspace:*"
   },

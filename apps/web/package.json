@@ -27,7 +27,7 @@
     "next": "15.5.4"
   },
   "devDependencies": {
-    "@types/react": "^19.1.13",
+    "@types/react": "^19.1.14",
     "@types/react-dom": "^19.1.8",
     "@ultra-reporter/typescript-config": "workspace:*",
     "postcss": "^8.5.6",
