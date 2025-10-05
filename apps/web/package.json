@@ -31,6 +31,6 @@
     "@types/react-dom": "^19.1.9",
     "@ultra-reporter/typescript-config": "workspace:*",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.12"
+    "tailwindcss": "^4.1.14"
   }
 }
