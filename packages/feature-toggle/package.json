@@ -12,15 +12,15 @@
     "./middleware": "./src/middleware.ts"
   },
   "devDependencies": {
-    "@types/react": "^19.1.12",
-    "@types/react-dom": "^19.1.9",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.1",
     "@ultra-reporter/typescript-config": "workspace:*"
   },
   "peerDependencies": {
-    "react": "^19.0",
-    "react-dom": "^19.0"
+    "react": "^19.2",
+    "react-dom": "^19.2"
   },
   "dependencies": {
-    "flagsmith": "^9.0.4"
+    "flagsmith": "^9.3.2"
   }
 }
