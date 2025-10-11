@@ -19,11 +19,11 @@ jobs:
 
       - uses: pnpm/action-setup@v4
 
-      - name: Setup Node v18
-        uses: actions/setup-node@v4
+      - name: Setup Node v22
+        uses: actions/setup-node@v5
         with:
-          node-version: 18
-          cache: 'pnpm'
+          node-version: 22
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install
@@ -39,7 +39,8 @@ jobs:
     needs: lint
     environment: Preview
     env:
-      NEXT_PUBLIC_FLAGSMITH_ENVIRONMENT_ID: ${{ secrets.NEXT_PUBLIC_FLAGSMITH_ENVIRONMENT_ID }}
+      NEXT_PUBLIC_DEVCYCLE_SERVER_SDK_KEY: ${{ secrets.NEXT_PUBLIC_DEVCYCLE_SERVER_SDK_KEY }}
+      NEXT_PUBLIC_DEVCYCLE_CLIENT_SDK_KEY: ${{ secrets.NEXT_PUBLIC_DEVCYCLE_CLIENT_SDK_KEY }}
 
     steps:
       - name: Check out Git repository
@@ -47,11 +48,11 @@ jobs:
 
       - uses: pnpm/action-setup@v4
 
-      - name: Setup Node v18
-        uses: actions/setup-node@v4
+      - name: Setup Node v22
+        uses: actions/setup-node@v5
         with:
-          node-version: 18
-          cache: 'pnpm'
+          node-version: 22
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install
