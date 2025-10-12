@@ -31,7 +31,7 @@
     "@release-it-plugins/lerna-changelog": "^8.0.1",
     "@stylistic/eslint-plugin-js": "^4.4.1",
     "@stylistic/eslint-plugin-ts": "^4.4.1",
-    "@types/node": "^24.7.1",
+    "@types/node": "^24.7.2",
     "@typescript-eslint/eslint-plugin": "^8.46.0",
     "@typescript-eslint/parser": "^8.46.0",
     "@vercel/style-guide": "^6.0.0",
