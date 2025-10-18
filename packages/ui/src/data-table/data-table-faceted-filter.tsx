@@ -1,4 +1,3 @@
-/* eslint-disable @stylistic/js/max-len */
 import { CheckIcon, PlusCircledIcon } from '@radix-ui/react-icons';
 import type { Column } from '@tanstack/react-table';
 import { cn } from '@ultra-reporter/utils/cn';

@@ -56,7 +56,6 @@ export const Footer = (): JSX.Element => {
             <YouTube />
           </Link>
           <Link
-            // eslint-disable-next-line @stylistic/js/max-len
             className='text-red-500 transition-colors hover:text-red-400 dark:text-red-400 dark:hover:text-red-300'
             href='https://dub.sh/sponsor-me'
             target='_blank'

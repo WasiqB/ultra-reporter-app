@@ -15,8 +15,6 @@ export const createClient = async (): Promise<SupabaseClient<any, 'public', 'pub
           for (const { name, value, options } of cookiesToSet) {
             cookieStore.set(name, value, options);
           }
-
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (_error) {
           // The `set` method was called from a Server Component.
           // This can be ignored if you have middleware refreshing

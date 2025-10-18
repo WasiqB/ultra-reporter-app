@@ -1,4 +1,3 @@
-/** biome-ignore-all lint/style/noMagicNumbers: intentionally using magic numbers */
 'use client';
 
 import type { AreaChartData } from '@ultra-reporter/utils/types';

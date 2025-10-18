@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 const isJson = (text: string): boolean => {
   try {
     JSON.parse(text);
@@ -18,7 +17,6 @@ const isXml = (text: string): boolean => {
   return true;
 };
 
-/* eslint-disable @typescript-eslint/no-unused-vars */
 const isBase64Image = (str: string): boolean => {
   try {
     return btoa(atob(str)) === str;

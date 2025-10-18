@@ -1,4 +1,3 @@
-/** biome-ignore-all lint/suspicious/noExplicitAny: intentionally using any */
 import { parseString } from 'xml2js';
 import { isProd } from '../types/constants';
 import type { TestCase, TestClass, TestException, TestLog, TestMethod, TestResult, TestSuite } from '../types/types';

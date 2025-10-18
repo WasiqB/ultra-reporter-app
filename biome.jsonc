@@ -30,6 +30,9 @@
           }
         },
         "recommended": true
+      },
+      "a11y": {
+        "noStaticElementInteractions": "off"
       }
     }
   },

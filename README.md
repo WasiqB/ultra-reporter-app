@@ -33,10 +33,12 @@ Ultra-Reporter leverages cutting-edge technologies to provide fast, efficient, a
 - **[Tailwind CSS v4](https://tailwindcss.com/)**: Beautiful, responsive design without the hassle.
 - **[Shadcn/UI](https://ui.shadcn.com/)**, [Magic UI](https://magicui.design/) & **[Daisy UI](https://daisyui.com/)**: Sleek UI components for a polished user experience.
 - **[Turborepo](https://turborepo.org/)**: Fast, efficient monorepo management.
-- **[ESLint](https://eslint.org/) & [Prettier](https://prettier.io/)**: Enforce consistent code style and automate code formatting.
-- **[Prettier](https://prettier.io/)**: Code formatter.
-- **[Flagsmith](https://www.flagsmith.com/)**: Feature flag management.
-- **[Supabase](https://supabase.io/)**: Auth, database, and storage for modern applications.
+- **[Biome](https://biomejs.dev/)**: Enforce consistent code style and automate code formatting and linting.
+- **[DevCycle](https://devcycle.com/)**: Feature flag management.
+- **[BetterAuth](https://better-auth.com/)**: Authentication for modern applications.
+- **[Prisma](https://www.prisma.io/)**: Database ORM for modern applications.
+- **[Neon PostgreSQL](https://neon.tech/)**: Database as a Service for modern applications.
+- **[Supabase](https://supabase.io/)**: File storage for modern applications.
 - **[Vercel](https://vercel.com/)**: Next.js is deployed on Vercel, a platform for static websites and serverless functions.
 
 ## ⏱️ What's Next?
@@ -49,6 +51,7 @@ Got a feature request or an idea to make Ultra-Reporter even better? Don’t hes
 
 Check out the previous versions of Ultra-Reporter to see what features were added in each release:
 
+- [Version 0.7.0](https://github.com/WasiqB/ultra-reporter-app/releases/tag/v0.7.0)
 - [Version 0.6.0](https://github.com/WasiqB/ultra-reporter-app/releases/tag/v0.6.0)
 - [Version 0.5.0](https://github.com/WasiqB/ultra-reporter-app/releases/tag/v0.5.0)
 - [Version 0.4.0](https://github.com/WasiqB/ultra-reporter-app/releases/tag/v0.4.0)
@@ -60,6 +63,7 @@ Check out the previous versions of Ultra-Reporter to see what features were adde
 
 Feel free to reach out for any queries, collaborations, or feedback!
 
+- **Website**: [Wasiq Bhamla](https://wasiqbhamla.com)
 - **LinkedIn**: [Wasiq Bhamla](https://dub.sh/lnkd)
 - **X (formerly Twitter)**: [@WasiqBhamla](https://dub.sh/x-wasiq)
 - **Discord**: [Learn Test Automation](https://dub.sh/lta-community)

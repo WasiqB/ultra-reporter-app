@@ -1,5 +1,3 @@
-/** biome-ignore-all lint/a11y/noStaticElementInteractions: intentionally using static element interactions */
-/** biome-ignore-all lint/correctness/useUniqueElementIds: intentionally using unique element ids */
 'use client';
 
 import { Upload } from 'lucide-react';

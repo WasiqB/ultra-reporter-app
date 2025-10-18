@@ -66,7 +66,6 @@ export function AttachmentDialog({ attachment, title, description }: AttachmentD
                     <Card className='w-full'>
                       <CardContent className='p-6'>
                         {isBase64Image(item) ? (
-                          // eslint-disable-next-line @stylistic/js/max-len
                           <div className='relative h-full min-h-[300px] w-full border border-gray-500'>
                             <Image
                               alt='Attachment'

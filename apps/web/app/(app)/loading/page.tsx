@@ -1,4 +1,3 @@
-/** biome-ignore-all lint/style/noMagicNumbers: intentionally using magic numbers */
 'use client';
 
 import { logger } from '@ultra-reporter/logger';
