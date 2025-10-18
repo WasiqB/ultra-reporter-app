@@ -1,7 +1,7 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.2.6/schema.json",
   "files": {
-    "includes": ["**/*.{ts,tsx,json,jsonc,mjs}", "!packages/ui/src/components/**/*.{ts,tsx}"]
+    "includes": ["**/*.{ts,tsx,json,jsonc,mjs,css}", "!packages/ui/src/components/**/*.{ts,tsx}"]
   },
   "linter": {
     "enabled": true,
@@ -64,6 +64,13 @@
   "json": {
     "formatter": {
       "enabled": true
+    }
+  },
+  "css": {
+    "formatter": {
+      "enabled": true,
+      "indentStyle": "space",
+      "quoteStyle": "single"
     }
   },
   "vcs": {
