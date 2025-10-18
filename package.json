@@ -39,11 +39,15 @@
     "typescript": "^5.9.3"
   },
   "lint-staged": {
-    "**/*.{ts,tsx,mjs,css,json,jsonc}": [
+    "**/*.{ts,tsx,mjs,json,jsonc}": [
       "pnpm format:fix",
       "pnpm format",
       "pnpm lint:fix",
       "pnpm lint"
+    ],
+    "**/*.css": [
+      "pnpm format:fix",
+      "pnpm format"
     ]
   },
   "engines": {
