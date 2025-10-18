@@ -6,10 +6,7 @@ interface LoginDetail {
   ip?: string;
 }
 
-const createLoginDetail = async ({
-  userId,
-  ip,
-}: LoginDetail): Promise<void> => {
+const createLoginDetail = async ({ userId, ip }: LoginDetail): Promise<void> => {
   await db.loginDetails.create({
     data: {
       userId,

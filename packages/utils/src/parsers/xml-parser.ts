@@ -1,14 +1,7 @@
+/** biome-ignore-all lint/suspicious/noExplicitAny: intentionally using any */
 import { parseString } from 'xml2js';
 import { isProd } from '../types/constants';
-import {
-  TestCase,
-  TestClass,
-  TestException,
-  TestLog,
-  TestMethod,
-  TestResult,
-  TestSuite,
-} from '../types/types';
+import type { TestCase, TestClass, TestException, TestLog, TestMethod, TestResult, TestSuite } from '../types/types';
 
 const getTestException = (exception: any): TestException | undefined => {
   if (exception) {
@@ -21,23 +14,15 @@ const getTestException = (exception: any): TestException | undefined => {
   }
 };
 
-const getTestLog = (output: any): TestLog => {
-  return output;
-};
+const getTestLog = (output: any): TestLog => output;
 
-const getTags = (
-  className: string,
-  methodName: string,
-  groups: any
-): string[] => {
+const getTags = (className: string, methodName: string, groups: any): string[] => {
   const result: string[] = [];
   if (!groups) return result;
 
   const processGroup = (group: any): void => {
     const tag = group.name;
-    const groupMethods = Array.isArray(group.method)
-      ? group.method
-      : [group.method];
+    const groupMethods = Array.isArray(group.method) ? group.method : [group.method];
     for (const method of groupMethods) {
       if (className === method.class && methodName === method.name) {
         result.push(tag);
@@ -72,15 +57,11 @@ const getParams = (params: any): string[] => {
   return result;
 };
 
-const getTestMethods = (
-  methods: any,
-  className: string,
-  groups: any
-): TestMethod[] => {
+const getTestMethods = (methods: any, className: string, groups: any): TestMethod[] => {
   const result: TestMethod[] = [];
   if (!methods) return result;
 
-  const processMethod = (method: any, index: number = 1): void => {
+  const processMethod = (method: any, index = 1): void => {
     result.push({
       id: index,
       name: method.name,
@@ -158,7 +139,7 @@ const getTestSuites = (suites: any): TestSuite[] => {
       name: suite.name,
       started_at: suite['started-at'],
       finished_at: suite['finished-at'],
-      duration_ms: parseInt(suite['duration-ms']),
+      duration_ms: Number.parseInt(suite['duration-ms'], 10),
       test_cases: getTestCases(suite.test, suites.groups?.group),
     });
   };
@@ -179,11 +160,11 @@ const getTestResults = (jsonData: any): TestResult => {
 
   try {
     const mapToResult: TestResult = {
-      failed: parseInt(testResult.failed),
-      passed: parseInt(testResult.passed),
-      skipped: parseInt(testResult.skipped),
-      ignored: parseInt(testResult.ignored),
-      total: parseInt(testResult.total),
+      failed: Number.parseInt(testResult.failed, 10),
+      passed: Number.parseInt(testResult.passed, 10),
+      skipped: Number.parseInt(testResult.skipped, 10),
+      ignored: Number.parseInt(testResult.ignored, 10),
+      total: Number.parseInt(testResult.total, 10),
       test_suites: getTestSuites(testResult.suite),
     };
     return mapToResult;
@@ -209,7 +190,7 @@ const convertToJson = (data: string): string | null => {
         throw new Error(`Invalid file selected, ${errorMessage}`);
       }
       jsonData = result;
-    }
+    },
   );
   return jsonData;
 };

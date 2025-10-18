@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { JSX } from 'react';
+import type { JSX } from 'react';
 import packageInfo from '../../package.json';
 import { GitHub } from '../icons/github';
 import { LinkedIn } from '../icons/linkedin';
@@ -10,26 +10,17 @@ import { YouTube } from '../icons/youtube';
 
 export const Footer = (): JSX.Element => {
   return (
-    <footer className='footer footer-horizontal footer-center bg-muted text-muted-foreground p-10 pb-10 font-bold'>
+    <footer className='footer footer-horizontal footer-center bg-muted p-10 pb-10 font-bold text-muted-foreground'>
       <aside>
-        <Link href='/' className='flex flex-col items-center'>
-          <Image
-            src='/favicon.png'
-            height={24}
-            width={24}
-            alt='Ultra Reporter'
-          />
+        <Link className='flex flex-col items-center' href='/'>
+          <Image alt='Ultra Reporter' height={24} src='/favicon.png' width={24} />
           <h3 className='text-foreground text-xl'>
-            Ultra Report{' '}
-            <span className='text-sm'>- v{packageInfo.version}</span>
+            Ultra Report <span className='text-sm'>- v{packageInfo.version}</span>
           </h3>
         </Link>
         <div>
           <div className='grid-flow-col items-center'>
-            <p>
-              Copyright © {new Date().getFullYear()} - Designed and built with
-              ❤️ by Wasiq Bhamla.
-            </p>
+            <p>Copyright © {new Date().getFullYear()} - Designed and built with ❤️ by Wasiq Bhamla.</p>
           </div>
           All rights reserved.
         </div>
@@ -37,28 +28,28 @@ export const Footer = (): JSX.Element => {
       <nav>
         <div className='grid grid-flow-col gap-5'>
           <Link
-            className='text-muted-foreground hover:text-foreground transition-colors'
+            className='text-muted-foreground transition-colors hover:text-foreground'
             href='https://git.new/personal'
             target='_blank'
           >
             <GitHub />
           </Link>
           <Link
-            className='text-muted-foreground hover:text-foreground transition-colors'
+            className='text-muted-foreground transition-colors hover:text-foreground'
             href='https://dub.sh/lnkd'
             target='_blank'
           >
             <LinkedIn />
           </Link>
           <Link
-            className='text-muted-foreground hover:text-foreground transition-colors'
+            className='text-muted-foreground transition-colors hover:text-foreground'
             href='https://dub.sh/x-wasiq'
             target='_blank'
           >
             <X />
           </Link>
           <Link
-            className='text-muted-foreground hover:text-foreground transition-colors'
+            className='text-muted-foreground transition-colors hover:text-foreground'
             href='https://dub.sh/lta-yt'
             target='_blank'
           >

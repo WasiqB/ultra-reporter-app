@@ -1,4 +1,4 @@
-@import 'tailwindcss';
-@import '@ultra-reporter/ui/global.css';
+@import "tailwindcss";
+@import "@ultra-reporter/ui/global.css";
 
 @source '../../../../packages/ui';

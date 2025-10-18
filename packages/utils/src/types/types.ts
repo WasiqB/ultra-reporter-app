@@ -1,13 +1,13 @@
-type TestResult = {
+interface TestResult {
   test_suites: TestSuite[];
   total: number;
   passed: number;
   failed: number;
   skipped: number;
   ignored: number;
-};
+}
 
-type TestSuite = {
+interface TestSuite {
   name: string;
   started_at: string;
   finished_at: string;
@@ -18,9 +18,9 @@ type TestSuite = {
   skipped?: number;
   ignored?: number;
   test_cases: TestCase[];
-};
+}
 
-type TestCase = {
+interface TestCase {
   name: string;
   started_at: string;
   finished_at: string;
@@ -31,9 +31,9 @@ type TestCase = {
   skipped?: number;
   ignored?: number;
   test_classes: TestClass[];
-};
+}
 
-type TestClass = {
+interface TestClass {
   name: string;
   total?: number;
   passed?: number;
@@ -41,9 +41,9 @@ type TestClass = {
   skipped?: number;
   ignored?: number;
   test_methods: TestMethod[];
-};
+}
 
-type TestMethod = {
+interface TestMethod {
   id: number;
   name: string;
   description?: string;
@@ -56,17 +56,17 @@ type TestMethod = {
   status: TestStatus;
   exception?: TestException;
   log: TestLog;
-};
+}
 
-type TestLog = {
+interface TestLog {
   line: string;
-};
+}
 
-type TestException = {
+interface TestException {
   class_name: string;
   message: string;
   stack_trace: string[];
-};
+}
 
 enum TestStatus {
   pass = 'PASS',
@@ -75,18 +75,18 @@ enum TestStatus {
   ignore = 'IGNORE',
 }
 
-type ChartData = {
+interface ChartData {
   status: 'pass' | 'fail' | 'skip';
   total: number;
   fill: string;
-};
+}
 
-type AreaChartData = {
+interface AreaChartData {
   property: string;
   duration: number;
-};
+}
 
-type FormattedData = {
+interface FormattedData {
   passed: number;
   failed: number;
   skipped: number;
@@ -96,7 +96,7 @@ type FormattedData = {
   chartCountData: ChartData[];
   chartPieData: ChartData[];
   areaChartData: AreaChartData[];
-};
+}
 
 export type {
   AreaChartData,

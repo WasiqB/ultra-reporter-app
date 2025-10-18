@@ -14,7 +14,7 @@ export default function DashboardPage() {
   const signOut = async () => {
     await authClient.signOut({
       fetchOptions: {
-        onRequest: (ctx) => {
+        onRequest: () => {
           setIsLoading(true);
         },
         onSuccess: () => {
@@ -36,8 +36,8 @@ export default function DashboardPage() {
 
   return (
     <div className='container mx-auto py-8'>
-      <h1 className='text-3xl font-bold'>Dashboard</h1>
-      <Button onClick={signOut} variant='default' size='lg' className='mt-4'>
+      <h1 className='font-bold text-3xl'>Dashboard</h1>
+      <Button className='mt-4' onClick={signOut} size='lg' variant='default'>
         {isLoading && <Loader2Icon className='mr-2 h-5 w-5 animate-spin' />}
         Sign Out
       </Button>

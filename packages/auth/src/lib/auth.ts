@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/style/noExportedImports: intentionally exporting toNextJsHandler */
 import { db } from '@ultra-reporter/db';
 import { betterAuth } from 'better-auth';
 import { prismaAdapter } from 'better-auth/adapters/prisma';

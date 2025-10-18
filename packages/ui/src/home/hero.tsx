@@ -3,7 +3,7 @@
 import { useVariableValue } from '@ultra-reporter/feature-toggle/client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { JSX } from 'react';
+import type { JSX } from 'react';
 import { Button } from '../components/button';
 import { FileUpload } from '../utils/file-upload';
 
@@ -13,7 +13,7 @@ export const Hero = (): JSX.Element => {
     <section className='flex flex-col items-center gap-4 p-16'>
       <div className='flex flex-col-reverse items-center justify-between gap-8 md:flex-row md:gap-12'>
         <div className='flex flex-col items-center gap-4 text-center md:items-center md:text-left'>
-          <h1 className='text-left text-3xl font-bold md:text-6xl'>
+          <h1 className='text-left font-bold text-3xl md:text-6xl'>
             Convert your Test results to
             <br />
             <span className='gradient-text'>Beautiful Report</span>
@@ -28,7 +28,7 @@ export const Hero = (): JSX.Element => {
           {signInSupport && (
             <div className='w-full max-w-sm pt-8'>
               <Link href='/login' passHref>
-                <Button size='sm' className='w-full'>
+                <Button className='w-full' size='sm'>
                   Try for Free
                 </Button>
               </Link>
@@ -37,12 +37,12 @@ export const Hero = (): JSX.Element => {
         </div>
         <div className='w-full max-w-lg items-end'>
           <Image
+            alt='Ultra Reporter Sample Report'
+            className='rounded-lg border shadow-lg dark:shadow-muted-foreground'
+            height={600}
+            priority
             src='/report-1.png'
             width={600}
-            height={600}
-            alt='Ultra Reporter Sample Report'
-            className='dark:shadow-muted-foreground rounded-lg border shadow-lg'
-            priority
           />
         </div>
       </div>

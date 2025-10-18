@@ -2,7 +2,7 @@
 const isJson = (text: string): boolean => {
   try {
     JSON.parse(text);
-  } catch (e) {
+  } catch (_error) {
     return false;
   }
   return true;
@@ -12,7 +12,7 @@ const isXml = (text: string): boolean => {
   const parser = new DOMParser();
   try {
     parser.parseFromString(text, 'text/xml');
-  } catch (e) {
+  } catch (_error) {
     return false;
   }
   return true;
@@ -22,7 +22,7 @@ const isXml = (text: string): boolean => {
 const isBase64Image = (str: string): boolean => {
   try {
     return btoa(atob(str)) === str;
-  } catch (err) {
+  } catch (_error) {
     return false;
   }
 };
@@ -31,7 +31,7 @@ const prettifyJson = (json: string): string => {
   try {
     const obj = JSON.parse(json);
     return JSON.stringify(obj, null, 2);
-  } catch (e) {
+  } catch (_error) {
     return json;
   }
 };
