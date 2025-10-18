@@ -1,10 +1,8 @@
 import { setupDevCycle } from '@devcycle/nextjs-sdk/server';
 
-const getUserIdentity = async (): Promise<{ user_id: string }> => {
-  return {
-    user_id: '123',
-  };
-};
+const getUserIdentity = async (): Promise<{ user_id: string }> => ({
+  user_id: '123',
+});
 
 const { getVariableValue, getClientContext } = setupDevCycle({
   serverSDKKey: process.env.NEXT_PUBLIC_DEVCYCLE_SERVER_SDK_KEY ?? '',

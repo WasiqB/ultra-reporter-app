@@ -1,11 +1,4 @@
-import {
-  Loader2,
-  Lock,
-  LucideProps,
-  Moon,
-  SunMedium,
-  Twitter,
-} from 'lucide-react';
+import { Loader2, Lock, type LucideProps, Moon, SunMedium, Twitter } from 'lucide-react';
 
 export const Icons = {
   sun: SunMedium,

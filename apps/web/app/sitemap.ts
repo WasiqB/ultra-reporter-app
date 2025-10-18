@@ -1,4 +1,4 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from 'next';
 
 const baseUrl = 'https://ultra-reporter.com';
 

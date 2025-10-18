@@ -2,7 +2,7 @@
 
 import { Upload } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { JSX, useState } from 'react';
+import { type JSX, useState } from 'react';
 import { Button } from '../components/button';
 import { Input } from '../components/input';
 import { Label } from '../components/label';
@@ -12,12 +12,8 @@ export const FileUpload = (): JSX.Element => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const handleFileChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    if (event.target.files && event.target.files[0]) {
-      setFile(event.target.files[0]);
-    }
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setFile(event?.target?.files?.[0] ?? null);
   };
 
   const handleDragOver = (event: React.DragEvent<HTMLDivElement>): void => {
@@ -26,14 +22,10 @@ export const FileUpload = (): JSX.Element => {
 
   const handleDrop = (event: React.DragEvent<HTMLDivElement>): void => {
     event.preventDefault();
-    if (event.dataTransfer.files && event.dataTransfer.files[0]) {
-      setFile(event.dataTransfer.files[0]);
-    }
+    setFile(event?.dataTransfer?.files?.[0] ?? null);
   };
 
-  const handleSubmit = async (
-    event: React.FormEvent<HTMLFormElement>
-  ): Promise<void> => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
     if (file) {
       setLoading(true);
@@ -55,30 +47,21 @@ export const FileUpload = (): JSX.Element => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='w-full max-w-md'>
+    <form className='w-full max-w-md' onSubmit={handleSubmit}>
       <div
-        // eslint-disable-next-line @stylistic/js/max-len
-        className='border-muted-foreground hover:border-primary hover:text-primary cursor-pointer rounded-lg border-4 border-dashed p-8 text-center transition-all'
+        className='cursor-pointer rounded-lg border-4 border-muted-foreground border-dashed p-8 text-center transition-all hover:border-primary hover:text-primary'
         onDragOver={handleDragOver}
         onDrop={handleDrop}
       >
-        <Input
-          type='file'
-          accept='.xml'
-          onChange={handleFileChange}
-          className='hidden'
-          id='file-upload'
-        />
-        <Label htmlFor='file-upload' className='cursor-pointer'>
-          <Upload className='text-muted-foreground mx-auto mb-4 h-12 w-12' />
+        <Input accept='.xml' className='hidden' id='file-upload' onChange={handleFileChange} type='file' />
+        <Label className='cursor-pointer' htmlFor='file-upload'>
+          <Upload className='mx-auto mb-4 h-12 w-12 text-muted-foreground' />
           <p className='text-muted-foreground'>
-            {file
-              ? file.name
-              : 'Click to select or drag and drop testng-results.xml file'}
+            {file ? file.name : 'Click to select or drag and drop testng-results.xml file'}
           </p>
         </Label>
       </div>
-      <Button type='submit' className='mt-4 w-full' disabled={!file || loading}>
+      <Button className='mt-4 w-full' disabled={!file || loading} type='submit'>
         {loading ? 'Generating your Report...' : 'Generate Report'}
       </Button>
     </form>

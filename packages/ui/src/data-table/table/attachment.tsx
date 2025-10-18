@@ -1,22 +1,13 @@
 'use client';
 
-import {
-  isBase64Image,
-  isJson,
-  isXml,
-  prettifyJson,
-} from '@ultra-reporter/utils/string-util';
+import { isBase64Image, isJson, isXml, prettifyJson } from '@ultra-reporter/utils/string-util';
 import { Link } from 'lucide-react';
-import { JSX, useEffect, useState } from 'react';
+import Image from 'next/image';
+import { type JSX, useEffect, useState } from 'react';
 import { CopyBlock, dracula } from 'react-code-blocks';
 import { Button } from '../../components/button';
 import { Card, CardContent } from '../../components/card';
-import {
-  Carousel,
-  CarouselApi,
-  CarouselContent,
-  CarouselItem,
-} from '../../components/carousel';
+import { Carousel, type CarouselApi, CarouselContent, CarouselItem } from '../../components/carousel';
 import {
   Dialog,
   DialogContent,
@@ -32,11 +23,7 @@ interface AttachmentDialogProps {
   description?: string;
 }
 
-export function AttachmentDialog({
-  attachment,
-  title,
-  description,
-}: AttachmentDialogProps): JSX.Element {
+export function AttachmentDialog({ attachment, title, description }: AttachmentDialogProps): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const isArray = Array.isArray(attachment);
   const content = isArray ? attachment : [attachment];
@@ -58,7 +45,7 @@ export function AttachmentDialog({
   }, [api]);
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <Dialog onOpenChange={setIsOpen} open={isOpen}>
       <DialogTrigger asChild>
         <Button variant='outline'>
           <Link className='h-4 w-4' />
@@ -70,42 +57,33 @@ export function AttachmentDialog({
           {description && <DialogDescription>{description}</DialogDescription>}
         </DialogHeader>
         <div className='mt-4 flex w-full grow flex-col items-center justify-center'>
-          <Carousel setApi={setApi} className='relative w-full'>
+          <Carousel className='relative w-full' setApi={setApi}>
             <CarouselContent className='w-full'>
               {content
                 .map((item) => item.trim())
                 .map((item, index) => (
-                  <CarouselItem key={index} className='w-full'>
+                  <CarouselItem className='w-full' key={index}>
                     <Card className='w-full'>
                       <CardContent className='p-6'>
                         {isBase64Image(item) ? (
-                          // eslint-disable-next-line @stylistic/js/max-len
                           <div className='relative h-full min-h-[300px] w-full border border-gray-500'>
-                            <img
-                              src={`data:image/png;base64,${item}`}
+                            <Image
                               alt='Attachment'
                               className='h-full w-full object-contain'
+                              src={`data:image/png;base64,${item}`}
                             />
                           </div>
                         ) : (
                           <div className='w-full overflow-hidden'>
                             <CopyBlock
-                              text={
-                                isJson(item) ? prettifyJson(item) : item.trim()
-                              }
-                              theme={dracula}
-                              language={
-                                isJson(item)
-                                  ? 'json'
-                                  : isXml(item)
-                                    ? 'xml'
-                                    : 'text'
-                              }
                               customStyle={{
                                 height: '300px',
                                 overflow: 'auto',
                               }}
+                              language={isJson(item) ? 'json' : isXml(item) ? 'xml' : 'text'}
                               showLineNumbers
+                              text={isJson(item) ? prettifyJson(item) : item.trim()}
+                              theme={dracula}
                               wrapLongLines
                             />
                           </div>
@@ -116,7 +94,7 @@ export function AttachmentDialog({
                 ))}
             </CarouselContent>
           </Carousel>
-          <div className='text-muted-foreground py-2 text-center text-sm'>
+          <div className='py-2 text-center text-muted-foreground text-sm'>
             Slide {current} of {count}. (Use arrow keys to navigate)
           </div>
         </div>

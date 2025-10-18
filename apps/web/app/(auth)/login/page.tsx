@@ -17,7 +17,7 @@ export default function AuthPage() {
         callbackURL: '/dashboard',
       },
       {
-        onRequest: (ctx) => {
+        onRequest: () => {
           setIsLoading(true);
         },
         onSuccess: () => {
@@ -32,7 +32,7 @@ export default function AuthPage() {
             description: ctx.error.message,
           });
         },
-      }
+      },
     );
   };
 
@@ -47,22 +47,18 @@ export default function AuthPage() {
         {/* Auth Section */}
         <div className='mx-auto w-full max-w-md space-y-8'>
           <div className='space-y-2 text-center'>
-            <h1 className='text-3xl font-bold tracking-tight'>
-              Welcome to Ultra Reporter
-            </h1>
-            <p className='text-muted-foreground text-lg'>
-              Sign in to your account or create a new one
-            </p>
+            <h1 className='font-bold text-3xl tracking-tight'>Welcome to Ultra Reporter</h1>
+            <p className='text-lg text-muted-foreground'>Sign in to your account or create a new one</p>
           </div>
 
           <div className='space-y-4'>
             <Button
-              variant='default'
+              className='w-full py-6 text-lg'
+              disabled={isLoading}
+              onClick={signInWithGoogle}
               size='lg'
               type='button'
-              className='w-full py-6 text-lg'
-              onClick={signInWithGoogle}
-              disabled={isLoading}
+              variant='default'
             >
               {isLoading ? (
                 <Loader2Icon className='mr-2 h-5 w-5 animate-spin' />
@@ -77,19 +73,17 @@ export default function AuthPage() {
                 <span className='w-full border-t' />
               </div>
               <div className='relative flex justify-center text-sm uppercase'>
-                <span className='bg-background text-muted-foreground px-2'>
-                  Secure Authentication
-                </span>
+                <span className='bg-background px-2 text-muted-foreground'>Secure Authentication</span>
               </div>
             </div>
 
-            <p className='text-muted-foreground text-center text-sm'>
+            <p className='text-center text-muted-foreground text-sm'>
               By continuing, you agree to our{' '}
-              <a href='/terms' className='hover:text-primary underline'>
+              <a className='underline hover:text-primary' href='/terms'>
                 Terms of Service
               </a>{' '}
               and{' '}
-              <a href='/privacy' className='hover:text-primary underline'>
+              <a className='underline hover:text-primary' href='/privacy'>
                 Privacy Policy
               </a>
             </p>

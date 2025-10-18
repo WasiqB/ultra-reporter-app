@@ -1,24 +1,15 @@
-/* eslint-disable @stylistic/js/max-len */
 'use client';
 
+import { logger } from '@ultra-reporter/logger';
 import { Button } from '@ultra-reporter/ui/components/button';
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@ultra-reporter/ui/components/card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@ultra-reporter/ui/components/card';
 import { Progress } from '@ultra-reporter/ui/components/progress';
 import { getData } from '@ultra-reporter/ui/data';
 import { isProd } from '@ultra-reporter/utils/constants';
-import {
-  convertToJson,
-  getTestResults,
-} from '@ultra-reporter/utils/xml-parser';
+import { convertToJson, getTestResults } from '@ultra-reporter/utils/xml-parser';
 import { Bug, MoveLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { JSX, useEffect, useState } from 'react';
+import { type JSX, useEffect, useState } from 'react';
 
 const LoadingPage = (): JSX.Element => {
   const [progress, setProgress] = useState(0);
@@ -44,7 +35,7 @@ const LoadingPage = (): JSX.Element => {
       if (err instanceof Error) {
         setError(`${err.message}`);
         if (!isProd) {
-          console.error(`Message: ${err.message}
+          logger.error(`Message: ${err.message}
 Stack: ${err.stack}`);
         }
       }
@@ -57,32 +48,30 @@ Stack: ${err.stack}`);
 
   const handleRaiseIssue = (): void => {
     router.push(
-      'https://github.com/WasiqB/ultra-reporter-app/issues/new?assignees=&labels=bug&projects=&template=bug.yml&title=%F0%9F%90%9B+New+Bug:'
+      'https://github.com/WasiqB/ultra-reporter-app/issues/new?assignees=&labels=bug&projects=&template=bug.yml&title=%F0%9F%90%9B+New+Bug:',
     );
   };
 
   return (
-    <div className='bg-background flex min-h-screen items-center justify-center'>
+    <div className='flex min-h-screen items-center justify-center bg-background'>
       <Card className='w-[350px]'>
         <CardHeader>
           <CardTitle>Processing XML</CardTitle>
         </CardHeader>
         <CardContent>
-          <Progress value={progress} className='w-full' />
+          <Progress className='w-full' value={progress} />
           {error ? (
             <div className='mt-4'>
-              <h3 className='text-destructive mb-2 font-semibold'>Error:</h3>
-              <p className='text-muted-foreground mb-4 text-sm'>{error}</p>
+              <h3 className='mb-2 font-semibold text-destructive'>Error:</h3>
+              <p className='mb-4 text-muted-foreground text-sm'>{error}</p>
             </div>
           ) : (
-            <p className='text-muted-foreground mt-4'>
-              Please wait while we process your XML file...
-            </p>
+            <p className='mt-4 text-muted-foreground'>Please wait while we process your XML file...</p>
           )}
         </CardContent>
         {error && (
           <CardFooter className='flex justify-between'>
-            <Button variant='outline' onClick={handleBack}>
+            <Button onClick={handleBack} variant='outline'>
               <MoveLeft className='h-6 w-6 pr-2' />
               Back
             </Button>

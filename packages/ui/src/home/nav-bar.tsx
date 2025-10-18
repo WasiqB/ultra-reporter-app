@@ -4,14 +4,9 @@ import { useVariableValue } from '@ultra-reporter/feature-toggle/client';
 import { Menu } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { JSX } from 'react';
+import type { JSX } from 'react';
 import { Button } from '../components/button';
-import {
-  Sheet,
-  SheetContent,
-  SheetTitle,
-  SheetTrigger,
-} from '../components/sheet';
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '../components/sheet';
 import { ThemeToggle } from '../components/theme-toggle';
 import { GitHub } from '../icons/github';
 import { Sponsor } from '../icons/sponsor';
@@ -23,28 +18,15 @@ interface NavBarProps {
   hideAuth?: boolean;
 }
 
-export const NavBar = ({
-  suffix,
-  cta,
-  showFeedback,
-}: NavBarProps): JSX.Element => {
+export const NavBar = ({ suffix, cta, showFeedback }: NavBarProps): JSX.Element => {
   const signInSupport = useVariableValue('sign-in-support', false);
 
   return (
-    <nav className={'left-0 right-0 top-0 z-50 transition-all duration-300'}>
+    <nav className={'top-0 right-0 left-0 z-50 transition-all duration-300'}>
       <div className='container mx-auto flex items-center justify-between px-4 py-4'>
         <div className='flex items-center'>
-          <Image
-            className='m-4'
-            src='/favicon.png'
-            alt='Ultra report'
-            height={24}
-            width={24}
-          />
-          <Link
-            href='/'
-            className='text-foreground mr-4 flex items-start text-2xl font-bold'
-          >
+          <Image alt='Ultra report' className='m-4' height={24} src='/favicon.png' width={24} />
+          <Link className='mr-4 flex items-start font-bold text-2xl text-foreground' href='/'>
             Ultra Report
           </Link>
           <span className='text-muted-foreground'>{suffix}</span>
@@ -53,28 +35,16 @@ export const NavBar = ({
         {/* Mobile Menu Button */}
         <Sheet>
           <SheetTrigger asChild>
-            <Button
-              variant='ghost'
-              size='sm'
-              className='cursor-pointer md:hidden'
-              type='button'
-            >
+            <Button className='cursor-pointer md:hidden' size='sm' type='button' variant='ghost'>
               <Menu className='size-6' />
             </Button>
           </SheetTrigger>
-          <SheetContent side='right' className='w-[300px] sm:w-[400px]'>
+          <SheetContent className='w-[300px] sm:w-[400px]' side='right'>
             <SheetTitle className='m-4 text-center'>Menu</SheetTitle>
             <div className='m-4 flex flex-col space-y-4 py-4'>
               <ThemeToggle />
-              <Link
-                href='https://github.com/WasiqB/ultra-reporter-app'
-                passHref
-              >
-                <Button
-                  variant='ghost'
-                  size='sm'
-                  className='w-full justify-start'
-                >
+              <Link href='https://github.com/WasiqB/ultra-reporter-app' passHref>
+                <Button className='w-full justify-start' size='sm' variant='ghost'>
                   <GitHub />
                   GitHub
                 </Button>
@@ -82,8 +52,8 @@ export const NavBar = ({
               <Link href='https://dub.sh/sponsor-me' passHref>
                 <Button
                   className='w-full justify-start text-red-500 hover:text-red-400 dark:text-red-400 dark:hover:text-red-300'
-                  variant='ghost'
                   size='sm'
+                  variant='ghost'
                 >
                   <Sponsor />
                   Sponsor
@@ -95,21 +65,21 @@ export const NavBar = ({
                   passHref
                   target='_blank'
                 >
-                  <Button variant='outline' size='sm' className='w-full'>
+                  <Button className='w-full' size='sm' variant='outline'>
                     Give Feedback
                   </Button>
                 </Link>
               )}
               {signInSupport && (
                 <Link href='/login' passHref>
-                  <Button size='sm' className='w-full'>
+                  <Button className='w-full' size='sm'>
                     Try for Free
                   </Button>
                 </Link>
               )}
               {cta && (
                 <Link href='/' passHref>
-                  <Button size='sm' className='w-full'>
+                  <Button className='w-full' size='sm'>
                     {cta}
                   </Button>
                 </Link>
@@ -122,26 +92,22 @@ export const NavBar = ({
         <div className='hidden items-center space-x-4 md:flex'>
           <ThemeToggle />
           <Link href='https://github.com/WasiqB/ultra-reporter-app' passHref>
-            <Button variant='ghost' size='sm'>
+            <Button size='sm' variant='ghost'>
               <GitHub />
             </Button>
           </Link>
           <Link href='https://dub.sh/sponsor-me' passHref>
             <Button
               className='text-red-500 hover:text-red-400 dark:text-red-400 dark:hover:text-red-300'
-              variant='ghost'
               size='sm'
+              variant='ghost'
             >
               <Sponsor />
             </Button>
           </Link>
           {showFeedback && (
-            <Link
-              href='https://github.com/WasiqB/ultra-reporter-app/discussions/new/choose'
-              passHref
-              target='_blank'
-            >
-              <Button variant='outline' size='sm'>
+            <Link href='https://github.com/WasiqB/ultra-reporter-app/discussions/new/choose' passHref target='_blank'>
+              <Button size='sm' variant='outline'>
                 Give Feedback
               </Button>
             </Link>
