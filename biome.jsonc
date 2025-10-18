@@ -71,6 +71,9 @@
       "enabled": true,
       "indentStyle": "space",
       "quoteStyle": "single"
+    },
+    "linter": {
+      "enabled": false
     }
   },
   "vcs": {
