@@ -1,6 +1,6 @@
 'use client';
 
-import { authClient } from '@ultra-reporter/auth/auth-client';
+import { signInWithSocial } from '@ultra-reporter/auth/actions-client';
 import { Button } from '@ultra-reporter/ui/components/button';
 import { DemoCarousel } from '@ultra-reporter/ui/components/demo-carousel';
 import { Icons } from '@ultra-reporter/ui/components/icons';
@@ -11,29 +11,25 @@ import { useState } from 'react';
 export default function AuthPage() {
   const [isLoading, setIsLoading] = useState(false);
   const signInWithGoogle = async () => {
-    await authClient.signIn.social(
-      {
-        provider: 'google',
-        callbackURL: '/dashboard',
+    await signInWithSocial({
+      provider: 'google',
+      url: '/dashboard',
+      initFn: () => {
+        setIsLoading(true);
       },
-      {
-        onRequest: () => {
-          setIsLoading(true);
-        },
-        onSuccess: () => {
-          setIsLoading(false);
-          toast.success('Login successful!', {
-            description: 'You are now logged in.',
-          });
-        },
-        onError: (ctx) => {
-          setIsLoading(false);
-          toast.error(ctx.error.name, {
-            description: ctx.error.message,
-          });
-        },
+      successFn: () => {
+        setIsLoading(false);
+        toast.success('Login successful!', {
+          description: 'You are now logged in.',
+        });
       },
-    );
+      errorFn: (ctx) => {
+        setIsLoading(false);
+        toast.error(ctx.error.name, {
+          description: ctx.error.message,
+        });
+      },
+    });
   };
 
   return (
