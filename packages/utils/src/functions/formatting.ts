@@ -1,10 +1,9 @@
-/* eslint-disable @stylistic/ts/quotes */
 import { format, parse } from 'date-fns';
 import { DateTime } from 'luxon';
 
 export const toDuration = (duration: string): number => {
   const splitTime = duration.split(' ');
-  const time = parseFloat(splitTime[0] || '0');
+  const time = Number.parseFloat(splitTime[0] || '0');
   const type = splitTime[1];
   const SECOND = 1;
   const MINUTE = 60 * SECOND;
@@ -21,7 +20,6 @@ export const toDuration = (duration: string): number => {
     case 'ms':
       result = result / 1000;
       break;
-    case 's':
     default:
       result *= SECOND;
       break;
@@ -45,7 +43,7 @@ export const formatDuration = (duration: number): string => {
 };
 
 export const formatDateTime = (
-  dateTimeString: string
+  dateTimeString: string,
 ): {
   date: string;
   time: string;
@@ -94,11 +92,7 @@ export const formatTime = (dateTime: string): string => {
   const TIME_FORMAT = 'hh:mm:ss aa';
   if (dateTime.endsWith('AST')) {
     const cleanedDateString = dateTime.replace('AST', 'UTC');
-    const parsedDate = parse(
-      cleanedDateString,
-      "yyyy-MM-dd'T'HH:mm:ss 'UTC'",
-      new Date()
-    );
+    const parsedDate = parse(cleanedDateString, `yyyy-MM-dd'T'HH:mm:ss 'UTC'`, new Date());
     return format(parsedDate, TIME_FORMAT);
   }
   return format(dateTime, TIME_FORMAT);
@@ -108,23 +102,12 @@ export const formatDate = (dateTime: string): string => {
   const DATE_FORMAT = 'dd-MMM-yyyy';
   if (dateTime.endsWith('AST')) {
     const cleanedDateString = dateTime.replace('AST', 'UTC');
-    const parsedDate = parse(
-      cleanedDateString,
-      "yyyy-MM-dd'T'HH:mm:ss 'UTC'",
-      new Date()
-    );
+    const parsedDate = parse(cleanedDateString, "yyyy-MM-dd'T'HH:mm:ss 'UTC'", new Date());
     return format(parsedDate, DATE_FORMAT);
   }
   return format(dateTime, DATE_FORMAT);
 };
 
-export const formatDateWithFormat = (
-  dateTime: string,
-  pattern: string
-): string => {
-  return format(dateTime, pattern);
-};
+export const formatDateWithFormat = (dateTime: string, pattern: string): string => format(dateTime, pattern);
 
-export const round = (value: number): number => {
-  return Math.round((value + Number.EPSILON) * 100) / 100;
-};
+export const round = (value: number): number => Math.round((value + Number.EPSILON) * 100) / 100;

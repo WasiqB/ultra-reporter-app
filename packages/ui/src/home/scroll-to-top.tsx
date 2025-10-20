@@ -1,7 +1,7 @@
 'use client';
 
 import { ArrowUp } from 'lucide-react';
-import { JSX, useEffect, useState } from 'react';
+import { type JSX, useEffect, useState } from 'react';
 import { Button } from '../components/button';
 import { TooltipWrapper } from '../utils/tooltip-wrapper';
 
@@ -33,9 +33,9 @@ export const ScrollToTop = (): JSX.Element => {
     <>
       {isVisible && (
         <Button
-          className='fixed bottom-4 left-1/2 z-50 -translate-x-1/2 transform rounded-full p-2'
-          onClick={scrollToTop}
           aria-label='Scroll to top'
+          className='-translate-x-1/2 fixed bottom-4 left-1/2 z-50 transform rounded-full p-2'
+          onClick={scrollToTop}
         >
           <TooltipWrapper text='Scroll to top'>
             <ArrowUp className='h-4 w-4' />

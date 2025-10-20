@@ -5,7 +5,7 @@ import {
   round,
   toDuration,
 } from '@ultra-reporter/utils/formatting';
-import {
+import type {
   AreaChartData,
   ChartData,
   FormattedData,
@@ -15,7 +15,7 @@ import {
 } from '@ultra-reporter/utils/types';
 import { AlertTriangle, Check, X } from 'lucide-react';
 
-export type TestResultData = {
+export interface TestResultData {
   run_date: string;
   suite_name: string;
   test_name: string;
@@ -30,7 +30,7 @@ export type TestResultData = {
   started_at: string;
   finished_at: string;
   duration_ms: string;
-};
+}
 
 export const getData = (data: TestResult): TestResultData[] => {
   const result: TestResultData[] = [];
@@ -103,8 +103,7 @@ export const getFormattedData = (data: TestResultData[]): FormattedData => {
   const totalTests = data.length;
   const { pass: passed, fail: failed, skip: skipped, ignored } = statusCounts;
 
-  const calculatePercentage = (count: number): number =>
-    round((count / totalTests) * 100);
+  const calculatePercentage = (count: number): number => round((count / totalTests) * 100);
 
   const chartCountData: ChartData[] = [
     { status: 'pass', fill: 'var(--color-pass)', total: passed },
@@ -130,17 +129,12 @@ export const getFormattedData = (data: TestResultData[]): FormattedData => {
     },
   ];
 
-  const areaChartData: AreaChartData[] = data.map((r) => {
-    return {
-      property: `${r.class_name} / ${r.method_name}`,
-      duration: toDuration(r.duration_ms),
-    };
-  });
+  const areaChartData: AreaChartData[] = data.map((r) => ({
+    property: `${r.class_name} / ${r.method_name}`,
+    duration: toDuration(r.duration_ms),
+  }));
 
-  const date =
-    data && data.length > 0
-      ? formatDateWithFormat(data[0]?.run_date || '', 'MMMM d, yyyy')
-      : 'N/A';
+  const date = data && data.length > 0 ? formatDateWithFormat(data[0]?.run_date || '', 'MMMM d, yyyy') : 'N/A';
 
   return {
     passed,

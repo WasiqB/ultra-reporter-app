@@ -1,12 +1,12 @@
 import { GoogleAnalytics } from '@next/third-parties/google';
-import { getFeatureState } from '@ultra-reporter/feature-toggle/client';
 import { FeatureProvider } from '@ultra-reporter/feature-toggle/provider';
+import { Toaster } from '@ultra-reporter/ui/components/sonner';
 import { Footer } from '@ultra-reporter/ui/home/footer';
 import { ScrollToTop } from '@ultra-reporter/ui/home/scroll-to-top';
 import { ThemeProvider } from '@ultra-reporter/ui/utils/theme-provider';
 import { isProd } from '@ultra-reporter/utils/constants';
+import { AlertTriangleIcon, CheckCircleIcon, InfoIcon, Loader2Icon, XCircleIcon, XIcon } from 'lucide-react';
 import type { Metadata } from 'next';
-import { JSX } from 'react';
 import './styles/global.css';
 
 export const metadata: Metadata = {
@@ -68,32 +68,36 @@ const RootLayout = async ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>): Promise<JSX.Element> => {
-  const featureState = await getFeatureState();
-  return (
-    <html lang='en' suppressHydrationWarning>
-      <head>
-        <link rel='icon' href='/favicon.png' sizes='any' type='image/png' />
-      </head>
-      <FeatureProvider serverState={featureState}>
-        <>
-          <body className={'antialiased'}>
-            <ThemeProvider
-              attribute='class'
-              defaultTheme='light'
-              enableSystem
-              disableTransitionOnChange
-            >
-              {children}
-              <ScrollToTop />
-              <Footer />
-            </ThemeProvider>
-          </body>
-          {isProd && <GoogleAnalytics gaId='G-CNW9F6PH7P' />}
-        </>
-      </FeatureProvider>
-    </html>
-  );
-};
+}>) => (
+  <html lang='en' suppressHydrationWarning>
+    <head>
+      <link href='/favicon.png' rel='icon' sizes='any' type='image/png' />
+    </head>
+    <FeatureProvider>
+      <body className={'antialiased'}>
+        <ThemeProvider attribute='class' defaultTheme='light' disableTransitionOnChange enableSystem>
+          {children}
+          <ScrollToTop />
+          <Footer />
+          <Toaster
+            closeButton
+            duration={5000}
+            icons={{
+              success: <CheckCircleIcon className='h-4 w-4' />,
+              error: <XCircleIcon className='h-4 w-4' />,
+              warning: <AlertTriangleIcon className='h-4 w-4' />,
+              info: <InfoIcon className='h-4 w-4' />,
+              loading: <Loader2Icon className='h-4 w-4 animate-spin' />,
+              close: <XIcon className='h-4 w-4' />,
+            }}
+            position='top-center'
+            richColors
+          />
+        </ThemeProvider>
+      </body>
+      {isProd && <GoogleAnalytics gaId='G-CNW9F6PH7P' />}
+    </FeatureProvider>
+  </html>
+);
 
 export default RootLayout;

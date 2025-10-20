@@ -1,13 +1,9 @@
-import { JSX } from 'react';
+import type { JSX } from 'react';
 
 interface DescriptionProps {
   text: string;
 }
 
-export const Description = ({ text }: DescriptionProps): JSX.Element => {
-  return (
-    <p className='text-muted-foreground leading-normal sm:text-lg sm:leading-7'>
-      {text}
-    </p>
-  );
-};
+export const Description = ({ text }: DescriptionProps): JSX.Element => (
+  <p className='text-muted-foreground leading-normal sm:text-lg sm:leading-7'>{text}</p>
+);

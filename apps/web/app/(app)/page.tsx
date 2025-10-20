@@ -6,23 +6,21 @@ import { HowItWorks } from '@ultra-reporter/ui/home/how-it-works';
 import { NavBar } from '@ultra-reporter/ui/home/nav-bar';
 import { OpenSource } from '@ultra-reporter/ui/home/open-source';
 import { Sponsor } from '@ultra-reporter/ui/home/sponsor';
-import { JSX } from 'react';
+import type { JSX } from 'react';
 
-const LandingPage = (): JSX.Element => {
-  return (
-    <>
-      <NavBar />
-      <main className='bg-background text-foreground container mx-auto px-4 py-16'>
-        <Hero />
-        <Features />
-        <HowItWorks />
-        <FAQ />
-        <Feedback />
-        <Sponsor />
-        <OpenSource />
-      </main>
-    </>
-  );
-};
+const LandingPage = (): JSX.Element => (
+  <>
+    <NavBar />
+    <main className='container mx-auto bg-background px-4 py-16 text-foreground'>
+      <Hero />
+      <Features />
+      <HowItWorks />
+      <FAQ />
+      <Feedback />
+      <Sponsor />
+      <OpenSource />
+    </main>
+  </>
+);
 
 export default LandingPage;

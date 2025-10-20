@@ -4,23 +4,19 @@
   "version": "0.7.0",
   "private": true,
   "scripts": {
-    "lint": "eslint . --max-warnings 0"
+    "lint": "ultracite check"
   },
   "exports": {
-    "./client": "./src/client.ts",
+    "./devcycle": "./src/devcycle.ts",
     "./provider": "./src/provider.tsx",
-    "./middleware": "./src/middleware.ts"
+    "./client": "./src/client.ts"
   },
   "devDependencies": {
     "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.1",
+    "@types/react-dom": "^19.2.2",
     "@ultra-reporter/typescript-config": "workspace:*"
   },
-  "peerDependencies": {
-    "react": "^19.2",
-    "react-dom": "^19.2"
-  },
   "dependencies": {
-    "flagsmith": "^9.3.2"
+    "@devcycle/nextjs-sdk": "^2.23.1"
   }
 }

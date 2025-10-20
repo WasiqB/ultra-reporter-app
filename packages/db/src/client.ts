@@ -7,4 +7,6 @@ declare global {
 
 export const db = globalThis.prisma || new PrismaClient();
 
-if (isDev) global.prisma = db;
+if (isDev) {
+  global.prisma = db;
+}

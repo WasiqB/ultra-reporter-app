@@ -5,10 +5,10 @@
   "private": true,
   "main": "./src/index.ts",
   "scripts": {
-    "lint": "eslint . --max-warnings 0"
+    "lint": "ultracite check"
   },
   "dependencies": {
-    "pino": "^10.0.0"
+    "pino": "^10.1.0"
   },
   "devDependencies": {
     "@ultra-reporter/typescript-config": "workspace:*"

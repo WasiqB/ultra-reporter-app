@@ -38,34 +38,32 @@ export function DemoCarousel() {
     <div className='relative h-full w-full'>
       {demoSlides.map((slide, index) => (
         <div
-          key={slide.src}
           className={`absolute inset-0 transition-opacity duration-1000 ${
             index === currentSlide ? 'opacity-100' : 'opacity-0'
           }`}
+          key={slide.src}
         >
           <Image
-            src={slide.src}
             alt={slide.alt}
-            fill
             className='rounded-lg object-cover shadow-xl'
+            fill
             priority={index === 0}
+            src={slide.src}
           />
-          <div className='bg-linear-to-t absolute bottom-0 left-0 right-0 from-black/60 to-transparent p-6'>
-            <p className='text-xl font-medium text-white'>{slide.caption}</p>
+          <div className='absolute right-0 bottom-0 left-0 bg-linear-to-t from-black/60 to-transparent p-6'>
+            <p className='font-medium text-white text-xl'>{slide.caption}</p>
           </div>
         </div>
       ))}
 
       {/* Slide indicators */}
-      <div className='absolute bottom-4 left-1/2 flex -translate-x-1/2 space-x-2'>
+      <div className='-translate-x-1/2 absolute bottom-4 left-1/2 flex space-x-2'>
         {demoSlides.map((_, index) => (
           <button
-            key={index}
             className={`h-2 w-2 rounded-full transition-all ${
-              index === currentSlide
-                ? 'w-4 bg-white'
-                : 'bg-white/50 hover:bg-white/75'
+              index === currentSlide ? 'w-4 bg-white' : 'bg-white/50 hover:bg-white/75'
             }`}
+            key={index}
             onClick={() => setCurrentSlide(index)}
           />
         ))}

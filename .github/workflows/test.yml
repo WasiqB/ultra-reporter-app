@@ -8,6 +8,7 @@ on:
   pull_request:
     branches:
       - main
+      - new-design
 
 jobs:
   lint:
@@ -58,5 +59,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build the Web report
+      - name: Build the Project
+        if: env.NEXT_PUBLIC_DEVCYCLE_CLIENT_SDK_KEY
         run: pnpm build

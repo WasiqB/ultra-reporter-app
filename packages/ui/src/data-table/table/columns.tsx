@@ -1,27 +1,13 @@
 import { GearIcon } from '@radix-ui/react-icons';
-import { ColumnDef } from '@tanstack/react-table';
+import type { ColumnDef } from '@tanstack/react-table';
 import { cn } from '@ultra-reporter/utils/cn';
 import { toDuration } from '@ultra-reporter/utils/formatting';
-import { TestException, TestLog } from '@ultra-reporter/utils/types';
-import {
-  CircleAlert,
-  Link,
-  Table2,
-  Tag,
-  Tags,
-  TestTube,
-  TestTubes,
-} from 'lucide-react';
+import type { TestException, TestLog } from '@ultra-reporter/utils/types';
+import { CircleAlert, Link, Table2, Tag, Tags, TestTube, TestTubes } from 'lucide-react';
 import { useState } from 'react';
 import { Badge } from '../../components/badge';
 import { Button } from '../../components/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '../../components/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/card';
 import {
   Dialog,
   DialogContent,
@@ -33,7 +19,7 @@ import {
 import { TooltipWrapper } from '../../utils/tooltip-wrapper';
 import { CellData, SortableHeader } from '../cell-text-data';
 import { AttachmentDialog } from './attachment';
-import { statuses, TestResultData } from './data';
+import { statuses, type TestResultData } from './data';
 
 export const columns: ColumnDef<TestResultData>[] = [
   {
@@ -66,9 +52,7 @@ export const columns: ColumnDef<TestResultData>[] = [
       const value = row.getValue('method_name') as string;
       return <CellData value={value} />;
     },
-    header: ({ column }) => (
-      <SortableHeader column={column} header='Method Name' />
-    ),
+    header: ({ column }) => <SortableHeader column={column} header='Method Name' />,
   },
   {
     accessorKey: 'status',
@@ -82,17 +66,13 @@ export const columns: ColumnDef<TestResultData>[] = [
       return (
         <div className='flex items-center'>
           <Badge
-            variant='outline'
             className={cn('px-2 py-1', {
-              'bg-green-500/20 text-green-700 dark:bg-green-500/30 dark:text-green-300':
-                status === 'pass',
-              'bg-red-500/20 text-red-700 dark:bg-red-500/30 dark:text-red-300':
-                status === 'fail',
-              'bg-yellow-500/20 text-yellow-700 dark:bg-yellow-500/30 dark:text-yellow-300':
-                status === 'skip',
-              'bg-gray-500/20 text-gray-700 dark:bg-gray-500/30 dark:text-gray-300':
-                status === 'ignored',
+              'bg-green-500/20 text-green-700 dark:bg-green-500/30 dark:text-green-300': status === 'pass',
+              'bg-red-500/20 text-red-700 dark:bg-red-500/30 dark:text-red-300': status === 'fail',
+              'bg-yellow-500/20 text-yellow-700 dark:bg-yellow-500/30 dark:text-yellow-300': status === 'skip',
+              'bg-gray-500/20 text-gray-700 dark:bg-gray-500/30 dark:text-gray-300': status === 'ignored',
             })}
+            variant='outline'
           >
             <foundStatus.icon className={cn('mr-2 h-4 w-4')} />
             {foundStatus.label}
@@ -100,18 +80,14 @@ export const columns: ColumnDef<TestResultData>[] = [
         </div>
       );
     },
-    filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id));
-    },
+    filterFn: (row, id, value) => value.includes(row.getValue(id)),
   },
   {
     accessorKey: 'duration_ms',
-    header: ({ column }) => (
-      <SortableHeader column={column} header='Duration' />
-    ),
+    header: ({ column }) => <SortableHeader column={column} header='Duration' />,
     cell: ({ row }) => {
       const duration: string = row.getValue('duration_ms');
-      return <CellData value={duration} align='right' />;
+      return <CellData align='right' value={duration} />;
     },
     sortingFn: (rowA, rowB, columnId) => {
       const a = toDuration(rowA.getValue(columnId) as string);
@@ -184,31 +160,23 @@ export const columns: ColumnDef<TestResultData>[] = [
       return (
         <>
           {exception && (
-            <Dialog open={isOpen} onOpenChange={setIsOpen}>
+            <Dialog onOpenChange={setIsOpen} open={isOpen}>
               <DialogTrigger asChild>
-                <Button
-                  variant='link'
-                  onClick={() => setIsOpen(true)}
-                  className='w-15'
-                >
+                <Button className='w-15' onClick={() => setIsOpen(true)} variant='link'>
                   <CircleAlert className='h-4 w-4 text-red-500 dark:fill-red-500' />
                 </Button>
               </DialogTrigger>
               <DialogContent className='flex flex-col sm:max-h-[90vh] sm:max-w-[90vw]'>
                 <DialogHeader>
                   <DialogTitle>Exception</DialogTitle>
-                  <DialogDescription>
-                    Here you can see the Test related Exception
-                  </DialogDescription>
+                  <DialogDescription>Here you can see the Test related Exception</DialogDescription>
                 </DialogHeader>
                 <div className='grid gap-4 py-4'>
                   <div className='grid grid-cols-1 items-center gap-4'>
                     {exception ? (
                       <Card>
                         <CardHeader>
-                          <CardTitle className='text-red-500'>
-                            Message: {exception.message.trim()}
-                          </CardTitle>
+                          <CardTitle className='text-red-500'>Message: {exception.message.trim()}</CardTitle>
                           <CardDescription className='text-red-400'>
                             Exception class: {exception.class_name}
                           </CardDescription>
@@ -216,7 +184,7 @@ export const columns: ColumnDef<TestResultData>[] = [
                         <CardContent>
                           <pre className='mockup-code max-h-[300px] overflow-auto'>
                             {exception.stack_trace.map((line, index) => (
-                              <code key={index} className='block pl-2'>
+                              <code className='block pl-2' key={index}>
                                 {line.startsWith('at') && '\t'}
                                 {line.trim()}
                               </code>
@@ -250,9 +218,9 @@ export const columns: ColumnDef<TestResultData>[] = [
       return (
         attachment && (
           <AttachmentDialog
-            title='Attachment'
-            description='Below is the attachment from your Test'
             attachment={attachment.line}
+            description='Below is the attachment from your Test'
+            title='Attachment'
           />
         )
       );
@@ -273,22 +241,16 @@ export const columns: ColumnDef<TestResultData>[] = [
       return (
         params &&
         params.length > 1 && (
-          <Dialog open={isOpen} onOpenChange={setIsOpen}>
+          <Dialog onOpenChange={setIsOpen} open={isOpen}>
             <DialogTrigger asChild>
-              <Button
-                variant='link'
-                onClick={() => setIsOpen(true)}
-                className='w-15'
-              >
+              <Button className='w-15' onClick={() => setIsOpen(true)} variant='link'>
                 <Table2 className='h-4 w-4' />
               </Button>
             </DialogTrigger>
             <DialogContent className='flex flex-col sm:max-h-[90vh] sm:max-w-[90vw]'>
               <DialogHeader>
                 <DialogTitle>Parameters</DialogTitle>
-                <DialogDescription>
-                  Here you can see the Test related Parameters
-                </DialogDescription>
+                <DialogDescription>Here you can see the Test related Parameters</DialogDescription>
               </DialogHeader>
               <div className='grid gap-4 py-4'>
                 <div className='grid grid-cols-1 items-center gap-4'>
@@ -297,7 +259,7 @@ export const columns: ColumnDef<TestResultData>[] = [
                       <CardContent>
                         <div className='mockup-code max-h-[300px] overflow-auto'>
                           {params.map((line, index) => (
-                            <pre key={index} data-prefix={index + 1}>
+                            <pre data-prefix={index + 1} key={index}>
                               <code className='pl-2'>{line.trim()}</code>
                             </pre>
                           ))}
@@ -317,22 +279,18 @@ export const columns: ColumnDef<TestResultData>[] = [
   },
   {
     accessorKey: 'started_at',
-    header: ({ column }) => (
-      <SortableHeader column={column} header='Started At' />
-    ),
+    header: ({ column }) => <SortableHeader column={column} header='Started At' />,
     cell: ({ row }) => {
       const dateTime: string = row.getValue('started_at');
-      return <CellData value={dateTime} align='right' />;
+      return <CellData align='right' value={dateTime} />;
     },
   },
   {
     accessorKey: 'finished_at',
-    header: ({ column }) => (
-      <SortableHeader column={column} header='Finished At' />
-    ),
+    header: ({ column }) => <SortableHeader column={column} header='Finished At' />,
     cell: ({ row }) => {
       const dateTime: string = row.getValue('finished_at');
-      return <CellData value={dateTime} align='right' />;
+      return <CellData align='right' value={dateTime} />;
     },
   },
 ];
