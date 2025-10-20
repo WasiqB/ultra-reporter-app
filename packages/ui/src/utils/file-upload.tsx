@@ -1,5 +1,6 @@
 'use client';
 
+import { createAnonymousUser } from '@ultra-reporter/auth/actions';
 import { Upload } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { type JSX, useState } from 'react';
@@ -30,6 +31,7 @@ export const FileUpload = (): JSX.Element => {
     if (file) {
       setLoading(true);
       try {
+        await createAnonymousUser();
         const reader = new FileReader();
         reader.onload = async (e) => {
           const xmlContent = e.target?.result as string;
