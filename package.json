@@ -27,16 +27,16 @@
   "devDependencies": {
     "@eslint/compat": "^1.4.0",
     "@eslint/js": "^9.37.0",
-    "@next/eslint-plugin-next": "^15.5.4",
+    "@next/eslint-plugin-next": "^15.5.6",
     "@release-it-plugins/lerna-changelog": "^8.0.1",
     "@stylistic/eslint-plugin-js": "^4.4.1",
     "@stylistic/eslint-plugin-ts": "^4.4.1",
     "@types/node": "^24.7.2",
-    "@typescript-eslint/eslint-plugin": "^8.46.0",
-    "@typescript-eslint/parser": "^8.46.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.1",
+    "@typescript-eslint/parser": "^8.46.1",
     "@vercel/style-guide": "^6.0.0",
     "eslint": "^9.37.0",
-    "eslint-config-next": "15.5.4",
+    "eslint-config-next": "15.5.6",
     "eslint-config-prettier": "^10.1.8",
     "eslint-config-turbo": "2.5.8",
     "eslint-plugin-only-warn": "^1.1.0",
@@ -53,7 +53,7 @@
     "release-it-pnpm": "^4.6.6",
     "turbo": "^2.5.8",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.46.0"
+    "typescript-eslint": "^8.46.1"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
