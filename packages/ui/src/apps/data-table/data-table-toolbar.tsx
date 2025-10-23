@@ -1,9 +1,9 @@
 import { Cross2Icon } from '@radix-ui/react-icons';
 import type { Table } from '@tanstack/react-table';
 import { type JSX, useState } from 'react';
-import { Button } from '../components/button';
-import { Input } from '../components/input';
-import { Switch } from '../components/switch';
+import { Button } from '../../components/button';
+import { Input } from '../../components/input';
+import { Switch } from '../../components/switch';
 import { DataTableFacetedFilter } from './data-table-faceted-filter';
 import { DataTableViewOptions } from './data-table-view-options';
 import { statuses } from './table/data';

@@ -1,7 +1,7 @@
 import { StarIcon } from 'lucide-react';
 import Link from 'next/link';
 import type { JSX } from 'react';
-import { Button } from '../components/button';
+import { Button } from '../../components/button';
 
 export const OpenSource = (): JSX.Element => (
   <section className='mt-16 mb-10 text-center'>

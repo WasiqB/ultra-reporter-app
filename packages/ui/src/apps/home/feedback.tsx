@@ -1,7 +1,7 @@
 import { MessageSquareIcon } from 'lucide-react';
 import Link from 'next/link';
 import type { JSX } from 'react';
-import { Button } from '../components/button';
+import { Button } from '../../components/button';
 
 export const Feedback = (): JSX.Element => (
   <section className='bg-background py-16'>

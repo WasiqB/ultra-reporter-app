@@ -3,8 +3,8 @@
 import type { AreaChartData } from '@ultra-reporter/utils/types';
 import type { JSX } from 'react';
 import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../components/card';
-import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '../components/chart';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../../components/card';
+import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '../../components/chart';
 
 interface AreaChartProps {
   title: string;

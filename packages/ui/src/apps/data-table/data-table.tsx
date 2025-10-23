@@ -17,7 +17,7 @@ import {
 } from '@tanstack/react-table';
 
 import type { JSX } from 'react';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/table';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../components/table';
 import { DataTablePagination } from './data-table-pagination';
 import { DataTableToolbar } from './data-table-toolbar';
 

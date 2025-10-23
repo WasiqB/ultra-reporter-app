@@ -2,8 +2,8 @@
 
 import { ArrowUp } from 'lucide-react';
 import { type JSX, useEffect, useState } from 'react';
-import { Button } from '../components/button';
-import { TooltipWrapper } from '../utils/tooltip-wrapper';
+import { Button } from '../../components/button';
+import { TooltipWrapper } from '../../utils/tooltip-wrapper';
 
 export const ScrollToTop = (): JSX.Element => {
   const [isVisible, setIsVisible] = useState(false);

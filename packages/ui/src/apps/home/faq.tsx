@@ -2,9 +2,9 @@
 
 import { useVariableValue } from '@ultra-reporter/feature-toggle/client';
 import type { JSX } from 'react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../../components/accordion';
 import { Description } from '../common/description';
 import { Title } from '../common/title';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/accordion';
 
 interface FAQProps {
   faq: { question: string; answer: string }[];

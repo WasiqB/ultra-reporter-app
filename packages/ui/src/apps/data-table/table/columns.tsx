@@ -5,9 +5,9 @@ import { toDuration } from '@ultra-reporter/utils/formatting';
 import type { TestException, TestLog } from '@ultra-reporter/utils/types';
 import { CircleAlert, Link, Table2, Tag, Tags, TestTube, TestTubes } from 'lucide-react';
 import { useState } from 'react';
-import { Badge } from '../../components/badge';
-import { Button } from '../../components/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/card';
+import { Badge } from '../../../components/badge';
+import { Button } from '../../../components/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/card';
 import {
   Dialog,
   DialogContent,
@@ -15,8 +15,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '../../components/dialog';
-import { TooltipWrapper } from '../../utils/tooltip-wrapper';
+} from '../../../components/dialog';
+import { TooltipWrapper } from '../../../utils/tooltip-wrapper';
 import { CellData, SortableHeader } from '../cell-text-data';
 import { AttachmentDialog } from './attachment';
 import { statuses, type TestResultData } from './data';

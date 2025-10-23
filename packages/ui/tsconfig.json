@@ -1,7 +1,6 @@
 {
   "extends": "@ultra-reporter/typescript-config/react-library.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }

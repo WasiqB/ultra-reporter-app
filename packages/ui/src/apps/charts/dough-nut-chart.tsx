@@ -1,8 +1,8 @@
 import type { ChartData } from '@ultra-reporter/utils/types';
 import type { JSX } from 'react';
 import { Label, Pie, PieChart } from 'recharts';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../components/card';
-import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '../components/chart';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../../components/card';
+import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '../../components/chart';
 
 interface DoughNutProps {
   title: string;

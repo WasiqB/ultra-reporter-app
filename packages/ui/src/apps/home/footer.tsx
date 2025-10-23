@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { JSX } from 'react';
-import packageInfo from '../../package.json';
+import packageInfo from '../../../package.json';
 import { GitHub } from '../icons/github';
 import { LinkedIn } from '../icons/linkedin';
 import { Sponsor } from '../icons/sponsor';

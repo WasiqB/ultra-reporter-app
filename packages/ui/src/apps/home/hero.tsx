@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import type { JSX } from 'react';
-import { FileUpload } from '../utils/file-upload';
+import { FileUpload } from '../../utils/file-upload';
 
 export const Hero = (): JSX.Element => {
   return (

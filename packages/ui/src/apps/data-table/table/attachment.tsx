@@ -5,9 +5,9 @@ import { Link } from 'lucide-react';
 import Image from 'next/image';
 import { type JSX, useEffect, useState } from 'react';
 import { CopyBlock, dracula } from 'react-code-blocks';
-import { Button } from '../../components/button';
-import { Card, CardContent } from '../../components/card';
-import { Carousel, type CarouselApi, CarouselContent, CarouselItem } from '../../components/carousel';
+import { Button } from '../../../components/button';
+import { Card, CardContent } from '../../../components/card';
+import { Carousel, type CarouselApi, CarouselContent, CarouselItem } from '../../../components/carousel';
 import {
   Dialog,
   DialogContent,
@@ -15,7 +15,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '../../components/dialog';
+} from '../../../components/dialog';
 
 interface AttachmentDialogProps {
   attachment: string | string[];

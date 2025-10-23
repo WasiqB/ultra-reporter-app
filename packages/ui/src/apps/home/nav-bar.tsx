@@ -4,9 +4,9 @@ import { LogInIcon, Menu } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { JSX } from 'react';
-import { Button } from '../components/button';
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '../components/sheet';
-import { ThemeToggle } from '../components/theme-toggle';
+import { Button } from '../../components/button';
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '../../components/sheet';
+import { ThemeToggle } from '../../components/theme-toggle';
 import { GitHub } from '../icons/github';
 import { Sponsor } from '../icons/sponsor';
 
