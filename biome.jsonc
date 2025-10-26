@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.6/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.3.0/schema.json",
   "files": {
     "includes": ["**/*.{ts,tsx,json,jsonc,mjs,css}", "!packages/ui/src/components/**/*.{ts,tsx}"]
   },
@@ -23,12 +23,6 @@
         "noArrayIndexKey": "off"
       },
       "nursery": {
-        "useConsistentTypeDefinitions": {
-          "level": "error",
-          "options": {
-            "style": "interface"
-          }
-        },
         "recommended": true
       },
       "a11y": {
@@ -41,7 +35,8 @@
     "indentWidth": 2,
     "lineWidth": 120,
     "lineEnding": "lf",
-    "indentStyle": "space"
+    "indentStyle": "space",
+    "formatWithErrors": true
   },
   "assist": {
     "enabled": true,
@@ -58,7 +53,8 @@
     },
     "formatter": {
       "jsxQuoteStyle": "single",
-      "quoteStyle": "single"
+      "quoteStyle": "single",
+      "semicolons": "always"
     }
   },
   "json": {
@@ -67,6 +63,9 @@
     }
   },
   "css": {
+    "parser": {
+      "tailwindDirectives": true
+    },
     "formatter": {
       "enabled": true,
       "indentStyle": "space",

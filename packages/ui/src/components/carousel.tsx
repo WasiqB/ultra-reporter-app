@@ -53,7 +53,7 @@ function Carousel({
       ...opts,
       axis: orientation === 'horizontal' ? 'x' : 'y',
     },
-    plugins
+    plugins,
   );
   const [canScrollPrev, setCanScrollPrev] = React.useState(false);
   const [canScrollNext, setCanScrollNext] = React.useState(false);
@@ -82,7 +82,7 @@ function Carousel({
         scrollNext();
       }
     },
-    [scrollPrev, scrollNext]
+    [scrollPrev, scrollNext],
   );
 
   React.useEffect(() => {
@@ -167,7 +167,7 @@ function CarouselPrevious({
         orientation === 'horizontal'
           ? '-left-12 -translate-y-1/2 top-1/2'
           : '-top-12 -translate-x-1/2 left-1/2 rotate-90',
-        className
+        className,
       )}
       data-slot='carousel-previous'
       disabled={!canScrollPrev}
@@ -197,7 +197,7 @@ function CarouselNext({
         orientation === 'horizontal'
           ? '-right-12 -translate-y-1/2 top-1/2'
           : '-bottom-12 -translate-x-1/2 left-1/2 rotate-90',
-        className
+        className,
       )}
       data-slot='carousel-next'
       disabled={!canScrollNext}

@@ -33,7 +33,7 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className='container mx-auto py-8'>
+    <div className='container mx-auto p-8'>
       <h1 className='font-bold text-3xl'>Dashboard</h1>
       <Button className='mt-4' onClick={handleSignOut} size='lg' variant='default'>
         {isLoading && <Loader2Icon className='mr-2 h-5 w-5 animate-spin' />}
