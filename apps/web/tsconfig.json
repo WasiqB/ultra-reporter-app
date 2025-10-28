@@ -1,11 +1,16 @@
 {
   "extends": "@ultra-reporter/typescript-config/nextjs.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "../../packages/ui/src/apps/dashboard/coming-soon.tsx"
+  ],
   "exclude": ["node_modules"]
 }

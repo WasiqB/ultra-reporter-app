@@ -1,0 +1,19 @@
+import { HeartIcon } from 'lucide-react';
+import Link from 'next/link';
+import type { JSX } from 'react';
+import { Button } from '../../components/button';
+
+export const Sponsor = (): JSX.Element => (
+  <section className='bg-linear-to-r from-purple-500 to-indigo-600 py-16 text-white'>
+    <div className='container mx-auto px-4 text-center'>
+      <h2 className='mb-4 font-bold text-3xl'>Support Ultra Reporter</h2>
+      <p className='mb-8 text-xl'>Help us keep improving and maintaining this project by becoming a sponsor!</p>
+      <Link href='https://github.com/sponsors/WasiqB'>
+        <Button>
+          <HeartIcon className='mr-2 h-5 w-5 text-white' />
+          Become a Sponsor
+        </Button>
+      </Link>
+    </div>
+  </section>
+);

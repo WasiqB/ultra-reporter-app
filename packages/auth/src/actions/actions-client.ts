@@ -3,12 +3,25 @@
 import type { ErrorContext } from 'better-auth/react';
 import { authClient } from '../lib/auth-client';
 
-interface SocialProps {
-  provider: 'google';
-  url: string;
+interface AuthProps {
   initFn?: () => Promise<void> | void;
   successFn?: () => Promise<void> | void;
   errorFn?: (error: ErrorContext) => Promise<void> | void;
+}
+
+interface SocialProps extends AuthProps {
+  provider: 'google';
+  url: string;
+}
+
+async function signOut({ initFn, successFn, errorFn }: AuthProps) {
+  await authClient.signOut({
+    fetchOptions: {
+      onRequest: initFn,
+      onSuccess: successFn,
+      onError: errorFn,
+    },
+  });
 }
 
 async function signInWithSocial({ provider, url, initFn, successFn, errorFn }: SocialProps) {
@@ -25,4 +38,4 @@ async function signInWithSocial({ provider, url, initFn, successFn, errorFn }: S
   );
 }
 
-export { signInWithSocial };
+export { signInWithSocial, signOut };
