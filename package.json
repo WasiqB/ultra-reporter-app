@@ -8,8 +8,8 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
+    "build": "turbo build -- --turbopack",
+    "dev": "turbo dev -- --turbopack",
     "lint": "biome lint",
     "deploy": "turbo run build --scope=app --includeDependencies --no-deps",
     "format:fix": "biome format --write",
@@ -25,7 +25,7 @@
     "release:prepatch": "pnpm beta prepatch"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.0",
+    "@biomejs/biome": "2.3.1",
     "@release-it-plugins/lerna-changelog": "^8.0.1",
     "@types/node": "^24.9.1",
     "@vercel/style-guide": "^6.0.0",
