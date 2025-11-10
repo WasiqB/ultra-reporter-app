@@ -14,8 +14,7 @@
     "react-dom": "19.2.0"
   },
   "dependencies": {
-    "@next/third-parties": "16.0.0",
-    "@prisma/nextjs-monorepo-workaround-plugin": "^6.18.0",
+    "@next/third-parties": "16.0.1",
     "@tanstack/react-table": "^8.21.3",
     "@ultra-reporter/auth": "workspace:*",
     "@ultra-reporter/db": "workspace:*",
@@ -23,15 +22,15 @@
     "@ultra-reporter/logger": "workspace:*",
     "@ultra-reporter/ui": "workspace:*",
     "@ultra-reporter/utils": "workspace:*",
-    "lucide-react": "^0.548.0",
-    "next": "16.0.0"
+    "lucide-react": "^0.553.0",
+    "next": "16.0.1"
   },
   "devDependencies": {
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "@ultra-reporter/typescript-config": "workspace:*",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.16"
+    "tailwindcss": "^4.1.17"
   },
   "pnpm": {
     "overrides": {

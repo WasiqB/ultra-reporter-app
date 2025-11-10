@@ -10,13 +10,101 @@ import { convertToJson, getTestResults } from '@ultra-reporter/utils/xml-parser'
 import { Bug, MoveLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { type JSX, useEffect, useState } from 'react';
+import { type Step, StepsContainer } from './_components/steps-container';
+
+interface StepConfig {
+  id: string;
+  label: string;
+  handler: () => Promise<void>;
+}
+
+const stepConfigs: StepConfig[] = [
+  {
+    id: '1',
+    label: 'Validating file',
+    handler: async () => {
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+    },
+  },
+  {
+    id: '2',
+    label: 'Parsing XML content',
+    handler: async () => {
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+    },
+  },
+  {
+    id: '3',
+    label: 'Analyzing test results',
+    handler: async () => {
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+    },
+  },
+  {
+    id: '4',
+    label: 'Generating report',
+    handler: async () => {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // Simulate random error (10% chance)
+      if (Math.random() < 0.1) {
+        throw new Error('Generation timeout');
+      }
+    },
+  },
+];
 
 const LoadingPage = (): JSX.Element => {
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  const [steps, setSteps] = useState<Step[]>(
+    stepConfigs.map((config) => ({
+      id: config.id,
+      label: config.label,
+      status: 'pending' as const,
+    })),
+  );
   const router = useRouter();
 
   useEffect(() => {
+    const executeSteps = async () => {
+      for (let index = 0; index < stepConfigs.length; index++) {
+        // Set to loading
+        setSteps((prev) => prev.map((step, i) => (i === index ? { ...step, status: 'loading' as const } : step)));
+        setProgress((index / stepConfigs.length) * 100);
+
+        try {
+          // Execute the step callback
+          await stepConfigs[index]?.handler();
+
+          // Set to success
+          setSteps((prev) =>
+            prev.map((step, i) =>
+              i === index ? { ...step, status: 'success' as const, errorMessage: undefined } : step,
+            ),
+          );
+        } catch (error) {
+          // Set to error with message
+          const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+          setSteps((prev) =>
+            prev.map((step, i) =>
+              i === index
+                ? {
+                    ...step,
+                    status: 'error' as const,
+                    errorMessage,
+                  }
+                : step,
+            ),
+          );
+          // Stop execution on error
+          break;
+        }
+
+        setProgress(((index + 1) / stepConfigs.length) * 100);
+      }
+    };
+
+    executeSteps();
     const xmlContent = localStorage.getItem('xml-data');
     try {
       setProgress(0);
@@ -54,6 +142,12 @@ Stack: ${err.stack}`);
 
   return (
     <div className='flex min-h-screen items-center justify-center bg-background'>
+      <StepsContainer
+        title='Processing Your Report'
+        subtitle='File: multi-groups.xml'
+        steps={steps}
+        progress={progress}
+      />
       <Card className='w-[350px]'>
         <CardHeader>
           <CardTitle>Processing XML</CardTitle>
