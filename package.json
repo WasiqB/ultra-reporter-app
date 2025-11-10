@@ -25,17 +25,17 @@
     "release:prepatch": "pnpm beta prepatch"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.1",
+    "@biomejs/biome": "2.3.4",
     "@release-it-plugins/lerna-changelog": "^8.0.1",
-    "@types/node": "^24.9.1",
+    "@types/node": "^24.10.0",
     "@vercel/style-guide": "^6.0.0",
-    "globals": "^16.4.0",
+    "globals": "^16.5.0",
     "husky": "^9.1.7",
     "lerna-changelog": "^2.2.0",
     "lint-staged": "^16.2.6",
-    "release-it": "^19.0.5",
+    "release-it": "^19.0.6",
     "release-it-pnpm": "^4.6.6",
-    "turbo": "^2.5.8",
+    "turbo": "^2.6.0",
     "typescript": "^5.9.3"
   },
   "lint-staged": {
@@ -53,5 +53,5 @@
   "engines": {
     "node": ">=22"
   },
-  "packageManager": "pnpm@10.19.0"
+  "packageManager": "pnpm@10.20.0"
 }

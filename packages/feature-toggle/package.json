@@ -17,6 +17,6 @@
     "@ultra-reporter/typescript-config": "workspace:*"
   },
   "dependencies": {
-    "@devcycle/nextjs-sdk": "^2.23.1"
+    "@devcycle/nextjs-sdk": "^3.0.1"
   }
 }

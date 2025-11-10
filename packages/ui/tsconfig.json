@@ -5,6 +5,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "../../apps/web/app/(app)/loading/_components/loading-modal.tsx"],
   "exclude": ["dist", "build", "node_modules"]
 }
